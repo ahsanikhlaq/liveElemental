@@ -1,0 +1,1210 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "static": true,
+          "settings": {
+            "media_presentation": "grid",
+            "media_columns": "two",
+            "image_gap": 6,
+            "large_first_image": false,
+            "icons_style": "none",
+            "slideshow_controls_style": "counter",
+            "slideshow_mobile_controls_style": "hint",
+            "thumbnail_position": "right",
+            "thumbnail_width": 44,
+            "aspect_ratio": "1/1.25",
+            "constrain_to_viewport": false,
+            "media_fit": "contain",
+            "media_radius": 0,
+            "extend_media": false,
+            "zoom": false,
+            "video_loop": false,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 10,
+            "sticky_details_desktop": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "scheme-1",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "custom_reviews_jDTU8p": {
+              "type": "custom-reviews",
+              "name": "Custom Reviews",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "sc-reviw-icon": "shopify://shop_images/starss.svg",
+                "cs-review-count": "25 Reviews"
+              },
+              "blocks": {}
+            },
+            "group_icgrde": {
+              "type": "group",
+              "name": "Header",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 10,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_xrnftG": {
+                  "type": "text",
+                  "name": "Product title",
+                  "settings": {
+                    "text": "<h1>{{ closest.product.title }}</h1>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h3",
+                    "font": "var(--font-primary--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "price_tVjtKg": {
+                  "type": "price",
+                  "settings": {
+                    "show_sale_price_first": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
+                    "type_preset": "paragraph",
+                    "width": "100%",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
+                    "padding-block-start": 4,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_xrnftG",
+                "price_tVjtKg"
+              ]
+            },
+            "feacture_block_zrfVTK": {
+              "type": "feacture-block",
+              "name": "Featured Block",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "main-pd-img1": "shopify://shop_images/sustain.svg",
+                "main-pd-text1": "Coffee Infused",
+                "main-pd-img2": "shopify://shop_images/chemical.svg",
+                "main-pd-text2": "Smart Fabrics",
+                "main-pd-img3": "shopify://shop_images/moisture.svg",
+                "main-pd-text3": "Conscious Style"
+              },
+              "blocks": {}
+            },
+            "divider_VJhene": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "disabled": true,
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "size_guide_q8tTjX": {
+              "type": "size-guide",
+              "name": "Size Guide",
+              "disabled": true,
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "size_guide1": "shopify://shop_images/absorb.png",
+                "size_guide2": "shopify://shop_images/Frame_2147230165_1.png"
+              },
+              "blocks": {}
+            },
+            "variant_picker_R3rGDr": {
+              "type": "variant-picker",
+              "settings": {
+                "sg-main-head": "size guide",
+                "sg-sub-head": "Size Chart",
+                "sg-note": "We recommend sizing up for a more comfortable fit if you have a thicker lower half or prefer to looser fit.",
+                "sg-sub-head-2": "Measuring Guide",
+                "mear_head1": "Chest",
+                "measuring_desc1": "Our chest measurement is taken by laying the garment flat, measuring from armpit to armpit, and doubling this number.",
+                "mear_head2": "Sleeve",
+                "measuring_desc2": "Our sleeve measurement is taken by measuring from the shoulder seam down to the end of the sleeve.",
+                "measuring_guide_img": "shopify://shop_images/Capture12_2.png",
+                "variant_style": "buttons",
+                "show_swatches": false,
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "buy_buttons_eYQEYi": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "show_pickup_availability": false,
+                "gift_card_form": false,
+                "padding-block-start": 10,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "disabled": true,
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "upsel_product_UhWEDa": {
+              "type": "upsel-product-block",
+              "name": "Upsel block",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "main-up-heading": "complete the look",
+                "upsell_products": [
+                  "decaf",
+                  "drip-bucket-hat",
+                  "grind-trucker-hat",
+                  "latte-hoodie",
+                  "latte-sweatshirt",
+                  "latte-sweatpants",
+                  "nitro-baseball-cap"
+                ]
+              },
+              "blocks": {}
+            },
+            "cc_icon_text_qafdt9": {
+              "type": "cc-icon-text",
+              "name": "CS Icon Text",
+              "disabled": true,
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "main-icon-pd-img1": "shopify://shop_images/recyled.svg",
+                "main-pd-text1": "Recycled",
+                "main-icon-pd-img2": "shopify://shop_images/solar.svg",
+                "main-pd-text2": "UV Protection"
+              },
+              "blocks": {}
+            },
+            "text_aEtTtq": {
+              "type": "text",
+              "name": "Product description",
+              "disabled": true,
+              "settings": {
+                "text": "{{ closest.product.description }}",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "custom_pdp_collapsible_JMwBrP": {
+              "type": "custom-pdp-collapsible",
+              "name": "Custom Accord",
+              "disabled": true,
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {
+                "accordion_row_new_QXqqKL": {
+                  "type": "_accordion-row-new",
+                  "settings": {
+                    "heading": "Product Details",
+                    "content": "<p>Add your product details here.</p>"
+                  },
+                  "blocks": {}
+                },
+                "accordion_row_new_Un7D4f": {
+                  "type": "_accordion-row-new",
+                  "settings": {
+                    "heading": "test",
+                    "content": "<p>Add your product details here.</p>"
+                  },
+                  "blocks": {}
+                },
+                "accordion_row_new_DzHzyx": {
+                  "type": "_accordion-row-new",
+                  "settings": {
+                    "heading": "Shipping Info",
+                    "content": "<p>Add shipping information here.</p>"
+                  },
+                  "blocks": {}
+                },
+                "accordion_row_new_X3FRxT": {
+                  "type": "_accordion-row-new",
+                  "settings": {
+                    "heading": "Return Policy",
+                    "content": "<p>Add return policy here.</p>"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "accordion_row_new_QXqqKL",
+                "accordion_row_new_Un7D4f",
+                "accordion_row_new_DzHzyx",
+                "accordion_row_new_X3FRxT"
+              ]
+            },
+            "custom_pdp_collapsible_X4rbqP": {
+              "type": "custom-pdp-collapsible",
+              "name": "Custom Accord",
+              "disabled": true,
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "custom_pdp_collapsible_wTacYe": {
+              "type": "custom-pdp-collapsible",
+              "name": "Custom Accord",
+              "disabled": true,
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "custom_pdp_collapsible_hgmRLJ": {
+              "type": "custom-pdp-collapsible",
+              "name": "Custom Accord",
+              "disabled": true,
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "accordion_M3nkzR": {
+              "type": "accordion",
+              "name": "t:names.accordion",
+              "settings": {
+                "icon": "plus",
+                "dividers": true,
+                "type_preset": "h6",
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "accordion_row_e8ziwQ": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Description",
+                    "open_by_default": true,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_EVNMd4": {
+                      "type": "text",
+                      "settings": {
+                        "text": "{{ closest.product.description }}",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_EVNMd4"
+                  ]
+                },
+                "accordion_row_dr9eA8": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Sustainability",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_QT8jag": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Each piece of CoffeeThread™ is made from recycled materials, including used coffee grounds and recycled fibers, giving waste a second life. Thoughtful packaging extends this care, minimizing plastic and reinforcing our promise to the planet.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_QT8jag"
+                  ]
+                },
+                "accordion_row_HniH9b": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Fabric",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_gkqcDJ": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_gkqcDJ"
+                  ]
+                },
+                "accordion_row_tADNKw": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Shipping Information",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_z9iWyE": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<ul><li>Orders are typically processed and shipped within 1–7 business days.<br/></li><li>Free U.S. shipping on orders $75 and above.<br/></li><li>Domestic delivery usually takes 3–5 business days. International shipping options available.</li></ul>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_z9iWyE"
+                  ]
+                }
+              },
+              "block_order": [
+                "accordion_row_e8ziwQ",
+                "accordion_row_dr9eA8",
+                "accordion_row_HniH9b",
+                "accordion_row_tADNKw"
+              ]
+            }
+          },
+          "block_order": [
+            "custom_reviews_jDTU8p",
+            "group_icgrde",
+            "feacture_block_zrfVTK",
+            "divider_VJhene",
+            "size_guide_q8tTjX",
+            "variant_picker_R3rGDr",
+            "buy_buttons_eYQEYi",
+            "upsel_product_UhWEDa",
+            "cc_icon_text_qafdt9",
+            "text_aEtTtq",
+            "custom_pdp_collapsible_JMwBrP",
+            "custom_pdp_collapsible_X4rbqP",
+            "custom_pdp_collapsible_wTacYe",
+            "custom_pdp_collapsible_hgmRLJ",
+            "accordion_M3nkzR"
+          ]
+        }
+      },
+      "settings": {
+        "content_width": "content-full-width",
+        "desktop_media_position": "left",
+        "equal_columns": true,
+        "limit_details_width": false,
+        "gap": 20,
+        "color_scheme": "",
+        "padding-block-start": 51,
+        "padding-block-end": 0
+      }
+    },
+    "product_recommendations_qggXJq": {
+      "type": "product-recommendations",
+      "blocks": {
+        "text_cbcgyb": {
+          "type": "text",
+          "name": "t:names.header",
+          "settings": {
+            "text": "<h3>You may also like </h3>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h4",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_DNizbJ": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_M7MJkb": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_gLWgA6": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_DNizbJ",
+            "product_title_M7MJkb",
+            "price_gLWgA6"
+          ]
+        }
+      },
+      "block_order": [
+        "text_cbcgyb"
+      ],
+      "disabled": true,
+      "name": "t:names.product_recommendations",
+      "settings": {
+        "product": "{{ closest.product }}",
+        "recommendation_type": "related",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 4,
+        "columns": 4,
+        "mobile_columns": "2",
+        "columns_gap": 12,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "custom_pd_tabs_section_HUD7zK": {
+      "type": "custom-pd-tabs-section",
+      "blocks": {
+        "tab_heading_content_T3FtVM": {
+          "type": "tab_heading_content",
+          "settings": {
+            "heading_tab_id": "2",
+            "heading_title": "Why CoffeeThread™ Feels Different",
+            "heading_desc": ""
+          }
+        },
+        "tab_heading_content_aCrecc": {
+          "type": "tab_heading_content",
+          "settings": {
+            "heading_tab_id": "1",
+            "heading_title": "the Coffee Thread Process",
+            "heading_desc": ""
+          }
+        },
+        "tab_heading_block_enVeCJ": {
+          "type": "tab-heading-block",
+          "settings": {
+            "t-ingredient-id": "1",
+            "tab_cc_icon": "shopify://shop_images/scenc.svg",
+            "r-ingredient-name": "<p>The Science</p>"
+          }
+        },
+        "tab_heading_block_hniJtw": {
+          "type": "tab-heading-block",
+          "settings": {
+            "t-ingredient-id": "2",
+            "tab_cc_icon": "shopify://shop_images/fabric_leav.svg",
+            "r-ingredient-name": "<p>Fabric</p>"
+          }
+        },
+        "process_card_block_mbl_LrEYGw": {
+          "type": "process-card-block-mbl",
+          "disabled": true,
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/fee.svg",
+            "process-step": "STEP 1",
+            "process-title": "Collect & Sort",
+            "process-desc": "Used coffee grounds are gathered from local sources and carefully selected."
+          }
+        },
+        "process_card_block_mbl_aDf46U": {
+          "type": "process-card-block-mbl",
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/fee.svg",
+            "process-step": "STEP 1",
+            "process-title": "Collect & Sort",
+            "process-desc": "Used coffee grounds are gathered from local sources and carefully selected."
+          }
+        },
+        "process_card_block_mbl_wXkJcz": {
+          "type": "process-card-block-mbl",
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/fee.svg",
+            "process-step": "STEP 1",
+            "process-title": "Collect & Sort",
+            "process-desc": "Used coffee grounds are gathered from local sources and carefully selected."
+          }
+        },
+        "process_card_block_mbl_RTRqEA": {
+          "type": "process-card-block-mbl",
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/fee.svg",
+            "process-step": "STEP 1",
+            "process-title": "Collect & Sort",
+            "process-desc": "Used coffee grounds are gathered from local sources and carefully selected."
+          }
+        },
+        "process_card_block_mbl_haneYd": {
+          "type": "process-card-block-mbl",
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/fee.svg",
+            "process-step": "STEP 1",
+            "process-title": "Collect & Sort",
+            "process-desc": "Used coffee grounds are gathered from local sources and carefully selected."
+          }
+        },
+        "process_card_block_mbl_xHEFKq": {
+          "type": "process-card-block-mbl",
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/fee.svg",
+            "process-step": "STEP 1",
+            "process-title": "Collect & Sort",
+            "process-desc": "Used coffee grounds are gathered from local sources and carefully selected."
+          }
+        },
+        "process_card_block_FNeqkb": {
+          "type": "process-card-block",
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/colec-mbl.svg",
+            "process-step": "STEP 1",
+            "process-title": "Collect & Sort",
+            "process-desc": "Used coffee grounds are gathered from local sources and carefully selected."
+          }
+        },
+        "process_card_block_CjkAdQ": {
+          "type": "process-card-block",
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/extrac_mbl.svg",
+            "process-step": "STEP 2",
+            "process-title": "Extraction & Preparation",
+            "process-desc": "Coffee grounds are processed to extract oils and compounds, then combined with recycled polymers."
+          }
+        },
+        "process_card_block_RNrRXE": {
+          "type": "process-card-block",
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/yar_mbl.svg",
+            "process-step": "STEP 3",
+            "process-title": "Yarn Creation",
+            "process-desc": "Used coffee grounds are gathered from local sources aCoffee particles are embedded into the yarn during spinning, giving it natural odor control and quick-dry performance.nd carefully selected."
+          }
+        },
+        "process_card_block_GLcRRx": {
+          "type": "process-card-block",
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/fab_mbl.svg",
+            "process-step": "STEP 4",
+            "process-title": "Fabric Blending",
+            "process-desc": "Sustainable fibers like recycled water bottles are added to enhance comfort, stretch, and durability."
+          }
+        },
+        "process_card_block_jJAjtH": {
+          "type": "process-card-block",
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/design_mbl.svg",
+            "process-step": "STEP 5",
+            "process-title": "Design & Fit",
+            "process-desc": "Patterns are carefully crafted to ensure every piece moves with your body and fits beautifully."
+          }
+        },
+        "process_card_block_DhJK3i": {
+          "type": "process-card-block",
+          "settings": {
+            "process-tab-id": "1",
+            "process-icon": "shopify://shop_images/finishing_mbl.svg",
+            "process-step": "STEP 6",
+            "process-title": "Finishing & Quality",
+            "process-desc": "Fabrics are treated and inspected to bring out the coffee-infused performance while maintaining a soft, premium feel for daily wear."
+          }
+        },
+        "stats_block_K97U7b": {
+          "type": "stats-block",
+          "settings": {
+            "stats-tab-id": "1",
+            "stat-percentage": "30%",
+            "stat-description": "Saves energy by using heat recycling system"
+          }
+        },
+        "stats_block_Yyacpm": {
+          "type": "stats-block",
+          "settings": {
+            "stats-tab-id": "1",
+            "stat-percentage": "50%",
+            "stat-description": "Reduces carbon footprint and uses natural gass"
+          }
+        },
+        "stats_block_aLJjkt": {
+          "type": "stats-block",
+          "settings": {
+            "stats-tab-id": "1",
+            "stat-percentage": "70%",
+            "stat-description": "Saves water and energy by using a dyeing machine"
+          }
+        },
+        "product_card_block_RKJTnP": {
+          "type": "product-card-block",
+          "settings": {
+            "card-tab-id": "2",
+            "card-image": "shopify://shop_images/Container.png",
+            "card-title": "Coffee Thread",
+            "icon-look": "shopify://shop_images/feel.svg",
+            "feature-look": "Smooth and refined with a modern, natural finish.",
+            "icon-feel": "shopify://shop_images/fee.svg",
+            "feature-feel": "Soft, breathable, naturally fresh, and lightweight",
+            "icon-fabric": "shopify://shop_images/fabric-s.svg",
+            "feature-fabric": "Made from coffee grounds and blends of polyester, cotton, or spandex.",
+            "icon-performance": "shopify://shop_images/perfeorm.svg",
+            "feature-performance": "Odor control, moisture-wicking, quick-dry comfort, and UV protection from coffee fibers"
+          }
+        },
+        "product_card_block_zbDn6D": {
+          "type": "product-card-block",
+          "settings": {
+            "card-tab-id": "2",
+            "card-image": "shopify://shop_images/Container_1.png",
+            "card-title": "Standard Fabric",
+            "icon-look": "shopify://shop_images/feel.svg",
+            "feature-look": "Polyester shiny or synthetic, cotton fades or deforms.",
+            "icon-feel": "shopify://shop_images/fee.svg",
+            "feature-feel": "Slick to touch, less breathable",
+            "icon-fabric": "shopify://shop_images/fabric-s.svg",
+            "feature-fabric": "Polyester feels synthetic, cotton soft but slower to dry.",
+            "icon-performance": "shopify://shop_images/perfeorm.svg",
+            "feature-performance": "Performance features often rely on chemical treatments that wear off with time and washing."
+          }
+        },
+        "product_card_block_F7aMEH": {
+          "type": "product-card-block",
+          "settings": {
+            "card-tab-id": "2",
+            "card-image": "shopify://shop_images/Container_2.png",
+            "card-title": "Eco Blend",
+            "icon-look": "shopify://shop_images/feel.svg",
+            "feature-look": "Natural or textured look; can appear less polished or fade depending on fibers",
+            "icon-feel": "shopify://shop_images/fee.svg",
+            "feature-feel": "Varies widely; some soft, others rougher or less stretchy",
+            "icon-fabric": "shopify://shop_images/fabric-s.svg",
+            "feature-fabric": "Bamboo, organic cotton, recycled polyester, hemp, or Tencel",
+            "icon-performance": "shopify://shop_images/perfeorm.svg",
+            "feature-performance": "Eco-friendly but not naturally high-performing; odor and moisture control require treatments."
+          }
+        }
+      },
+      "block_order": [
+        "tab_heading_content_T3FtVM",
+        "tab_heading_content_aCrecc",
+        "tab_heading_block_enVeCJ",
+        "tab_heading_block_hniJtw",
+        "process_card_block_mbl_LrEYGw",
+        "process_card_block_mbl_aDf46U",
+        "process_card_block_mbl_wXkJcz",
+        "process_card_block_mbl_RTRqEA",
+        "process_card_block_mbl_haneYd",
+        "process_card_block_mbl_xHEFKq",
+        "process_card_block_FNeqkb",
+        "process_card_block_CjkAdQ",
+        "process_card_block_RNrRXE",
+        "process_card_block_GLcRRx",
+        "process_card_block_jJAjtH",
+        "process_card_block_DhJK3i",
+        "stats_block_K97U7b",
+        "stats_block_Yyacpm",
+        "stats_block_aLJjkt",
+        "product_card_block_RKJTnP",
+        "product_card_block_zbDn6D",
+        "product_card_block_F7aMEH"
+      ],
+      "name": "PDP Tabs Section",
+      "settings": {
+        "r-title": "",
+        "stat-head": "The Making of CoffeeThread"
+      }
+    },
+    "custom_impact_section_LbkhFk": {
+      "type": "custom-impact-section",
+      "name": "Impact Tabs Section",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mbl_padding_top": 10,
+        "mbl_padding_bottom": 40,
+        "back_color": "#ffffff",
+        "imp_main_head": "",
+        "imp_main_desc": "<h4>Sleek Build</h4><h4>Long-Lasting Fragrance </h4><h4>Refillable</h4>",
+        "background_image": "shopify://shop_images/ProductPage-ImpactSection-Strip.png",
+        "show_background_on_mobile": true,
+        "tab_label": "Design",
+        "imp-bottom-txt": "",
+        "mbl-right-txt": "",
+        "tab_text_color": "#ffffff",
+        "active_tab_color": "#ffffff",
+        "tab_font_size": 20,
+        "mbl_tab_label_size": 11,
+        "tab_button_size": 32,
+        "mbl_tab_button_size": 24,
+        "tab_font_weight": "400",
+        "tab_button_weight": "700"
+      }
+    },
+    "custom_related_collection_f9aX6t": {
+      "type": "custom-related-collection",
+      "name": "Custom Related",
+      "settings": {
+        "head": "<p>similar products</p>",
+        "collection": "test",
+        "product_limit": 10,
+        "link_text": "",
+        "link_url": "",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "enable_mobile_swiper": true
+      }
+    },
+    "custom_review_section_FfqBCV": {
+      "type": "custom-review-section",
+      "blocks": {
+        "review_XqKink": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Comfortable & Cool Outfit</p>",
+            "review_text": "“I started taking Resilia daily at the start of cold season and haven’t gotten sick once.",
+            "reviewer_name": "HAILEY A."
+          }
+        },
+        "review_WC3CdG": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Loved the </p><p>Material!</p>",
+            "review_text": "“I started taking Resilia daily at the start of cold season and haven’t gotten sick once.",
+            "reviewer_name": "HAILEY A."
+          }
+        },
+        "review_7LPVVy": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Soft Fabric Best </p><p>Purcahse!</p>",
+            "review_text": "“I started taking Resilia daily at the start of cold season and haven’t gotten sick once.",
+            "reviewer_name": "HAILEY A."
+          }
+        },
+        "review_3arUR6": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Cool and</p><p>Breezy</p>",
+            "review_text": "“I started taking Resilia daily at the start of cold season and haven’t gotten sick once.",
+            "reviewer_name": "HAILEY A."
+          }
+        }
+      },
+      "block_order": [
+        "review_XqKink",
+        "review_WC3CdG",
+        "review_7LPVVy",
+        "review_3arUR6"
+      ],
+      "disabled": true,
+      "name": "Reviews Section",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mbl_padding_top": 10,
+        "mbl_padding_bottom": 40,
+        "back-color": "",
+        "rate_icon": "shopify://shop_images/review-stars.svg",
+        "rs_rating": "<p><strong>10,500+</strong> 5-Star Reviews</p>",
+        "heading_1": "<p>Loved by Our Community</p>",
+        "heading": "",
+        "fd_label_btn": "Read All Reviews",
+        "qt_btn_link": "#"
+      }
+    },
+    "custom_review_section_Qd4Ecy": {
+      "type": "custom-review-section",
+      "blocks": {
+        "review_HT36R3": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Comfortable & Cool Outfit</p>",
+            "review_text": "I love how cool and breezy this feels while still keeping me comfortable. Perfect for layering or wearing on its own.”",
+            "reviewer_name": "HAILEY A."
+          }
+        },
+        "review_Qr6Ljh": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Loved the </p><p>Material!</p>",
+            "review_text": "I started wearing this at the beginning of the cold season, and it’s been incredibly comfortable. The fabric feels light, breathable, and perfect for everyday wear.",
+            "reviewer_name": "Emma R."
+          }
+        },
+        "review_NEW4H8": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Soft Fabric Best </p><p>Purcahse!</p>",
+            "review_text": "The material is soft, high quality, and feels great on the skin. I’ve been using it regularly and it still looks and feels brand new.",
+            "reviewer_name": "Sophia L"
+          }
+        },
+        "review_4enm4w": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Cool and</p><p>Breezy</p>",
+            "review_text": "This was one of my best purchases. The fabric is super soft and cozy, making it ideal for cooler weather without feeling heavy.",
+            "reviewer_name": "Olivia M."
+          }
+        }
+      },
+      "block_order": [
+        "review_HT36R3",
+        "review_Qr6Ljh",
+        "review_NEW4H8",
+        "review_4enm4w"
+      ],
+      "name": "Reviews Section",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mbl_padding_top": 10,
+        "mbl_padding_bottom": 40,
+        "back-color": "",
+        "rate_icon": "shopify://shop_images/review-stars.svg",
+        "rs_rating": "<p><strong>10,500+</strong> 5-Star Reviews</p>",
+        "heading_1": "<p>Loved by Our Community</p>",
+        "heading": "",
+        "fd_label_btn": "Read All Reviews",
+        "qt_btn_link": "#"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product_recommendations_qggXJq",
+    "custom_pd_tabs_section_HUD7zK",
+    "custom_impact_section_LbkhFk",
+    "custom_related_collection_f9aX6t",
+    "custom_review_section_FfqBCV",
+    "custom_review_section_Qd4Ecy"
+  ]
+}

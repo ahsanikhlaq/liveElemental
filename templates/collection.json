@@ -1,0 +1,465 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section": {
+      "type": "section",
+      "blocks": {
+        "text_tqQTNE": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>{{ closest.collection.title }}</h1>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_twGGkJ": {
+          "type": "text",
+          "name": "Description",
+          "settings": {
+            "text": "{{ closest.collection.description }}",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_tqQTNE",
+        "text_twGGkJ"
+      ],
+      "disabled": true,
+      "name": "Collection heading",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-1",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "coffee_collection_to_89Mprf": {
+      "type": "coffee-collection-to",
+      "blocks": {
+        "block_CAbGmR": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "col-tab-icon": "shopify://shop_images/Group1.svg",
+            "collection_name": "Caffeinated Comfort",
+            "collection_url": "shopify://collections/caffeinated-comfort"
+          }
+        },
+        "block_3qrb7d": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "col-tab-icon": "shopify://shop_images/dress.svg",
+            "collection_name": "Coffee Dress Shirt",
+            "collection_url": "shopify://collections/coffee-dress-shirt"
+          }
+        },
+        "block_kcMgYH": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "col-tab-icon": "shopify://shop_images/Vector2men.svg",
+            "collection_name": "Coffee Dress Shirt for Women",
+            "collection_url": "shopify://collections/coffee-dress-shirt-for-women"
+          }
+        },
+        "block_8dPabA": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "col-tab-icon": "shopify://shop_images/Groupfor_women.svg",
+            "collection_name": "Coffee Dress Shirt for Men",
+            "collection_url": "shopify://collections/coffee-dress-shirt-for-men"
+          }
+        },
+        "block_RRyzn8": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "col-tab-icon": "shopify://shop_images/Groupfor_men_hoode.svg",
+            "collection_name": "accessories",
+            "collection_url": "shopify://collections/accessories"
+          }
+        },
+        "block_z4ygnK": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "col-tab-icon": "shopify://shop_images/Groupcap.svg",
+            "collection_name": "For Women",
+            "collection_url": "shopify://collections/for-women"
+          }
+        },
+        "block_HpPfdQ": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "collection_name": "accessories",
+            "collection_url": "shopify://collections/accessories"
+          }
+        }
+      },
+      "block_order": [
+        "block_CAbGmR",
+        "block_3qrb7d",
+        "block_kcMgYH",
+        "block_8dPabA",
+        "block_RRyzn8",
+        "block_z4ygnK",
+        "block_HpPfdQ"
+      ],
+      "name": "Cs Collection Main",
+      "settings": {
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "mbl_padding_top": 10,
+        "mbl_padding_bottom": 10,
+        "back-color": ""
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "horizontal",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": false,
+            "enable_sorting": true,
+            "enable_grid_density": false,
+            "inherit_color_scheme": false,
+            "color_scheme": "",
+            "padding-block-start": 8,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 8,
+            "facets_margin_right": 20
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_card_group_TejkR9": {
+              "type": "_product-card-group",
+              "name": "t:names.group",
+              "settings": {
+                "content_direction": "row",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "space-between",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "product_title_4idHBE": {
+                  "type": "product-title",
+                  "name": "t:names.product_title",
+                  "settings": {
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 4,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "price_GDaC63": {
+                  "type": "price",
+                  "name": "t:names.product_price",
+                  "settings": {
+                    "show_sale_price_first": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
+                    "type_preset": "",
+                    "width": "fit-content",
+                    "alignment": "right",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "product_title_4idHBE",
+                "price_GDaC63"
+              ]
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_card_group_TejkR9"
+          ]
+        }
+      },
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "medium",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": true,
+        "products_per_page": 24,
+        "product_grid_width": "centered",
+        "full_width_on_mobile": true,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 50,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 0,
+        "padding-block-end": 32
+      }
+    },
+    "feel_differenc_section_HYK6ng": {
+      "type": "feel-differenc-section",
+      "blocks": {
+        "block_8xDi7A": {
+          "type": "block",
+          "settings": {
+            "cf_block_icon": "shopify://shop_images/odor-control.svg",
+            "cf_block_head": "Odor Control",
+            "cf_block_desc": "Natural coffee oils prevent odor-causing bacteria"
+          }
+        },
+        "block_6CErCq": {
+          "type": "block",
+          "settings": {
+            "cf_block_icon": "shopify://shop_images/quick-dry.svg",
+            "cf_block_head": "Quick-Dry Fabric",
+            "cf_block_desc": "Moisture-wicking fibers designed for everyday wear."
+          }
+        },
+        "block_dqbnqW": {
+          "type": "block",
+          "settings": {
+            "cf_block_icon": "shopify://shop_images/eco-impt.svg",
+            "cf_block_head": "Eco Impact",
+            "cf_block_desc": "Each garment repurposes coffee waste and plastic bottles"
+          }
+        },
+        "block_aXVCCL": {
+          "type": "block",
+          "settings": {
+            "cf_block_icon": "shopify://shop_images/carbon-cc.svg",
+            "cf_block_head": "Carbon Conscious",
+            "cf_block_desc": "Reduced emissions through responsible manufacturing."
+          }
+        }
+      },
+      "block_order": [
+        "block_8xDi7A",
+        "block_6CErCq",
+        "block_dqbnqW",
+        "block_aXVCCL"
+      ],
+      "name": "Feel Section",
+      "settings": {
+        "padding_top": 50,
+        "padding_bottom": 79,
+        "mbl_padding_top": 43,
+        "mbl_padding_bottom": 28,
+        "back_color": "",
+        "cf_fel_head": "Why CoffeeThread Feels Different",
+        "cf_fel_desc": "Every detail is designed with intention — from materials to movement. We don’t compromise between comfort, style, and responsibility.",
+        "center_content": false
+      }
+    },
+    "custom_video_banner_nhMDpQ": {
+      "type": "custom-video-banner",
+      "blocks": {
+        "block_LR8EEY": {
+          "type": "block",
+          "settings": {
+            "feature_icon": "shopify://shop_images/leaf.svg",
+            "feature_heading": "Carbon Neutral"
+          }
+        },
+        "block_6pYrh4": {
+          "type": "block",
+          "settings": {
+            "feature_icon": "shopify://shop_images/reward.svg",
+            "feature_heading": "100% Recycled"
+          }
+        },
+        "block_nYQrWQ": {
+          "type": "block",
+          "settings": {
+            "feature_icon": "shopify://shop_images/wast.svg",
+            "feature_heading": "Zero Waste Process"
+          }
+        }
+      },
+      "block_order": [
+        "block_LR8EEY",
+        "block_6pYrh4",
+        "block_nYQrWQ"
+      ],
+      "name": "Video Hero Section",
+      "settings": {
+        "cs_video": "shopify://files/videos/CoffeeThread_Website-CoffeeBean-Landscape (1).mp4",
+        "heading": "<p>THE SUSTAINABLE ALTERNATIVE</p>",
+        "desc": "<p>CoffeeThread™ Clothing And Its Mono Fabrics Are Crafted From Recycled Coffee Yarns — A New Standard Of Sustainable Comfort And Conscious Design. Made For Everyday Life, Inspired By Circular Innovation</p>",
+        "cta_text": "Explore Our Collection",
+        "cta_url": "#",
+        "expert_number": "#1",
+        "expert_title": "Expert Recommended",
+        "expert_description": "Best Product for your Mind and Brain"
+      }
+    }
+  },
+  "order": [
+    "section",
+    "coffee_collection_to_89Mprf",
+    "main",
+    "feel_differenc_section_HYK6ng",
+    "custom_video_banner_nhMDpQ"
+  ]
+}

@@ -1,0 +1,1063 @@
+body h1, h2, h3, h4, h5, h6{
+    font-family: "League Spartan";
+}
+body p{
+    font-family: Quicksand;
+}
+.sticky .menu-list:not(:has(.menu-list__list-item:hover)) .menu-list__link--active{
+    font-weight:700;
+}
+.abt_pt .header-logo__image {
+    filter: brightness(1);
+}
+.abt_pt .custom_header_pt{
+    position:absolute;
+    background:transparent;
+    border: none !important;
+}
+.wh_sale_ptr .custom_header_pt {
+    position: absolute;
+    background: transparent;
+    border: none !important;
+}
+.wh_sale_ptr .sticky .custom_header_pt {
+    position: unset !important;
+}
+.home-page .cart-bubble__background{
+    background:#000;
+}
+.home-page .cart-bubble__text{
+    color:#fff;
+}
+.cont .contact-form__label{
+    color: #000 !important;
+font-family: "League Spartan" !important;
+font-size: 16px !important;
+font-style: normal !important;
+font-weight: 500 !important;
+line-height: 22px !important; /* 137.5% */
+}
+.cont .pd-main-head h2{
+    color: #000 !important;
+font-family: "League Spartan" !important;
+font-size: 36px !important;
+font-style: normal !important;
+font-weight: 600 !important;
+line-height: 56px !important; /* 155.556% */
+}
+.cont .pd-main-head p{
+    color: var(--Black, #171717) !important;
+font-family: Quicksand !important;
+font-size: 18px !important;
+font-style: normal !important;
+font-weight: 400 !important;
+line-height: normal !important;
+}
+
+.cart-bubble__background{
+    background:#8C7A6E;
+}
+.sticky .cart-bubble__background{
+    background:#000;
+}
+.abt_pt .sticky .custom_header_pt .menu-list__link-title {
+    color: #000;
+}
+.abt_pt .menu-drawer-container .header__icon--summary{
+    filter: brightness(5);
+}
+.abt_pt .sticky .menu-drawer-container .header__icon--summary{
+    filter: brightness(0);
+}
+.abt_pt .sticky .custom_header_pt{
+    position:unset !important;
+}
+.abt_pt .custom_header_pt .account-button__icon svg {
+    /* filter: brightness(1); */
+}
+.abt_pt .custom_header_pt .menu-list__link-title{
+    color:#FFFFFF;
+}
+.abt_pt .sticky .cart-bubble__background{
+    background:black;
+}
+.abt_pt .sticky .cart-bubble__text{
+    color:#FFFFFF;
+}
+.abt_pt .cart-bubble__background{
+    background:#FFFFFF;
+}
+.abt_pt .cart-bubble__text{
+    color:black;
+}
+.abt_pt .custom_header_pt .header-actions__cart-icon .svg-wrapper {
+    /* filter: brightness(1); */
+}
+/* Fade Up Animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* mail page */
+.email-signup__input-group {
+    flex-direction: column !important; 
+    display:flex !important;
+}
+.email-signup__button{
+    background: var(--almond-forest, #8C7A6E) !important;
+    display: flex;
+    border-radius:0 !important;
+padding: 16px 34px;
+justify-content: center;
+align-items: center;
+transition: all 0.3s ease;
+gap: 12px;
+text-transform: capitalize !important;
+}
+.email-signup__button:hover{
+    background: var(--almond-forest-hover, #6B5B4C);
+    transform: scale(1.05);
+}
+/* header style */
+.cs_anno_pt .announcement-bar__text {
+    color: #FFF;
+    font-family: Quicksand;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+img.header-logo__image {
+    filter: brightness(0);
+}
+.home-page .menu-list__link-title {
+    color: #000;
+}
+.home-page img.header-logo__image {
+    filter: brightness(0);
+}
+.search-modal__button svg{
+    width:20px !important;
+    height:20px !important;
+}
+.sticky .search-modal__button svg{
+    filter: brightness(0);
+}
+.abt_pt .search-modal__button svg{
+    filter: brightness(5);
+}
+.abt_pt .sticky .search-modal__button svg{
+    filter: brightness(0);
+}
+.cont .sticky .search-modal__button svg {
+    filter: brightness(0);
+}
+.wh_sale_ptr .sticky .search-modal__button svg{
+    filter: brightness(0);
+}
+.home-page .header-actions__cart-icon svg, .home-page .search-modal__button svg, .home-page .header-actions__action svg{
+    filter: brightness(0);
+}
+.home-page .header-actions__cart-icon svg{
+    filter: brightness(0);
+}
+
+.menu-list__link-title {
+    color: black;
+}
+.home-page .header-actions__cart-icon .svg-wrapper {
+    filter: brightness(5);
+}
+.home-page .account-button__icon svg {
+    /* filter: brightness(5); */
+}
+.abt_pt .header-actions__cart-icon .svg-wrapper {
+    filter: brightness(5);
+}
+.abt_pt .account-button__icon svg {
+    filter: brightness(5);
+}
+.header-actions__cart-icon .svg-wrapper {
+    filter: none;
+}
+.account-button__icon svg {
+    /* filter: brightness(0); */
+}
+.sticky {
+    background: rgba(0, 0, 0, 0.20) !important;
+    backdrop-filter: blur(10px);
+}
+.sticky .header__row {
+    /* opacity: 0.9; */
+    /* top: 36px; */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+background: rgba(255, 255, 255, 0.60);
+backdrop-filter: blur(10px);
+}
+.sticky img.header-logo__image {
+    filter: brightness(0);
+}
+.sticky .account-button__icon{
+    filter: brightness(0);
+}
+.sticky .header__icon--menu{
+    filter: brightness(0);
+}
+.sticky .header-actions__cart-icon svg{
+        filter: brightness(0);
+}
+.cs_anno_pt{
+    border:none !important;
+}
+.home-page .custom_header_pt{
+    border:none !important;
+}
+.home-page .video-hero-section{
+    padding: 0 16px;
+}
+.custom_header_pt{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.20) !important;
+}
+.custom_header_pt header-actions{
+    flex-direction: row-reverse;
+}
+.custom_header_pt .header-actions__action svg{
+    width: 18.857px;
+height: 18px;
+}
+.custom_header_pt .menu-list__link{
+    /* color: var(--White, #FFF); */
+text-align: center;
+font-family: Quicksand;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.custom_header_pt .header__columns{
+    padding: 10px 0 !important;
+}
+/* contact us page */
+button.custm_pt_btn {
+    background: var(--almond-forest, #8C7A6E);
+    display: flex;
+    padding: 12px 34px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: 0;
+    color: #FFF6E8;
+font-family: Quicksand;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+transition: all 0.3s 
+ease;
+}
+.custm_pt_btn:hover{
+    background: var(--almond-forest-hover, #6B5B4C);
+    transform: scale(1.05);
+}
+.wh_sale_ptr .button--AbkFqZm5pajlsTm1LZ__button_d4qcMJ{
+    border-radius:0;
+    background: var(--almond-forest, #8C7A6E);
+    display: flex;
+        font-size: 20px;
+    transition: all 0.3s 
+ease;
+padding: 16px 34px;
+justify-content: center;
+align-items: center;
+gap: 12px;
+font-family: "League Spartan" !important;
+}
+.wh_sale_ptr .button--AbkFqZm5pajlsTm1LZ__button_d4qcMJ:hover{
+    background: var(--almond-forest-hover, #6B5B4C);
+    transform: scale(1.05);
+}
+.pd-main-head {
+    font-family: "League Spartan" !important;
+}
+.blog-post-card__content-text{
+    font-family: Quicksand !important;
+}
+/* Cart Drawer */
+.cart-drawer__heading,
+.disclosure-trigger__label,
+.cart-items__title,
+.cart-items__price,
+.cart__total-label,
+.cart__total-value,
+.pd-main-head{
+    font-family: "League Spartan" !important;
+}
+.cart-items__title{
+    line-height: normal;
+    letter-spacing: 0;
+}
+.cart_pp{
+    display:none;
+}
+.quantity-selector :is(.quantity-minus,.quantity-plus){
+    width: 27px !important;
+}
+.menu-drawer__menu-item-text{
+    font-family: "League Spartan" !important;
+}
+.cs_variant-picker__form{
+    position:relative;
+}
+@media (max-width: 786px) {
+.home-page .video-hero-section {
+    padding: 0;
+}
+.cont .pd-main-head h2{
+    font-size: 28px !important;
+font-style: normal !important;
+font-weight: 600 !important;
+line-height: 36.4px !important;
+}
+.cont .pd-main-head p{
+    font-size: 16px !important;
+font-style: normal !important;
+font-weight: 400 !important;
+line-height: 20.8px !important; 
+}
+.cont button.custm_pt_btn{
+    width:100%;
+}
+.menu-drawer__menu-item-text{
+    font-family: "League Spartan" !important;
+        font-size: 20px !important;
+    line-height: normal !important;
+}
+.menu-drawer__menu .menu-drawer__list-item--flat{
+    margin: 0 !important;
+}
+.cart__total-value{
+    font-size: 18px !important;
+}
+.wh_sale_ptr .button--AbkFqZm5pajlsTm1LZ__button_d4qcMJ{
+    padding: 8px 34px;
+}
+.custom_header_pt .header__columns{
+    padding:unset !important;
+}
+.custom_header_pt .header__icon--summary .header-drawer-icon{
+    width: 21px;
+    height: 20px;
+    display: block;
+    /* filter: brightness(0); */
+}
+.home-page .custom_header_pt .header__icon--summary .header-drawer-icon{
+    /* filter: brightness(5); */
+    filter: brightness(0);
+}
+
+
+
+}
+
+/* header end */
+
+
+/* cart style */
+.cr_maon .close-button{
+    top: 18px;
+}
+/* .cr_maon .cart-items__media-container{
+    max-width: 100px;
+    max-height: 100px;
+} */
+.cr_maon .quantity-selector input[type=number]{
+    color: var(--Black, #422B22) !important;
+text-align: center !important;
+font-family: Quicksand !important;
+font-size: 14px !important;
+font-style: normal !important;
+font-weight: 600 !important;
+line-height: normal !important;
+}
+.cart-items__quantity{
+    margin: 0 !important;
+}
+.cr_maon .cart-drawer__heading{
+    color: #000;
+    margin:0;
+text-align: center;
+font-family: "League Spartan";
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-transform: capitalize;
+}
+.cr_maon .cart__total-label{
+    color: var(--Black, #171717);
+font-family: "League Spartan";
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.cr_maon .cart__total-value{
+    color: var(--Black, #171717);
+font-family: Quicksand !important;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.cr_maon .cart__ctas .cart__checkout-button.button{
+    display: flex;
+height: 55px;
+/* padding: 19px 195px; */
+justify-content: center;
+align-items: center;
+color: #FFF;
+font-family: "League Spartan";
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 28px; /* 140% */
+text-transform: uppercase;
+gap: 10px;
+border-radius: 0;
+align-self: stretch;
+background: var(--almond-forest, #8C7A6E);
+backdrop-filter: blur(99px);
+}
+.cr_maon .cart__summary-item.tax-note{
+    display:none;
+}
+.cr_maon .cart-items__quantity{
+    /* width: 100%; */
+    position: relative;
+    margin-top: 10px !important;
+}
+.cr_maon .cart-items__remove{
+    position: absolute;
+    right: -220px;
+}
+.cr_maon .cart-drawer__items .cart-items__table-row{
+    margin: 0;
+    border: none;
+}
+.cr_maon .cart-drawer__summary{
+    gap: 12px !important;
+    /* overflow-x: hidden; */
+    padding: 20px;
+}
+.cr_maon .cart__summary-totals:not(:has(.cart-actions)){
+    border: none;
+}
+.cr_maon a.cart-items__title{
+    color: var(--Black, #171717);
+font-family: "League Spartan";
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-transform: capitalize;
+}
+.cr_maon .quantity-selector{
+    border-radius:0 !important;
+}
+.cr_maon .cart-items__price.cart-secondary-typography {
+    color: var(--Black, #171717);
+    text-align: right;
+    font-family: Quicksand;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    /* line-height: 15.379px; */
+}
+/* PDP Style */
+media-gallery.dd{
+    max-width: 100% !important;
+    width:100% !important;
+}
+.custom_pt_cf.product-details{
+    padding-left: 20px !important;
+}
+.pd-main-head h1{
+    color: var(--Black, #171717) !important;
+font-family: "League Spartan" !important;
+font-size: 32px !important;
+font-style: normal !important;
+font-weight: 600 !important;
+line-height: normal !important;
+text-transform: uppercase !important;
+}
+.custom_pt_cf {
+    padding: 0 31px 0 10px !important;
+}
+.pd-price-main .price{
+    color: var(--Black, #171717);
+
+/* Accent/Medium/24 */
+font-family: "League Spartan" !important;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.pd-varint-pt .variant-option__button-label {
+    border: 0.5px solid var(--Grey, #797979);
+    display: flex;
+    width: 46px;
+    height: 46px;
+    padding: 8px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /* aspect-ratio: 1 / 1; */
+    border-radius: 0;
+}
+label.ccc.variant-option__button-label.clr-ptr {
+    border: 1.013px solid var(--almond-forest, #8C7A6E);
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.00) 0%, rgba(140, 156, 110, 0.10) 100%);
+    min-width: 70px;
+    height: 70px;
+    padding: 0px;
+}
+.pd-varint-pt .variant-option__button-label:has(:checked){
+    background: var(--almond-forest, #8C7A6E);
+        border: none;
+}
+.pd-varint-pt .variant-option__button-label__pill{
+    background: var(--almond-forest, #8C7A6E);
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+.by-btn-pt .cof-my-btn{
+    background: var(--almond-forest, #8C7A6E);
+    display: flex;
+        text-transform: capitalize;
+padding: 16px 10px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius:0;
+flex: 1 0 0;
+align-self: stretch;
+}
+.collection-wrapper .by-btn-pt .cof-my-btn{
+    display: none;
+}
+.by-btn-pt .add-to-cart-text{
+    color: var(--White, #FFF);
+font-family: "League Spartan";
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.by-btn-pt .add-to-cart-text__content {
+    color: var(--White, #FFF);
+    font-size: 20px;
+    font-family: "League Spartan";
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.product-details .custm-pt-qty{
+    border-radius:0;
+    /* height: 0;
+    padding: 25px 0px; */
+}
+.accord-custom-pt .accord-title-sc{
+color: var(--Black, #171717);
+padding: 20px 10px !important;
+/* Body/Semobold/16 */
+font-family: Quicksand !important;
+font-size: 16px !important;
+font-style: normal !important;
+font-weight: 600 !important;
+line-height: normal !important;
+}
+.accord-title-sc summary .svg-wrapper{
+    width: 18px !important;
+height: 18px;
+}
+.accord-custom-pt .accord-content-sc{
+color: var(--Black, #171717) !important;
+/* Body/Medium/14 */
+    padding-bottom: 16px !important;
+font-family: Quicksand !important;
+font-size: 14px !important;
+font-style: normal !important;
+font-weight: 500 !important;
+line-height: 20px !important; /* 142.857% */
+}
+.accord-custom-pt .accord-content-sc .pd-main-head p{
+   max-width: 86% !important;
+    padding-left: 3px;
+}
+.pd-varint-pt .variant-option{
+    display:flex;
+}
+.variant-option__button-label svg{
+        z-index: 99 !important;
+}
+.pd-varint-pt legend{
+    color: var(--Black, #152728);
+/* text-align: center; */
+font-family: "League Spartan";
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.variant-option--color-images .variant-option__button-label {
+  flex-direction: column;
+  gap: var(--gap-xs);
+  padding: var(--padding-xs);
+  min-width: 80px;
+}
+legend.vrt_name_pt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.vrt_name_pt .variant-option__button-label__text{
+    color: #0C0A09;
+
+/* Body/Medium/14 */
+font-family: Quicksand;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px; /* 142.857% */
+}
+.variant-option__button-label__image {
+  pointer-events: none;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  /* border-radius: 4px; */
+  overflow: hidden;
+  display: block;
+}
+
+.variant-option__button-label__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.variant-option--color-images .variant-option__button-label__text {
+  font-size: 0.875em;
+}
+
+
+/* Collection page Style */
+
+.collection_pt .pd-main-head{
+    color: var(--Black, #171717);
+font-family: "League Spartan" !important;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-transform: capitalize;
+padding-top: 0px;
+}
+.collection_pt .pd-price-main .price{
+    color: var(--Black, #171717);
+
+/* Body/Medium/16 */
+font-family: Quicksand !important;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 22px; /* 137.5% */
+}
+.products-count-wrapper .pd-count {
+    visibility: hidden;
+}
+.facet_custom_pt .facets__label{
+    color: var(--Accent-1, #00727F);
+    text-align: center;
+    font-family: "League Spartan";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+}
+.facet_custom_pt .sorting-filter__option{
+    font-family: "League Spartan";
+}
+.facet_custom_pt .price-facet__highest-price{
+    font-family: "League Spartan";
+}
+.facet_custom_pt .checkbox__label-text{
+    font-family: "League Spartan";
+}
+.facet_custom_pt .facets-drawer__title{
+    font-family: "League Spartan";
+}
+.facet_custom_pt .sorting-filter__container .sorting-filter__select{
+    font-family: "League Spartan";
+}
+.facet_custom_pt .facets__summary .icon-caret{
+    color:#00727F !important;
+}
+.cr_maon .quantity-selector .quantity-plus {
+    border-left: 0.5px solid #D9D9D9 !important;
+}
+.cr_maon .quantity-selector .quantity-minus {
+      border-right: 0.5px solid #D9D9D9 !important;
+}
+
+/* Mobile Style */
+.cart-drawer__dialog{
+    width:100% !important;
+    max-width:32vw !important;
+}
+@media (max-width: 786px) {
+.pd-main-head h1{
+    font-size: 28px !important;
+}
+.cart-drawer__dialog {
+    overflow: hidden;
+    width: unset !important;
+    max-width: unset !important;
+  }
+.cr_maon .cart-drawer__heading{
+    font-size: 20px;
+}
+.cart-body p{
+    font-size: 14px !important;
+}
+.cart-body p strong{
+    font-size: 14px !important;
+}
+media-gallery.dd{
+    width: unset !important;
+}
+.custom_pt_cf.product-details{
+    padding-left: unset !important;
+}
+.custom_pt_cf {
+    padding: unset !important;
+}
+.pd-varint-pt .variant-picker__form{
+    position: relative;
+}
+.feaute-icon-pd-container{
+    padding-top: 14px;
+}
+.sc_guide{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.by-btn-pt .cof-my-btn{
+    padding: 12px 10px;
+    justify-content: center;
+    height: 42px;
+}
+.product-details .custm-pt-qty{
+        height: 42px;
+}
+.product-form-buttons{
+    gap: 10px !important;
+}
+.cs-review-wrap{
+    /* padding-top:46px; */
+}
+slideshow-controls[controls-on-media]{
+        bottom: -40px !important;
+}
+img.product-media__image {
+    padding: 10px !important;
+}
+.pd-price-main .price{
+    font-size: 20px;
+}
+.accord-custom-pt .accord-title-sc{
+    padding: 12px 0px !important;
+}
+.accord-custom-pt .accord-content-sc{
+    padding-bottom: 6px !important;
+}
+.product-information{
+    padding: 0 !important;
+}
+.quantity-selector :is(.quantity-minus,.quantity-plus){
+        width: 24px !important;
+        height: 24px !important;
+        padding: 6px !important;
+}
+.quantity-selector{
+    --quantity-selector-width: 100px !important;
+
+}
+.custm-pt-qty.quantity-selector{
+    --quantity-selector-width: 100px !important;
+    height:43px !important;
+}
+/* collection page */
+.product-media.collection_img_pt img {
+    padding: 0 !important;
+}
+.collection_pt .pd-main-head{
+    font-size: 14px;
+    padding-top: 0px;
+}
+.collection_pt .pd-price-main .price{
+    font-size: 14px;
+    line-height: normal;
+}
+.facets-toggle{
+    justify-content: end !important;
+    align-items: center !important;
+    padding-bottom: 0 !important;
+}
+.facets-toggle__button{
+    color: var(--Accent-1, #00727F);
+    text-align: center;
+    /* font-family: "League Spartan"; */
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+}
+
+}
+
+
+/* .quick-add__button{
+        background: none !important;
+    box-shadow: none !important;
+} */
+ /* .collection-wrapper .add-to-cart-text__content{
+    display: none !important;
+}
+.collection-wrapper .card-gallery:hover .quick-add__button{
+    transform: unset important;
+    transition: unset !important;
+}
+ .quick-add__button:hover{
+    background: var(--almond-forest, #8C7A6E) !important;
+    border-radius: 0px !important;
+    color: #fff !important;
+}
+.quick-add__button:hover .svg-wrapper svg path{
+    fill: white !important;
+    stroke: white !important;
+}  */
+
+
+
+/* .collection-wrapper .collection-wrapper .quick-add__button{
+        background: none !important;
+    box-shadow: none !important;
+} */
+ 
+ /* .collection-wrapper .quick-add__button:hover{
+    background: transparent !important;
+    border-radius: unset !important;
+    color: black !important;
+}
+.collection-wrapper .quick-add__button:hover .svg-wrapper svg path{
+    fill: black !important;
+    stroke: black !important;
+}  */
+
+.collection-wrapper .cof-my-btn{
+    padding: 5px;
+    font-size: 9px;
+    font-weight: 400;
+    border-radius: 1px;
+}
+/* ---------------- */
+* Progress bar */
+.progress-bar-container {
+  width: 100%;
+  margin: auto;
+}
+
+.progress-bar {
+  height: 0.13rem;
+  width: 100%;
+}
+
+.progress-bar-value {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(var(--color-foreground));
+  animation: indeterminateAnimation var(--duration-extra-longer) infinite ease-in-out;
+  transform-origin: 0;
+}
+
+.progress-bar .progress-bar-value {
+  display: block;
+}
+
+@keyframes indeterminateAnimation {
+  0% {
+    transform: translateX(-20%) scaleX(0);
+  }
+  40% {
+    transform: translateX(30%) scaleX(0.7);
+  }
+  100% {
+    transform: translateX(100%) scaleX(0);
+  }
+}
+.progress-bar-done {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #8C7A6E;
+    box-shadow: 0 5px 5px -6px #000;
+    height: 100%;
+    transition: 1s ease 0.4s;
+    max-width: 100%;
+    width: 66%;
+}
+.free_shipping_notice{
+      color: var(--DARK-GREY, #333232);
+      text-align: center;
+      font-family: "Montserrat";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px; /* 137.5% */
+
+}
+.progress-bar {
+    height: .13rem;
+    width: 100%;
+}
+.progress-bar {
+    background-color: #EBEBEB;
+    display: flex;
+    height: 8px;
+    width: 100%;
+    padding: 0px;
+    position: relative;
+    align-items: center;
+    margin-top: 8px;
+}
+.shipping-message {
+  margin-top: 0px;
+  margin-bottom:12px ;
+}
+.upsell-container {
+  margin-bottom:24px;
+}
+.cart-drawer__progress{
+    padding: 0 20px;
+}
+.cr_maon .cart-drawer__header{
+    padding: 28px 20px 24px 20px;
+}
+/* .upsell-container{
+    padding-bottom: 12px;
+} */
+.upsell-container p{
+    margin: 0;
+    font-family: League Spartan;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 20px;
+    leading-trim: NONE;
+    line-height: 28px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #171717;
+    
+}
+.upsell-container p strong{
+    margin: 0;
+    font-family: League Spartan;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 20px;
+    leading-trim: NONE;
+    line-height: 28px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #171717;
+}
+.cart-drawer__progress{
+    position: relative;
+}
+.cs_drawer_bar_svg{
+    position: absolute;
+    top: 53%;
+    transform: translateY(-50%);
+    right: 17px;
+    z-index: 1;
+}
+.cr_maon .cart-drawer__items{
+    padding: 0 20px;
+}
+.cr_maon .cart-items__table-row{
+    grid-template-columns: 23% auto 18%;
+}
+.cr_maon .quantity-selector :is(.quantity-minus,.quantity-plus){
+    height: 30px;
+}
+@media (max-width: 768px){
+    .upsell-container p{
+        font-size: 14px;
+    }
+    .upsell-container p strong{
+        font-size: 14px;
+    }
+    .cr_maon .cart-drawer__header {
+    padding: 20px 16px 24px 16px;
+}
+.progress-bar{
+    height: 6px;
+    margin-top: 2px;
+}
+.cart-drawer__progress {
+    padding: 0 16px;
+}
+    .cr_maon .custm-pt-qty.quantity-selector {
+        --quantity-selector-width: 100px !important;
+        height: 27px !important;
+    }
+    .cr_maon .cart-items__table-row {
+    grid-template-columns: 29% auto 16%;
+}
+.cr_maon .cart-items__remove {
+    right: -170px;
+}
+.upsell-heading {
+    font-size: 16px;
+}
+.upsell-product-image {
+    height: 149px;
+}
+.cr_maon .cart__summary-totals{
+padding-top: 8px;
+}
+.cr_maon .close-button {
+    top: 6px;
+}
+}
+
+.quick-add-modal .sc_guide{
+    display: none;
+}
+
+.accord-custom-pt .accord-content-sc .pd-main-head ul{
+    max-width: 100% !important;
+}

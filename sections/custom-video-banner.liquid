@@ -1,0 +1,496 @@
+<style>
+  .video-hero-section {
+    position: relative;
+    width: 100%;
+    {% comment %} overflow: hidden; {% endcomment %}
+    {% comment %} padding: 0 16px; {% endcomment %}
+    
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .video-hero-video {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    height: 75vh;
+    cursor: pointer;
+    {% comment %} border-radius:16px; {% endcomment %}
+  }
+{% comment %} .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex !important;
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.00) 4.58%, rgba(0, 0, 0, 0.81) 73.98%, #000 98.91%) !important;
+} {% endcomment %}
+
+
+
+
+.hero-content{
+    z-index: 2;
+    color: #fff;
+    max-width: 650px;
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translate(0, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+  .hero-heading {
+    {% comment %} max-width:467px; {% endcomment %}
+    margin: 0;
+  }
+  .hero-heading p {
+   color: var(--White, #FFF);
+font-family: "League Spartan";
+font-size: 48px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-transform: uppercase;
+    margin:0px;
+    padding-bottom:10px;
+  }
+
+  .hero-heading strong {
+
+    font-weight: 800;
+    color: #EDFF73;
+    font-family: "Playfair Display";
+    margin:0px;
+  }
+.herp-desc p {
+    max-width: 675px;
+    color: var(--White, #FFF);
+    font-family: Quicksand;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+}
+  .cta-button {
+    color: #FFF6E8;
+font-family: Quicksand;
+    {% comment %} max-width: 241px; {% endcomment %}
+font-size: 20px;
+max-width: max-content;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+background: var(--almond-forest, #8C7A6E);
+display: flex;
+padding: 16px 34px;
+justify-content: center;
+align-items: center;
+gap: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+
+  .cta-button:hover {
+    background: #6B5B4C;
+    transform: translateY(-2px);
+    {% comment %} box-shadow: 0 4px 12px #6B5B4C; {% endcomment %}
+  }
+
+  .cta-button svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .cta-button:hover svg {
+    transform: translateX(4px);
+  }
+
+  .expert-card {
+    position: absolute;
+    right: 80px;
+    bottom: 40px;
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 200px;
+    z-index: 3;
+    text-align: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(15px);
+    max-width:204px;
+  }
+
+
+  .expert-number {
+    color: var(--Green, #CAD95F);
+    font-family: Outfit !important;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 52px */
+    margin-bottom: 12px;
+  }
+
+  .expert-title {
+    color: var(--White, #FFF);
+    text-align: center;
+    font-family: "Playfair Display" !important;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 24px */
+    text-transform: capitalize;
+    margin-bottom: 8px;
+  }
+
+  .expert-description {
+    color: var(--White, #FFF);
+    text-align: center;
+    font-family: Outfit !important;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 21.6px */
+    margin:0px;
+    letter-spacing:0px;
+  }
+.mj-ev-icon img{
+width: 42px;
+height: 42px;
+display:block;
+}
+.vd-block-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.maj-ev-main-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.mj-feature-heading {
+    color: var(--White, #FFF);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: "League Spartan";
+}
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-heading {
+      font-size: 28px;
+    }
+
+    .expert-card {
+      right: 20px;
+      bottom: 20px;
+      padding: 16px;
+      min-width: 160px;
+    }
+
+    .expert-number {
+      font-size: 40px;
+      margin:0px;
+    }
+
+    .desktop-video {
+      display: none;
+    }
+
+    .mobile-video {
+      display: block;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .mobile-video {
+      display: none;
+    }
+
+    .desktop-video {
+      display: block;
+    }
+  }
+
+
+@media (max-width: 767px) {
+  .video-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+.vd-block-wrap{
+flex-wrap: wrap;
+    justify-content: center;
+}
+  /* Move hero-content below the video */
+  .hero-content {
+    {% comment %} position: static !important;
+    order: 2;
+    padding:20px 0 0;
+    text-align: center;
+    max-width: 100%;
+    z-index: 5; {% endcomment %}
+    z-index: 5;
+    gap: 10px;
+    left: 0;
+    padding:0 20px;
+    text-align: center;
+  }
+
+  /* Keep expert-card in absolute position */
+  .expert-card {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 12px;
+    padding: 16px;
+    min-width: 160px;
+    z-index: 6;
+  }
+  .hero-heading p {
+    font-size: 28px;
+    padding:0;
+            margin-bottom: 4px;
+  }
+  .mj-ev-icon img{
+width: 16px;
+height: 16px;
+}
+.mj-feature-heading{
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+}
+.herp-desc p{
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+margin-bottom: 10px;
+}
+
+  .cta-button {
+   max-width: fit-content;
+    margin: 0 auto;
+    font-size: 18px; 
+  }
+
+  /* Ensure only mobile video is visible */
+  .desktop-video {
+    display: none;
+  }
+  .mobile-video {
+    display: block;
+  }
+
+    .expert-title {
+      color: var(--White, #FFF);
+      text-align: center;
+      font-family: "Playfair Display";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 120%; /* 21.6px */
+      text-transform: capitalize;
+      margin:0 0 4px;
+      text-align:left;
+    }
+    .expert-description {
+        color: var(--White, #FFF);
+        text-align: center;
+        font-family: Outfit !important;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%; /* 16.8px */
+    }
+    .video-hero-video {
+        width: 100%;
+        height: 100%; 
+        object-fit: cover;
+        display: block;
+        cursor: pointer;
+        min-height: 449px;
+        {% comment %} border-radius:8px; {% endcomment %}
+    }
+    .ms-vedo-wrap {
+      position:relative;
+    }
+    .expert-card {
+        position: absolute;
+        left: 50%;
+        bottom: 35%;
+        min-width: 342px;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding:16px;
+    }
+    .video-hero-section {
+      padding: 20px 0px 0;
+    }
+    {% comment %} .video-overlay {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%) !important;
+    } {% endcomment %}
+
+
+
+}
+
+
+</style>
+
+
+
+<section class="video-hero-section fade-up" data-section-id="{{ section.id }}" data-section-type="video-hero">
+  <div class="video-wrapper">
+    <div class="ms-vedo-wrap">
+    {% if section.settings.cs_video != blank %}
+      {% assign video_poster = section.settings.cs_video.preview_image | img_url: '' %}
+
+      {{ section.settings.cs_video | video_tag: 
+          class: 'video-hero-video', 
+          autoplay: true, 
+          loop: true, 
+          muted: true, 
+          playsinline: true, 
+          controls: false, 
+          preload: 'metadata',
+          poster: video_poster 
+      }}
+    {% endif %}
+
+    <div class="video-overlay"> </div>
+  </div>
+
+
+
+
+    <div class="hero-content">
+      <h2 class="hero-heading">{{ section.settings.heading }}</h2>
+      <div class="vd-block-wrap">
+        {% for block in section.blocks %}
+            <div class="maj-ev-main-wrap">
+              <div class="mj-ev-icon">
+                 <img src="{{ block.settings.feature_icon | img_url: "" }}" loading="lazy" width="100%" height="auto">
+              </div>
+              <div class="mj-feature-content">
+                <div class="mj-feature-heading">{{ block.settings.feature_heading }}</div>
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+      <div class="herp-desc">{{ section.settings.desc }}</div>
+
+
+      {% if section.settings.cta_text != blank and section.settings.cta_url != blank %}
+        <a href="{{ section.settings.cta_url }}" class="cta-button">
+          {{ section.settings.cta_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Video Hero Section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "cs_video",
+      "label": "Upload Video File"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_poster",
+      "label": "Desktop Poster Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_poster",
+      "label": "Mobile Poster Image"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+    },
+    {
+      "type": "richtext",
+      "id": "desc",
+      "label": "Description",
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "expert_number",
+      "label": "Expert Number",
+      "default": "#1"
+    },
+    {
+      "type": "text",
+      "id": "expert_title",
+      "label": "Expert Title",
+      "default": "Expert Recommended"
+    },
+    {
+      "type": "text",
+      "id": "expert_description",
+      "label": "Expert Description",
+      "default": "Best Product for your Mind and Brain"
+    }
+  ],
+    "blocks": [
+        {
+          "type": "block",
+          "name": "Feature",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "feature_icon",
+              "label": "Feature Icon"
+            },
+            {
+              "type": "text",
+              "id": "feature_heading",
+              "label": "Feature Heading"
+            }
+          ]
+        }
+      ],
+  "presets": [
+    {
+      "name": "Video Hero Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

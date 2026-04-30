@@ -1,0 +1,360 @@
+{% comment %}
+  Upsell Product List Snippet
+  Usage: {% render 'upsell-products', section: section %}
+{% endcomment %}
+
+<div class="upsell-section" data-section-id="{{ section.id }}">
+  <div class="upsell-container cs_upsell-container">
+    {% if settings.upsel-heading != blank %}
+      <h2 class="upsell-heading">{{ settings.upsel-heading }}</h2>
+    {% endif %}
+
+    <div class="upsell-products-grid">
+      {% assign upsell_products = settings.product_list_sel %}
+      {% for product in upsell_products %}
+        {% if product.available %}
+          <div class="upsell-product-card">
+            <a href="{{ product.url }}" class="upsell-product-link">
+              <div class="upsell-product-image">
+                {% if product.featured_image %}
+                  <img 
+                    src="{{ product.featured_image | img_url: '400x' }}" 
+                    alt="{{ product.featured_image.alt | escape }}"
+                    loading="lazy"
+                    width="400"
+                    height="400"
+                  >
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+                
+                {% if product.available == false %}
+                  <div class="upsell-badge-sold-out">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm0 12.5c-3.03 0-5.5-2.47-5.5-5.5S4.97 2.5 8 2.5s5.5 2.47 5.5 5.5-2.47 5.5-5.5 5.5z" fill="currentColor"/>
+                    </svg>
+                    <span>Sold out</span>
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="upsell-product-info">
+                <h3 class="upsell-product-title">{{ product.title }}</h3>
+                
+                <div class="upsell-product-price">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="upsell-price-compare">
+                      {{ product.compare_at_price | money }}
+                    </span>
+                    <span class="upsell-price-sale">
+                      {{ product.price | money }}
+                    </span>
+                  {% else %}
+                    <span class="upsell-price-regular">
+                      {{ product.price | money }}
+                    </span>
+                  {% endif %}
+                </div>
+              </div>
+            </a>
+
+            {% comment %} Add to cart button outside the link {% endcomment %}
+            <div class="cs-wrap-upsel">
+              {% assign variant = product.selected_or_first_available_variant %}
+              {% assign is_available = variant.available %}
+              {% if is_available %}
+              {% endif %}
+              {%- assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id | append: '-' | append: product.id -%}
+
+              <product-form-component
+                data-section-id="{{ section.id }}"
+                data-product-id="{{ product.id }}"
+                data-product-url="{{ product.url }}"
+                on:submit="/handleSubmit"
+              >
+                <div class="visually-hidden" aria-live="assertive" role="status"></div>
+
+                {%- form 'product', product, id: product_form_id, data-type: 'add-to-cart-form' -%}
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ variant.id }}"
+                  >
+
+                  <add-to-cart-component>
+                    <button
+                      type="submit"
+                      name="add"
+                      class="button add-to-cart-btn "
+                    >
+                      <span class="add-to-cart-text">
+                        {% if is_available %}
+                          <span class="svg-wrapper add-to-cart-icon">
+                            {{ 'icon-add-to-cart.svg' | inline_asset_content }}
+                          </span>
+                          <span class="add-to-cart-text__content">
+                            {% comment %} {{ 'actions.add_to_cart' | t }} {% endcomment %}
+                          </span>
+                        {% else %}
+                          <span class="add-to-cart-text__content">
+                            Sold Out
+                          </span>
+                        {% endif %}
+                      </span>
+                    </button>
+                  </add-to-cart-component>
+
+                {%- endform -%}
+              </product-form-component>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .cs-wrap-upsel {
+    position: absolute;
+    bottom: 27px;
+    right: -8px;
+}
+.cs-wrap-upsel .add-to-cart-btn{
+  padding: 0px !important;
+  background: transparent !important;
+}
+.cs-wrap-upsel .add-to-cart-icon svg {
+    width: 30px;
+    height: 30px;
+}
+.cs-wrap-upsel .add-to-cart-text svg {
+    filter: brightness(0);
+}
+  .upsell-section {
+    {% comment %} padding: 40px 0;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 40px; {% endcomment %}
+    width:100%;
+  }
+
+  .upsell-container {
+    {% comment %} max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; {% endcomment %}
+  }
+
+  .upsell-heading {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+  }
+.cs_upsell-container{
+margin: 0;
+}
+
+  .upsell-products-grid {
+  display: flex;
+  gap: 10px;
+  overflow: auto;
+  padding-bottom: 3px;
+}
+
+/* Scrollbar width / height */
+.upsell-products-grid::-webkit-scrollbar {
+  height: 6px !important;   /* horizontal scrollbar */
+  width: 6px;    /* vertical scrollbar */
+}
+
+/* Scrollbar track (background) */
+.upsell-products-grid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Scrollbar thumb (jo move hota hai) */
+.upsell-products-grid::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Hover effect */
+.upsell-products-grid::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+  .upsell-products-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .upsell-products-grid::-webkit-scrollbar-track {
+    background: #e5e5e5;
+    border-radius: 0;
+  }
+
+  .upsell-products-grid::-webkit-scrollbar-thumb {
+    background: #171717;
+    border-radius: 0;
+  }
+
+  .upsell-products-grid::-webkit-scrollbar-thumb:hover {
+    background: #000;
+  }
+
+  @media (max-width: 768px) {
+    .upsell-products-grid {
+      gap: 8px;
+    }
+  }
+
+  .upsell-product-card {
+    position: relative;
+    transition: all 0.3s ease;
+    flex: 0 0 calc(36% - 15px);
+  }
+
+  @media (max-width: 768px) {
+    .upsell-product-card {
+      flex: 0 0 calc(44% - 8px);
+    }
+  }
+
+  .upsell-product-card:hover {
+    {% comment %} box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px); {% endcomment %}
+  }
+
+  .upsell-product-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .upsell-product-image {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    align-self: stretch;
+    overflow: hidden;
+    background: #f8f8f8;
+  }
+
+  .upsell-product-image img,
+  .upsell-product-image svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    {% comment %} max-height: 130px; {% endcomment %}
+    object-fit: fill;
+  }
+
+  .upsell-product-info {
+    padding: 10px 0;
+  }
+
+  .upsell-product-title {
+    color: var(--Black, #171717);
+    font-family: "League Spartan";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-bottom: 5px !important;
+  }
+
+  .upsell-product-price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  .upsell-price-compare {
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  .upsell-price-sale {
+    color: #d32f2f;
+    font-weight: 600;
+  }
+
+  .upsell-price-regular {
+    color: #333;
+    font-family: Quicksand;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .upsell-badge-sold-out {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #666;
+  }
+
+  .bt-wrap-upsel {
+    margin-top: 10px;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 10px 16px;
+    background: #171717;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .add-to-cart-btn:hover:not(.is-disabled) {
+    background: #000;
+  }
+
+  .add-to-cart-btn.is-disabled {
+    background: #999;
+    cursor: not-allowed;
+  }
+
+  .add-to-cart-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .add-to-cart-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

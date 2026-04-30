@@ -1,0 +1,494 @@
+<style>
+  :root {
+    --almond-forest: #8C7A6E;
+    --black: #171717;
+    --grey: #797979;
+    --white: #FFFFFF;
+  }
+  
+  .add-to-cart-btn {
+    display: none !important;
+  }
+
+  .add-to-cart-btn.is-disabled {
+    background: #cccccc !important;
+    color: #666666 !important;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .add-to-cart-btn.is-disabled .add-to-cart-icon {
+    display: none;
+  }
+
+  .upsel-section-heading {
+    color: #000;
+    text-align: center;
+    font-family: "League Spartan";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+  
+  .upsel-section-heading p {
+    margin: 0;
+    color: #000;
+    text-align: center;
+    font-family: "League Spartan";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+  
+  .upsel-wrap {
+    padding: 14px 0;
+  }
+  
+  .upsel-main-head {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    padding-right: 30px;
+    align-items: center;
+  }
+  
+  .content-wrap-upsel {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* Product Card Styles */
+  .product-card-rr {
+    position: relative;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: var(--white);
+  }
+
+  .product-image-rr {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .product-image-rr a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .product-image-rr img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  .primary-img-upel {
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    {% comment %} height: 191px !important; {% endcomment %}
+  }
+
+  .hover-img-upsel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .product-card-rr:hover .primary-img-upel {
+    opacity: 0;
+  }
+
+  .product-card-rr:hover .hover-img-upsel {
+    opacity: 1;
+  }
+
+  .product-info-upsel {
+    padding: 8px;
+    align-self: stretch;
+    background: var(--white);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    text-align: left;
+    color: var(--Black, #171717);
+    font-family: "League Spartan";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    flex-direction: column;
+  }
+
+  .upsel-product-title {
+    color: var(--Black, #171717);
+    font-family: "League Spartan";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    margin: 0;
+    flex: 1;
+  }
+
+  .upsel-pd-price {
+    color: var(--Black, #171717);
+    font-family: Quicksand;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 0;
+  }
+
+  .bt-wrap-upsel {
+    position: absolute;
+    bottom: 0;
+    right: 3px;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .plus-btn {
+    font-size: 24px;
+    background: transparent;
+    border: none;
+    color: var(--black);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex !important;
+    align-items: end;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .plus-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .plus-btn.is-disabled {
+    display: none !important;
+  }
+
+  .main-wrapper-new-block-up {
+    overflow: visible;
+    padding-right: 30px;
+    margin-right: -30px;
+    padding-bottom: 50px;
+  }
+  
+  .up-sel-swiper-pagination {
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-right: 30px;
+    display: flex;
+  }
+  
+  .up-sel-swiper-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #DDDDDD;
+    opacity: 1;
+    transition: all 0.3s ease;
+    margin: 0 5px !important;
+  }
+  
+  .up-sel-swiper-pagination .swiper-pagination-bullet-active {
+    background: #0941A3 !important;
+    width: 12px;
+    height: 12px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .upsel-main-head {
+      flex-direction: row;
+      align-items: start;
+      padding-right: 20px;
+      padding-bottom: 6px;
+    }
+    
+    .upsel-section-heading {
+      line-height: 30px;
+      margin: 0;
+    }
+    
+    .upsel-section-heading p {
+      font-size: 52px;
+      line-height: normal;
+    }
+
+    .main-wrapper-new-block-up {
+      padding-right: 20px;
+      margin-right: -20px;
+      padding-bottom: 30px;
+    }
+
+    .up-sel-swiper-pagination {
+      padding-right: 20px;
+    }
+
+    .primary-img-upel,
+    .hover-img-upsel {
+      height: 150px !important;
+      max-height: 150px;
+      min-height: 150px;
+    }
+
+    .product-info-upsel {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 12px 8px;
+    }
+
+    .upsel-product-title {
+      font-size: 14px;
+    }
+
+    .upsel-pd-price {
+      font-size: 14px;
+    }
+
+    .bt-wrap-upsel {
+      bottom: 5px;
+      right: 3px;
+    }
+
+    .plus-btn {
+      width: 36px;
+      height: 36px;
+      font-size: 20px;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .bt-wrap-upsel {
+      bottom: 5px;
+      right: 2px;
+    }
+  }
+</style>
+
+<div class="upsel-wrap" {{ block.shopify_attributes }}>
+  <div class="upsel-main-head">
+    <div class="content-wrap-upsel">
+      <div class="upsel-section-heading">
+        {{ block.settings.main-up-heading }}
+      </div>
+    </div>
+  </div>
+  
+  <div class="swiper main-wrapper-new-block-up">
+    <div class="swiper-wrapper">
+      {% if block.settings.upsell_products != blank %}
+        {% for upsel_product in block.settings.upsell_products %}
+          <div class="swiper-slide product-card-rr" data-product-id="{{ upsel_product.id }}">
+            <div class="product-image-rr">
+              <a href="{{ upsel_product.url }}">
+                {% assign second_image = upsel_product.images[1] %}
+                <img
+                  src="{{ upsel_product.featured_image | img_url: '' }}"
+                  alt="{{ product.title }}"
+                  class="primary-img-upel"
+                  loading="lazy"
+                  width="100%"
+                  height="auto"
+                >
+                {% if second_image %}
+                  <img
+                    src="{{ second_image | img_url: '' }}"
+                    alt="{{ product.title }}"
+                    class="hover-img-upsel"
+                    loading="lazy"
+                    width="100%"
+                    height="auto"
+                  >
+                {% endif %}
+                <span class="bt-wrap-upsel">
+              {% assign variant = upsel_product.selected_or_first_available_variant %}
+              {% assign is_available = variant.available %}
+
+              {% if is_available %}
+                <button class="plus-btn" data-product-id="{{ upsel_product.id }}">+</button>
+              {% endif %}
+
+              {%- assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id | append: '-' | append: upsel_product.id -%}
+
+              <product-form-component
+                data-section-id="{{ block.id }}"
+                data-product-id="{{ upsel_product.id }}"
+                data-product-url="{{ upsel_product.url }}"
+                on:submit="/handleSubmit"
+              >
+                <div class="visually-hidden" aria-live="assertive" role="status"></div>
+
+                {%- form 'product', upsel_product, id: product_form_id, data-type: 'add-to-cart-form' -%}
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ variant.id }}"
+                  >
+
+                  <add-to-cart-component>
+                    <button
+                      type="submit"
+                      name="add"
+                      class="button add-to-cart-btn {% unless is_available %}is-disabled{% endunless %}"
+                      {% unless is_available %}disabled{% endunless %}
+                    >
+                      <span class="add-to-cart-text">
+                        {% if is_available %}
+                          <span class="svg-wrapper add-to-cart-icon">
+                            {{ 'icon-add-to-cart.svg' | inline_asset_content }}
+                          </span>
+                          <span class="add-to-cart-text__content">
+                            {{ 'actions.add_to_cart' | t }}
+                          </span>
+                        {% else %}
+                          <span class="add-to-cart-text__content">
+                            Sold Out
+                          </span>
+                        {% endif %}
+                      </span>
+                    </button>
+                  </add-to-cart-component>
+
+                {%- endform -%}
+              </product-form-component>
+            </span>
+              </a>
+            </div>
+
+            <div class="product-info-upsel">
+              <p class="upsel-product-title">{{ upsel_product.title }}</p>
+              <div class="upsel-pd-price">{{ upsel_product.price | money }}</div>
+            </div>
+
+            
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  
+  {% comment %} <div class="up-sel-swiper-pagination"></div> {% endcomment %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Swiper
+    var swiper = new Swiper('.main-wrapper-new-block-up', {
+      slidesPerView: 3,
+      spaceBetween: 10,
+      speed: 1000,
+      pagination: {
+        el: '.up-sel-swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 2.2,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 2.2,
+          spaceBetween: 10,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+      },
+    });
+
+    // Plus button click to add to cart
+    const productCards = document.querySelectorAll('.product-card-rr');
+
+    productCards.forEach(card => {
+      const plusBtn = card.querySelector('.plus-btn');
+      const form = card.querySelector('form[data-type="add-to-cart-form"]');
+      
+      if (plusBtn && form) {
+        plusBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Submit the form to add product to cart
+          const submitBtn = form.querySelector('button[type="submit"]');
+          if (submitBtn) {
+            submitBtn.click();
+          }
+        });
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Upsel Product SS",
+  "tag": null,
+  "class": "upsel-product",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "main-up-heading",
+      "label": "Up Sell Heading"
+    },
+    {
+      "type": "product_list",
+      "id": "upsell_products",
+      "label": "Upsel Product"
+    }
+  ],
+  "presets": [
+   {
+      "name": "Upsel block SS"
+    }
+  ]
+}
+{% endschema %}

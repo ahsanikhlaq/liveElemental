@@ -1,0 +1,150 @@
+
+
+{% liquid
+  assign product_resource = closest.product
+  if request.visual_preview_mode and product_resource == blank
+    assign product_resource = collections.all.products.first
+  endif
+-%}
+
+{% render 'variant-main-picker', product_resource: product_resource %}
+
+{% schema %}
+{
+  "name": "t:names.product_variant_picker",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:content.resource_reference_product_variant_picker"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:content.edit_variants_in_theme_settings"
+    },
+    {
+      "type": "text",
+      "id": "sg-main-head",
+      "label": "Size Chart Heading"
+    },
+    {
+      "type": "text",
+      "id": "sg-sub-head",
+      "label": "Sub heading 1"
+    },
+    {
+      "type": "text",
+      "id": "sg-note",
+      "label": "Size Chart Desc"
+    },
+    {
+      "type": "text",
+      "id": "sg-sub-head-2",
+      "label": "Measuring Guide Heading"
+    },
+    {
+      "type": "text",
+      "id": "mear_head1",
+      "label": "Mear Head 1"
+    },
+    {
+      "type": "text",
+      "id": "measuring_desc1",
+      "label": "Measuring Desc 1"
+    },
+    {
+      "type": "text",
+      "id": "mear_head2",
+      "label": "Mear Head 2"
+    },
+    {
+      "type": "text",
+      "id": "measuring_desc2",
+      "label": "Measuring Desc 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "measuring_guide_img",
+      "label": "Measuring Image"
+    },
+    {
+      "type": "select",
+      "id": "variant_style",
+      "label": "t:settings.style",
+      "options": [
+        {
+          "value": "dropdowns",
+          "label": "t:options.dropdowns"
+        },
+        {
+          "value": "buttons",
+          "label": "t:options.buttons"
+        }
+      ],
+      "default": "buttons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_swatches",
+      "label": "t:settings.swatches",
+      "default": true
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "t:settings.alignment",
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.product_variant_picker",
+      "category": "t:categories.product"
+    }
+  ]
+}
+{% endschema %}

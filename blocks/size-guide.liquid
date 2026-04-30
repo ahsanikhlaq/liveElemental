@@ -1,0 +1,194 @@
+<style>
+  .popup-scroll {
+    max-height: 500px;
+    overflow-y: auto;
+    border-radius: 8px;
+  }
+
+  /* Optional: prettier scrollbar */
+  .popup-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .popup-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 6px;
+  }
+  .popup-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.5);
+  }
+
+    .size-guide-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 5%;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .size-guide-popup.active {
+    display: flex;
+  }
+
+  .popup-content {
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    padding: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+
+  .popup-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .close-popup {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+  }
+  span.sc_guide {
+    color: #000;
+    color: var(--almond-forest, #8C7A6E);
+font-family: Quicksand;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-decoration-line: underline;
+text-decoration-style: solid;
+text-decoration-skip-ink: none;
+text-decoration-thickness: auto;
+text-underline-offset: auto;
+text-underline-position: from-font;
+    text-decoration-line: underline;
+    text-transform: capitalize;
+    cursor: pointer;
+    display: flex;
+    align-items: anchor-center;
+    gap: 6px;
+}
+span.sc_guide svg {
+    display: block;
+}
+</style>
+
+<span class="sc_guide">
+  <span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none">
+  <path d="M11 13.6299H16V4.62988H3V13.6299H7M11 13.6299V10.6299M11 13.6299H7M7 13.6299V8.62988" stroke="black"/>
+</svg>
+  </span>
+  <span class="open-size-guide">Size Guide</span>
+</span>
+
+
+<!-- Popup -->
+<div class="size-guide-popup" id="sizeGuidePopup">
+  <div class="popup-content">
+    <span class="close-popup">&times;</span>
+    <div class="popup-scroll">
+     {% comment %} product.metafield.custom.size_chart_size.value {% endcomment %}
+      {% for value in product.metafields.custom.size_chart_size %}
+  <p class="meta-value">{{ value }}</p>
+{% endfor %}
+
+      <img
+        src="{{ block.settings.size_guide1 | img_url: '' }}"
+        loading="lazy"
+        width="100%"
+        height="auto"
+        alt="error"
+      >
+      <img
+        src="{{ block.settings.size_guide2 | img_url: '' }}"
+        loading="lazy"
+        width="100%"
+        height="auto"
+        alt="error"
+      >
+      {% comment %}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0014/7062/7900/files/1754344219082-tiktok_sizing_image.jpg?v=1762155351"
+          loading="lazy" width="100%" height="auto" alt="Size Guide 1">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0014/7062/7900/files/1754054839340-Buffr_Silicone_Ring_Protector_Product_Images_06.jpg?v=1762155353"
+          loading="lazy" width="100%" height="auto" alt="Size Guide 2">
+      {% endcomment %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Size Guide",
+  "tag": null,
+  "class": "custom-reviews",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "size_guide1",
+      "label": "Size Guid Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "size_guide2",
+      "label": "Size Guid Image"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Size Guide"
+    }
+  ]
+}
+
+{% endschema %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const popup = document.getElementById('sizeGuidePopup');
+    const openBtn = document.querySelector('.open-size-guide');
+    const closeBtn = document.querySelector('.close-popup');
+
+    openBtn.addEventListener('click', () => popup.classList.add('active'));
+    closeBtn.addEventListener('click', () => popup.classList.remove('active'));
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) popup.classList.remove('active');
+    });
+  });
+</script>

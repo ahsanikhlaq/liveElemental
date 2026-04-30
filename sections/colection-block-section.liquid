@@ -1,0 +1,240 @@
+<style>
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.back_color }};
+}
+.col-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.csym-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(185deg, rgba(0, 0, 0, 0.00) 3.35%, rgba(0, 0, 0, 0.65) 95.99%);
+    z-index: 1;
+    pointer-events: none;
+    display: block !important;
+}
+.block-col-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 12px;
+}
+.sh-block-container {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.sh-block-container a {
+    display: block;
+    position: relative;
+}
+.sh_block_icon {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+}
+.sh-block-container:hover .sh_block_icon {
+    transform: scale(1.1);
+}
+.sh_block_btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--White, #FFF);
+    text-align: center;
+    font-family: "League Spartan";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    pointer-events: none;
+    z-index: 2;
+}
+.main-head-col {
+    color: #000;
+    text-align: center;
+    font-family: "League Spartan";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+
+@media screen and (max-width:768px){
+.section-{{ section.id }}-padding {
+padding-top: {{ section.settings.mbl_padding_top }}px;
+padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+}
+.block-col-main {
+grid-template-columns: 1fr 1fr;
+gap: 6px;
+}
+.col-main-container{
+gap:14px;
+}
+.main-head-col{
+font-size: 28px;
+}
+.sh_block_btn{
+font-size: 20px;
+}
+.sh_block_icon{
+object-fit: cover;
+height: 276px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}  
+
+</style>
+
+
+
+<section class="section-{{ section.id }}-padding fade-up">
+  <div class="page-width">
+   <div class="col-main-container">
+    <div class="main-head-col">
+        {{ section.settings.col_main_head }}
+    </div>
+    <div class="block-col-main">
+        {% for block in section.blocks %}
+          <div class="sh-block-container">
+            <a href="{{ block.settings.sh_button_link }}">
+              <img
+                class="sh_block_icon"
+                src="{{ block.settings.sh_block_icon | image_url }}"
+                width="100%"
+                height="auto"
+                loading="lazy"
+                alt="{{ block.settings.sh_button_label }}"
+              >
+              <span class="sh_block_btn">
+                {{ block.settings.sh_button_label }}
+              </span>
+            </a>
+            <div class="csym-bg-overlay"></div>
+          </div>
+        {% endfor %}
+    </div>
+   </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Collection Grid Home",
+    "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "back_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "text",
+      "id": "col_main_head",
+      "label": "Main Heading"
+     }
+    ],
+    "presets": [
+      {
+        "name": "Collection Grid Home"
+      }
+    ],
+    
+  "blocks": [
+    {
+      "type": "block",
+      "name": "block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "sh_block_icon",
+          "label": "Collection Image"
+        },
+        {
+          "type": "text",
+          "id": "sh_button_label",
+          "label": "Collection Label"
+        },
+        {
+          "type": "url",
+          "id": "sh_button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}

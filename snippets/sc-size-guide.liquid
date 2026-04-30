@@ -1,0 +1,443 @@
+<style>
+  /* Popup Overlay */
+  .size-guide-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 5%; /* Changed from 5% to 0 for better centering */
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .size-guide-popup.active {
+    display: flex;
+  }
+
+  /* Popup Content Box */
+  .popup-content {
+    position: relative;
+    background: #fff;
+    max-width: 600px;
+    width: 90%;
+    padding: 26px 35px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    box-sizing: border-box;
+  }
+
+  /* Close Button */
+  .close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  /* Scrollable Area */
+  .popup-scroll {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+  .popup-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .popup-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 6px;
+  }
+  .popup-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  /* Size Guide Trigger Link */
+  .sc_guide {
+    color: var(--almond-forest, #8C7A6E);
+    font-family: Quicksand, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration-line: underline;
+    text-transform: capitalize;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: absolute;
+    top: 0;
+    right: 100px;
+  }
+  .sc_guide svg {
+    display: block;
+  }
+
+  /* Headings */
+  .sg-title {
+    margin: 0 0 32px;
+    color: #555741;
+    font-family: "League Spartan";
+    font-size: 36px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .sg-subtitle {
+    margin: 0;
+    padding-bottom: 14px;
+    color: #555741;
+    font-family: "League Spartan";
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .sg-note {
+    margin: 0 0 22px;
+    color: #555741;
+    font-family: Quicksand;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+  }
+.size-standar {
+    margin-bottom: 20px;
+}
+.size-standar ul li{
+      color: #000;
+    font-family: Quicksand;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+}
+  /* Table */
+  .size-chart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 22px 0 18px;
+  }
+  .size-chart-table th {
+    background-color: #FFFFFF;
+    padding: 10px;
+    border: 1px solid #000000;
+    color: var(--Black, #171717);
+    text-align: center;
+    font-family: Quicksand;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .size-chart-table td {
+    padding: 8px;
+    border: 1px solid #000000;
+    text-align: center;
+    color: #000;
+    font-family: Quicksand;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+  }
+  .size-standar ul{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* Measuring Section */
+  .measure-sc-wrap {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+
+  .sg-sc-img {
+    flex-shrink: 0;
+    max-width: 50%;
+  }
+  .sg-sc-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  .mear-heading {
+    color: var(--Black, #171717);
+    font-family: "League Spartan";
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  span.mer-count {
+    border-radius: 50%;
+    background: var(--teal, #00727F);
+    width: 18px;
+    height: 18px;
+    color: #FFF;
+    font-family: Quicksand;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .mr-desc-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .measuring-text p {
+    color: var(--Black, #171717);
+    font-family: Quicksand;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0;
+    padding-top: 5px;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    .popup-content {
+      max-width: 100%;
+      min-width: 355px;
+      padding: 25px 15px;
+    }
+    .size-standar ul li {
+    color: #000;
+    font-family: Quicksand;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+}
+    .close-popup{
+        top: -5px;
+    right: 5px;
+    }
+    .sg-title {
+      font-size: 24px;
+      margin-bottom: 32px;
+    }
+    .sg-subtitle {
+      font-size: 16px;
+      padding-bottom: 12px;
+    }
+    .sg-note {
+      font-size: 14px;
+    }
+    .measure-sc-wrap {
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .sg-sc-img {
+      max-width: 100%;
+    }
+    .sg-sc-img img {
+      width: 269px;
+      max-width: 100%;
+      height: auto;
+    }
+    .size-guide-popup {
+      top: 0;
+      padding: 10px;
+    }
+  }
+</style>
+
+<!-- Size Guide Trigger -->
+<span class="sc_guide">
+  <span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none">
+      <path d="M11 13.6299H16V4.62988H3V13.6299H7M11 13.6299V10.6299M11 13.6299H7M7 13.6299V8.62988" stroke="black"/>
+    </svg>
+  </span>
+  <span class="open-size-guide">Size Guide</span>
+</span>
+
+<!-- Popup Modal -->
+<div class="size-guide-popup" id="sizeGuidePopup">
+  <div class="popup-content">
+    <span class="close-popup">&times;</span>
+
+    {% comment %}Use metafield for main heading if available, otherwise use block setting{% endcomment %}
+    {% if product.metafields.custom.size_guide_main_heading %}
+      <h2 class="sg-title">{{ product.metafields.custom.size_guide_main_heading }}</h2>
+    {% else %}
+      <h2 class="sg-title">{{ block.settings['sg-main-head'] }}</h2>
+    {% endif %}
+
+    <div class="popup-scroll">
+      
+      {% comment %}Use metafield for sub heading if available, otherwise use block setting{% endcomment %}
+      {% if product.metafields.custom.size_guide_sub_heading %}
+        <h3 class="sg-subtitle">{{ product.metafields.custom.size_guide_sub_heading }}</h3>
+      {% else %}
+        <h3 class="sg-subtitle">{{ block.settings['sg-sub-head'] }}</h3>
+      {% endif %}
+
+      <p class="sg-note">{{ block.settings['sg-note'] }}</p>
+
+      {% comment %}Check which columns have data{% endcomment %}
+      {% assign sizes = product.metafields.custom.sizes.value %}
+      {% assign chest_values = product.metafields.custom.chest_size.value %}
+      {% assign sleeve_values = product.metafields.custom.waist_size.value %}
+      {% assign fit_values = product.metafields.custom.fit_type.value %}
+
+      {% assign has_chest = false %}
+      {% assign has_sleeve = false %}
+      {% assign has_fit = false %}
+
+      {% if chest_values.size > 0 %}
+        {% assign has_chest = true %}
+      {% endif %}
+      {% if sleeve_values.size > 0 %}
+        {% assign has_sleeve = true %}
+      {% endif %}
+      {% if fit_values.size > 0 %}
+        {% assign has_fit = true %}
+      {% endif %}
+
+      {% assign total_cols = 1 %}
+      {% if has_chest %}{% assign total_cols = total_cols | plus: 1 %}{% endif %}
+      {% if has_sleeve %}{% assign total_cols = total_cols | plus: 1 %}{% endif %}
+      {% if has_fit %}{% assign total_cols = total_cols | plus: 1 %}{% endif %}
+
+      <table class="size-chart-table">
+        <thead>
+          <tr>
+            <th>{{ product.metafields.custom.table_heading_1 | default: "Size" }}</th>
+            {% if has_chest %}
+              <th>{{ product.metafields.custom.table_heading_2 | default: "Chest" }}</th>
+            {% endif %}
+            {% if has_sleeve %}
+              <th>{{ product.metafields.custom.table_heading_3 | default: "Sleeve" }}</th>
+            {% endif %}
+            {% if has_fit %}
+              <th>{{ product.metafields.custom.table_heading_4 | default: "Fit" }}</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% assign max_rows = sizes.size | at_least: chest_values.size | at_least: sleeve_values.size | at_least: fit_values.size | minus: 1 %}
+
+          {% for i in (0..max_rows) %}
+            {% assign size_label = sizes[i] | default: '-' %}
+            {% assign chest = chest_values[i] | default: '-' %}
+            {% assign sleeve = sleeve_values[i] | default: '-' %}
+            {% assign fit = fit_values[i] | default: '-' %}
+
+            {% comment %}Skip completely empty rows{% endcomment %}
+            {% if size_label == '-' and chest == '-' and sleeve == '-' and fit == '-' %}
+              {% continue %}
+            {% endif %}
+
+            <tr>
+              <td>{{ size_label }}</td>
+              {% if has_chest %}
+                <td>{{ chest }}</td>
+              {% endif %}
+              {% if has_sleeve %}
+                <td>{{ sleeve }}</td>
+              {% endif %}
+              {% if has_fit %}
+                <td>{{ fit }}</td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+
+          {% comment %}Fallback if no data at all{% endcomment %}
+          {% if max_rows < 0 %}
+            <tr>
+              <td colspan="{{ total_cols }}">No size information available</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+
+
+      <div class="size-standar">
+        <ul>
+       <li>Male Model is 6’2” wearing size L</li>
+        <li>Female Model is 5'9" wearing size M for a relaxed fit</li>
+        </ul>
+      </div>
+
+      {% comment %}Use metafield for second sub heading if available, otherwise use block setting{% endcomment %}
+      {% if product.metafields.custom.size_guide_sub_heading_2 %}
+        <h3 class="sg-subtitle">{{ product.metafields.custom.size_guide_sub_heading_2 }}</h3>
+      {% else %}
+        <h3 class="sg-subtitle">{{ block.settings['sg-sub-head-2'] }}</h3>
+      {% endif %}
+
+      <div class="measure-sc-wrap">
+        <div class="sg-sc-img">
+          {{ 
+            block.settings.measuring_guide_img 
+            | image_url: width: 1440 
+            | image_tag: 
+              widths: '360,540,720,900,1080,1296,1440', 
+              class: 'measuring-image', 
+              loading: 'lazy',
+              alt: block.settings.measuring_guide_img.alt | default: 'Measuring guide diagram'
+          }}
+        </div>
+
+        <div class="measuring-text">
+          <div class="mr-desc-wrap">
+            <div class="mear-heading">
+              <span class="mer-count">1</span>
+              {{ block.settings.mear_head1 }}
+            </div>
+            <p>{{ block.settings.measuring_desc1 }}</p>
+          </div>
+
+          <div class="mr-desc-wrap">
+            <div class="mear-heading">
+              <span class="mer-count">2</span>
+              {{ block.settings.mear_head2 }}
+            </div>
+            <p>{{ block.settings.measuring_desc2 }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const popup = document.getElementById('sizeGuidePopup');
+    const openBtn = document.querySelector('.open-size-guide');
+    const closeBtn = document.querySelector('.close-popup');
+
+    if (openBtn) {
+      openBtn.addEventListener('click', () => popup.classList.add('active'));
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => popup.classList.remove('active'));
+    }
+
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        popup.classList.remove('active');
+      }
+    });
+  });
+</script>

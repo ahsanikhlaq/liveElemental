@@ -1,0 +1,398 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "home_banner_section_bth7mk": {
+      "type": "home-banner-section",
+      "name": "Home Banner Section",
+      "settings": {
+        "enable_about": true,
+        "bg_image_desktop": "shopify://shop_images/Untitled_design_-_2026-01-07T055136.410.png",
+        "bg_image_mobile": "shopify://shop_images/CoffeeThread-Banner-AboutUs-Mobile.jpg",
+        "heading": "<p>Designing with Purpose</p>",
+        "description": "We create thoughtfully designed products that respect both people and the planet.",
+        "heading_color": "#000000",
+        "heading_accent_color": "#ab8d3f",
+        "description_color": "#000000",
+        "heading_color_about": "#ffffff",
+        "description_color_about": "#ffffff",
+        "heading_color_mobile": "#ffffff",
+        "heading_accent_color_mobile": "#ab8d3f",
+        "description_color_mobile": "#ffffff",
+        "button_label": "",
+        "button_link": "",
+        "button_bg_color": "#8c7a6e",
+        "button_text_color": "#fff6e8",
+        "button_bg_color_hover": "#6b5b4c",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "custom_text_section_Lt8Lwg": {
+      "type": "custom-text-section",
+      "name": "SC Text Section",
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "back_color": "#00727f",
+        "sc_txt": "“To create sustainable, functional fashion that empowers people and protects the planet”"
+      }
+    },
+    "our_founder_section_T8mbHe": {
+      "type": "our-founder-section",
+      "name": "Founder Section",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 80,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "back_color": "#f0e9d3",
+        "fd_tag": "Our founder",
+        "fd_head": "Where Passion Meets Purpose",
+        "fd_img": "shopify://shop_images/COFFEETHREAD-KICKSTARTER-PAGE-1.png",
+        "fd_msg": "<p>Elemental started with a simple idea that everyday products should be thoughtfully designed and responsibly made. We first applied that belief to drinkware, creating pieces that fit seamlessly into daily routines while using better materials.<br/><br/>As the brand evolved, so did our curiosity about what else could be reimagined. CoffeeThread™ grew from that question. It is an apparel line built with coffee infused fabric, where used coffee grounds and recycled fibers come together to create clothing that is comfortable, functional, and considered.<br/><br/>It carries the same Elemental approach, now extending from your daily rituals into what you wear.</p>",
+        "fd_col_head": "We didn’t start CoffeeThread to chase trends. We started it to make better choices, from the materials we use to the way our clothes feel when you wear them.",
+        "fd_label_btn": "",
+        "fd_btn_link": "",
+        "fd-heading": "coffee that connects us",
+        "fd-name": "- Seth Inyang",
+        "fd-sub": "Co-founder"
+      }
+    },
+    "from_waste_section_hjyrnF": {
+      "type": "from-waste-section",
+      "blocks": {
+        "block_MAXzph": {
+          "type": "block",
+          "settings": {
+            "process-icon": "shopify://shop_images/colec-mbl.svg",
+            "process-step": "Step 1",
+            "process-title": "Recycled Bottles",
+            "process-desc": "Used coffee grounds saved for new purpose."
+          }
+        },
+        "block_NJLTNH": {
+          "type": "block",
+          "settings": {
+            "process-icon": "shopify://shop_images/extrac_mbl.svg",
+            "process-step": "Step 2",
+            "process-title": "Used Coffee Grounds",
+            "process-desc": "Each ground is washed, dried, and purified."
+          }
+        },
+        "block_zwHbJ3": {
+          "type": "block",
+          "settings": {
+            "process-icon": "shopify://shop_images/fab_mbl.svg",
+            "process-step": "Step 3",
+            "process-title": "Polyester Chips",
+            "process-desc": "Coffee grounds mixed with bottles, no polyester."
+          }
+        },
+        "block_qbQAcm": {
+          "type": "block",
+          "settings": {
+            "process-icon": "shopify://shop_images/yar_mbl.svg",
+            "process-step": "Step 4",
+            "process-title": "Eco Yarn",
+            "process-desc": "Blended fibers melted, to create odor-free yarn."
+          }
+        },
+        "block_XRpafj": {
+          "type": "block",
+          "settings": {
+            "process-icon": "shopify://shop_images/design_mbl.svg",
+            "process-step": "Step 5",
+            "process-title": "Performance Fabric",
+            "process-desc": "Yarn woven into fabric that’s dry & breathable."
+          }
+        },
+        "block_TwTadC": {
+          "type": "block",
+          "settings": {
+            "process-icon": "shopify://shop_images/finishing_mbl.svg",
+            "process-step": "Step 6",
+            "process-title": "Crafted Apparel",
+            "process-desc": "Designed into timeless pieces that look good."
+          }
+        }
+      },
+      "block_order": [
+        "block_MAXzph",
+        "block_NJLTNH",
+        "block_zwHbJ3",
+        "block_qbQAcm",
+        "block_XRpafj",
+        "block_TwTadC"
+      ],
+      "name": "From Waste Section",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 40,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "back_color": "",
+        "fm_head": "From Waste to Wardrobe",
+        "fm_desc": "Every fiber has a story. We turn recycled materials into timeless, breathable garments — crafted with care for people and the planet."
+      }
+    },
+    "inspired_by_section_FaCFBk": {
+      "type": "inspired-by-section",
+      "blocks": {
+        "blocks_HnmjrC": {
+          "type": "blocks",
+          "settings": {
+            "features-heading": "<p>Sustainable Creation</p>",
+            "features-description": "Every material we use is chosen with care, recycled, chemical-free, and thoughtfully sourced to reduce impact."
+          }
+        },
+        "blocks_wDAktb": {
+          "type": "blocks",
+          "settings": {
+            "features-heading": "<p>Innovation in Every Thread</p>",
+            "features-description": "From moisture-wicking fabrics to timeless designs, science and creativity come together in every product we make."
+          }
+        },
+        "blocks_Bjd3zt": {
+          "type": "blocks",
+          "settings": {
+            "features-heading": "<p>Crafted to Last</p>",
+            "features-description": "Durable, breathable, and mindful, each garment is made to endure, proving that conscious fashion can be beautiful and functional."
+          }
+        }
+      },
+      "block_order": [
+        "blocks_HnmjrC",
+        "blocks_wDAktb",
+        "blocks_Bjd3zt"
+      ],
+      "name": "Inspired By Section",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "back-color": "",
+        "feature-main-heading": "<p>Designed for People, Inspired by the Planet</p>",
+        "insp_label_btn": "Explore Our Collection",
+        "insp_btn_link": "shopify://collections/all",
+        "video-main": "shopify://files/videos/WhatsApp Video 2025-12-11 at 8.00.02 PM.mp4"
+      }
+    },
+    "feel_differenc_section_wcYGKM": {
+      "type": "feel-differenc-section",
+      "blocks": {
+        "block_KDhyN6": {
+          "type": "block",
+          "settings": {
+            "cf_block_icon": "shopify://shop_images/odor-control.svg",
+            "cf_block_head": "Odor Control",
+            "cf_block_desc": "Natural coffee oils prevent odor-causing bacteria"
+          }
+        },
+        "block_JGKJJ3": {
+          "type": "block",
+          "settings": {
+            "cf_block_icon": "shopify://shop_images/quick-dry.svg",
+            "cf_block_head": "Quick-Dry Fabric",
+            "cf_block_desc": "Moisture-wicking fibers designed for everyday wear."
+          }
+        },
+        "block_8NjG7w": {
+          "type": "block",
+          "settings": {
+            "cf_block_icon": "shopify://shop_images/eco-impt.svg",
+            "cf_block_head": "Eco Impact",
+            "cf_block_desc": "Each garment repurposes coffee waste and plastic bottles"
+          }
+        },
+        "block_7mtxeV": {
+          "type": "block",
+          "settings": {
+            "cf_block_icon": "shopify://shop_images/carbon-cc.svg",
+            "cf_block_head": "Carbon Conscious",
+            "cf_block_desc": "Reduced emissions through responsible manufacturing."
+          }
+        }
+      },
+      "block_order": [
+        "block_KDhyN6",
+        "block_JGKJJ3",
+        "block_8NjG7w",
+        "block_7mtxeV"
+      ],
+      "name": "Feel Section",
+      "settings": {
+        "padding_top": 50,
+        "padding_bottom": 79,
+        "mbl_padding_top": 43,
+        "mbl_padding_bottom": 28,
+        "back_color": "",
+        "cf_fel_head": "Why CoffeeThread Feels Different",
+        "cf_fel_desc": "Every detail is designed with intention — from materials to movement. We don’t compromise between comfort, style, and responsibility.",
+        "center_content": true
+      }
+    },
+    "modren_redefined_section_XPkxTK": {
+      "type": "modren-redefined-section",
+      "blocks": {
+        "blocks_PgxCUk": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/sustain_cfde8ec4-d9b4-4b03-91ed-4faf88bdbcf2.svg",
+            "features-heading": "<p>Sustainable Creation</p>",
+            "features-description": "Every material is carefully selected for longevity and lower footprint."
+          }
+        },
+        "blocks_n7knTc": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Conscious_Production.svg",
+            "features-heading": "<p>Conscious Production</p>",
+            "features-description": "We work with ethical partners who share our environmental values."
+          }
+        },
+        "blocks_gCENhH": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/circular.svg",
+            "features-heading": "<p>Circular Future</p>",
+            "features-description": "We’re committed to designing products that can be reused, repaired, or responsibly recycled."
+          }
+        }
+      },
+      "block_order": [
+        "blocks_PgxCUk",
+        "blocks_n7knTc",
+        "blocks_gCENhH"
+      ],
+      "name": "Modren Design",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 40,
+        "padding_right": 40,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "mbl_padding_left": 10,
+        "mbl_padding_right": 10,
+        "back-color": "",
+        "mod_main_heading": "<p>Redefining Modern Design Through Responsibility.</p>",
+        "mod_main_desc": "<p>Our mission is to create products that are as kind to the planet as they are to the people who use them. We design with a purpose to reduce waste, honor natural resources, and inspire a more mindful lifestyle.</p><p>Each product is crafted with materials chosen for their durability & minimal environmental impact. Our mission extends beyond design it’s about building a culture of transparency, respect, & change.</p>",
+        "banner_iamge": "shopify://shop_images/modren.png"
+      }
+    },
+    "custom_video_banner_WcWw9A": {
+      "type": "custom-video-banner",
+      "blocks": {
+        "block_E6xAaj": {
+          "type": "block",
+          "settings": {
+            "feature_icon": "shopify://shop_images/leaf.svg",
+            "feature_heading": "Lower Carbon Footprint"
+          }
+        },
+        "block_Nikg3q": {
+          "type": "block",
+          "settings": {
+            "feature_icon": "shopify://shop_images/reward.svg",
+            "feature_heading": "Natural Performance"
+          }
+        },
+        "block_Ej7ATz": {
+          "type": "block",
+          "settings": {
+            "feature_icon": "shopify://shop_images/wast.svg",
+            "feature_heading": "Reduced Waste"
+          }
+        }
+      },
+      "block_order": [
+        "block_E6xAaj",
+        "block_Nikg3q",
+        "block_Ej7ATz"
+      ],
+      "name": "Video Hero Section",
+      "settings": {
+        "cs_video": "shopify://files/videos/CoffeeThread_Website-CoffeeBean-Landscape (1).mp4",
+        "heading": "<p>Threads For Good</p>",
+        "desc": "<p>Each CoffeeThread piece reduces energy, water, and carbon use while keeping you comfortable, fresh, and mindful of your impact.</p>",
+        "cta_text": "Read Our Journey",
+        "cta_url": "#",
+        "expert_number": "#1",
+        "expert_title": "Expert Recommended",
+        "expert_description": "Best Product for your Mind and Brain"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "home_banner_section_bth7mk",
+    "custom_text_section_Lt8Lwg",
+    "our_founder_section_T8mbHe",
+    "from_waste_section_hjyrnF",
+    "inspired_by_section_FaCFBk",
+    "feel_differenc_section_wcYGKM",
+    "modren_redefined_section_XPkxTK",
+    "custom_video_banner_WcWw9A"
+  ]
+}

@@ -1,0 +1,411 @@
+{% style %}
+/* Section Padding */
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.desktop-padding-top }}px;
+    padding-bottom: {{ section.settings.desktop-padding-bottom }}px;
+    background-color: {{ section.settings.back-color }};
+    overflow: hidden;
+}
+
+/* Content Wrapper */
+.nv-content-wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 290px;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+/* Headings */
+.mj-home-head p {
+    margin: 0;
+    color: #000;
+    text-align: center;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 120%;
+    text-transform: uppercase;
+}
+
+.mj-home-head p strong {
+    color: #AB8D3F;
+}
+
+.mj-home-subhead {
+    color: #000;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 140%;
+    text-transform: capitalize;
+    max-width: 470px;
+}
+
+.nv-heading {
+    margin: 0;
+    padding: 0 40px;
+}
+
+.nv-heading p {
+    color: #000;
+text-align: center;
+font-family: "League Spartan";
+font-size: 36px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-transform: uppercase;
+padding-bottom:40px;
+}
+
+.nv-heading p strong {
+    color: #6A2590;
+}
+
+.subb-heading {
+    margin: 0;
+    text-align: center;
+    color: #000;
+    font-family: "PP Mori", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    padding-bottom: 24px;
+}
+
+/* Video Container */
+.custom-video-container {
+    position: relative;
+}
+
+.custom-video-slider {
+    width: 100%;
+    min-height: 530px;
+    height: 71vh;
+    object-fit: cover;
+    display: block;
+}
+
+/* Video Overlay Gradient */
+.custom-video-container::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.65) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Card Text Overlay */
+.vd-block-main {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.m-card-text-sub {
+    color: var(--White, #FFF);
+    text-align: center;
+    font-family: Quicksand;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    max-width: 265px;
+    margin: 0 auto;
+}
+.m-card-text-sub p{
+    margin:0;
+}
+.card-heading_sc p {
+   color: var(--White, #FFF);
+    text-align: center;
+    font-family: "League Spartan";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    max-width: 275px;
+    margin: 0 auto;
+}
+/* Navigation Buttons */
+.btn-maiNN {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 8px;
+    justify-content: center;
+    padding-top: 40px;
+    margin-right: 80px;
+}
+
+/* Swiper Customization */
+.nv-main-wrapper {
+    position: relative;
+}
+
+.new-videos .swiper {
+    overflow: visible;
+}
+
+/* Tablet Styles */
+@media screen and (max-width: 1100px) {
+    .btn-maiNN {
+        margin-right: 0;
+        padding-top: 20px;
+    }
+    
+    .nv-content-wrap {
+        flex-direction: column;
+        padding-bottom: 24px;
+        gap: 16px;
+    }
+    
+    .custom-video-slider {
+        min-height: 370px;
+    }
+    .nv-heading{
+        padding:0;
+    }
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding-top-mbl }}px;
+        padding-bottom: {{ section.settings.padding-bottom-mbl }}px;
+    }
+    
+    .nv-heading p {
+        font-size: 28px;
+        padding-bottom: 24px;
+    }
+    
+    .subb-heading {
+        padding-bottom: 16px;
+    }
+    
+    /* .m-card-text {
+        bottom: 10px;
+        width: 186px;
+        padding: 8px;
+        font-size: 14px;
+    } */
+    
+    .mj-home-head p,
+    .mj-home-head p strong {
+        font-size: 32px;
+    }
+    
+    .mj-home-subhead {
+        font-size: 16px;
+        text-align: center;
+    }
+}
+{% endstyle %}
+
+<section class="section-{{ section.id }}-padding new-videos {% if section.settings.show_section1 %}Duri-landing-video-collection{% endif %} fade-up">
+    <div class="nv-content">
+        {% if section.settings.video-home-ss %}
+            <div class="nv-content-wrap">
+                <div class="mj-home-head">{{ section.settings.mj-video-head }}</div>
+                <div class="mj-home-subhead">{{ section.settings.mj-video-subhead }}</div>
+            </div>
+        {% else %}
+            <h3 class="nv-heading">{{ section.settings.heading }}</h3>
+            <p class="subb-heading">{{ section.settings.subheading }}</p>
+        {% endif %}
+
+        <div class="nv-main-wrapper">
+            <div class="swiper mySwiper-video">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        <div class="swiper-slide">
+                            <div class="single-video-block">
+                                <div class="custom-video-container">
+                                    {% if block.settings.video != blank %}
+                                        {{ block.settings.video | video_tag:
+                                            class: 'custom-video-slider',
+                                            image_size: '1100x',
+                                            controls: false,
+                                            muted: true,
+                                            loop: true,
+                                            autoplay: true,
+                                            playsinline: true
+                                        }}
+                                    {% endif %}
+                                    
+                                    <div class="vd-block-main">
+                                        <div class="card-heading_sc">{{ block.settings.my-cardtext }}</div>
+                                    
+                                    <div class="m-card-text-sub">
+                                        {{ block.settings.sub-cardtext }}
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% comment %} <div class="btn-maiNN">
+                <div class="swiper-button-nextttxx">{% render 'my-first-btns' %}</div>
+                <div class="swiper-button-prevvvxx">{% render 'my-second-btns' %}</div>
+            </div> {% endcomment %}
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize Swiper
+    new Swiper(".mySwiper-video", {
+        slidesPerView: 4,
+        spaceBetween: 0,
+        speed: 800,
+        navigation: {
+            nextEl: '.swiper-button-nextttxx',
+            prevEl: '.swiper-button-prevvvxx',
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1.2,
+                spaceBetween: 0,
+            },
+            768: {
+                slidesPerView: 3.5,
+                spaceBetween: 0,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 0,
+            }
+        }
+    });
+
+    // Auto-play videos
+    const videos = document.querySelectorAll(".custom-video-slider");
+    videos.forEach(video => {
+        video.play().catch(err => console.log("Autoplay prevented:", err));
+    });
+});
+</script>
+
+{% schema %}
+{
+    "name": "Video Slider Coff",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "video-home-ss",
+            "label": "Enable Home Head",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "show_section1",
+            "label": "Show this section",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "desktop-padding-top",
+            "label": "Desktop Padding Top",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 16
+        },
+        {
+            "type": "range",
+            "id": "desktop-padding-bottom",
+            "label": "Desktop Padding Bottom",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 16
+        },
+        {
+            "type": "range",
+            "id": "padding-top-mbl",
+            "label": "Mobile Padding Top",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 16
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom-mbl",
+            "label": "Mobile Padding Bottom",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 16
+        },
+        {
+            "type": "color",
+            "id": "back-color",
+            "label": "Background Color"
+        },
+        {
+            "type": "richtext",
+            "id": "mj-video-head",
+            "label": "Home Heading"
+        },
+        {
+            "type": "text",
+            "id": "mj-video-subhead",
+            "label": "Home Subheading"
+        },
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading"
+        },
+        {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "featured-blocks",
+            "name": "Featured Blocks",
+            "settings": [
+                {
+                    "type": "video",
+                    "id": "video",
+                    "label": "Video"
+                },
+                {
+                    "type": "richtext",
+                    "id": "my-cardtext",
+                    "label": "Heading Text"
+                },
+                {
+                    "type": "richtext",
+                    "id": "sub-cardtext",
+                    "label": "Sub Heading"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Video Slider Coff"
+        }
+    ]
+}
+{% endschema %}

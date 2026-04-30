@@ -1,0 +1,687 @@
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+{% comment %}
+  Shop the Collections Section - Single Collection
+{% endcomment %}
+
+<section
+  class="shop-collections fade-up"
+  id="section-{{ section.id }}"
+>
+  <div class="page-width">
+    <!-- Heading -->
+    <div class="collection-section-heading">{{ section.settings.head }}</div>
+
+    <!-- Collection Link -->
+    {% comment %}
+      <div class="collection-link-wrapper">
+        {% if section.settings.link_text != blank and section.settings.link_url != blank %}
+          <a href="{{ section.settings.link_url }}" class="view-link">
+            {{ section.settings.link_text }}
+            {% render 'collection-arrow' %}
+          </a>
+        {% endif %}
+      </div>
+    {% endcomment %}
+
+    <!-- Single Collection -->
+    {% assign collection = collections[section.settings.collection] %}
+    {% if collection %}
+      <div class="collections-wrapper">
+        <div id="collection-{{ section.id }}" class="collection-slider active">
+          <div class="swiper collection-swiper-{{ section.id }} mb-5">
+            <div class="swiper-wrapper collection-grid-rr">
+              {% for product in collection.products limit: section.settings.product_limit %}
+                <div class="swiper-slide product-card-rr" data-product-id="{{ product.id }}">
+                  <div class="product-image-rr">
+                    <a href="{{ product.url }}">
+                      {% assign second_image = product.images[1] %}
+                      <img
+                        src="{{ product.featured_image | img_url: '' }}"
+                        alt="{{ product.title }}"
+                        class="primary-img-rr"
+                        loading="lazy"
+                        width="100%"
+                        height="100%"
+                      >
+                      {% if second_image %}
+                        <img
+                          src="{{ second_image | img_url: '' }}"
+                          alt="{{ product.title }}"
+                          class="hover-img-rr"
+                          loading="lazy"
+                          width="100%"
+                          height="100%"
+                        >
+                      {% endif %}
+                    </a>
+                  </div>
+
+                  <div class="product-info-rr">
+                    <p class="rr-product-title">{{ product.title }}</p>
+                    <div class="rr-pd-price">{{ product.price | money }}</div>
+                  </div>
+
+                  <span class="bt-wrap">
+                    <!-- "+" Icon Button -->
+                    <button class="plus-btn">+</button>
+                    {%- assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id -%}
+                    <product-form-component
+                      data-section-id="{{ section.id }}"
+                      data-product-id="{{ product.id }}"
+                      data-product-url="{{ product.url }}"
+                      on:submit="/handleSubmit"
+                      data-quantity-default="{% if product.selected_or_first_available_variant.quantity_rule.min %}{{ product.selected_or_first_available_variant.quantity_rule.min }}{% else %}1{% endif %}"
+                      data-quantity-error-max="{{ 'products.product.quantity_error_max' | t }}"
+                    >
+                      <div
+                        class="visually-hidden"
+                        aria-live="assertive"
+                        role="status"
+                        aria-atomic="true"
+                        ref="liveRegion"
+                      ></div>
+                      {%- form 'product', product, id: product_form_id, data-type: 'add-to-cart-form' -%}
+                        <input
+                          type="hidden"
+                          name="id"
+                          ref="variantId"
+                          value="{{ product.selected_or_first_available_variant.id }}"
+                        >
+
+                        <div
+                          class="product-form-buttons spacing-style"
+                          style="{% render 'spacing-style' %}"
+                          ref="productFormButtons"
+                        >
+                          {% comment %} {% content_for 'block', type: 'quantity', id: 'quantity' %} {% endcomment %}
+                          {%- liquid
+                            assign default_add_to_cart_text = 'actions.add_to_cart' | t
+                            assign product_variant_media = product.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 100
+                            if product.selected_or_first_available_variant.featured_media.preview_image == blank
+                              assign product_variant_media = product.featured_media.preview_image | image_url: width: 100
+                            endif
+                          -%}
+
+                          <add-to-cart-component
+                            ref="addToCartButtonContainer"
+                            data-product-variant-media="{{ product_variant_media }}"
+                            data-add-to-cart-animation="{{ settings.add_to_cart_animation }}"
+                          >
+                            <button
+                              id="{{ id }}"
+                              type="submit"
+                              name="add"
+                              ref="addToCartButton"
+                              on:click="/handleClick"
+                              class="button {{ class }} add-to-cart-btn"
+                            >
+                              <span
+                                class="add-to-cart-text"
+                              >
+                                {% if can_add_to_cart %}
+                                  <span class="svg-wrapper add-to-cart-icon">
+                                    {{- 'icon-add-to-cart.svg' | inline_asset_content -}}
+                                  </span>
+                                {% endif %}
+                                <span class="add-to-cart-text__content{% if icon_only_on_mobile %} is-visually-hidden-mobile{% endif %}">
+                                  {{- add_to_cart_text | default: default_add_to_cart_text -}}
+                                </span>
+                              </span>
+                              <span
+                                aria-hidden="true"
+                                class="add-to-cart-text--added"
+                              >
+                                <span class="svg-wrapper add-to-cart-icon--added">
+                                  {{- 'icon-checkmark.svg' | inline_asset_content -}}
+                                </span>
+                                <span class="{% if icon_only_on_mobile %}is-visually-hidden-mobile{% endif %}">
+                                  {{- 'actions.added' | t -}}
+                                </span>
+                              </span>
+                            </button>
+                          </add-to-cart-component>
+                        </div>
+                      {%- endform -%}
+                    </product-form-component>
+                    <!-- Add to Cart Button (Initially Hidden) -->
+                    {% comment %} <button class="add-to-cart-btn">Add to Cart</button> {% endcomment %}
+                  </span>
+                </div>
+              {% endfor %}
+            </div>
+
+            <!-- Swiper Controls (Desktop Only) -->
+            {% comment %} <div class="swiper-scrollbar"></div> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="no-collection-message">
+        <p>Please select a collection in the section settings.</p>
+      </div>
+    {% endif %}
+  </div>
+
+  <style>
+        /* ==================== CSS Variables ==================== */
+        :root {
+          --almond-forest: #8C7A6E;
+          --black: #171717;
+          --grey-15: #262626;
+          --grey: #797979;
+          --white: #FFFFFF;
+        }
+
+        /* ==================== Main Section ==================== */
+        .shop-collections {
+          transition: all 0.4s ease;
+          background-color: var(--white);
+        }
+
+        .shop-collections .page-width {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        /* ==================== Heading Styles ==================== */
+        .collection-section-heading {
+          margin: 0 0 24px;
+          text-align: center;
+        }
+
+        .collection-section-heading p {
+          color: var(--black);
+          font-family: "League Spartan", sans-serif;
+          font-size: 36px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          text-transform: uppercase;
+          margin: 0;
+        }
+
+        .collection-section-heading strong {
+          color: var(--almond-forest);
+          font-family: "Ananda Black Personal Use", cursive;
+          font-size: 32px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          display: block;
+          margin-top: 8px;
+        }
+
+        /* ==================== Link Wrapper ==================== */
+        .collection-link-wrapper {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 24px;
+        }
+
+        .view-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          color: var(--black);
+          font-family: "League Spartan", sans-serif;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+
+        .view-link:hover {
+          color: var(--almond-forest);
+        }
+
+        /* ==================== Collection Grid ==================== */
+        .collection-grid-rr {
+          {% comment %} padding-bottom: 34px; {% endcomment %}
+        }
+
+        /* ==================== Product Card ==================== */
+        .product-card-rr {
+          position: relative;
+          text-align: center;
+          transition: all 0.3s ease;
+          background: var(--white);
+        }
+
+        .product-card-rr:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ==================== Product Image ==================== */
+        .product-image-rr {
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+
+        }
+        .primary-img-rr{
+        height: 432px !important;
+    }
+        .product-image-rr a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }
+
+        .product-image-rr img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: opacity 0.4s ease-in-out;
+        }
+
+        .primary-img-rr {
+          position: relative;
+          z-index: 1;
+          opacity: 1;
+        }
+
+        .hover-img-rr {
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          z-index: 2;
+          pointer-events: none;
+        }
+
+        .product-card-rr:hover .primary-img-rr {
+          opacity: 0;
+        }
+
+        .product-card-rr:hover .hover-img-rr {
+          opacity: 1;
+        }
+
+        /* ==================== Product Info ==================== */
+        .product-info-rr {
+          background: var(--white);
+          display: flex;
+          padding: 16px 8px;
+          justify-content: space-between;
+          align-items: center;
+          gap: 8px;
+          text-align: left;
+        }
+
+        .rr-product-title {
+          color: var(--black);
+          font-family: "League Spartan", sans-serif;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          text-transform: capitalize;
+          margin: 0;
+          flex: 1;
+        }
+
+        .rr-pd-price {
+          color: var(--black);
+          font-family: "Quicksand", sans-serif;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 22px;
+          margin: 0;
+        }
+
+        /* ==================== Button Wrapper ==================== */
+        .bt-wrap {
+          position: absolute;
+          bottom: 75px;
+          right: 30px;
+          z-index: 99;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 4px;
+        }
+
+        /* ==================== Buttons ==================== */
+        .plus-btn {
+          font-size: 24px;
+          background: transparent;
+          border: none;
+          color: var(--black);
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+        }
+
+        .plus-btn:hover {
+          transform: scale(1.1);
+        }
+
+        .add-to-cart-btn {
+          display: none;
+          background-color: var(--black);
+          color: var(--white);
+          font-family: "League Spartan", sans-serif;
+          padding: 10px !important;
+        border: none;
+        border-radius: 0;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          white-space: nowrap;
+        }
+
+        .add-to-cart-btn:hover {
+          background-color: var(--almond-forest);
+        }
+
+        .add-to-cart-btn.show {
+          display: inline-block;
+          animation: showButton 0.5s ease-in-out;
+        }
+
+        @keyframes showButton {
+          0% {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        /* ==================== Swiper Styles ==================== */
+        .mb-5 {
+          padding: 0 0 50px;
+        }
+
+        #section-{{ section.id }} .swiper-scrollbar {
+          height: 4px;
+          background: rgba(0, 0, 0, 0.1);
+        }
+
+        #section-{{ section.id }} .swiper-scrollbar-drag {
+          border-radius: 10px;
+          background: var(--almond-forest);
+        }
+
+        /* ==================== No Collection Message ==================== */
+        .no-collection-message {
+          text-align: center;
+          padding: 60px 20px;
+          background: #f9f9f9;
+          border-radius: 8px;
+          margin: 20px 0;
+        }
+
+        .no-collection-message p {
+          color: var(--grey);
+          font-family: "League Spartan", sans-serif;
+          font-size: 18px;
+          margin: 0;
+        }
+
+        /* ==================== Responsive Styles ==================== */
+        @media (max-width: 1024px) {
+
+
+          .bt-wrap {
+            bottom: 65px;
+            right: 20px;
+          }
+        }
+
+        @media (max-width: 786px) {
+          .shop-collections {
+            padding-top: {{ section.settings.padding_top_mobile }}px !important;
+            padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
+          }
+
+          .shop-collections .page-width {
+            padding-left: 15px;
+            padding-right: 15px;
+          }
+
+          .collection-section-heading {
+            margin: 0 0 16px;
+          }
+
+          .collection-section-heading p {
+            font-size: 28px;
+            letter-spacing: -0.5px;
+          }
+
+          .collection-section-heading strong {
+            font-size: 30px;
+          }
+
+          .collection-link-wrapper {
+            margin-bottom: 20px;
+          }
+
+          .collection-grid-rr {
+            padding-bottom: 0;
+          }
+
+          .primary-img-rr,
+          .hover-img-rr {
+            height: 245px !important;
+            max-height: 245px;
+            min-height: 245px;
+          }
+
+          .product-info-rr {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            padding: 12px 8px;
+          }
+
+          .rr-product-title {
+            font-size: 14px;
+          }
+
+          .rr-pd-price {
+            font-size: 14px;
+          }
+
+          .bt-wrap {
+            bottom: 90px;
+            right: 10px;
+          }
+
+          .add-to-cart-btn {
+            padding: 8px 16px;
+            font-size: 13px;
+          }
+
+          .plus-btn {
+            width: 36px;
+            height: 36px;
+            font-size: 20px;
+          }
+
+          .mb-5 {
+            padding: 0 0 30px;
+          }
+
+          {% unless section.settings.enable_mobile_swiper %}
+          /* Disable Swiper on Mobile - Use Grid Instead */
+          #section-{{ section.id }} .swiper {
+            overflow: visible !important;
+          }
+
+          #section-{{ section.id }} .swiper-wrapper {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            transform: none !important;
+            width: auto !important;
+          }
+
+          #section-{{ section.id }} .swiper-slide {
+            width: auto !important;
+            margin: 0 !important;
+          }
+
+          /* Hide Swiper Controls on Mobile */
+          #section-{{ section.id }} .swiper-scrollbar {
+            display: none !important;
+          }
+          {% endunless %}
+        }
+
+        @media (max-width: 480px) {
+          {% comment %} .product-image-rr {
+            height: 200px;
+          }
+
+          .bt-wrap {
+            bottom: 80px;
+            right: 8px;
+          } {% endcomment %}
+        }
+
+        /* ==================== Custom Padding ==================== */
+        .shop-collections {
+          padding-top: {{ section.settings.padding_top_desktop }}px;
+          padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+        }
+  </style>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Check if we're on desktop OR if mobile swiper is enabled
+    const isDesktop = window.innerWidth > 786;
+    const enableMobileSwiper = {{ section.settings.enable_mobile_swiper | json }};
+
+    // Initialize Swiper on desktop OR when mobile swiper is enabled
+    if (isDesktop || enableMobileSwiper) {
+      new Swiper(".collection-swiper-{{ section.id }}", {
+        slidesPerView: 4.5,
+        spaceBetween: 10,
+        speed: 1000,
+        scrollbar: {
+          el: ".swiper-scrollbar",
+          draggable: true,
+        },
+        navigation: {
+          nextEl: ".slider-next",
+          prevEl: ".slider-prev",
+        },
+        breakpoints: {
+          320: { slidesPerView: 2.2, spaceBetween: 6 },
+          768: { slidesPerView: 2.2, spaceBetween: 6 },
+          1024: { slidesPerView: 4.5, spaceBetween: 10 },
+        },
+      });
+    }
+document.addEventListener("DOMContentLoaded", () => {
+  const productCards = document.querySelectorAll('.product-card');
+
+  productCards.forEach(card => {
+    const addToCartBtn = card.querySelector('.add-to-cart-btn');
+    const plusBtn = card.querySelector('.plus-btn');
+
+    // On mouse enter, show the Add to Cart button
+    card.addEventListener('mouseenter', function () {
+      addToCartBtn.classList.add('show');
+    });
+
+    // On mouse leave, hide the Add to Cart button after a delay
+    card.addEventListener('mouseleave', function () {
+      setTimeout(() => {
+        addToCartBtn.classList.remove('show');
+      }, 2000); // Wait 2 seconds after the user stops hovering
+    });
+
+    // Optional: Hide the button if the user clicks on the "+" button, like for mobile or other use cases
+    plusBtn.addEventListener('mouseenter', function () {
+      addToCartBtn.classList.add('show');
+    });
+  });
+});
+    {% comment %} // Add to Cart Button Logic
+    const productCards = document.querySelectorAll('.product-card-rr');
+
+    productCards.forEach(card => {
+      const addToCartBtn = card.querySelector('.add-to-cart-btn');
+      const plusBtn = card.querySelector('.plus-btn');
+      let hoverTimer;
+
+      // Show Add to Cart button on hover
+      card.addEventListener('mouseenter', function () {
+        clearTimeout(hoverTimer);
+        addToCartBtn.style.display = 'inline-block';
+        addToCartBtn.classList.add('show');
+        plusBtn.style.display = 'none';
+      });
+
+      // Hide Add to Cart button on mouse leave (with delay)
+      card.addEventListener('mouseleave', function () {
+        hoverTimer = setTimeout(() => {
+          addToCartBtn.classList.remove('show');
+          addToCartBtn.style.display = 'none';
+          plusBtn.style.display = 'flex';
+        }, 300);
+      });
+
+      // Prevent hiding if mouse moves to the button
+      addToCartBtn.addEventListener('mouseenter', function () {
+        clearTimeout(hoverTimer);
+      });
+
+      // Add to Cart functionality
+      addToCartBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const productId = card.dataset.productId;
+
+        // Add your add to cart logic here
+        console.log('Adding product to cart:', productId);
+
+        // Example: Shopify AJAX add to cart
+        /*
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            items: [{
+              id: productId,
+              quantity: 1
+            }]
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Added to cart:', data);
+          // Show success message or update cart
+        })
+        .catch(error => console.error('Error:', error));
+        */
+      });
+
+      // Plus button functionality
+      plusBtn.addEventListener('click', function() {
+        addToCartBtn.style.display = 'inline-block';
+        addToCartBtn.classList.add('show');
+        plusBtn.style.display = 'none';
+      });
+    }); {% endcomment %}
+  });
+</script> {% endcomment %}

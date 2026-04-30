@@ -1,0 +1,678 @@
+{% style %}
+  .top-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.back-color}};
+    overflow: hidden;
+  }
+  
+  .smoche-ingridient-content * {
+    letter-spacing: 0;
+  }
+  
+  .co-feature-bt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .co-feature-btn {
+    display: inline-flex;
+    padding: 16px 34px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: #FFF6E8;
+    font-family: Quicksand;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    background: var(--almond-forest, #8C7A6E);
+    transition: all 0.3s ease; 
+  }
+  
+  .co-feature-btn:hover {
+    background: var(--almond-forest-hover, #6B5B4C);
+    transform: scale(1.05);
+  }
+  
+  .smoche-ingridient-content {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .custom-ingridient-smoche {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .m-img-desk {
+    max-width: 540px;
+    width: 100%;
+    display: block;
+  }
+  
+  .smoche-heading {
+    margin: 0;
+    color: #000;
+    text-align: center;
+    font-family: "League Spartan";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+  
+  .smoche-desc {
+    color: var(--Black, #171717);
+    text-align: center;
+    font-family: Quicksand;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+  }
+  
+  .i-left {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .i-left.r-s.new-i-right-5 {
+    margin-left: 45px;
+}
+  .i-left.new-i-left-2 {
+    margin-right: 30px;
+}
+  .i-heading {
+    margin: 0;
+  }
+  
+  .i-heading p {
+    margin: 0;
+    color: var(--Black, #152728);
+    text-align: center;
+    font-family: "League Spartan";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .s-text {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+  }
+  
+  .i-des p {
+    margin: 0;
+    color: var(--Black, #152728);
+    text-align: center;
+    font-family: Quicksand;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    max-width: 300px;
+  }
+  
+  .pd-img {
+    width: 60px;
+    height: 60px;
+    display: block;
+  }
+  
+  .left-side, .right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    position: relative;
+  }
+  
+  .r-s {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 30px;
+  }
+  
+  .i-svg svg {
+    max-width: 136px;
+  }
+  
+  .i-svg.new-i-1 {
+    position: absolute;
+    bottom: 60%;
+    left: -25px;
+  }
+  
+  .i-svg.new-i-2 {
+    position: absolute;
+    bottom: 15%;
+    left: -17%;
+  }
+  
+  .i-svg.new-i-4 {
+    position: absolute;
+    bottom: 57%;
+    right: -25px;
+  }
+  
+  .i-svg.new-i-5 {
+    position: absolute;
+    bottom: 18%;
+    right: 0;
+  }
+  
+  .mbl-content {
+    display: none;
+  }
+  
+  .ingri-content-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 50px;
+  }
+  
+  /* PDP Design style */
+  .pdp_parent .smoche-heading {
+    color: #1E482F;
+    text-align: center;
+    font-family: "Playfair Display";
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 48px;
+  }
+  
+  .pdp_parent .smoche-desc {
+    color: #000;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  
+  .pdp_parent .i-heading p {
+    color: #333;
+  }
+  
+  .pdp_parent .i-des p {
+    color: #000;
+  }
+  
+  @media (max-width: 768px) {
+    .top-{{ section.id }} {
+      padding-top: {{ section.settings.mbl_padding_top }}px;
+      padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+    }
+    
+    .co-feature-btn {
+      font-size: 18px;
+    }
+    
+    .m-img-desk {
+      max-width: 353px;
+      width: 353px;
+    }
+    
+    .pdp_parent .smoche-heading {
+      color: var(--green, #1E482F);
+      text-align: center;
+      font-family: "Playfair Display";
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 48px;
+    }
+    
+    .pdp_parent .smoche-desc {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 21px; 
+    }
+    
+    .ingri-content-wrap {
+      padding-bottom: 20px;
+      gap: 4px;
+    }
+    
+    .left-side, .right-side {
+      display: none;
+    }
+    
+    .smoche-heading {
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 600;
+    }
+    
+    .smoche-desc {
+      max-width: 330px;
+    }
+    
+    .custom-ingridient-smoche {
+      flex-direction: column;
+      gap: 0px;
+    }
+    
+    span.s-m-h {
+      margin: 0;
+      color: #FFF;
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 26px;
+    }
+    
+    .s-m-d p {
+      color: #FFF;
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 21px;
+      margin: 0;
+    }
+    
+    .mbl-content {
+      padding-top: 20px;
+      padding-left: 10px;
+      display: block;
+    }
+    
+    img.cb-icon-mbl {
+      width: 46px;
+      height: 46px;
+      display: block;
+    }
+    
+    .cb-block-container {
+      background: #F7F7F7;
+      display: flex;
+      height: 172px;
+      padding: 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      align-self: stretch;
+    }
+    
+    .cb-head p {
+      color: var(--Black, #152728);
+      font-family: "League Spartan";
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+    
+    .cb-desc p {
+      color: var(--Black, #152728);
+      font-family: Quicksand;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+    }
+    
+    .count-icon {
+      display: flex;
+      width: 24px;
+      font-family: "League Spartan";
+      height: 24px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      aspect-ratio: 1 / 1;
+      border-radius: 1000px;
+      background: var(--almond-forest, #8C7A6E);
+      color: white;
+      margin-bottom: 10px;
+    }
+    
+    .cb-content-wrp {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .co-block-wrap {
+      padding-bottom: 30px;
+    }
+    
+    .co-feature-bt {
+      margin-top: 20px;
+    }
+    
+    .nav-arr-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+    }
+    
+    .pagin-sc {
+      color: var(--Black, #152728);
+      font-family: "League Spartan";
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    
+    .pdp_parent span.s-m-h {
+      color: #333;
+    }
+    
+    .pdp_parent .s-m-d p {
+      color: #000;
+    }
+    
+    .mbl-swiper .swiper-horizontal>.swiper-pagination-bullets, 
+    .swiper-pagination-bullets.swiper-pagination-horizontal, 
+    .swiper-pagination-custom, 
+    .swiper-pagination-fraction {
+      bottom: 0 !important;
+      z-index: 0 !important;
+    }
+  }
+{% endstyle %}
+
+<section class="top-{{ section.id }} smoche-ingridient fade-up" id="note">
+  <div class="page-width">
+    <div class="smoche-ingridient-content">
+      <div class="ingri-content-wrap">
+        <h4 class="smoche-heading">{{ section.settings.smoche-heading }}</h4>
+        <div class="smoche-desc">{{ section.settings.smoche-desc }}</div>
+      </div>
+      
+      <div class="custom-ingridient-smoche">
+        <div class="left-side">
+          {% for block in section.blocks %}
+            {% if block.type == "left-block" %}
+              <div class="i-left new-i-left-{{ forloop.index }}">
+                <span class="i-svg new-i-{{ forloop.index }}">{{ block.settings.i-svg }}</span>
+                <div class="s-text">
+                  <img class="pd-img" src="{{ block.settings.ingri-img | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+                  <h3 class="i-heading">{{ block.settings.i-heading }}</h3>
+                  <span class="i-des">{{ block.settings.i-des }}</span>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        
+        <div class="m-img">
+          <img class="m-img-desk" src="{{ section.settings.m-img-desk | image_url }}" width="auto" height="auto" alt="Coffee features">
+        </div>
+        
+        <div class="right-side">
+          {% for block in section.blocks %}
+            {% if block.type == "right-block" %}
+              <div class="i-left r-s new-i-right-{{ forloop.index }}">
+                <span class="i-svg new-i-{{ forloop.index }}">{{ block.settings.i-svgr }}</span>
+                <div class="s-text">
+                  <img class="pd-img" src="{{ block.settings.ingri-img-r | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+                  <h3 class="i-heading">{{ block.settings.i-headingr }}</h3>
+                  <span class="i-des">{{ block.settings.i-desr }}</span>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div class="mbl-content">
+        <div class="swiper mbl-swiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              {% if block.type == "mobile-block" %}
+                <div class="swiper-slide">
+                  <div class="co-block-wrap">
+                    <div class="count-icon">{{ block.settings.b-count }}</div>
+                    <div class="cb-block-container">
+                      <img class="cb-icon-mbl" src="{{ block.settings.cb-b-icon | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+                      <div class="cb-content-wrp">
+                        <div class="cb-head">{{ block.settings.cb_head }}</div>
+                        <div class="cb-desc">{{ block.settings.cb_desc }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          
+          <div class="swiper-pagination pagin-sc"></div>
+          
+          <div class="nav-arr-wrap">
+            <div class="cs-arrow-prv">
+              {% render 'arrow-prev' %}
+            </div>
+            <div class="cs-arrow-nxt">
+              {% render 'arrow-next' %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="co-feature-bt">
+        <a class="co-feature-btn" href="{{ section.settings.fd_btn_link }}">{{ section.settings.fd_label_btn }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var mblSwiper = new Swiper(".mbl-swiper", {
+      slidesPerView: 1.1,
+      spaceBetween: 8,
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
+      navigation: {
+        nextEl: ".cs-arrow-nxt",
+        prevEl: ".cs-arrow-prv",
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 30,
+        }
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Coffee Features Section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "custom-class",
+      "label": "PDP Design",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "back-color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "smoche-heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "smoche-desc",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "m-img-desk",
+      "label": "Main Image Desktop"
+    },
+    {
+      "type": "text",
+      "id": "fd_label_btn",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "fd_btn_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "left-block",
+      "name": "Left Block",
+      "settings": [
+        {
+          "type": "html",
+          "id": "i-svg",
+          "label": "SVG Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "ingri-img",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "i-heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "i-des",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "type": "right-block",
+      "name": "Right Block",
+      "settings": [
+        {
+          "type": "html",
+          "id": "i-svgr",
+          "label": "SVG Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "ingri-img-r",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "i-headingr",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "i-desr",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "type": "mobile-block",
+      "name": "Mobile Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "b-count",
+          "label": "Count"
+        },
+        {
+          "type": "image_picker",
+          "id": "cb-b-icon",
+          "label": "Icon"
+        },
+        {
+          "type": "richtext",
+          "id": "cb_head",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "cb_desc",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Coffee Features Section"
+    }
+  ]
+}
+{% endschema %}

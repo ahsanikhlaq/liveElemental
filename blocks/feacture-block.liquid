@@ -1,0 +1,128 @@
+<style>
+  .feature-content-pd-wrap img {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+.feaute-icon-pd-container {
+    display: flex;
+        gap: 24px;
+}
+.feature-content-pd-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.pd-text-1 {
+    color: var(--Black, #171717);
+    font-family: Quicksand;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.product-feature-block-icon {
+    padding-bottom: 14px;
+    display:block;
+}
+  @media screen and (max-width: 768px) {
+  .product-feature-block-icon{
+  display:none;
+  }
+
+
+
+}
+</style>
+
+<div class="product-feature-block-icon" {{ block.shopify_attributes }}>
+ <div class="feaute-icon-pd-container">
+    <div class="feature-content-pd-wrap">
+        <img src="{{ block.settings.main-pd-img1 | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+        <div class="pd-text-1">{{ block.settings.main-pd-text1 }}</div>
+    </div>
+    <div class="feature-content-pd-wrap">
+        <img src="{{ block.settings.main-pd-img2 | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+        <div class="pd-text-1">{{ block.settings.main-pd-text2 }}</div>
+    </div>
+    <div class="feature-content-pd-wrap">
+        <img src="{{ block.settings.main-pd-img3 | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+        <div class="pd-text-1">{{ block.settings.main-pd-text3 }}</div>
+    </div>
+ </div>
+</div>
+{% schema %}
+{
+  "name": "Featured Block",
+  "tag": null,
+  "class": "feacture-block",
+  "blocks": [
+    {
+      "type": "_feacture-block"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "main-pd-img1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "main-pd-text1",
+      "label": "Text 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "main-pd-img2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "main-pd-text2",
+      "label": "Text 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "main-pd-img3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "main-pd-text3",
+      "label": "Text 3"
+    },
+  ],
+  "presets": [
+   {
+      "name": "Features block"
+    }
+  ]
+}
+{% endschema %}

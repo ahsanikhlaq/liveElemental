@@ -1,0 +1,153 @@
+{% comment %} <style>
+  /* ---------------collapse-css----------------------- */
+  .collapsable-tab-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease, padding-top 0.4s ease;
+    width: 100%;
+    padding-left: 0px;
+    padding-top: 0;
+  }
+
+  .collapsable-tab-content.open {
+    opacity: 1;
+    padding-top: 18px;
+  }
+  
+  .collapsable-tab-heading {
+    margin: 0;
+    color: var(--Black, #171717);
+    font-family: Quicksand;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .collapsable-tab-top {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .collapsable-tab-main {
+    padding: 20px 10px;
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+    cursor: pointer;
+  }
+  
+  .collapsable-tab-main.first-tab {
+    margin-top: 20px;
+  }
+  
+  .collapsable-tab-content p {
+    color: var(--Black, #171717);
+    font-family: Quicksand;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 0;
+  }
+</style>
+
+<div class="collapsable-tab-main eee" {{ block.shopify_attributes }}>
+  <div class="collapsable-tab-top">
+    <h4 class="collapsable-tab-heading">{{ block.settings.heading }}</h4>
+    <span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon-plus" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M12.9497 7.5H3.05029" stroke="black" stroke-width="2" stroke-linecap="square"/>
+        <path d="M8 2.55029V12.4498" stroke="black" stroke-width="2" stroke-linecap="square"/>
+      </svg>
+    </span>
+  </div>
+  <div class="collapsable-tab-content">
+    {{ block.settings.content }}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqItems = document.querySelectorAll('.collapsable-tab-main');
+
+    // Add class to first and last FAQ items
+    const firstTab = faqItems[0];
+    const lastTab = faqItems[faqItems.length - 1];
+    if (firstTab) firstTab.classList.add('first-tab');
+    if (lastTab) lastTab.classList.add('last-tab');
+
+    faqItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        const answer = item.querySelector('.collapsable-tab-content');
+        const icon = item.querySelector('.icon-plus');
+        const isOpen = answer.classList.contains('open');
+
+        // Close all other open tabs
+        document.querySelectorAll('.collapsable-tab-content.open').forEach((openAnswer) => {
+          if (openAnswer !== answer) {
+            openAnswer.style.maxHeight = openAnswer.scrollHeight + 'px';
+            requestAnimationFrame(() => {
+              openAnswer.style.maxHeight = '0px';
+              openAnswer.style.opacity = '0';
+            });
+
+            openAnswer.addEventListener('transitionend', function handler(e) {
+              if (e.propertyName === 'max-height') {
+                openAnswer.classList.remove('open');
+                openAnswer.closest('.collapsable-tab-main').classList.remove('open');
+                openAnswer.style.maxHeight = '';
+                openAnswer.removeEventListener('transitionend', handler);
+              }
+            });
+
+            const openIcon = openAnswer.closest('.collapsable-tab-main').querySelector('.icon-plus');
+            openIcon.innerHTML = `
+              <path d="M12.9497 7.5H3.05029" stroke="black" stroke-width="2" stroke-linecap="square"/>
+              <path d="M8 2.55029V12.4498" stroke="black" stroke-width="2" stroke-linecap="square"/>
+            `;
+          }
+        });
+
+        // Toggle current item
+        if (!isOpen) {
+          answer.classList.add('open');
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          answer.style.opacity = '1';
+
+          icon.innerHTML = `
+            <path d="M10.8995 1H1" stroke="black" stroke-width="2" stroke-linecap="square"/>
+          `;
+
+          answer.addEventListener('transitionend', function handler(e) {
+            if (e.propertyName === 'max-height') {
+              answer.style.maxHeight = 'none';
+              answer.removeEventListener('transitionend', handler);
+            }
+          });
+        } else {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            answer.style.maxHeight = '0px';
+            answer.style.opacity = '0';
+          });
+
+          answer.addEventListener('transitionend', function handler(e) {
+            if (e.propertyName === 'max-height') {
+              answer.classList.remove('open');
+              item.classList.remove('open');
+              answer.style.maxHeight = '';
+              answer.removeEventListener('transitionend', handler);
+            }
+          });
+
+          icon.innerHTML = `
+            <path d="M12.9497 7.5H3.05029" stroke="black" stroke-width="2" stroke-linecap="square"/>
+            <path d="M8 2.55029V12.4498" stroke="black" stroke-width="2" stroke-linecap="square"/>
+          `;
+        }
+      });
+    });
+  });
+</script> {% endcomment %}

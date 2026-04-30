@@ -1,0 +1,100 @@
+<style>
+  .icon-content-pd-wrap img {
+    width: 24px;
+height: 24px;
+aspect-ratio: 1/1;
+    display: block;
+}
+.icon-pd-container {
+    display: flex;
+         gap: 53px;
+    justify-content: center;
+}
+.icon-content-pd-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+.icon-pd-text {
+    color: var(--Black, #171717);
+text-transform: capitalize;
+/* Body/Medium/14 */
+font-family: Quicksand;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px; /* 142.857% */
+}
+</style>
+
+<div class="product-block-icon" {{ block.shopify_attributes }}>
+ <div class="icon-pd-container">
+    <div class="icon-content-pd-wrap">
+        <img src="{{ block.settings.main-icon-pd-img1 | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+        <div class="icon-pd-text">{{ block.settings.main-pd-text1 }}</div>
+    </div>
+    <div class="icon-content-pd-wrap">
+        <img src="{{ block.settings.main-icon-pd-img2 | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+        <div class="icon-pd-text">{{ block.settings.main-pd-text2 }}</div>
+    </div>
+ </div>
+</div>
+{% schema %}
+{
+  "name": "CS Icon Text",
+  "tag": null,
+  "class": "cc-icon-text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "main-icon-pd-img1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "main-pd-text1",
+      "label": "Text 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "main-icon-pd-img2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "main-pd-text2",
+      "label": "Text 2"
+    },
+  ],
+  "presets": [
+   {
+      "name": "CS Icon Text"
+    }
+  ]
+}
+{% endschema %}

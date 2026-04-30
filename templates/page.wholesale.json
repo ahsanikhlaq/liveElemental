@@ -1,0 +1,571 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "home_banner_section_NNbyQr": {
+      "type": "home-banner-section",
+      "name": "Home Banner Section",
+      "settings": {
+        "enable_about": true,
+        "bg_image_desktop": "shopify://shop_images/CoffeeThread-Banner-Wholesale-Desktop.jpg",
+        "bg_image_mobile": "shopify://shop_images/CoffeeThread-Banner-Wholesale-Mobile.jpg",
+        "heading": "<p>Wholesale Partnerships</p>",
+        "description": "CoffeeThread offers refined essentials designed to perform consistently within premium retail environments.",
+        "heading_color": "#ffffff",
+        "heading_accent_color": "#ab8d3f",
+        "description_color": "#ffffff",
+        "heading_color_about": "#ffffff",
+        "description_color_about": "#ffffff",
+        "heading_color_mobile": "#ffffff",
+        "heading_accent_color_mobile": "#ab8d3f",
+        "description_color_mobile": "#ffffff",
+        "button_label": "",
+        "button_link": "",
+        "button_bg_color": "#8c7a6e",
+        "button_text_color": "#fff6e8",
+        "button_bg_color_hover": "#6b5b4c",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "section_QmpnWC": {
+      "type": "section",
+      "blocks": {
+        "text_FP8Wtj": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Introducing</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_FCqXg7": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Wholesale Program</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_yTmynP": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>We offer this opportunity for businesses to partner with us and access our products at wholesale prices. Our program is designed to provide businesses with high-quality products at competitive prices, allowing you to increase your profit margins and grow your business. By becoming a part of our wholesale program, you will have access to our full range of products, including our best-selling items and new releases.</p>",
+            "width": "fit-content",
+            "max_width": "none",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_VctbDc": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Our team is dedicated to providing exceptional customer service and support, ensuring that you have everything you need to succeed. We look forward to working with you and helping your business thrive. Join our wholesale program today and take advantage of this exciting opportunity!</p>",
+            "width": "fit-content",
+            "max_width": "none",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_i8AibF": {
+          "type": "button",
+          "name": "t:names.button",
+          "disabled": true,
+          "settings": {
+            "label": "Shop now",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_FP8Wtj",
+        "text_FCqXg7",
+        "text_yTmynP",
+        "text_VctbDc",
+        "button_i8AibF"
+      ],
+      "custom_css": [
+        ".text-block:not(.text-block--full-width):is(.h1, .h2, .h3, .h4, .h5, .h6) {font-family: \"League Spartan\" !important;}"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "section_H6Y89F": {
+      "type": "section",
+      "blocks": {
+        "image_gEPPR7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Website-CoffeeThread-Wholesale-Photo.jpg",
+            "link": "",
+            "image_ratio": "square",
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "group_XMKPXY": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "custom",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_txLwXF": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Sustainable Everyday Apparel for Teams and Brands</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_78tL87": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Elevate your brand with CoffeeThread apparel designed for everyday wear. Each piece balances style, comfort, and sustainability, making it a thoughtful choice for uniforms, team wear, and branded merchandise.<br/><br/>For wholesale, promotional, or co branding opportunities, get in touch with us below. Distributor pricing and customization options are available.</p>",
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_d4qcMJ": {
+              "type": "button",
+              "settings": {
+                "label": "Inquire Here",
+                "link": "https://docs.google.com/forms/d/e/1FAIpQLScPZS8jZVdUde0iZcnYnfSNLdxRF7_C6V8YGWJOVcH5Ow3ZXA/viewform",
+                "open_in_new_tab": true,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_txLwXF",
+            "text_78tL87",
+            "button_d4qcMJ"
+          ]
+        }
+      },
+      "block_order": [
+        "image_gEPPR7",
+        "group_XMKPXY"
+      ],
+      "name": "t:names.image_with_text",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "section_highlight_pJgibX": {
+      "type": "section-highlight",
+      "blocks": {
+        "highlight_TM6Jxh": {
+          "type": "highlight",
+          "settings": {
+            "heading": "",
+            "url": "",
+            "image": "shopify://shop_images/yahoo-news.jpg",
+            "color": "",
+            "bg_color": "#f0f0f0",
+            "border_color": ""
+          }
+        },
+        "highlight_nTPqBf": {
+          "type": "highlight",
+          "settings": {
+            "heading": "",
+            "url": "",
+            "image": "shopify://shop_images/associated-press.png",
+            "color": "",
+            "bg_color": "#f0f0f0",
+            "border_color": ""
+          }
+        },
+        "highlight_WCk9jB": {
+          "type": "highlight",
+          "settings": {
+            "heading": "",
+            "url": "",
+            "image": "shopify://shop_images/marketinsider-white.png",
+            "color": "",
+            "bg_color": "#f0f0f0",
+            "border_color": ""
+          }
+        },
+        "highlight_x9b6QW": {
+          "type": "highlight",
+          "settings": {
+            "heading": "",
+            "url": "",
+            "image": "shopify://shop_images/miami-herald.jpg",
+            "color": "",
+            "bg_color": "#f0f0f0",
+            "border_color": ""
+          }
+        },
+        "highlight_K4UbKX": {
+          "type": "highlight",
+          "settings": {
+            "heading": "",
+            "url": "",
+            "image": "shopify://shop_images/Digital-Journal-logo.jpg",
+            "color": "",
+            "bg_color": "#f0f0f0",
+            "border_color": ""
+          }
+        },
+        "highlight_dwgGKT": {
+          "type": "highlight",
+          "settings": {
+            "heading": "",
+            "url": "",
+            "image": "shopify://shop_images/ktla-1.jpg",
+            "color": "",
+            "bg_color": "#f0f0f0",
+            "border_color": ""
+          }
+        },
+        "highlight_mMcXbE": {
+          "type": "highlight",
+          "settings": {
+            "heading": "",
+            "url": "",
+            "image": "shopify://shop_images/fox4-1.jpg",
+            "color": "",
+            "bg_color": "#f0f0f0",
+            "border_color": ""
+          }
+        },
+        "highlight_eD4yVC": {
+          "type": "highlight",
+          "settings": {
+            "heading": "",
+            "url": "",
+            "image": "shopify://shop_images/abc27.jpg",
+            "color": "",
+            "bg_color": "#f0f0f0",
+            "border_color": ""
+          }
+        },
+        "highlight_JwweE3": {
+          "type": "highlight",
+          "settings": {
+            "heading": "",
+            "url": "",
+            "image": "shopify://shop_images/abc4.jpg",
+            "color": "",
+            "bg_color": "#f0f0f0",
+            "border_color": ""
+          }
+        },
+        "highlight_WqrBbL": {
+          "type": "highlight",
+          "settings": {
+            "heading": "",
+            "url": "",
+            "image": "shopify://shop_images/cbs15.jpg",
+            "color": "",
+            "bg_color": "#f0f0f0",
+            "border_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "highlight_TM6Jxh",
+        "highlight_nTPqBf",
+        "highlight_WCk9jB",
+        "highlight_x9b6QW",
+        "highlight_K4UbKX",
+        "highlight_dwgGKT",
+        "highlight_mMcXbE",
+        "highlight_eD4yVC",
+        "highlight_JwweE3",
+        "highlight_WqrBbL"
+      ],
+      "name": "Highlights",
+      "settings": {
+        "style": "square",
+        "grid": 5,
+        "width": "wrapper--narrow",
+        "heading": "As Seen On",
+        "heading_position": "text-center",
+        "heading_size": 6,
+        "text_size": 3,
+        "color": "",
+        "bg_color": "",
+        "layout_mobile": "2",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    }
+  },
+  "order": [
+    "main",
+    "home_banner_section_NNbyQr",
+    "section_QmpnWC",
+    "section_H6Y89F",
+    "section_highlight_pJgibX"
+  ]
+}

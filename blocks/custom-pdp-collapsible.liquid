@@ -1,0 +1,87 @@
+{% assign block_settings = block.settings %}
+<div
+  class="custom-accordion-wrapper"
+  style="
+    --padding-block-start: {{ block_settings.padding-block-start }}px;
+    --padding-block-end: {{ block_settings.padding-block-end }}px;
+  "
+  {{ block.shopify_attributes }}
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% stylesheet %}
+  .custom-accordion-wrapper {
+    padding-top: var(--padding-block-start);
+    padding-bottom: var(--padding-block-end);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Custom Accord",
+  "tag": null,
+  "class": "custom-accordion",
+  "blocks": [
+    {
+      "type": "_accordion-row-new"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Accord",
+      "category": "t:categories.product",
+      "blocks": {
+        "row-1": {
+          "type": "_accordion-row-new",
+          "settings": {
+            "heading": "Product Details",
+            "content": "<p>Add your product details here.</p>"
+          }
+        },
+        "row-2": {
+          "type": "_accordion-row-new",
+          "settings": {
+            "heading": "Shipping Info",
+            "content": "<p>Add shipping information here.</p>"
+          }
+        },
+        "row-3": {
+          "type": "_accordion-row-new",
+          "settings": {
+            "heading": "Return Policy",
+            "content": "<p>Add return policy here.</p>"
+          }
+        }
+      },
+      "block_order": ["row-1", "row-2", "row-3"]
+    }
+  ]
+}
+{% endschema %}

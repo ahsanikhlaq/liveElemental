@@ -1,0 +1,119 @@
+{% comment %} <!-- ===========================
+      MOBILE MEDIA SWIPER
+=========================== -->
+
+<style>
+  /* Hide on desktop */
+  .mobile-media-swiper {
+    display: none;
+  }
+
+  /* Show only on mobile */
+  @media (max-width: 768px) {
+    .nav-arr-pd {
+    display: flex;
+    z-index:999;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        position: relative;
+}
+    {% comment %} .mobile-media-swiper {
+      display: block;
+      margin:0 0 32px;
+    } {% endcomment %}
+    .myswip.swiper-pagination {
+        z-index: 1;
+    bottom: 0;
+    color: #000;
+    font-family: "League Spartan";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    }
+  }
+
+  .mobile-media-swiper .swiper-slide img {
+    object-fit: cover;
+    width: 355px;
+    height: 355px;
+  }
+  .custom-gallery .swiper-pagination-bullet {
+    {% comment %} background:white !important;   {% endcomment %}
+    {% comment %} height:8px !important;
+    width:8px !important;  {% endcomment %}
+    border:2px solid rgba(35, 35, 35, 0.00);
+
+
+}
+.swiper-pagination-bullet-active {
+   width:20px !important;
+   background: #889F85 !important;
+   border-radius:16px !important;
+
+}
+.cstm-wrap {
+  padding: 0 0 20px;
+}
+
+@media (max-width:786px) {
+   .mobile-media-img {
+     margin:10px 0 0;
+  }
+}
+</style>
+
+<!-- Swiper Container -->
+<div class="mobile-media-swiper custom-gallery">
+  <div class="swiper mediaSwiper">
+    <div class="swiper-wrapper  cstm-wrap">
+      {% for media in product.media %}
+         {%- if forloop.first -%}
+                {% comment %} {% render 'frontrow-banner' %} {% endcomment %}
+         {%- endif -%}
+        {% if media.media_type == 'image' %}
+          <div class="swiper-slide">
+            {{ media | image_url: width: 1200 | image_tag: class: 'mobile-media-img' }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="myswip swiper-pagination"></div>
+          
+          <div class="nav-arr-pd">
+            <div class="cs-arrow-prvw">
+              {% render 'arrow-prev' %}
+            </div>
+            <div class="cs-arrow-nxtw">
+              {% render 'arrow-next' %}
+            </div>
+          </div>
+
+  </div>
+</div>
+
+<!-- Swiper JS -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Swiper(".mediaSwiper", {
+      loop: true,
+      autoHeight: true,
+      slidesPerView: 1.2,
+      spaceBetween: 6,
+
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
+
+      navigation: {
+        nextEl: ".cs-arrow-nxtw",
+        prevEl: ".cs-arrow-prvw",
+      },
+    });
+  });
+</script>
+ {% endcomment %}

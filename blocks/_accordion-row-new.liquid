@@ -1,0 +1,22 @@
+{% render 'accordion-row-new', block: block %}
+
+{% schema %}
+{
+  "name": "Accordion Row New",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "Accordion Item"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:settings.content",
+      "default": "<p>Add content here.</p>"
+    }
+  ]
+}
+{% endschema %}

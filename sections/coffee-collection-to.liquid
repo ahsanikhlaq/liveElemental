@@ -1,0 +1,334 @@
+<style>
+      .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+          background-color: {{ section.settings.back-color}};
+      }
+      .col-title-sc .col-sc{
+          margin:0;
+          color: var(--black, #000);
+      /* text-align: center; */
+      font-family: "Roboto Condensed";
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 62.4px; /* 130% */
+      text-transform: uppercase;
+      }
+      .col-title-sc {
+         margin: 0 !important;
+      color: #000;
+      font-family: "League Spartan";
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      text-transform: uppercase;
+      }
+      .cs_cs_coll_name_text_link {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: anchor-center;
+      text-align:center;
+      gap: 10px;
+          {% comment %} color: #020202;
+          font-family: "Roboto Condensed";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 120%;
+          text-transform: capitalize;
+          border-radius: 6px;
+          border-top: 1px solid var(--black, #000);
+          border-right: 1px solid var(--black, #000);
+          border-bottom: 3px solid var(--black, #000);
+          border-left: 1px solid var(--black, #000);
+          background: #FFFCEB;
+          display: flex;
+          width: 140px;
+          padding: 10px;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          align-self: stretch;
+          text-decoration: none;
+          transition: all 0.3s ease;  {% endcomment %}
+      }
+      .cs_cs_coll_name_text_link.active .col-icon-tab{
+      border-radius: 200000px;
+  background: var(--teal, #00727F);
+      }
+
+  .col-name-tab {
+      color: var(--Black, #171717);
+      font-family: "League Spartan";
+      font-size: 14px;
+          max-width: 100px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: capitalize;
+  }
+      /* Hover effect */
+      .cs_cs_coll_name_text_link:hover {
+          color: #000; /* Change text color to white on hover */
+          {% comment %} background-color:#FEDB36; /* Change background color on hover */
+          border-color: #000; /* Change border color on hover */
+          font-weight: 700; {% endcomment %}
+      }
+      .cs_cs_coll_name_text_link.active .col-icon-tab img{
+      filter: invert(1);
+      }
+      /* Default styles */
+  .col-icon-tab {
+      transition: background 0.3s ease, filter 0.3s ease;
+  }
+
+  .col-icon-tab img {
+      transition: filter 0.3s ease;
+  }
+
+  .col-name-tab {
+      transition: font-weight 0.3s ease;
+  }
+
+  /* On hover effect */
+  .cs_cs_coll_name_text_link:hover .col-icon-tab {
+      background: var(--teal, #00727F);
+  }
+
+  .cs_cs_coll_name_text_link:hover .col-icon-tab img {
+      filter: invert(1);
+  }
+
+  .cs_cs_coll_name_text_link:hover .col-name-tab {
+      font-weight: 600;
+  }
+
+      .cs_collection_name_main {
+          display: flex;
+          gap: 20px;
+          align-items: center;
+          justify-content: space-between;
+          padding: 80px 20px 0;
+      }
+      .col-tab-wrap {
+      display: flex;
+      justify-content: center;
+      {% comment %} align-items: center; {% endcomment %}
+      gap: 20px;
+  }
+  .col-icon-tab{
+  border-radius: 200000px;
+  background: #EBEBEB;
+  display: flex;
+  width: 75px;
+  height: 75px;
+  padding: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  }
+  .col-icon-tab img {
+      width: 40px;
+      height: 40.5px;
+      flex-shrink: 0;
+      display: block;
+  }
+      .cs_cs_coll_name_text_link.active{
+          {% comment %} text-decoration: none;
+          color: #000;
+      text-align: center;
+      font-family: "Roboto Condensed";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 20.8px; /* 115.556% */
+      text-transform: capitalize;
+      border-radius: 6px;
+      border-top: 1px solid #3B3B3B;
+      border-right: 1px solid #3B3B3B;
+      border-bottom: 3px solid #3B3B3B;
+      border-left: 1px solid #3B3B3B;
+      background: #FEDB36;
+      display: flex;
+      width: 140px;
+      height: 50px;
+      padding: 16px 10px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; {% endcomment %}
+      }
+
+
+
+      @media screen and (max-width: 768px){
+          .section-{{ section.id }}-padding {
+              padding-top: {{ section.settings.mbl_padding_top }}px;
+              padding-bottom: {{ section.settings.mbl_padding_bottom}}px;
+          }
+          .col-icon-tab{
+          padding: 10px;
+              width: 45px;
+    height: 45px;
+          }
+          .col-icon-tab img {
+    width: 27px;
+    height: 27px;
+  }
+          .cs_collection_name_main {
+      align-items: baseline;
+      gap:12px;
+      padding: 20px 10px 0px;
+  }
+  .col-tab-wrap{
+  padding-bottom: 10px;
+  align-items: baseline;
+  gap:10px;
+  }
+  .cs_coll_name_text {
+    min-width: 83px;
+}
+  .col-title-sc{
+  font-size: 28px;
+  padding:0px;
+  }
+  .col-name-tab{
+  font-size: 12px;
+  }
+          .cs_collection_name_main{
+              overflow: auto;
+              gap:12px;
+              flex-direction: column;
+          }
+          .col-title-sc .col-sc{
+              font-size: 32px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 43.2px;
+          }
+
+
+      }
+</style>
+
+<section class="section-{{ section.id }}-padding bounce-up">
+  <div class="page-width">
+    <div class="cs_collection_name_main">
+      <h1 class="collection-hero__title col-title-sc">
+        <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+        {{ collection.title | escape }}
+      </h1>
+      <div class="col-tab-wrap">
+        {% for block in section.blocks %}
+          <div class="cs_coll_name_text">
+            <a
+              class="cs_cs_coll_name_text_link {% if block.settings.collection_url == collection.url %}active{% endif %}"
+              href="{{ block.settings.collection_url }}"
+            >
+              {% if block.settings['col-tab-icon'] != blank %}
+                <div class="col-icon-tab">
+                  {{
+                    block.settings['col-tab-icon']
+                    | image_url: width: 1440
+                    | image_tag:
+                      widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                      class: '',
+                      alt: 'image',
+                      loading: 'eager'
+                  }}
+                </div>
+              {% endif %}
+              <div class="col-name-tab">{{ block.settings.collection_name }}</div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cs Collection Main",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "back-color",
+      "label": "Background Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Add Tab",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "col-tab-icon",
+          "label": "Collection Tab Icon"
+        },
+        {
+          "type": "text",
+          "id": "collection_name",
+          "label": "Collection Name"
+        },
+        {
+          "type": "url",
+          "id": "collection_url",
+          "label": "Collection Url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cs Collection Main"
+    }
+  ]
+}
+{% endschema %}

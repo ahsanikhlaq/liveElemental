@@ -1,0 +1,90 @@
+<style>
+    .cs-review-wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.sc-review-icon img{
+display:block;
+width: 77.814px;
+height: 15.564px;
+}    
+.cs-review-txt{
+color: var(--Black, #152728);
+text-align: center;
+
+/* Body/Medium/12 */
+font-family: Quicksand;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+</style>
+
+
+    <a href="#review_mm">
+  <div class="cs-review-wrap" {{ block.shopify_attributes }}>
+    <div class="sc-review-icon">
+      {{
+        block.settings.sc-reviw-icon
+        | image_url: width: 1440
+        | image_tag:
+          widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+          class: '',
+          alt: 'image',
+          loading: 'eager'
+      }}
+    </div>
+    <div class="cs-review-txt">{{ block.settings['cs-review-count'] }}</div>
+  </div>
+</a>
+
+{% schema %}
+{
+  "name": "Custom Reviews",
+  "tag": null,
+  "class": "custom-reviews",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "sc-reviw-icon",
+      "label": "Reviews Star"
+    },
+    {
+      "type": "text",
+      "id": "cs-review-count",
+      "label": "Count"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Reviews"
+    }
+  ]
+}
+{% endschema %}

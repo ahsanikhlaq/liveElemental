@@ -1,0 +1,983 @@
+<style>
+  .custom-tabs {
+    background: #FFFFFF;
+    padding: 80px 30px;
+  }
+  .custom-tabs .custom-tabs-title p {
+    margin: 0;
+  }
+  .custom-tabs .custom-tabs-title {
+    margin: 0 auto 40px;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    color: #000;
+    font-size: 35px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "League Spartan", sans-serif;
+  }
+  .cards-grid-inner-mbl {
+    {% comment %} display: none; {% endcomment %}
+}
+.cards-grid-inner{
+display:block;
+}
+  .custom-tabs .custom-tabs-wrapper {
+    display: flex;
+    gap: 24px;
+  }
+  /* Tab Navigation Sidebar */
+  .custom-tabs .custom-tabs-wrapper-ingredients-wrapper {
+    display: flex;
+    gap: 0;
+    width: 22%;
+    margin-bottom: 0;
+    flex-direction: column;
+  }
+  .custom-tabs .custom-tabs-wrapper-ingredients-wrapper-item {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    background: var(--Main-beige, #F0E9D3);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.10), 0 2px 4px -2px rgba(0, 0, 0, 0.10);
+  }
+  .custom-tabs .custom-tabs-wrapper-ingredients-wrapper-item:last-child {
+    border-right: none;
+  }
+  .custom-tabs .tab-cc-icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+  .custom-tabs .custom-tabs-wrapper-ingredients-wrapper-item.active {
+    background: #8C7A6E;
+  }
+  .custom-tabs .name p {
+    margin: 0;
+    color: #333;
+    font-family: "League Spartan", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    {% comment %} text-transform: uppercase; {% endcomment %}
+  }
+  .custom-tabs .custom-tabs-wrapper-ingredients-wrapper-item.active .name p {
+    color: #FFFFFF;
+  }
+  .custom-tabs .custom-tabs-wrapper-ingredients-wrapper-item .tab-cc-icon {
+    filter: brightness(0);
+  }
+  .custom-tabs .custom-tabs-wrapper-ingredients-wrapper-item.active .tab-cc-icon {
+    filter: invert(1);
+  }
+  /* Display Wrapper */
+  .custom-tabs .custom-tabs-wrapper-display-wrapper {
+    background: #FFF;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    padding: 30px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    width: 78%;
+  }
+
+  /* Tab Heading Inside Grid */
+
+  .custom-tabs .tab-inner-heading-title {
+    color: #152728;
+    font-family: "League Spartan";
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    text-transform: capitalize;
+  }
+  .custom-tabs .tab-inner-heading-desc {
+    color: #333;
+    font-family: Quicksand;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Product & Process Grids */
+  .product-cards-grid,
+  .process-cards-grid {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+  }
+  .product-cards-grid.active,
+  .process-cards-grid.active {
+    display: flex;
+  }
+.custom-tabs .tab-inner-heading-title {
+    color: #0A0A0A;
+    font-family: "League Spartan";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: left;
+    padding-bottom: 16px;
+}
+
+
+  /* Stats Grid Styles */
+  .custom-tabs .stats-grid {
+    width: 100%;
+    margin-top: 24px;
+    background: var(--teal, #00727F);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 24px;
+    align-self: stretch;
+  }
+.custom-tabs .stat-block-wrap {
+    display: flex;
+    gap: 100px;
+    overflow:hidden;
+}
+.custom-tabs .stat-head {
+    color: var(--White, #FFF);
+    font-family: "League Spartan";
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.28px;
+    text-transform: uppercase;
+}
+  .custom-tabs .stat-item {
+    {% comment %} text-align: center;
+    padding: 20px; {% endcomment %}
+  }
+
+  .custom-tabs .stat-percentage {
+    color: var(--White, #FFF);
+text-align: center;
+font-family: "League Spartan";
+font-size: 48px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+  }
+
+  .custom-tabs .stat-description {
+    color: var(--White, #FFF);
+
+/* Body/Medium/16 */
+font-family: Quicksand;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 22px; /* 137.5% */
+    margin: 0;
+  }
+
+  /* Process Grid */
+  .process-cards-grid .cards-grid-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+  }
+
+  /* Rest of your existing styles remain exactly the same */
+  .custom-tabs .process-card {
+    text-align: center;
+    border-radius: 1px;
+    background: #F7F7F7;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .custom-tabs .process-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .custom-tabs .process-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .custom-tabs .process-step {
+    font-family: "League Spartan";
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--almond-forest, #8C7A6E);
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--almond-forest, #8C7A6E);
+    background: rgba(140, 156, 110, 0.05);
+    padding: 5px 12px 3px;
+    margin-bottom: 8px;
+  }
+  .custom-tabs .process-title {
+    color: var(--Black, #152728);
+    font-family: "League Spartan";
+    font-size: 20px;
+    font-weight: 500;
+    margin: 16px 0 4px;
+    text-transform: capitalize;
+  }
+  .custom-tabs .process-desc {
+    color: var(--Black, #152728);
+    font-family: Quicksand;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 0;
+  }
+
+  .custom-tabs .product-card {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  .custom-tabs .product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  .custom-tabs .product-card-image img{
+    width: 100%;
+    height: 329px;
+    object-fit: cover;
+  }
+  .custom-tabs .product-card-content {
+    padding: 30px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .custom-tabs .product-card-title {
+    color: var(--Black, #171717);
+    border-bottom: 1px solid var(--Grey, #797979);
+    padding-bottom: 8px;
+    font-family: "League Spartan";
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    text-transform: capitalize;
+  }
+  .custom-tabs .product-card-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .custom-tabs .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: column;
+  }
+  .custom-tabs .feature-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .custom-tabs .feature-label {
+    color: var(--Black, #171717);
+    font-family: "League Spartan";
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  .custom-tabs .feature-text {
+    color: var(--Black, #171717);
+    font-family: Quicksand;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 0;
+  }
+  .custom-tabs .feature-content {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* Product Cards Grid */
+ .product-cards-grid .cards-grid-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+  }
+
+  /* Mobile */
+  @media screen and (max-width: 1024px) {
+    .product-cards-grid .cards-grid-inner,
+    .process-cards-grid .cards-grid-inner,
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .custom-tabs .product-card{
+    width: 100%;
+    max-width: 100%;
+    min-width: 80%;
+    }
+    .custom-tabs .process-icon img{
+        max-width: 38px;
+    max-height: 38px;
+    min-height: 38px;
+    min-width: 38px;
+    }
+    .pd_card_wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    }
+    .custom-tabs .stat-head{
+    font-size: 24px;
+    }
+    .custom-tabs .process-desc{
+    text-align: left;
+    }
+    .custom-tabs .product-card-mbl{
+    width: 100%;
+    max-width: 100%;
+    min-width: 90%;
+    }
+    .cards-grid-inner{
+    {% comment %} display:none !important; {% endcomment %}
+    }
+    .cards-grid-inner-mbl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    overflow: auto;
+}
+    .custom-tabs {
+      padding: 25px 10px 25px 10px;
+    }
+    .custom-tabs .process-card{
+       max-width: 100%;
+        min-width: 100%;
+        flex-direction: row;
+        /* width: 340px; */
+        gap: 12px;
+        padding: 12px;
+    }
+    .custom-tabs .process-step{
+    margin-bottom:12px;
+    padding: 6px 12px 4px 12px;
+    font-size: 12px;
+    }
+    .custom-tabs .process-title{
+        padding-bottom: 6px;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin:0;
+      }
+    .custom-tabs .process-card-mbl{
+    max-width: 89%;
+    min-width: 89%;
+    }
+    .custom-tabs .stat-block-wrap {
+    gap: 12px;
+    overflow:hidden;
+}
+    .custom-tabs .custom-tabs-title {
+      font-size: 24px;
+      margin-bottom: 25px;
+    }
+    .custom-tabs .custom-tabs-wrapper {
+      flex-direction: column;
+    }
+    .custom-tabs .custom-tabs-wrapper-ingredients-wrapper {
+      width: 100%;
+      flex-direction: row;
+              padding-bottom: 16px;
+    }
+    .custom-tabs .custom-tabs-wrapper-ingredients-wrapper-item {
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+      padding: 15px 20px;
+      flex: 1;
+    }
+   .custom-tabs .custom-tabs-wrapper-ingredients-wrapper-item:last-child {
+      border-bottom: none;
+    }
+   .custom-tabs .custom-tabs-wrapper-display-wrapper {
+      width: 100%;
+      padding: 0;
+      box-shadow: none;
+    }
+    .product-cards-grid .cards-grid-inner,
+    .process-cards-grid .cards-grid-inner {
+      gap: 12px;
+        display: flex !important;
+        overflow: auto;
+    }
+    .custom-tabs .stats-grid {
+      grid-template-columns: 1fr;
+      padding: 30px 10px;
+      margin-top: 46px;
+    }
+    .custom-tabs .product-card-image img {
+      height: 300px;
+    }
+    .custom-tabs .product-card-content {
+      padding: 20px 15px;
+    }
+    .custom-tabs .tab-inner-heading-title {
+      font-size: 24px;
+      padding-bottom: 22px;
+    }
+    .custom-tabs .tab-inner-heading-desc {
+      font-size: 14px;
+    }
+    .custom-tabs .tab-inner-heading {
+      {% comment %} margin-bottom: 30px; {% endcomment %}
+    }
+    .custom-tabs .stat-percentage {
+      font-size: 32px;
+    }
+    .custom-tabs .stat-description{
+    font-size: 12px;
+    line-height: normal;
+    }
+  }
+</style>
+
+<div class="custom-tabs">
+  <div class="page-width">
+    {% if section.settings['r-title'] != blank %}
+      <div class="custom-tabs-title">
+        {{ section.settings['r-title'] }}
+      </div>
+    {% endif %}
+  
+    <div class="custom-tabs-wrapper">
+      <!-- Tab Navigation -->
+      <!-- Tab Navigation -->
+<div class="custom-tabs-wrapper-ingredients-wrapper">
+  {% assign first_tab_rendered = false %}
+  {% for block in section.blocks %}
+    {% if block.type == 'tab-heading-block' %}
+      {% assign tab_id = block.settings['t-ingredient-id'] %}
+      <div
+        class="custom-tabs-wrapper-ingredients-wrapper-item {% unless first_tab_rendered %}active{% endunless %}"
+        data-id="tab-{{ tab_id }}"
+      >
+        {% if block.settings.tab_cc_icon != blank %}
+          <div class="tab-cc-icon">
+            {{ block.settings.tab_cc_icon | image_url: width: 1440 | image_tag:
+              widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+              class:'',
+              alt: "icon",
+              loading: "eager"
+            }}
+          </div>
+        {% endif %}
+        {% if block.settings['r-ingredient-name'] != blank %}
+          <span class="name">{{ block.settings['r-ingredient-name'] }}</span>
+        {% endif %}
+      </div>
+      {% assign first_tab_rendered = true %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+      <!-- Display Wrapper -->
+      <div class="custom-tabs-wrapper-display-wrapper">
+        {% assign tab_ids = "" %}
+        {% for block in section.blocks %}
+          {% if block.type == 'tab-heading-block' %}
+            {% assign tab_id = block.settings['t-ingredient-id'] %}
+            {% unless tab_ids contains tab_id %}
+              {% assign tab_ids = tab_ids | append: tab_id | append: "," %}
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+        {% assign tab_array = tab_ids | split: "," %}
+        {% assign firstTab = true %}
+        {% for tab_id in tab_array %}
+          {% if tab_id != blank %}
+            {% assign is_process_tab = false %}
+            {% assign has_stats = false %}
+            
+            {% for block in section.blocks %}
+              {% if block.type == 'process-card-block' and block.settings['process-tab-id'] == tab_id %}
+                {% assign is_process_tab = true %}
+              {% endif %}
+              {% if block.type == 'stats-block' and block.settings['stats-tab-id'] == tab_id %}
+                {% assign has_stats = true %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- Unified container for each tab -->
+            <div class="{% if is_process_tab %}process-cards-grid{% else %}product-cards-grid{% endif %} {% if firstTab %}active{% endif %}" data-content="tab-{{ tab_id }}">
+              {% assign firstTab = false %}
+
+              <!-- Tab Heading (if exists) -->
+              {% for block in section.blocks %}
+                {% if block.type == 'tab_heading_content' and block.settings.heading_tab_id == tab_id %}
+                  <div class="tab-inner-heading">
+                    {% if block.settings.heading_title != blank %}
+                      <h2 class="tab-inner-heading-title">{{ block.settings.heading_title }}</h2>
+                    {% endif %}
+                    {% if block.settings.heading_desc != blank %}
+                      <div class="tab-inner-heading-desc">{{ block.settings.heading_desc }}</div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+
+              <!-- Cards Grid -->
+              <div class="cards-grid-inner">
+                {% if is_process_tab %}
+                  <!-- Process Cards -->
+                  {% for block in section.blocks %}
+                    {% if block.type == 'process-card-block' and block.settings['process-tab-id'] == tab_id %}
+                      <div class="process-card">
+                        {% if block.settings['process-icon'] != blank %}
+                          <div class="process-icon">
+                                {{ block.settings.process-icon | image_url: width: 1440 | image_tag:
+                                  widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                  class:'',
+                                  alt: "image",
+                                  loading: "eager"
+                                }}
+                          </div>
+                        {% endif %}
+                        <div class="pd_card_wrap">
+                        {% if block.settings['process-step'] != blank %}
+                          <span class="process-step">{{ block.settings['process-step'] }}</span>
+                        {% endif %}
+                        {% if block.settings['process-title'] != blank %}
+                          <h3 class="process-title">{{ block.settings['process-title'] }}</h3>
+                        {% endif %}
+                        {% if block.settings['process-desc'] != blank %}
+                          <p class="process-desc">{{ block.settings['process-desc'] }}</p>
+                        {% endif %}
+                      </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
+                  <!-- Product Cards -->
+                  {% for block in section.blocks %}
+                    {% if block.type == 'product-card-block' and block.settings['card-tab-id'] == tab_id %}
+                      <div class="product-card">
+                        {% if block.settings['card-image'] != blank %}
+                          <div class="product-card-image">
+                            {{ block.settings.card-image | image_url: width: 1440 | image_tag:
+                                  widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                  class:'',
+                                  alt: "image",
+                                  loading: "eager"
+                                }}
+                          </div>
+                        {% endif %}
+                        <div class="product-card-content">
+                          {% if block.settings['card-title'] != blank %}
+                            <h3 class="product-card-title">{{ block.settings['card-title'] }}</h3>
+                          {% endif %}
+                          <div class="product-card-features">
+                            {% if block.settings['feature-look'] != blank %}
+                              <div class="feature-item">
+                                <div class="feature-content">
+                                  {% if block.settings['icon-look'] != blank %}
+                                    <div class="feature-icon">
+                                      {{ block.settings.icon-look | image_url: width: 1440 | image_tag:
+                                  widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                  class:'',
+                                  alt: "image",
+                                  loading: "eager"
+                                }}
+                                    </div>
+                                  {% endif %}
+                                  <div class="feature-label">Look</div>
+                                </div>
+                                <p class="feature-text">{{ block.settings['feature-look'] }}</p>
+                              </div>
+                            {% endif %}
+                            {% if block.settings['feature-feel'] != blank %}
+                              <div class="feature-item">
+                                <div class="feature-content">
+                                  {% if block.settings['icon-feel'] != blank %}
+                                      <div class="feature-icon">
+                                      {{ block.settings.icon-feel | image_url: width: 1440 | image_tag:
+                                  widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                  class:'',
+                                  alt: "image",
+                                  loading: "eager"
+                                }}
+                                    </div>
+                                  {% endif %}
+                                  <div class="feature-label">Feel</div>
+                                </div>
+                                <p class="feature-text">{{ block.settings['feature-feel'] }}</p>
+                              </div>
+                            {% endif %}
+                            {% if block.settings['feature-fabric'] != blank %}
+                              <div class="feature-item">
+                                <div class="feature-content">
+                                  {% if block.settings['icon-fabric'] != blank %}
+                                      <div class="feature-icon">
+                                      {{ block.settings.icon-fabric | image_url: width: 1440 | image_tag:
+                                  widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                  class:'',
+                                  alt: "image",
+                                  loading: "eager"
+                                }}
+                                    </div>
+                                  {% endif %}
+                                  <div class="feature-label">Fabric Content</div>
+                                </div>
+                                <p class="feature-text">{{ block.settings['feature-fabric'] }}</p>
+                              </div>
+                            {% endif %}
+                            {% if block.settings['feature-performance'] != blank %}
+                              <div class="feature-item">
+                                <div class="feature-content">
+                                  {% if block.settings['icon-performance'] != blank %}
+                                      <div class="feature-icon">
+                                      {{ block.settings.icon-performance | image_url: width: 1440 | image_tag:
+                                  widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                  class:'',
+                                  alt: "image",
+                                  loading: "eager"
+                                }}
+                                    </div>
+                                  {% endif %}
+                                  <div class="feature-label">Performance</div>
+                                </div>
+                                <p class="feature-text">{{ block.settings['feature-performance'] }}</p>
+                              </div>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+
+              {% comment %} Mobile {% endcomment %}
+              {% comment %} <div class="cards-grid-inner-mbl">
+                {% if is_process_tab %}
+                  <!-- Mobile Process Cards -->
+                  {% for block in section.blocks %}
+                    {% if block.type == 'process-card-block-mbl' and block.settings['process-tab-id'] == tab_id %}
+                      <div class="process-card-mbl">
+                        {% if block.settings['process-icon'] != blank %}
+                          <div class="process-icon">
+                                {{ block.settings.process-icon | image_url: width: 1440 | image_tag:
+                                  widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                  class:'',
+                                  alt: "image",
+                                  loading: "eager"
+                                }}
+                          </div>
+                        {% endif %}
+                      <div class="pd-card-wrap-mbl">
+                        {% if block.settings['process-step'] != blank %}
+                          <span class="process-step">{{ block.settings['process-step'] }}</span>
+                        {% endif %}
+                        {% if block.settings['process-title'] != blank %}
+                          <h3 class="process-title">{{ block.settings['process-title'] }}</h3>
+                        {% endif %}
+                        {% if block.settings['process-desc'] != blank %}
+                          <p class="process-desc">{{ block.settings['process-desc'] }}</p>
+                        {% endif %}
+                      </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
+                  
+                {% endif %}
+              </div> {% endcomment %}
+
+              <!-- Stats Block (shown only in the tab it belongs to) -->
+              {% if has_stats %}
+                <div class="stats-grid">
+                  <div class="stat-head">{{ section.settings.stat-head }}</div>
+                  <div class="stat-block-wrap">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'stats-block' and block.settings['stats-tab-id'] == tab_id %}
+                      <div class="stat-item">
+                        <span class="stat-percentage">{{ block.settings['stat-percentage'] }}</span>
+                        <p class="stat-description">{{ block.settings['stat-description'] }}</p>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabItems = document.querySelectorAll('.custom-tabs-wrapper-ingredients-wrapper-item');
+    const contentItems = document.querySelectorAll('[data-content]');
+  
+    tabItems.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-id');
+      
+        tabItems.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+      
+        contentItems.forEach((content) => content.classList.remove('active'));
+      
+        const targetContent = document.querySelector(`[data-content="${targetId}"]`);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Coffee Thread Tabs",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "r-title",
+      "label": "Section Title",
+      "default": "<p>THE COFFEETHREAD™ PROCESS</p>"
+    },
+    {
+      "type": "text",
+      "id": "stat-head",
+      "label": "Stat Block Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab-heading-block",
+      "name": "Tab Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "t-ingredient-id",
+          "label": "Tab ID",
+          "info": "Unique ID like 'fabric', 'process', etc."
+        },
+        {
+          "type": "image_picker",
+          "id": "tab_cc_icon",
+          "label": "Tab Icon"
+        },
+        {
+          "type": "richtext",
+          "id": "r-ingredient-name",
+          "label": "Tab Name"
+        }
+      ]
+    },
+    {
+      "type": "tab_heading_content",
+      "name": "Tab Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading_tab_id",
+          "label": "Tab ID (must match Tab Button)",
+          "info": "Enter the exact same Tab ID as the button this heading belongs to"
+        },
+        {
+          "type": "text",
+          "id": "heading_title",
+          "label": "Heading Title",
+          "default": "Our Fabrics"
+        },
+        {
+          "type": "richtext",
+          "id": "heading_desc",
+          "label": "Heading Description"
+        }
+      ]
+    },
+    {
+      "type": "product-card-block",
+      "name": "Fabric Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "card-tab-id",
+          "label": "Tab ID (match with Tab Button)"
+        },
+        {
+          "type": "image_picker",
+          "id": "card-image",
+          "label": "Card Image"
+        },
+        {
+          "type": "text",
+          "id": "card-title",
+          "label": "Card Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon-look",
+          "label": "Look Icon"
+        },
+        {
+          "type": "textarea",
+          "id": "feature-look",
+          "label": "Look Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon-feel",
+          "label": "Feel Icon"
+        },
+        {
+          "type": "textarea",
+          "id": "feature-feel",
+          "label": "Feel Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon-fabric",
+          "label": "Fabric Icon"
+        },
+        {
+          "type": "textarea",
+          "id": "feature-fabric",
+          "label": "Fabric Content Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon-performance",
+          "label": "Performance Icon"
+        },
+        {
+          "type": "textarea",
+          "id": "feature-performance",
+          "label": "Performance Description"
+        }
+      ]
+    },
+    {
+      "type": "process-card-block",
+      "name": "Process Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "process-tab-id",
+          "label": "Tab ID (match with Tab Button)"
+        },
+        {
+          "type": "image_picker",
+          "id": "process-icon",
+          "label": "Step Icon"
+        },
+        {
+          "type": "text",
+          "id": "process-step",
+          "label": "Step Label"
+        },
+        {
+          "type": "text",
+          "id": "process-title",
+          "label": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "process-desc",
+          "label": "Step Description"
+        }
+      ]
+    },
+    {
+      "type": "process-card-block-mbl",
+      "name": "Process Card Mbl",
+      "settings": [
+        {
+          "type": "text",
+          "id": "process-tab-id",
+          "label": "Tab ID (match with Tab Button)"
+        },
+        {
+          "type": "image_picker",
+          "id": "process-icon",
+          "label": "Step Icon"
+        },
+        {
+          "type": "text",
+          "id": "process-step",
+          "label": "Step Label"
+        },
+        {
+          "type": "text",
+          "id": "process-title",
+          "label": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "process-desc",
+          "label": "Step Description"
+        }
+      ]
+    },
+    {
+      "type": "stats-block",
+      "name": "Stats Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "stats-tab-id",
+          "label": "Tab ID (match with Tab Button)",
+          "info": "Add this block to the tab where you want stats to appear"
+        },
+        {
+          "type": "text",
+          "id": "stat-percentage",
+          "label": "Percentage",
+          "default": "30%"
+        },
+        {
+          "type": "textarea",
+          "id": "stat-description",
+          "label": "Description",
+          "default": "Saves energy by using heat recycling system"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Coffee Thread Tabs"
+    }
+  ]
+}
+{% endschema %}

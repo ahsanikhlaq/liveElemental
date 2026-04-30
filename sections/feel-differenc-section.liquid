@@ -1,0 +1,283 @@
+<style>
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.back_color }};
+}
+.cf-feel-heading {
+    color: #000;
+    font-family: "League Spartan";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+.cf-feel-desc {
+    color: var(--Black, #171717);
+    font-family: Quicksand;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.cf-fel-icon img {
+    width: 64px;
+    height: 64px;
+    display: block;
+}
+
+.cf-block-head {
+    color: var(--Black, #171717);
+    /* text-align: center; */
+    font-family: "League Spartan";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.cf-block-desc {
+    color: var(--Black, #171717);
+    font-family: Quicksand;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    max-width: 300px;
+}
+.cf-block {
+    transition: all 0.3s ease-in-out; /* Smooth transition for the hover effect */
+    border-radius: 1px;
+    background: #F7F7F7;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex: 1 0 0;
+}
+.cf-block:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  transform: translateY(-5px); /* Moves the card up slightly */
+}
+.cf-feel-block-wrap {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+.cf-feel-content-wrap {
+    display: flex;
+    flex-direction: column;
+    max-width: 842px;
+    gap: 12px;
+}
+
+/* Center alignment option */
+{% if section.settings.center_content %}
+.cf-feel-content-wrap {
+    text-align: center;
+    margin: 0 auto;
+}
+{% endif %}
+
+.cf-feel-container {
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.cf-block-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+@media screen and (max-width:768px){
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mbl_padding_top }}px;
+    padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+  }
+.cf-feel-block-wrap{
+flex-direction: column;
+}
+{% if section.settings.center_content %}
+.cf-feel-content-wrap {
+    text-align: inherit;
+    margin: 0 auto;
+}
+{% endif %}
+{% if section.settings.center_content %}
+.cf-feel-heading {
+  max-width: 100% !important;
+}
+{% endif %}
+.cf-block-wrap{
+    gap: 5px;
+}
+.cf-feel-container{
+padding:0 10px;
+}
+.cf-feel-heading{
+font-size: 28px;
+max-width: 325px;
+}
+.cf-feel-desc{
+font-size: 16px;
+}
+.cf-block-desc{
+font-size: 14px;
+max-width: 100%;
+}
+.cf-fel-icon img{
+width: 32px;
+height: 32px;
+}
+.cf-block{
+padding:10px;
+min-width: -webkit-fill-available;
+gap:12px;
+}
+}  
+</style>
+
+
+
+<section class="section-{{ section.id }}-padding fade-up">
+  <div class="page-width">
+   <div class="cf-feel-container">
+
+   <div class="cf-feel-content-wrap">
+    <div class="cf-feel-heading">{{ section.settings.cf_fel_head }}</div>
+    <div class="cf-feel-desc">{{ section.settings.cf_fel_desc }}</div>
+   </div>
+   <div class="cf-feel-block-wrap">
+    {% for block in section.blocks %}
+          <div class="cf-block">
+           <div class="cf-fel-icon">
+                {{ block.settings.cf_block_icon | image_url: width: 1440 | image_tag:
+          widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+          class:'',
+          alt: "image",
+          loading: "eager"
+      }}
+           </div>
+           <div class="cf-block-wrap">
+            <div class="cf-block-head">{{ block.settings.cf_block_head }}</div>
+            <div class="cf-block-desc">{{ block.settings.cf_block_desc }}</div>
+        </div>
+          </div>
+        {% endfor %}
+
+   </div>
+   </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Feel Section",
+    "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "back_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "text",
+      "id": "cf_fel_head",
+      "label": "Main Heading"
+     },
+     {
+      "type": "text",
+      "id": "cf_fel_desc",
+      "label": "Description"
+     },
+     {
+      "type": "checkbox",
+      "id": "center_content",
+      "label": "Center align content",
+      "default": false
+     }
+    ],
+    
+    "blocks": [
+    {
+      "type": "block",
+      "name": "Add Block",
+      "settings": [
+        {
+            "type": "image_picker",
+            "id": "cf_block_icon",
+            "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "cf_block_head",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "cf_block_desc",
+          "label": "Sub Heading"
+        }
+      ]
+    }
+  ],
+    "presets": [
+      {
+        "name": "Feel Section"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,772 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_jVaWmY": {
+      "type": "hero",
+      "blocks": {
+        "text_YLPk4p": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Browse our latest products</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_H9gpTf": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Shop all",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_YLPk4p",
+        "button_H9gpTf"
+      ],
+      "disabled": true,
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "flex-end",
+        "align_baseline": true,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 24,
+        "section_width": "page-width",
+        "section_height": "medium",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-6",
+        "toggle_overlay": true,
+        "overlay_color": "#12121266",
+        "overlay_style": "solid",
+        "gradient_direction": "to bottom",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 100,
+        "padding-block-end": 72
+      }
+    },
+    "home_banner_section_ngKNVr": {
+      "type": "home-banner-section",
+      "name": "Home Banner Section",
+      "settings": {
+        "enable_about": false,
+        "bg_image_desktop": "shopify://shop_images/Frame_2147230160_b40c126c-b824-4204-beaa-e2fca70923d4.jpg",
+        "bg_image_mobile": "shopify://shop_images/CoffeeThread-Banner-Home-Mobile.jpg",
+        "heading": "<p>Brewed Different</p>",
+        "description": "Coffee grounds that go beyond the cup, from thread to fit.",
+        "heading_color": "#000000",
+        "heading_accent_color": "#ab8d3f",
+        "description_color": "#000000",
+        "heading_color_about": "#f0e9d3",
+        "description_color_about": "#f0e9d3",
+        "heading_color_mobile": "#ffffff",
+        "heading_accent_color_mobile": "#ab8d3f",
+        "description_color_mobile": "#ffffff",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/all",
+        "button_bg_color": "#8c7a6e",
+        "button_text_color": "#fff6e8",
+        "button_bg_color_hover": "#6b5b4c",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "custom_marqe_section_jUDz9d": {
+      "type": "custom-marqe-section",
+      "blocks": {
+        "feature_LzbFnp": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/tabler-icon-leaf.svg",
+            "title": "Nature-powered"
+          }
+        },
+        "feature_mdGXiQ": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Yarn.svg",
+            "title": "Sustainable Materials"
+          }
+        },
+        "feature_FdWeV9": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SolarPanel.svg",
+            "title": "UV Protection"
+          }
+        },
+        "feature_bqNmDH": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Icon.svg",
+            "title": "Odor-Resistant"
+          }
+        },
+        "feature_PTUMtz": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/TShirt.svg",
+            "title": "Breathable & Moisture-Wicking"
+          }
+        },
+        "feature_gytbdX": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/gas_svgrepo.com.svg",
+            "title": "Reduced methane emissions by reusing coffee grounds"
+          }
+        }
+      },
+      "block_order": [
+        "feature_LzbFnp",
+        "feature_mdGXiQ",
+        "feature_FdWeV9",
+        "feature_bqNmDH",
+        "feature_PTUMtz",
+        "feature_gytbdX"
+      ],
+      "name": "CSTM Marquee",
+      "settings": {
+        "hide": false,
+        "background_color": "#8c7a6e"
+      }
+    },
+    "colection_block_section_gEc9nC": {
+      "type": "colection-block-section",
+      "blocks": {
+        "block_4m96rC": {
+          "type": "block",
+          "settings": {
+            "sh_block_icon": "shopify://shop_images/DailyRitual-1-SweatPants.jpg",
+            "sh_button_label": "SWEATPANTS",
+            "sh_button_link": "shopify://products/latte-sweatpants"
+          }
+        },
+        "block_eLMbhF": {
+          "type": "block",
+          "settings": {
+            "sh_block_icon": "shopify://shop_images/DailyRitual-2-Accessories.jpg",
+            "sh_button_label": "Hats",
+            "sh_button_link": "shopify://collections/hats"
+          }
+        },
+        "block_eJzy9A": {
+          "type": "block",
+          "settings": {
+            "sh_block_icon": "shopify://shop_images/DailyRitual-3-Hoodie.jpg",
+            "sh_button_label": "Hoodie",
+            "sh_button_link": "shopify://products/latte-hoodie"
+          }
+        },
+        "block_YfNTz6": {
+          "type": "block",
+          "settings": {
+            "sh_block_icon": "shopify://shop_images/DailyRitual-4-Polo.jpg",
+            "sh_button_label": "Polo",
+            "sh_button_link": "shopify://products/decaf"
+          }
+        }
+      },
+      "block_order": [
+        "block_4m96rC",
+        "block_eLMbhF",
+        "block_eJzy9A",
+        "block_YfNTz6"
+      ],
+      "name": "Collection Grid Home",
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "mbl_padding_top": 30,
+        "mbl_padding_bottom": 30,
+        "back_color": "",
+        "col_main_head": "Grounds for Style"
+      }
+    },
+    "custom_full_marquee_4gFg8Q": {
+      "type": "custom-full-marquee",
+      "blocks": {
+        "image_igpLXx": {
+          "type": "image",
+          "settings": {
+            "head-content": "",
+            "image": "shopify://shop_images/f1.png",
+            "image_height": 24,
+            "image_link": ""
+          }
+        },
+        "image_pzpUPE": {
+          "type": "image",
+          "settings": {
+            "head-content": "",
+            "image": "shopify://shop_images/f2.png",
+            "image_height": 24,
+            "image_link": ""
+          }
+        },
+        "image_7LrfLk": {
+          "type": "image",
+          "settings": {
+            "head-content": "",
+            "image": "shopify://shop_images/f3.png",
+            "image_height": 24,
+            "image_link": ""
+          }
+        },
+        "image_WTFBRK": {
+          "type": "image",
+          "settings": {
+            "head-content": "",
+            "image": "shopify://shop_images/f4.png",
+            "image_height": 24,
+            "image_link": ""
+          }
+        },
+        "image_id8W7E": {
+          "type": "image",
+          "settings": {
+            "head-content": "",
+            "image": "shopify://shop_images/f5.png",
+            "image_height": 24,
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_igpLXx",
+        "image_pzpUPE",
+        "image_7LrfLk",
+        "image_WTFBRK",
+        "image_id8W7E"
+      ],
+      "disabled": true,
+      "name": "Scrolling promotion",
+      "settings": {
+        "marq_head": "<p>Featured In</p>",
+        "container": "w-full",
+        "direction": "left",
+        "speed": 30,
+        "item_gap": 50,
+        "item_gap_mobile": 50,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "custom_class": ""
+      }
+    },
+    "coffee_feature_section_eEenhF": {
+      "type": "coffee-feature-section",
+      "blocks": {
+        "left_block_yUE799": {
+          "type": "left-block",
+          "settings": {
+            "i-svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" viewbox=\"0 0 64 64\" fill=\"none\">\n  <path d=\"M18.7329 42.0672C18.5841 41.9185 18.4075 41.8004 18.2131 41.7199C18.0188 41.6394 17.8104 41.598 17.6001 41.598C17.3897 41.598 17.1814 41.6394 16.987 41.7199C16.7926 41.8004 16.616 41.9185 16.4673 42.0672C16.3185 42.216 16.2005 42.3926 16.12 42.5869C16.0395 42.7813 15.998 42.9896 15.998 43.2C15.998 43.4104 16.0395 43.6187 16.12 43.8131C16.2005 44.0074 16.3185 44.1841 16.4673 44.3328L29.2673 57.1328C29.4159 57.2818 29.5925 57.4 29.7868 57.4807C29.9812 57.5614 30.1896 57.6029 30.4001 57.6029C30.6105 57.6029 30.8189 57.5614 31.0133 57.4807C31.2077 57.4 31.3842 57.2818 31.5329 57.1328L44.3329 44.3328C44.6333 44.0324 44.8021 43.6249 44.8021 43.2C44.8021 42.7751 44.6333 42.3677 44.3329 42.0672C44.0324 41.7668 43.625 41.598 43.2001 41.598C42.7752 41.598 42.3677 41.7668 42.0673 42.0672L32.0001 52.1376V32C32.0001 25.712 32.7905 21.184 34.4449 17.6864C36.0833 14.2304 38.6305 11.648 42.4225 9.37282C42.7866 9.15471 43.0491 8.80088 43.1523 8.38921C43.2555 7.97752 43.191 7.5417 42.9729 7.17762C42.7548 6.81353 42.4009 6.55099 41.9893 6.44777C41.5776 6.34455 41.1418 6.4091 40.7777 6.62721C36.5697 9.15521 33.5169 12.1696 31.5553 16.3136C29.6097 20.4192 28.8001 25.488 28.8001 32V52.1376L18.7329 42.0672Z\" fill=\"#8C7A6E\"></path>\n</svg>",
+            "ingri-img": "shopify://shop_images/coo.svg",
+            "i-heading": "<p>Collect & Sort</p>",
+            "i-des": "<p>Used coffee grounds are gathered from local sources and carefully selected.</p>"
+          }
+        },
+        "left_block_XGVC3X": {
+          "type": "left-block",
+          "settings": {
+            "i-svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"91\" height=\"91\" viewbox=\"0 0 91 91\" fill=\"none\">\n  <path d=\"M44.325 61.7016C44.1155 61.721 43.9119 61.7814 43.7257 61.8794C43.5396 61.9774 43.3745 62.1111 43.2401 62.2729C43.1056 62.4347 43.0043 62.6214 42.942 62.8223C42.8796 63.0233 42.8575 63.2345 42.8768 63.444C42.8961 63.6535 42.9565 63.8571 43.0545 64.0433C43.1526 64.2294 43.2863 64.3945 43.4481 64.5289C43.6099 64.6634 43.7966 64.7647 43.9975 64.827C44.1984 64.8893 44.4097 64.9115 44.6192 64.8922L62.6446 63.2301C62.8542 63.211 63.058 63.1508 63.2443 63.0529C63.4306 62.9549 63.5957 62.8212 63.7302 62.6594C63.8647 62.4975 63.966 62.3107 64.0282 62.1097C64.0904 61.9086 64.1124 61.6973 64.0928 61.4877L62.4307 43.4623C62.3917 43.0392 62.1862 42.6489 61.8595 42.3773C61.5327 42.1058 61.1115 41.9751 60.6884 42.0141C60.2653 42.0531 59.875 42.2586 59.6034 42.5854C59.3319 42.9121 59.2012 43.3334 59.2402 43.7565L60.5499 57.9355L45.0632 45.0637C40.2274 41.0444 37.2504 37.5423 35.6181 34.0343C34.0075 30.5653 33.6497 26.9557 34.3238 22.5852C34.3888 22.1658 34.2845 21.7377 34.0339 21.3952C33.7833 21.0527 33.4068 20.8237 32.9874 20.7587C32.568 20.6938 32.1399 20.798 31.7974 21.0487C31.4549 21.2993 31.226 21.6757 31.161 22.0951C30.4154 26.9472 30.7823 31.2217 32.7153 35.3791C34.6291 39.4996 38.0097 43.3622 43.0178 47.5246L58.5045 60.3965L44.325 61.7016Z\" fill=\"#8C7A6E\"></path>\n</svg>",
+            "ingri-img": "shopify://shop_images/Extraction_Preparation.svg",
+            "i-heading": "<p>Extraction & Preparation</p>",
+            "i-des": "<p>Coffee grounds are processed to extract oils and compounds, then combined with recycled polymers.</p>"
+          }
+        },
+        "left_block_c6kd7J": {
+          "type": "left-block",
+          "settings": {
+            "i-svg": "",
+            "ingri-img": "shopify://shop_images/Frame_2147227902.svg",
+            "i-heading": "<p>Yarn Creation</p>",
+            "i-des": "<p>Coffee particles are embedded into the yarn during spinning, giving it natural odor control and quick-dry performance.</p>"
+          }
+        },
+        "right_block_AnEeYj": {
+          "type": "right-block",
+          "settings": {
+            "i-svgr": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"86\" height=\"86\" viewbox=\"0 0 86 86\" fill=\"none\">\n  <path d=\"M50.3001 27.8662C50.4984 27.9363 50.7086 27.9666 50.9187 27.9555C51.1288 27.9443 51.3346 27.8919 51.5245 27.8012C51.7143 27.7105 51.8844 27.5833 52.025 27.4268C52.1657 27.2704 52.2742 27.0878 52.3443 26.8894C52.4143 26.691 52.4447 26.4808 52.4335 26.2707C52.4223 26.0606 52.3699 25.8548 52.2792 25.665C52.1885 25.4752 52.0613 25.3051 51.9049 25.1644C51.7484 25.0238 51.5658 24.9153 51.3674 24.8452L34.2995 18.8148C34.1011 18.7445 33.8909 18.7139 33.6807 18.725C33.4705 18.736 33.2646 18.7884 33.0747 18.8791C32.8848 18.9699 32.7147 19.0972 32.5741 19.2538C32.4335 19.4104 32.3251 19.5931 32.2553 19.7917L26.2249 36.8596C26.0834 37.2602 26.1068 37.7007 26.29 38.084C26.4732 38.4674 26.8011 38.7623 27.2017 38.9038C27.6024 39.0454 28.0428 39.022 28.4262 38.8388C28.8095 38.6556 29.1044 38.3276 29.2459 37.927L33.9874 24.5002L42.6699 42.6699C45.381 48.3434 46.6201 52.7697 46.6354 56.6388C46.6472 60.4635 45.4623 63.8918 43.0218 67.5796C42.7874 67.9333 42.703 68.3658 42.7874 68.7817C42.8718 69.1977 43.1179 69.5631 43.4717 69.7975C43.8255 70.032 44.2579 70.1163 44.6739 70.032C45.0898 69.9476 45.4552 69.7015 45.6897 69.3477C48.3965 65.2524 49.8513 61.2164 49.8345 56.6316C49.8198 52.0883 48.3649 47.1658 45.5572 41.2902L36.8747 23.1205L50.3001 27.8662Z\" fill=\"#8C7A6E\"></path>\n</svg>",
+            "ingri-img-r": "shopify://shop_images/finishing.svg",
+            "i-headingr": "<p>Finishing & Quality</p>",
+            "i-desr": "<p>Fabrics are treated and inspected to bring out the coffee-infused performance while maintaining a soft, premium feel for daily wear.</p>"
+          }
+        },
+        "right_block_RbXn6D": {
+          "type": "right-block",
+          "settings": {
+            "i-svgr": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"45\" height=\"34\" viewbox=\"0 0 45 34\" fill=\"none\">\n  <path d=\"M40.9616 19.7748C40.9809 19.9842 41.0413 20.1879 41.1393 20.374C41.2373 20.5602 41.3711 20.7252 41.5328 20.8597C41.6946 20.9942 41.8813 21.0955 42.0823 21.1578C42.2832 21.2201 42.4945 21.2422 42.7039 21.2229C42.9134 21.2036 43.1171 21.1432 43.3032 21.0452C43.4894 20.9472 43.6544 20.8135 43.7889 20.6517C43.9234 20.4899 44.0246 20.3032 44.087 20.1022C44.1493 19.9013 44.1714 19.6901 44.1521 19.4806L42.49 1.4551C42.471 1.24551 42.4108 1.04174 42.3128 0.855455C42.2149 0.669174 42.0812 0.504044 41.9193 0.369521C41.7575 0.235 41.5707 0.13373 41.3696 0.0715122C41.1686 0.00929416 40.9572 -0.0126503 40.7477 0.00693793L22.7222 1.66901C22.2991 1.70802 21.9089 1.91351 21.6373 2.24026C21.3657 2.56701 21.235 2.98827 21.2741 3.41136C21.3131 3.83444 21.5186 4.22471 21.8453 4.49629C22.1721 4.76787 22.5933 4.89853 23.0164 4.85952L37.1955 3.54984L24.3236 19.0365C20.3044 23.8723 16.8022 26.8493 13.2943 28.4816C9.82522 30.0922 6.21565 30.45 1.84514 29.7759C1.42572 29.7109 0.997661 29.8152 0.655138 30.0659C0.312612 30.3165 0.0836731 30.6929 0.0186909 31.1123C-0.0462951 31.5317 0.0579987 31.9598 0.30862 32.3023C0.559244 32.6448 0.935665 32.8738 1.35508 32.9388C6.20711 33.6844 10.4816 33.3175 14.639 31.3844C18.7596 29.4706 22.6221 26.09 26.7846 21.082L39.6564 5.59526L40.9616 19.7748Z\" fill=\"#8C7A6E\"></path>\n</svg>",
+            "ingri-img-r": "shopify://shop_images/desig.svg",
+            "i-headingr": "<p>Design & Fit</p>",
+            "i-desr": "<p>Patterns are carefully crafted to ensure every piece moves with your body and fits beautifully.</p>"
+          }
+        },
+        "right_block_aiWCUk": {
+          "type": "right-block",
+          "settings": {
+            "i-svgr": "",
+            "ingri-img-r": "shopify://shop_images/fabric.svg",
+            "i-headingr": "<p>Fabric Blending</p>",
+            "i-desr": "<p>Sustainable fibers like recycled water bottles are added to enhance comfort, stretch, and durability.</p>"
+          }
+        },
+        "mobile_block_LH7Y64": {
+          "type": "mobile-block",
+          "settings": {
+            "b-count": "01",
+            "cb-b-icon": "shopify://shop_images/colec-mbl.svg",
+            "cb_head": "<p>Collect & Sort</p>",
+            "cb_desc": "<p>Used coffee grounds are gathered from local sources and carefully selected.</p>"
+          }
+        },
+        "mobile_block_t6WaJM": {
+          "type": "mobile-block",
+          "settings": {
+            "b-count": "02",
+            "cb-b-icon": "shopify://shop_images/extrac_mbl.svg",
+            "cb_head": "<p>Extraction & Preparation</p>",
+            "cb_desc": "<p>Coffee grounds are processed to extract oils and compounds, then combined with recycled polymers.</p>"
+          }
+        },
+        "mobile_block_XWqVVq": {
+          "type": "mobile-block",
+          "settings": {
+            "b-count": "03",
+            "cb-b-icon": "shopify://shop_images/yar_mbl.svg",
+            "cb_head": "<p>Yarn Creation</p>",
+            "cb_desc": "<p>Coffee particles are embedded into the yarn during spinning, giving it natural odor control and quick-dry performance.</p>"
+          }
+        },
+        "mobile_block_LpzCiw": {
+          "type": "mobile-block",
+          "settings": {
+            "b-count": "04",
+            "cb-b-icon": "shopify://shop_images/fab_mbl.svg",
+            "cb_head": "<p>Fabric Blending</p>",
+            "cb_desc": "<p>Sustainable fibers like recycled water bottles are added to enhance comfort, stretch, and durability.</p>"
+          }
+        },
+        "mobile_block_Rdt3ky": {
+          "type": "mobile-block",
+          "settings": {
+            "b-count": "05",
+            "cb-b-icon": "shopify://shop_images/design_mbl.svg",
+            "cb_head": "<p>Design & Fit</p>",
+            "cb_desc": "<p>Patterns are carefully crafted to ensure every piece moves with your body and fits beautifully.</p>"
+          }
+        },
+        "mobile_block_Ve3UQ3": {
+          "type": "mobile-block",
+          "settings": {
+            "b-count": "06",
+            "cb-b-icon": "shopify://shop_images/finishing_mbl.svg",
+            "cb_head": "<p>Finishing & Quality</p>",
+            "cb_desc": "<p>Fabrics are treated and inspected to bring out the coffee-infused performance while maintaining a soft, premium feel for daily wear</p>"
+          }
+        }
+      },
+      "block_order": [
+        "left_block_yUE799",
+        "left_block_XGVC3X",
+        "left_block_c6kd7J",
+        "right_block_AnEeYj",
+        "right_block_RbXn6D",
+        "right_block_aiWCUk",
+        "mobile_block_LH7Y64",
+        "mobile_block_t6WaJM",
+        "mobile_block_XWqVVq",
+        "mobile_block_LpzCiw",
+        "mobile_block_Rdt3ky",
+        "mobile_block_Ve3UQ3"
+      ],
+      "name": "Coffee Features Section",
+      "settings": {
+        "custom-class": false,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "mbl_padding_top": 60,
+        "mbl_padding_bottom": 60,
+        "back-color": "#f0e9d3",
+        "smoche-heading": "How CoffeeThread Is Brewed",
+        "smoche-desc": "Discover how used coffee grounds are transformed into sustainable garments in the CoffeeThread collection.",
+        "m-img-desk": "shopify://shop_images/Frame_2147229874.png",
+        "fd_label_btn": "How CoffeeThread Is Made",
+        "fd_btn_link": "shopify://pages/about-us"
+      }
+    },
+    "custom_marqe_section_8rg998": {
+      "type": "custom-marqe-section",
+      "blocks": {
+        "feature_k4pga3": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/made.svg",
+            "title": "Made in Vietnam"
+          }
+        },
+        "feature_hmh3A9": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/freeship.svg",
+            "title": "Free shipping all over US"
+          }
+        },
+        "feature_TbWVen": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/calen.svg",
+            "title": "30-Day Money Back Guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "feature_k4pga3",
+        "feature_hmh3A9",
+        "feature_TbWVen"
+      ],
+      "name": "CSTM Marquee",
+      "settings": {
+        "hide": false,
+        "background_color": "#8c7a6e"
+      }
+    },
+    "collection_home_tab_AVGU9K": {
+      "type": "collection-home-tab",
+      "blocks": {
+        "collection_tab_rdd8bW": {
+          "type": "collection_tab",
+          "settings": {
+            "collection": "test",
+            "collection_name": "Test"
+          }
+        },
+        "collection_tab_tA6HK3": {
+          "type": "collection_tab",
+          "disabled": true,
+          "settings": {
+            "collection": "latte-sweat-shirt",
+            "collection_name": "Latte Sweat Shirt"
+          }
+        },
+        "collection_tab_4LmJVC": {
+          "type": "collection_tab",
+          "disabled": true,
+          "settings": {
+            "collection": "lattie-hoodie",
+            "collection_name": "Latte Hoodie"
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_rdd8bW",
+        "collection_tab_tA6HK3",
+        "collection_tab_4LmJVC"
+      ],
+      "name": "Shop the Collections",
+      "settings": {
+        "heading": "<p>Explore the CoffeeThread Collection</p>",
+        "padding_top_desktop": 70,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "link_text": "View Collection",
+        "link_url": "",
+        "styling": false,
+        "enable_mobile_swiper": false
+      }
+    },
+    "custom_video_banner_baE64w": {
+      "type": "custom-video-banner",
+      "blocks": {
+        "block_Pkf8FW": {
+          "type": "block",
+          "settings": {
+            "feature_icon": "shopify://shop_images/leaf.svg",
+            "feature_heading": "Lower Carbon Footprint"
+          }
+        },
+        "block_PeCLbt": {
+          "type": "block",
+          "settings": {
+            "feature_icon": "shopify://shop_images/reward.svg",
+            "feature_heading": "Natural Performance"
+          }
+        },
+        "block_XA7ckH": {
+          "type": "block",
+          "settings": {
+            "feature_icon": "shopify://shop_images/wast.svg",
+            "feature_heading": "Reduced Waste"
+          }
+        }
+      },
+      "block_order": [
+        "block_Pkf8FW",
+        "block_PeCLbt",
+        "block_XA7ckH"
+      ],
+      "name": "Video Hero Section",
+      "settings": {
+        "cs_video": "shopify://files/videos/CoffeeThread_Website-CoffeeBean-Landscape (1).mp4",
+        "heading": "<p>Threads For Good</p>",
+        "desc": "<p>Each CoffeeThread piece reduces energy, water, and carbon use while keeping you comfortable, fresh, and mindful of your impact.</p>",
+        "cta_text": "Read Our Journey",
+        "cta_url": "shopify://pages/about-us",
+        "expert_number": "#1",
+        "expert_title": "Expert Recommended",
+        "expert_description": "Best Product for your Mind and Brain"
+      }
+    },
+    "video_with_feature_QRxUjc": {
+      "type": "video-with-feature",
+      "blocks": {
+        "blocks_MdBXkP": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Loss_Smell_Outline_svg.svg",
+            "features-heading": "<p>Odor Control</p>",
+            "features-description": "Absorbs body odor to keep you feeling fresh."
+          }
+        },
+        "blocks_Mi3tBz": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/fabric-material_svgrepo.com.svg",
+            "features-heading": "<p>Soft & Durable</p>",
+            "features-description": "Feels premium while built to last."
+          }
+        },
+        "blocks_TjBXkJ": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Eco_svg.svg",
+            "features-heading": "<p>Nature-Made</p>",
+            "features-description": "Crafted from recycled coffee grounds."
+          }
+        },
+        "blocks_rnqkdM": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Carbon_svg.svg",
+            "features-heading": "<p>Energy Efficient</p>",
+            "features-description": "Uses less water and energy to produce."
+          }
+        }
+      },
+      "block_order": [
+        "blocks_MdBXkP",
+        "blocks_Mi3tBz",
+        "blocks_TjBXkJ",
+        "blocks_rnqkdM"
+      ],
+      "name": "Video With Features",
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_left": 40,
+        "padding_right": 40,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 30,
+        "mbl_padding_left": 10,
+        "mbl_padding_right": 10,
+        "back-color": "",
+        "feature-main-heading": "<p>Why CoffeeThread is Different.</p>",
+        "feature-main-desc": "<p>Created with purpose and built with revolutionary coffee-infused technology, CoffeeThread delivers lasting comfort, natural freshness, and a lighter impact on the planet.</p>",
+        "video": "shopify://files/videos/WhatsApp Video 2025-12-11 at 8.00.02 PM.mp4"
+      }
+    },
+    "custom_review_section_NT7UeC": {
+      "type": "custom-review-section",
+      "blocks": {
+        "review_cnTazU": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Comfortable & Cool Outfit</p>",
+            "review_text": "I love how cool and breezy this feels while still keeping me comfortable. Perfect for layering or wearing on its own",
+            "reviewer_name": "HAILEY A."
+          }
+        },
+        "review_RYwxEw": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Loved the </p><p>Material!</p>",
+            "review_text": "I started wearing this at the beginning of the cold season, and it’s been incredibly comfortable. The fabric feels light, breathable, and perfect for everyday wear.",
+            "reviewer_name": "Emma R."
+          }
+        },
+        "review_L4YAEY": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Soft Fabric Best </p><p>Purcahse!</p>",
+            "review_text": "The material is soft, high quality, and feels great on the skin. I’ve been using it regularly and it still looks and feels brand new.",
+            "reviewer_name": "Sophia L"
+          }
+        },
+        "review_QcA8xW": {
+          "type": "review",
+          "settings": {
+            "block_rating": 5,
+            "block_star_img": "shopify://shop_images/Star_33.svg",
+            "review_title": "<p>Cool and</p><p>Breezy</p>",
+            "review_text": "This was one of my best purchases. The fabric is super soft and cozy, making it ideal for cooler weather without feeling heavy.",
+            "reviewer_name": "Olivia M."
+          }
+        }
+      },
+      "block_order": [
+        "review_cnTazU",
+        "review_RYwxEw",
+        "review_L4YAEY",
+        "review_QcA8xW"
+      ],
+      "name": "Reviews Section",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mbl_padding_top": 10,
+        "mbl_padding_bottom": 40,
+        "back-color": "",
+        "rate_icon": "shopify://shop_images/review-stars.svg",
+        "rs_rating": "<p><strong>10,500+</strong> 5-Star Reviews</p>",
+        "heading_1": "<p>Loved by Our Community</p>",
+        "heading": "",
+        "fd_label_btn": "Read All Reviews",
+        "qt_btn_link": "#"
+      }
+    },
+    "video_slider_section_BrRaMw": {
+      "type": "video-slider-section",
+      "blocks": {
+        "featured_blocks_CUU3wp": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/CoffeeThread-HomePage-FooterVideo-2.mov",
+            "my-cardtext": "<p>Coffee to Cloth</p>",
+            "sub-cardtext": "<p>From waste to wear, each thread begins with a cup of coffee.</p>"
+          }
+        },
+        "featured_blocks_cmddeU": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/CoffeeThread-HomePage-FooterVideo-3 (1).mov",
+            "my-cardtext": "<p>Designed for Comfort</p>",
+            "sub-cardtext": "<p>Light, breathable, and </p><p>naturally soft  made to move </p><p>with you.</p>"
+          }
+        },
+        "featured_blocks_cBChEy": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/CoffeeThread-HomePage-FooterVideo-4.mov",
+            "my-cardtext": "<p>Circular by Nature</p>",
+            "sub-cardtext": "<p>Every piece repurposes what would’ve been waste and gives it new life.</p>"
+          }
+        },
+        "featured_blocks_wyrgGd": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/CoffeeThread-HomePage-FooterVideo-1.mp4",
+            "my-cardtext": "<p>Conscious by Design</p>",
+            "sub-cardtext": "<p>Mindful materials. Thoughtful design. Comfort with a purpose.</p>"
+          }
+        },
+        "featured_blocks_UYWzNb": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/coffeeshirt no text.mp4",
+            "my-cardtext": "<p>Coffee to Cloth</p>",
+            "sub-cardtext": "<p>From waste to wear, each thread begins with a cup of coffee.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "featured_blocks_CUU3wp",
+        "featured_blocks_cmddeU",
+        "featured_blocks_cBChEy",
+        "featured_blocks_wyrgGd",
+        "featured_blocks_UYWzNb"
+      ],
+      "name": "Video Slider Coff",
+      "settings": {
+        "video-home-ss": false,
+        "show_section1": false,
+        "desktop-padding-top": 60,
+        "desktop-padding-bottom": 0,
+        "padding-top-mbl": 40,
+        "padding-bottom-mbl": 0,
+        "back-color": "",
+        "mj-video-head": "<p>The CoffeeThread™ Way</p>",
+        "mj-video-subhead": "",
+        "heading": "<p>The CoffeeThread™ Way</p>",
+        "subheading": ""
+      }
+    }
+  },
+  "order": [
+    "hero_jVaWmY",
+    "home_banner_section_ngKNVr",
+    "custom_marqe_section_jUDz9d",
+    "colection_block_section_gEc9nC",
+    "custom_full_marquee_4gFg8Q",
+    "coffee_feature_section_eEenhF",
+    "custom_marqe_section_8rg998",
+    "collection_home_tab_AVGU9K",
+    "custom_video_banner_baE64w",
+    "video_with_feature_QRxUjc",
+    "custom_review_section_NT7UeC",
+    "video_slider_section_BrRaMw"
+  ]
+}
