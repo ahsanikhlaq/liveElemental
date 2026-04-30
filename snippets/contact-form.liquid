@@ -204,6 +204,9 @@
         class="contact-form__error"
         tabindex="-1"
         autofocus
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
       >
         {{- 'icon-error.svg' | inline_asset_content -}}
 
@@ -217,6 +220,9 @@
         class="contact-form__success"
         tabindex="-1"
         autofocus
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
       >
         {{- 'icon-checkmark.svg' | inline_asset_content -}}
         {{- 'blocks.contact_form.post_success' | t -}}
@@ -352,8 +358,11 @@
   }
 
   .contact-form__input:focus {
-    outline: none;
     border-color: #999;
+  }
+
+  .contact-form__input:focus:not(:focus-visible) {
+    outline: none;
   }
 
   .contact-form__input::placeholder {

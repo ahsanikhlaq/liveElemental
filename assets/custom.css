@@ -104,6 +104,14 @@ line-height: normal !important;
   opacity: 1;
   transform: translateY(0);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
 /* mail page */
 .email-signup__input-group {
     flex-direction: column !important; 
