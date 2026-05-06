@@ -8,11 +8,31 @@
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link
       rel="preload"
+      as="script"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"
+      crossorigin
+    >
+    <link
+      rel="preload"
       as="style"
       href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
     >
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="{{ 'LeagueSpartan-Regular.woff2' | file_url }}"
+      crossorigin
+    >
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="{{ 'Quicksand-Regular.woff2' | file_url }}"
+      crossorigin
+    >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js" defer></script>
 
     {%- if settings.favicon != blank -%}
       <link
