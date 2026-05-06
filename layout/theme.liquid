@@ -4,8 +4,15 @@
   lang="{{ request.locale.iso_code }}"
 >
   <head>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link
+      rel="preload"
+      as="style"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
     {%- if settings.favicon != blank -%}
       <link
@@ -97,9 +104,6 @@
       const h = document.querySelector('#header-component');
 if (h) new MutationObserver(() => h.classList.toggle('sticky', h.dataset.stickyState === 'active')).observe(h, {attributes: true, attributeFilter: ['data-sticky-state']});
     </script>
-
-     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   </body>
 </html>
