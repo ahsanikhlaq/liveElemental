@@ -31,11 +31,11 @@ line-height: 20px; /* 142.857% */
 <div class="product-block-icon" {{ block.shopify_attributes }}>
  <div class="icon-pd-container">
     <div class="icon-content-pd-wrap">
-        <img src="{{ block.settings.main-icon-pd-img1 | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+        <img src="{{ block.settings.main-icon-pd-img1 | image_url: width: 200 }}" loading="lazy" alt="icon" />
         <div class="icon-pd-text">{{ block.settings.main-pd-text1 }}</div>
     </div>
     <div class="icon-content-pd-wrap">
-        <img src="{{ block.settings.main-icon-pd-img2 | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+        <img src="{{ block.settings.main-icon-pd-img2 | image_url: width: 200 }}" loading="lazy" alt="icon" />
         <div class="icon-pd-text">{{ block.settings.main-pd-text2 }}</div>
     </div>
  </div>

@@ -414,7 +414,7 @@
               <div class="i-left new-i-left-{{ forloop.index }}">
                 <span class="i-svg new-i-{{ forloop.index }}">{{ block.settings.i-svg }}</span>
                 <div class="s-text">
-                  <img class="pd-img" src="{{ block.settings.ingri-img | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+                  <img class="pd-img" src="{{ block.settings.ingri-img | image_url: width: 200 }}" loading="lazy" alt="icon" />
                   <h3 class="i-heading">{{ block.settings.i-heading }}</h3>
                   <span class="i-des">{{ block.settings.i-des }}</span>
                 </div>
@@ -424,7 +424,7 @@
         </div>
         
         <div class="m-img">
-          <img class="m-img-desk" src="{{ section.settings.m-img-desk | image_url }}" width="auto" height="auto" alt="Coffee features">
+          <img class="m-img-desk" src="{{ section.settings.m-img-desk | image_url: width: 1600 }}" alt="Coffee features" loading="lazy">
         </div>
         
         <div class="right-side">
@@ -433,7 +433,7 @@
               <div class="i-left r-s new-i-right-{{ forloop.index }}">
                 <span class="i-svg new-i-{{ forloop.index }}">{{ block.settings.i-svgr }}</span>
                 <div class="s-text">
-                  <img class="pd-img" src="{{ block.settings.ingri-img-r | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+                  <img class="pd-img" src="{{ block.settings.ingri-img-r | image_url: width: 200 }}" loading="lazy" alt="icon" />
                   <h3 class="i-heading">{{ block.settings.i-headingr }}</h3>
                   <span class="i-des">{{ block.settings.i-desr }}</span>
                 </div>
@@ -452,7 +452,7 @@
                   <div class="co-block-wrap">
                     <div class="count-icon">{{ block.settings.b-count }}</div>
                     <div class="cb-block-container">
-                      <img class="cb-icon-mbl" src="{{ block.settings.cb-b-icon | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+                      <img class="cb-icon-mbl" src="{{ block.settings.cb-b-icon | image_url: width: 200 }}" loading="lazy" alt="icon" />
                       <div class="cb-content-wrp">
                         <div class="cb-head">{{ block.settings.cb_head }}</div>
                         <div class="cb-desc">{{ block.settings.cb_desc }}</div>

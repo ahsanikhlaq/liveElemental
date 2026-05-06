@@ -362,7 +362,7 @@ margin-bottom: 10px;
   <div class="video-wrapper">
     <div class="ms-vedo-wrap">
     {% if section.settings.cs_video != blank %}
-      {% assign video_poster = section.settings.cs_video.preview_image | img_url: '' %}
+      {% assign video_poster = section.settings.cs_video.preview_image | image_url: width: 1600 %}
 
       {{ section.settings.cs_video | video_tag: 
           class: 'video-hero-video', 
@@ -388,7 +388,7 @@ margin-bottom: 10px;
         {% for block in section.blocks %}
             <div class="maj-ev-main-wrap">
               <div class="mj-ev-icon">
-                 <img src="{{ block.settings.feature_icon | img_url: "" }}" loading="lazy" width="100%" height="auto">
+                 <img src="{{ block.settings.feature_icon | image_url: width: 200 }}" loading="lazy" alt="">
               </div>
               <div class="mj-feature-content">
                 <div class="mj-feature-heading">{{ block.settings.feature_heading }}</div>
