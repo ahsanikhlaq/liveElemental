@@ -60,7 +60,7 @@ line-height: 22px; /* 137.5% */
         {% for block in section.blocks %}
             <div class="feature-icon-item-mf">
                 {% if block.settings.icon %}
-                    <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>
@@ -70,7 +70,7 @@ line-height: 22px; /* 137.5% */
         {% for block in section.blocks %}
             <div class="feature-icon-item-mf">
                 {% if block.settings.icon %}
-                    <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>
@@ -80,7 +80,7 @@ line-height: 22px; /* 137.5% */
         {% for block in section.blocks %}
             <div class="feature-icon-item-mf">
                 {% if block.settings.icon %}
-                    <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>
@@ -90,7 +90,7 @@ line-height: 22px; /* 137.5% */
         {% for block in section.blocks %}
             <div class="feature-icon-item-mf">
                 {% if block.settings.icon %}
-                    <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>

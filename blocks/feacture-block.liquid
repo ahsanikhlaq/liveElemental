@@ -40,15 +40,15 @@
 <div class="product-feature-block-icon" {{ block.shopify_attributes }}>
  <div class="feaute-icon-pd-container">
     <div class="feature-content-pd-wrap">
-        <img src="{{ block.settings.main-pd-img1 | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+        <img src="{{ block.settings.main-pd-img1 | image_url: width: 400 }}" loading="lazy" alt="icon" />
         <div class="pd-text-1">{{ block.settings.main-pd-text1 }}</div>
     </div>
     <div class="feature-content-pd-wrap">
-        <img src="{{ block.settings.main-pd-img2 | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+        <img src="{{ block.settings.main-pd-img2 | image_url: width: 400 }}" loading="lazy" alt="icon" />
         <div class="pd-text-1">{{ block.settings.main-pd-text2 }}</div>
     </div>
     <div class="feature-content-pd-wrap">
-        <img src="{{ block.settings.main-pd-img3 | img_url: '' }}" loading="lazy" width="100%" height="auto" alt="icon" />
+        <img src="{{ block.settings.main-pd-img3 | image_url: width: 400 }}" loading="lazy" alt="icon" />
         <div class="pd-text-1">{{ block.settings.main-pd-text3 }}</div>
     </div>
  </div>

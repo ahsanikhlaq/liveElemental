@@ -326,7 +326,7 @@ padding-bottom:8px;
             <div class="produc-feature-main-image">
               <img
                 class="pro-feature-img-main"
-                src="{{ section.settings.feature-main-image1 | img_url: "" }}"
+                src="{{ section.settings.feature-main-image1 | image_url: width: 1200 }}"
                 loading="lazy"
                 width="100%"
                 height="auto"
@@ -342,7 +342,7 @@ padding-bottom:8px;
           {% for block in section.blocks %}
             <div class="home-list-icon-main">
               <div class="home-list-icon">
-                <img src="{{ block.settings.image | img_url: "" }}" loading="lazy" width="100%" height="auto">
+                <img src="{{ block.settings.image | image_url: width: 200 }}" loading="lazy" alt="">
               </div>
               <div class="home-features-content">
                 <div class="home-list-heading">{{ block.settings['features-heading'] }}</div>
