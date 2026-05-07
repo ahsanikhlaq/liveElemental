@@ -1,17 +1,17 @@
 <style>
-.section-{{ section.id }}-padding {
+  .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
     background-color: {{ section.settings.back_color }};
-}
-.col-main-container {
+  }
+  .col-main-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 40px;
-}
-.csym-bg-overlay {
+  }
+  .csym-bg-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -21,31 +21,36 @@
     z-index: 1;
     pointer-events: none;
     display: block !important;
-}
-.block-col-main {
+  }
+  .block-col-main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 12px;
-}
-.sh-block-container {
+  }
+  .sh-block-container {
     position: relative;
     overflow: hidden;
     cursor: pointer;
-}
-.sh-block-container a {
+  }
+  .sh-block-container a {
     display: block;
     position: relative;
-}
-.sh_block_icon {
+  }
+  .sh-block-container a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+  }
+  .sh_block_icon {
     display: block;
     width: 100%;
     height: auto;
     transition: transform 0.4s ease;
-}
-.sh-block-container:hover .sh_block_icon {
+  }
+  .sh-block-container:hover .sh_block_icon,
+  .sh-block-container a:focus-visible .sh_block_icon {
     transform: scale(1.1);
-}
-.sh_block_btn {
+  }
+  .sh_block_btn {
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -60,8 +65,8 @@
     text-transform: uppercase;
     pointer-events: none;
     z-index: 2;
-}
-.main-head-col {
+  }
+  .main-head-col {
     color: #000;
     text-align: center;
     font-family: "League Spartan";
@@ -70,92 +75,99 @@
     font-weight: 600;
     line-height: normal;
     text-transform: uppercase;
-}
+    margin: 0;
+  }
 
-
-@media screen and (max-width:768px){
-.section-{{ section.id }}-padding {
-padding-top: {{ section.settings.mbl_padding_top }}px;
-padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
-}
-.block-col-main {
-grid-template-columns: 1fr 1fr;
-gap: 6px;
-}
-.col-main-container{
-gap:14px;
-}
-.main-head-col{
-font-size: 28px;
-}
-.sh_block_btn{
-font-size: 20px;
-}
-.sh_block_icon{
-object-fit: cover;
-height: 276px !important;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}  
-
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.mbl_padding_top }}px;
+      padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+    }
+    .block-col-main {
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .col-main-container {
+      gap: 14px;
+    }
+    .main-head-col {
+      font-size: 28px;
+    }
+    .sh_block_btn {
+      font-size: 20px;
+    }
+    .sh_block_icon {
+      object-fit: cover;
+      height: 276px !important;
+    }
+  }
 </style>
 
-
-
-<section class="section-{{ section.id }}-padding fade-up">
+<section
+  class="section-{{ section.id }}-padding fade-up"
+  {% if section.settings.col_main_head != blank %}
+    aria-labelledby="col-main-head-{{ section.id }}"
+  {% endif %}
+>
   <div class="page-width">
-   <div class="col-main-container">
-    <div class="main-head-col">
-        {{ section.settings.col_main_head }}
-    </div>
-    <div class="block-col-main">
-        {% for block in section.blocks %}
-          <div class="sh-block-container">
-            <a href="{{ block.settings.sh_button_link }}">
-              <img
-                class="sh_block_icon"
-                src="{{ block.settings.sh_block_icon | image_url }}"
-                width="100%"
-                height="auto"
-                loading="lazy"
-                alt="{{ block.settings.sh_button_label }}"
-              >
-              <span class="sh_block_btn">
-                {{ block.settings.sh_button_label }}
-              </span>
+    <div class="col-main-container">
+      {% if section.settings.col_main_head != blank %}
+        <h2 id="col-main-head-{{ section.id }}" class="main-head-col">
+          {{ section.settings.col_main_head | escape }}
+        </h2>
+      {% endif %}
+
+      <div class="block-col-main" role="list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign sh_label = block.settings.sh_button_label | default: 'Shop collection' | strip
+            assign sh_link = block.settings.sh_button_link | default: '#'
+            assign sh_image = block.settings.sh_block_icon
+          -%}
+
+          <div class="sh-block-container" role="listitem" {{ block.shopify_attributes }}>
+            <a
+              href="{{ sh_link }}"
+              aria-label="{{ sh_label | escape }}"
+            >
+              {% if sh_image != blank %}
+                {{
+                  sh_image
+                  | image_url: width: 800
+                  | image_tag:
+                    class: 'sh_block_icon',
+                    loading: 'lazy',
+                    widths: '300, 400, 600, 800, 1000',
+                    sizes: '(max-width: 768px) 50vw, 25vw',
+                    alt: sh_label
+                }}
+              {% else %}
+                <div
+                  class="sh_block_icon"
+                  role="img"
+                  aria-label="{{ sh_label | escape }}"
+                  style="background:#eee;aspect-ratio:1/1;"
+                ></div>
+              {% endif %}
+
+              {% if block.settings.sh_button_label != blank %}
+                <span class="sh_block_btn" aria-hidden="true">
+                  {{ block.settings.sh_button_label | escape }}
+                </span>
+              {% endif %}
             </a>
-            <div class="csym-bg-overlay"></div>
+            <div class="csym-bg-overlay" aria-hidden="true"></div>
           </div>
-        {% endfor %}
+        {%- endfor -%}
+      </div>
     </div>
-   </div>
   </div>
 </section>
 
-
-
-
-
-
-
 {% schema %}
-  {
-    "name": "Collection Grid Home",
-    "settings": [
+{
+  "name": "Collection Grid Home",
+  "settings": [
     {
       "type": "range",
       "id": "padding_top",
@@ -205,14 +217,13 @@ height: 276px !important;
       "type": "text",
       "id": "col_main_head",
       "label": "Main Heading"
-     }
-    ],
-    "presets": [
-      {
-        "name": "Collection Grid Home"
-      }
-    ],
-    
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Grid Home"
+    }
+  ],
   "blocks": [
     {
       "type": "block",
@@ -236,5 +247,5 @@ height: 276px !important;
       ]
     }
   ]
-  }
+}
 {% endschema %}
