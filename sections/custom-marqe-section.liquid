@@ -9,14 +9,7 @@
     display: flex;
     animation: scroll-left 40s linear infinite;
     width: max-content;
-    will-change: transform;
-}
-
-/* FIX 5: Pause animation for reduced motion users */
-@media (prefers-reduced-motion: reduce) {
-    .csym-track-mf {
-        animation: none;
-    }
+    will-change: transform; /* Helps with smooth rendering */
 }
 
 .feature-icon-item-mf {
@@ -27,8 +20,8 @@
 }
 
 .feature-icon-item-mf img {
-    max-width: 20px;
-    max-height: 20px;
+   max-width: 20px;
+max-height: 20px;
     flex-shrink: 0;
     margin-right: 10px;
     width: 100%;
@@ -37,13 +30,15 @@
 
 .feature-icon-item-mf span {
     color: var(--White, #FFF);
-    font-family: Quicksand;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 22px;
+/* Body/Medium/16 */
+font-family: Quicksand;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 22px; /* 137.5% */
 }
 
+/* Keyframes for continuous scroll */
 @keyframes scroll-left {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -60,55 +55,92 @@
 </style>
 {% endif %}
 
-<!-- FIX 3: Added role="region" and aria-label so assistive tech identifies this section -->
-<div class="csym-container-mf fade-up sec-{{ section.id }}"
-     style="background-color: {{section.settings.background_color}};"
-     role="region"
-     aria-label="Feature highlights">
-
+<div class="csym-container-mf fade-up sec-{{ section.id }}" style="background-color: {{section.settings.background_color}};">
     <div class="csym-track-mf">
-
-        <!-- FIX 2 & 4: First set is the real content — no aria-hidden -->
         {% for block in section.blocks %}
             <div class="feature-icon-item-mf">
                 {% if block.settings.icon %}
-                    <!-- FIX 4: Icon is decorative (label already provides the text), so alt="" is correct -->
-                    <img src="{{ block.settings.icon | image_url: width: 200 }}"
-                         alt=""
-                         role="presentation"
-                         loading="lazy">
+                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>
         {% endfor %}
 
-        <!-- FIX 2: All duplicate loops hidden from screen readers -->
+        <!-- Duplicate the content once for seamless looping -->
         {% for block in section.blocks %}
-            <div class="feature-icon-item-mf" aria-hidden="true">
+            <div class="feature-icon-item-mf">
                 {% if block.settings.icon %}
-                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="" loading="lazy">
+                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>
         {% endfor %}
 
+        <!-- Duplicate the content once for seamless looping -->
         {% for block in section.blocks %}
-            <div class="feature-icon-item-mf" aria-hidden="true">
+            <div class="feature-icon-item-mf">
                 {% if block.settings.icon %}
-                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="" loading="lazy">
+                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>
         {% endfor %}
 
+        <!-- Duplicate the content once for seamless looping -->
         {% for block in section.blocks %}
-            <div class="feature-icon-item-mf" aria-hidden="true">
+            <div class="feature-icon-item-mf">
                 {% if block.settings.icon %}
-                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="" loading="lazy">
+                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>
         {% endfor %}
-
     </div>
 </div>
+
+{% schema %}
+{
+    "name": "CSTM Marquee",
+    "tag": "section",
+    "class": "scrolling-feature-icons",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "hide",
+            "label": "Hide Desktop"
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color",
+            "default": "#E2F1C4",
+            "info": "Choose a background color for the section"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "feature",
+            "name": "Feature",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "icon",
+                    "label": "Icon"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Feature Title",
+                    "default": "Feature"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "CSTM Marquee",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}
