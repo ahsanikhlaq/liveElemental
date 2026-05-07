@@ -1,5 +1,3 @@
-
-
 {% liquid
   assign order = 'logo,menu,localization,search,mobile_search,actions'
 
@@ -67,7 +65,6 @@
     assign search_class = 'mobile:hidden'
   endif
 
-  # Handle localization positioning
   if section.settings.localization_position == 'left'
     if section.settings.search_position == 'left'
       if shop.customer_accounts_enabled
@@ -95,16 +92,12 @@
     render 'search', style: search_style, class: search_class
   endcapture
 
-  # Skip mobile search under specific conditions:
-  # Always render if search_row is bottom
-  # Don't render when shop.customer_accounts_enabled is false and search_position is left and search_style is not none
   assign skip_mobile_search = false
   if shop.customer_accounts_enabled == false and section.settings.search_position == 'left' and search_style != 'none'
     assign skip_mobile_search = true
   endif
 
   if section.settings.search_row == 'bottom' or search_style != 'none' and skip_mobile_search == false
-    # Mobile search duplicate for when search is not in the right order for mobile layout
     capture mobile_search
       render 'search', class: 'desktop:hidden', style: search_style
     endcapture
@@ -185,9 +178,15 @@
   }
 </script>
 
+{%- comment -%} Skip-to-main-content link — WCAG 2.4.1 / common ECAG fix {%- endcomment -%}
+<a class="skip-to-content-link" href="#MainContent">
+  {{ 'accessibility.skip_to_text' | t | default: 'Skip to content' }}
+</a>
+
 <header-component
   id="header-component"
   class="{{ class }}"
+  role="banner"
   {% if transparent %}
     transparent="{{ transparent }}"
   {% endif %}
@@ -198,8 +197,9 @@
   data-scroll-direction="none"
 >
   {%- if request.page_type == 'index' -%}
-    <h1 class="visually-hidden">{{ shop.name }}</h1>
+    <h1 class="visually-hidden">{{ shop.name | escape }}</h1>
   {%- endif -%}
+
   {% for row in rows %}
     {% liquid
       assign scheme = 'color_scheme_' | append: row
@@ -264,9 +264,13 @@
   {% endfor %}
 
   {% if navigation_bar != blank %}
-    <div class="iii header__row header__row--mobile desktop:hidden color-{{ section.settings.color_scheme_bottom }}">
+    {%- comment -%} Was <div class="iii ..."> — promoted to <nav> with a label {%- endcomment -%}
+    <nav
+      class="header__row header__row--mobile desktop:hidden color-{{ section.settings.color_scheme_bottom }}"
+      aria-label="{{ 'accessibility.mobile_primary_nav' | t | default: 'Mobile primary' }}"
+    >
       {{ navigation_bar }}
-    </div>
+    </nav>
   {% endif %}
 </header-component>
 
@@ -276,6 +280,30 @@
 ></script>
 
 {% stylesheet %}
+  /* Skip link — visually hidden until focused */
+  .skip-to-content-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    padding: 12px 16px;
+    background: var(--color-background, #fff);
+    color: var(--color-foreground, #000);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--color-foreground, #000);
+    transform: translateY(-100%);
+    transition: transform 0.2s ease;
+  }
+  .skip-to-content-link:focus,
+  .skip-to-content-link:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--color-foreground, #000);
+    outline-offset: 2px;
+  }
+
   body {
     --header-height: 0px;
     --header-group-height: var(--header-height);
@@ -293,11 +321,7 @@
   .header[transparent] {
     --language-button-background-color: transparent;
     --language-button-border-color: transparent;
-
-    /* used to apply transparency to .header__row, will only ever be transparent or unset */
     --header-bg-color: transparent;
-
-    /* used to display the appropriate logo based on transparency state */
     --header-logo-display: none;
     --header-logo-inverse-display: block;
 
@@ -305,14 +329,10 @@
     top: 0;
     left: 0;
     right: 0;
-
-    /* transparent color scheme on .header should never apply its background color */
     background-color: transparent;
     z-index: var(--layer-overlay);
 
     &[transparent='not-sticky'][data-sticky-state='active'],
-    /* Only show opaque background when hovering over menu items with children (mega menu)
-       Multiple selectors for performance: each simple :has() check is faster than one complex selector with multiple conditions */
     &:has(.mega-menu__list:hover),
     &:has(.menu-list__link[aria-haspopup]:is(:hover, [aria-expanded='true'], [data-animating])),
     &:has(.menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'], [data-animating])) {
@@ -327,14 +347,12 @@
       --color-border-rgb: inherit;
 
       .header__row {
-        /* Faster transition for "in" animation */
         transition: color var(--animation-values-fast), border-color var(--animation-values-fast),
           background-color var(--animation-values-fast);
       }
     }
 
     .header__row {
-      /* Slower transition for "out" animation */
       transition: color var(--animation-values-slow), border-color var(--animation-values-slow),
         background-color var(--animation-values-slow);
     }
@@ -348,7 +366,6 @@
           .menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'], [data-animating])
         )
     ) {
-    /* while transparent, header-row ignores its color-scheme settings, pull from the header-component */
     --color-foreground: inherit;
     --color-foreground-rgb: inherit;
     --color-border: inherit;
@@ -385,8 +402,6 @@
   .header-section:has(> #header-component[sticky='always']),
   .header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active']) {
     position: sticky;
-
-    /* Use -1 instead of 0 so intersection observer can track sticky state */
     top: -1px;
     z-index: var(--layer-sticky);
   }
@@ -405,10 +420,16 @@
     opacity: 0;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .header[data-sticky-state],
+    .header[transparent] .header__row {
+      transition: none !important;
+    }
+    .skip-to-content-link { transition: none !important; }
+  }
+
   .header__row {
     position: relative;
-
-    /* will default to bg from its color scheme unless --header-bg-color is transparent */
     background-color: var(--header-bg-color, var(--color-background));
   }
 
@@ -438,7 +459,6 @@
     display: flex;
     align-items: center;
 
-    /* on mobile, header__column nodes are ignored to create a new grid-template-area based on all visible content */
     @media screen and (max-width: 749px) {
       display: contents;
     }
@@ -470,13 +490,10 @@
   }
 
   .header__columns {
-    /* Three column layout */
     --header-left: 1fr;
     --header-center: auto;
     --header-right: 1fr;
     --header-template-columns: var(--header-left) var(--header-center) var(--header-right);
-
-    /* Mobile layout */
     --header-mobile-bookend: 44px;
 
     display: grid;
@@ -484,28 +501,23 @@
     grid-gap: var(--gap-xl);
     grid-template-columns: var(--header-template-columns);
 
-    /* If menu is in center column */
     &:has(.header__column--center header-menu) {
       --header-center: auto;
       --header-left: minmax(max-content, 1fr);
       --header-right: minmax(max-content, 1fr);
     }
 
-    /* If there is no center column, make the column the menu is in grow eagerly */
     &:where(:not(:has(.header__column--center))) {
       @media screen and (min-width: 750px) {
         --header-template-columns: var(--header-left) var(--header-right);
-
         grid-template-areas: 'left right';
       }
 
-      /* If the header-menu is in the right column */
       &:has(.header__column--right header-menu) {
         --header-right: auto;
         --header-left: minmax(max-content, 1fr);
       }
 
-      /* If the header-menu is in the left column */
       &:has(.header__column--left header-menu) {
         --header-left: auto;
         --header-right: minmax(max-content, 1fr);
@@ -545,15 +557,11 @@
     }
   }
 
-  /* Single column layout if there are no columns within */
   .header__columns:not(:has(.header__column)) {
     grid-template-columns: 1fr;
   }
 
-  /* Check for hover support to avoid unnecessary expensive recalculations when tapping on mobile */
   @media (hover: hover) {
-    /* Column-specific dimming effect when any interactive element is hovered
-      Multiple selectors for performance: each simple :has() check is faster than one complex selector with multiple conditions */
     .header__column:has(header-menu:hover),
     .header__column:has(.header-actions__action:hover),
     .header__column:has(.dropdown-localization__button:hover),
@@ -568,7 +576,6 @@
     }
   }
 
-  /* Ensure smooth transitions for all interactive elements */
   header-menu,
   .header-actions__action,
   .dropdown-localization__button,
@@ -576,7 +583,6 @@
     transition: opacity var(--animation-speed) var(--animation-easing);
   }
 
-  /* Extend hover area through padding to prevent flickering on actual menu items */
   .menu-list__list-item:where(:not([slot='overflow'])) > .menu-list__link[aria-haspopup],
   .menu-list__list-item:where(:not([slot='overflow'])) > .menu-list__link,
   .menu-list__list-item:where(:not([slot='overflow'])) > button.menu-list__link {
@@ -586,7 +592,6 @@
     padding-inline: calc(var(--gap-xl) / 2);
   }
 
-  /* Set header paddings based on height setting */
   .header {
     --header-padding: var(--padding-sm);
     --font-paragraph--line-height: 1;
@@ -615,27 +620,20 @@
     }
   }
 
-  /* When the header is transparent, add a margin to a potential header-section below it */
   .header-section:has(.header[transparent]) + .shopify-section {
     margin-top: var(--header-height);
   }
-
-  /* When the header is transparent, and when there is no header-section below it, offset the first main-section with
-   * the height of the header
-   */
 
   main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
     &.spacing-style,
     .spacing-style {
       --section-top-offset: calc(var(--header-height) * var(--transparent-header-offset-boolean));
 
-      /* Any nested sections should not be offset */
       :is(.spacing-style, .inherit-spacing) {
         --section-top-offset: 0px;
       }
     }
 
-    /* Make sticky content immediately stick to the top of the page */
     .sticky-content {
       margin-top: calc(var(--header-height) * var(--transparent-header-offset-boolean) * -1);
     }
@@ -657,431 +655,130 @@
   "tag": "header",
   "class": "header-section",
   "settings": [
-    {
-      "type": "header",
-      "content": "t:content.logo"
-    },
-    {
-      "type": "select",
-      "id": "logo_position",
-      "label": "t:settings.position",
+    { "type": "header", "content": "t:content.logo" },
+    { "type": "select", "id": "logo_position", "label": "t:settings.position",
       "options": [
-        {
-          "value": "left",
-          "label": "t:options.left"
-        },
-        {
-          "value": "center",
-          "label": "t:options.center"
-        },
-        {
-          "value": "right",
-          "label": "t:options.right"
-        }
+        { "value": "left", "label": "t:options.left" },
+        { "value": "center", "label": "t:options.center" },
+        { "value": "right", "label": "t:options.right" }
+      ], "default": "center" },
+    { "type": "header", "content": "t:content.menu" },
+    { "type": "select", "id": "menu_position", "label": "t:settings.position",
+      "options": [
+        { "value": "left", "label": "t:options.left" },
+        { "value": "center", "label": "t:options.center" },
+        { "value": "right", "label": "t:options.right" }
+      ], "default": "left" },
+    { "type": "select", "id": "menu_row", "label": "t:settings.row",
+      "options": [
+        { "value": "top", "label": "t:options.top" },
+        { "value": "bottom", "label": "t:options.bottom" }
+      ], "default": "top" },
+    { "type": "header", "content": "t:content.customer_account" },
+    { "type": "paragraph", "content": "t:content.manage_customer_accounts" },
+    { "type": "header", "content": "t:content.search" },
+    { "type": "checkbox", "id": "show_search", "label": "t:settings.search_icon", "default": true },
+    { "type": "select", "id": "search_position", "label": "t:settings.search_position",
+      "options": [
+        { "value": "left", "label": "t:options.left" },
+        { "value": "right", "label": "t:options.right" }
+      ], "default": "right",
+      "visible_if": "{{ section.settings.show_search }}" },
+    { "type": "select", "id": "search_row", "label": "t:settings.search_row",
+      "options": [
+        { "value": "top", "label": "t:options.top" },
+        { "value": "bottom", "label": "t:options.bottom" }
+      ], "default": "top",
+      "visible_if": "{{ section.settings.show_search }}" },
+    { "type": "header", "content": "t:content.localization" },
+    { "type": "checkbox", "id": "show_country", "label": "t:settings.country_region", "info": "t:info.manage_countries_regions", "default": true },
+    { "type": "checkbox", "id": "country_selector_style", "label": "t:settings.flag", "default": true,
+      "visible_if": "{{ section.settings.show_country }}" },
+    { "type": "checkbox", "id": "show_language", "label": "t:settings.language_selector", "info": "t:info.manage_languages", "default": true },
+    { "type": "select", "id": "localization_font", "label": "t:settings.font",
+      "options": [
+        { "value": "heading", "label": "t:options.heading" },
+        { "value": "subheading", "label": "t:options.subheading" },
+        { "value": "body", "label": "t:options.body" },
+        { "value": "accent", "label": "t:options.accent" }
+      ], "default": "heading",
+      "visible_if": "{{ section.settings.show_country or section.settings.show_language }}" },
+    { "type": "select", "id": "localization_font_size", "label": "t:settings.size",
+      "options": [
+        { "value": "0.625rem", "label": "10px" },
+        { "value": "0.75rem", "label": "12px" },
+        { "value": "0.875rem", "label": "14px" },
+        { "value": "1rem", "label": "16px" },
+        { "value": "1.125rem", "label": "18px" }
+      ], "default": "1rem" },
+    { "type": "select", "id": "localization_position", "label": "t:settings.position",
+      "options": [
+        { "value": "left", "label": "t:options.left" },
+        { "value": "right", "label": "t:options.right" }
+      ], "default": "right",
+      "visible_if": "{{ section.settings.show_country or section.settings.show_language }}" },
+    { "type": "select", "id": "localization_row", "label": "t:settings.row",
+      "options": [
+        { "value": "top", "label": "t:options.top" },
+        { "value": "bottom", "label": "t:options.bottom" }
+      ], "default": "top",
+      "visible_if": "{{ section.settings.show_country or section.settings.show_language }}" },
+    { "type": "header", "content": "t:content.appearance" },
+    { "type": "select", "id": "section_width", "label": "t:settings.width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ] },
+    { "type": "select", "id": "section_height", "label": "t:settings.height",
+      "options": [
+        { "value": "compact", "label": "t:options.compact" },
+        { "value": "standard", "label": "t:options.standard" }
+      ], "default": "standard" },
+    { "type": "select", "id": "enable_sticky_header", "label": "t:settings.sticky_header",
+      "options": [
+        { "value": "always", "label": "t:options.always" },
+        { "value": "scroll-up", "label": "t:options.on_scroll_up" },
+        { "value": "never", "label": "t:options.never" }
+      ], "default": "always" },
+    { "type": "range", "id": "divider_width", "label": "t:settings.divider_thickness", "min": 0, "max": 5, "step": 0.5, "unit": "px", "default": 0,
+      "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}" },
+    { "type": "select", "id": "divider_size", "label": "t:settings.divider_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
       ],
-      "default": "center"
-    },
-    {
-      "type": "header",
-      "content": "t:content.menu"
-    },
-    {
-      "type": "select",
-      "id": "menu_position",
-      "label": "t:settings.position",
+      "visible_if": "{{ section.settings.divider_width > 0 and section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}" },
+    { "type": "range", "id": "border_width", "label": "t:settings.border_width", "min": 0, "max": 5, "step": 0.5, "unit": "px", "default": 0 },
+    { "type": "header", "content": "t:content.colors" },
+    { "type": "color_scheme", "id": "color_scheme_top", "label": "t:settings.default", "default": "primary" },
+    { "type": "color_scheme", "id": "color_scheme_bottom", "label": "t:settings.bottom_row", "default": "primary",
+      "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}" },
+    { "type": "color_scheme", "id": "color_scheme_transparent", "label": "t:settings.inverse", "default": "primary",
+      "visible_if": "{{ section.settings.enable_transparent_header_home or section.settings.enable_transparent_header_product or section.settings.enable_transparent_header_collection }}" },
+    { "type": "header", "content": "t:content.home_page" },
+    { "type": "checkbox", "id": "enable_transparent_header_home", "label": "t:settings.transparent_background", "default": false },
+    { "type": "select", "id": "home_color_scheme", "label": "t:settings.color_scheme",
       "options": [
-        {
-          "value": "left",
-          "label": "t:options.left"
-        },
-        {
-          "value": "center",
-          "label": "t:options.center"
-        },
-        {
-          "value": "right",
-          "label": "t:options.right"
-        }
-      ],
-      "default": "left"
-    },
-    {
-      "type": "select",
-      "id": "menu_row",
-      "label": "t:settings.row",
+        { "value": "default", "label": "t:options.default" },
+        { "value": "inverse", "label": "t:options.inverse" }
+      ], "default": "default",
+      "visible_if": "{{ section.settings.enable_transparent_header_home }}" },
+    { "type": "header", "content": "t:content.product_page" },
+    { "type": "checkbox", "id": "enable_transparent_header_product", "label": "t:settings.transparent_background", "default": false },
+    { "type": "select", "id": "product_color_scheme", "label": "t:settings.color_scheme",
       "options": [
-        {
-          "value": "top",
-          "label": "t:options.top"
-        },
-        {
-          "value": "bottom",
-          "label": "t:options.bottom"
-        }
-      ],
-      "default": "top"
-    },
-    {
-      "type": "header",
-      "content": "t:content.customer_account"
-    },
-    {
-      "type": "paragraph",
-      "content": "t:content.manage_customer_accounts"
-    },
-    {
-      "type": "header",
-      "content": "t:content.search"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_search",
-      "label": "t:settings.search_icon",
-      "default": true
-    },
-    {
-      "type": "select",
-      "id": "search_position",
-      "label": "t:settings.search_position",
+        { "value": "default", "label": "t:options.default" },
+        { "value": "inverse", "label": "t:options.inverse" }
+      ], "default": "default",
+      "visible_if": "{{ section.settings.enable_transparent_header_product }}" },
+    { "type": "header", "content": "t:content.collection_page" },
+    { "type": "checkbox", "id": "enable_transparent_header_collection", "label": "t:settings.transparent_background", "default": false },
+    { "type": "select", "id": "collection_color_scheme", "label": "t:settings.color_scheme",
       "options": [
-        {
-          "value": "left",
-          "label": "t:options.left"
-        },
-        {
-          "value": "right",
-          "label": "t:options.right"
-        }
-      ],
-      "default": "right",
-      "visible_if": "{{ section.settings.show_search }}"
-    },
-    {
-      "type": "select",
-      "id": "search_row",
-      "label": "t:settings.search_row",
-      "options": [
-        {
-          "value": "top",
-          "label": "t:options.top"
-        },
-        {
-          "value": "bottom",
-          "label": "t:options.bottom"
-        }
-      ],
-      "default": "top",
-      "visible_if": "{{ section.settings.show_search }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.localization"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_country",
-      "label": "t:settings.country_region",
-      "info": "t:info.manage_countries_regions",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "country_selector_style",
-      "label": "t:settings.flag",
-      "default": true,
-      "visible_if": "{{ section.settings.show_country }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_language",
-      "label": "t:settings.language_selector",
-      "info": "t:info.manage_languages",
-      "default": true
-    },
-    {
-      "type": "select",
-      "id": "localization_font",
-      "label": "t:settings.font",
-      "options": [
-        {
-          "value": "heading",
-          "label": "t:options.heading"
-        },
-        {
-          "value": "subheading",
-          "label": "t:options.subheading"
-        },
-        {
-          "value": "body",
-          "label": "t:options.body"
-        },
-        {
-          "value": "accent",
-          "label": "t:options.accent"
-        }
-      ],
-      "default": "heading",
-      "visible_if": "{{ section.settings.show_country or section.settings.show_language }}"
-    },
-    {
-      "type": "select",
-      "id": "localization_font_size",
-      "label": "t:settings.size",
-      "options": [
-        {
-          "value": "0.625rem",
-          "label": "10px"
-        },
-        {
-          "value": "0.75rem",
-          "label": "12px"
-        },
-        {
-          "value": "0.875rem",
-          "label": "14px"
-        },
-        {
-          "value": "1rem",
-          "label": "16px"
-        },
-        {
-          "value": "1.125rem",
-          "label": "18px"
-        }
-      ],
-      "default": "1rem"
-    },
-    {
-      "type": "select",
-      "id": "localization_position",
-      "label": "t:settings.position",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:options.left"
-        },
-        {
-          "value": "right",
-          "label": "t:options.right"
-        }
-      ],
-      "default": "right",
-      "visible_if": "{{ section.settings.show_country or section.settings.show_language }}"
-    },
-    {
-      "type": "select",
-      "id": "localization_row",
-      "label": "t:settings.row",
-      "options": [
-        {
-          "value": "top",
-          "label": "t:options.top"
-        },
-        {
-          "value": "bottom",
-          "label": "t:options.bottom"
-        }
-      ],
-      "default": "top",
-      "visible_if": "{{ section.settings.show_country or section.settings.show_language }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.appearance"
-    },
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "t:settings.width",
-      "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "section_height",
-      "label": "t:settings.height",
-      "options": [
-        {
-          "value": "compact",
-          "label": "t:options.compact"
-        },
-        {
-          "value": "standard",
-          "label": "t:options.standard"
-        }
-      ],
-      "default": "standard"
-    },
-    {
-      "type": "select",
-      "id": "enable_sticky_header",
-      "label": "t:settings.sticky_header",
-      "options": [
-        {
-          "value": "always",
-          "label": "t:options.always"
-        },
-        {
-          "value": "scroll-up",
-          "label": "t:options.on_scroll_up"
-        },
-        {
-          "value": "never",
-          "label": "t:options.never"
-        }
-      ],
-      "default": "always"
-    },
-    {
-      "type": "range",
-      "id": "divider_width",
-      "label": "t:settings.divider_thickness",
-      "min": 0,
-      "max": 5,
-      "step": 0.5,
-      "unit": "px",
-      "default": 0,
-      "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
-    },
-    {
-      "type": "select",
-      "id": "divider_size",
-      "label": "t:settings.divider_width",
-      "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "visible_if": "{{ section.settings.divider_width > 0 and section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
-    },
-    {
-      "type": "range",
-      "id": "border_width",
-      "label": "t:settings.border_width",
-      "min": 0,
-      "max": 5,
-      "step": 0.5,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:content.colors"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme_top",
-      "label": "t:settings.default",
-      "default": "primary"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme_bottom",
-      "label": "t:settings.bottom_row",
-      "default": "primary",
-      "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme_transparent",
-      "label": "t:settings.inverse",
-      "default": "primary",
-      "visible_if": "{{ section.settings.enable_transparent_header_home or section.settings.enable_transparent_header_product or section.settings.enable_transparent_header_collection }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.home_page"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_transparent_header_home",
-      "label": "t:settings.transparent_background",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "home_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_home }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.product_page"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_transparent_header_product",
-      "label": "t:settings.transparent_background",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "product_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_product }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.collection_page"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_transparent_header_collection",
-      "label": "t:settings.transparent_background",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "collection_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_collection }}"
-    }
+        { "value": "default", "label": "t:options.default" },
+        { "value": "inverse", "label": "t:options.inverse" }
+      ], "default": "default",
+      "visible_if": "{{ section.settings.enable_transparent_header_collection }}" }
   ],
   "presets": []
 }
