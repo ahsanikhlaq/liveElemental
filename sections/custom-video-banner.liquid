@@ -2,9 +2,6 @@
   .video-hero-section {
     position: relative;
     width: 100%;
-    {% comment %} overflow: hidden; {% endcomment %}
-    {% comment %} padding: 0 16px; {% endcomment %}
-    
   }
 
   .video-wrapper {
@@ -18,23 +15,9 @@
     display: block;
     height: 75vh;
     cursor: pointer;
-    {% comment %} border-radius:16px; {% endcomment %}
   }
-{% comment %} .video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex !important;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0.00) 4.58%, rgba(0, 0, 0, 0.81) 73.98%, #000 98.91%) !important;
-} {% endcomment %}
 
-
-
-
-.hero-content{
+  .hero-content {
     z-index: 2;
     color: #fff;
     max-width: 650px;
@@ -45,32 +28,32 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-}
+  }
 
   .hero-heading {
-    {% comment %} max-width:467px; {% endcomment %}
     margin: 0;
   }
+
   .hero-heading p {
-   color: var(--White, #FFF);
-font-family: "League Spartan";
-font-size: 48px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-text-transform: uppercase;
-    margin:0px;
-    padding-bottom:10px;
+    color: var(--White, #FFF);
+    font-family: "League Spartan";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    margin: 0px;
+    padding-bottom: 10px;
   }
 
   .hero-heading strong {
-
     font-weight: 800;
     color: #EDFF73;
     font-family: "Playfair Display";
-    margin:0px;
+    margin: 0px;
   }
-.herp-desc p {
+
+  .herp-desc p {
     max-width: 675px;
     color: var(--White, #FFF);
     font-family: Quicksand;
@@ -78,22 +61,22 @@ text-transform: uppercase;
     font-style: normal;
     font-weight: 500;
     line-height: 22px;
-}
+  }
+
   .cta-button {
     color: #FFF6E8;
-font-family: Quicksand;
-    {% comment %} max-width: 241px; {% endcomment %}
-font-size: 20px;
-max-width: max-content;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-background: var(--almond-forest, #8C7A6E);
-display: flex;
-padding: 16px 34px;
-justify-content: center;
-align-items: center;
-gap: 12px;
+    font-family: Quicksand;
+    font-size: 20px;
+    max-width: max-content;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background: var(--almond-forest, #8C7A6E);
+    display: flex;
+    padding: 16px 34px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -103,17 +86,44 @@ gap: 12px;
   .cta-button:hover {
     background: #6B5B4C;
     transform: translateY(-2px);
-    {% comment %} box-shadow: 0 4px 12px #6B5B4C; {% endcomment %}
   }
 
-  .cta-button svg {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
+  .cta-button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
   }
 
-  .cta-button:hover svg {
-    transform: translateX(4px);
+  /* FIX 1: Pause button for autoplay video */
+  .video-pause-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    z-index: 10;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .video-pause-btn:hover {
+    background: rgba(0,0,0,0.8);
+  }
+
+  .video-pause-btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  .video-pause-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
   }
 
   .expert-card {
@@ -125,12 +135,10 @@ gap: 12px;
     min-width: 200px;
     z-index: 3;
     text-align: center;
-    border-radius: 12px;
     background: rgba(255, 255, 255, 0.20);
     backdrop-filter: blur(15px);
-    max-width:204px;
+    max-width: 204px;
   }
-
 
   .expert-number {
     color: var(--Green, #CAD95F);
@@ -138,7 +146,7 @@ gap: 12px;
     font-size: 40px;
     font-style: normal;
     font-weight: 700;
-    line-height: 130%; /* 52px */
+    line-height: 130%;
     margin-bottom: 12px;
   }
 
@@ -149,7 +157,7 @@ gap: 12px;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
-    line-height: 120%; /* 24px */
+    line-height: 120%;
     text-transform: capitalize;
     margin-bottom: 8px;
   }
@@ -161,35 +169,39 @@ gap: 12px;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 120%; /* 21.6px */
-    margin:0px;
-    letter-spacing:0px;
+    line-height: 120%;
+    margin: 0px;
+    letter-spacing: 0px;
   }
-.mj-ev-icon img{
-width: 42px;
-height: 42px;
-display:block;
-}
-.vd-block-wrap {
+
+  .mj-ev-icon img {
+    width: 42px;
+    height: 42px;
+    display: block;
+  }
+
+  .vd-block-wrap {
     display: flex;
     align-items: center;
     gap: 16px;
-}
-.maj-ev-main-wrap {
+  }
+
+  .maj-ev-main-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
-}
-.mj-feature-heading {
+  }
+
+  .mj-feature-heading {
     color: var(--White, #FFF);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     font-family: "League Spartan";
-}
-  /* Responsive */
+  }
+
   @media (max-width: 768px) {
     .hero-heading {
       font-size: 28px;
@@ -204,7 +216,7 @@ display:block;
 
     .expert-number {
       font-size: 40px;
-      margin:0px;
+      margin: 0px;
     }
 
     .desktop-video {
@@ -226,188 +238,272 @@ display:block;
     }
   }
 
+  @media (max-width: 767px) {
+    .video-wrapper {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
 
-@media (max-width: 767px) {
-  .video-wrapper {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-.vd-block-wrap{
-flex-wrap: wrap;
-    justify-content: center;
-}
-  /* Move hero-content below the video */
-  .hero-content {
-    {% comment %} position: static !important;
-    order: 2;
-    padding:20px 0 0;
-    text-align: center;
-    max-width: 100%;
-    z-index: 5; {% endcomment %}
-    z-index: 5;
-    gap: 10px;
-    left: 0;
-    padding:0 20px;
-    text-align: center;
-  }
+    .vd-block-wrap {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-  /* Keep expert-card in absolute position */
-  .expert-card {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    border-radius: 12px;
-    padding: 16px;
-    min-width: 160px;
-    z-index: 6;
-  }
-  .hero-heading p {
-    font-size: 28px;
-    padding:0;
-            margin-bottom: 4px;
-  }
-  .mj-ev-icon img{
-width: 16px;
-height: 16px;
-}
-.mj-feature-heading{
-font-size: 12px;
-font-style: normal;
-font-weight: 400;
-}
-.herp-desc p{
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-margin-bottom: 10px;
-}
+    .hero-content {
+      z-index: 5;
+      gap: 10px;
+      left: 0;
+      padding: 0 20px;
+      text-align: center;
+    }
 
-  .cta-button {
-   max-width: fit-content;
-    margin: 0 auto;
-    font-size: 18px; 
-  }
+    .expert-card {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      border-radius: 12px;
+      padding: 16px;
+      min-width: 160px;
+      z-index: 6;
+    }
 
-  /* Ensure only mobile video is visible */
-  .desktop-video {
-    display: none;
-  }
-  .mobile-video {
-    display: block;
-  }
+    .hero-heading p {
+      font-size: 28px;
+      padding: 0;
+      margin-bottom: 4px;
+    }
+
+    .mj-ev-icon img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .mj-feature-heading {
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .herp-desc p {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .cta-button {
+      max-width: fit-content;
+      margin: 0 auto;
+      font-size: 18px;
+    }
+
+    .desktop-video {
+      display: none;
+    }
+
+    .mobile-video {
+      display: block;
+    }
 
     .expert-title {
       color: var(--White, #FFF);
-      text-align: center;
       font-family: "Playfair Display";
       font-size: 18px;
       font-style: normal;
       font-weight: 600;
-      line-height: 120%; /* 21.6px */
+      line-height: 120%;
       text-transform: capitalize;
-      margin:0 0 4px;
-      text-align:left;
+      margin: 0 0 4px;
+      text-align: left;
     }
+
     .expert-description {
-        color: var(--White, #FFF);
-        text-align: center;
-        font-family: Outfit !important;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 120%; /* 16.8px */
+      color: var(--White, #FFF);
+      text-align: center;
+      font-family: Outfit !important;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%;
     }
+
     .video-hero-video {
-        width: 100%;
-        height: 100%; 
-        object-fit: cover;
-        display: block;
-        cursor: pointer;
-        min-height: 449px;
-        {% comment %} border-radius:8px; {% endcomment %}
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+      min-height: 449px;
     }
+
     .ms-vedo-wrap {
-      position:relative;
+      position: relative;
     }
+
     .expert-card {
-        position: absolute;
-        left: 50%;
-        bottom: 35%;
-        min-width: 342px;
-        transform: translateX(-50%);
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-        padding:16px;
+      position: absolute;
+      left: 50%;
+      bottom: 35%;
+      min-width: 342px;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
     }
+
     .video-hero-section {
       padding: 20px 0px 0;
     }
-    {% comment %} .video-overlay {
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%) !important;
-    } {% endcomment %}
 
-
-
-}
-
-
+    /* Move pause button on mobile so it doesn't overlap expert card */
+    .video-pause-btn {
+      bottom: auto;
+      top: 12px;
+      right: 12px;
+    }
+  }
 </style>
 
 
-
-<section class="video-hero-section fade-up" data-section-id="{{ section.id }}" data-section-type="video-hero">
+<!-- FIX 5: aria-label on section landmark -->
+<section
+  class="video-hero-section fade-up"
+  data-section-id="{{ section.id }}"
+  data-section-type="video-hero"
+  aria-label="{{ section.settings.heading | strip_html | truncate: 80 }}"
+>
   <div class="video-wrapper">
     <div class="ms-vedo-wrap">
-    {% if section.settings.cs_video != blank %}
-      {% assign video_poster = section.settings.cs_video.preview_image | image_url: width: 1600 %}
 
-      {{ section.settings.cs_video | video_tag: 
-          class: 'video-hero-video', 
-          autoplay: true, 
-          loop: true, 
-          muted: true, 
-          playsinline: true, 
-          controls: false, 
-          preload: 'metadata',
-          poster: video_poster 
-      }}
-    {% endif %}
+      {% if section.settings.cs_video != blank %}
+        {% assign video_poster = section.settings.cs_video.preview_image | image_url: width: 1600 %}
 
-    <div class="video-overlay"> </div>
-  </div>
+        <!-- FIX 2: ARIA attributes added via JS below since video_tag filter does not support them -->
+        {{ section.settings.cs_video | video_tag:
+            class: 'video-hero-video',
+            autoplay: true,
+            loop: true,
+            muted: true,
+            playsinline: true,
+            controls: false,
+            preload: 'metadata',
+            poster: video_poster
+        }}
+      {% endif %}
 
+      <!-- FIX 6: aria-hidden on empty decorative overlay -->
+      <div class="video-overlay" aria-hidden="true"></div>
 
+      <!-- FIX 1: Pause/play button for autoplay video — SC 2.2.2 compliance -->
+      <button
+        class="video-pause-btn"
+        id="video-pause-btn-{{ section.id }}"
+        type="button"
+        aria-label="Pause background video"
+        aria-pressed="false"
+      >
+        <!-- Pause icon (shown when playing) -->
+        <svg class="icon-pause" aria-hidden="true" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="4" width="4" height="16" rx="1"/>
+          <rect x="14" y="4" width="4" height="16" rx="1"/>
+        </svg>
+        <!-- Play icon (shown when paused) -->
+        <svg class="icon-play" aria-hidden="true" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+          <polygon points="5,3 19,12 5,21"/>
+        </svg>
+      </button>
 
+    </div>
 
     <div class="hero-content">
+
+      <!-- Visually hidden description for screen readers linked to video -->
+      <span
+        id="video-hero-desc-{{ section.id }}"
+        style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;"
+      >
+        {{ section.settings.desc | strip_html }}
+      </span>
+
       <h2 class="hero-heading">{{ section.settings.heading }}</h2>
+
+      <!-- FIX 3: alt and title pulled from feature_heading; label text hidden from AT to avoid double-read -->
       <div class="vd-block-wrap">
         {% for block in section.blocks %}
-            <div class="maj-ev-main-wrap">
-              <div class="mj-ev-icon">
-                 <img src="{{ block.settings.feature_icon | image_url: width: 200 }}" loading="lazy" alt="">
-              </div>
-              <div class="mj-feature-content">
-                <div class="mj-feature-heading">{{ block.settings.feature_heading }}</div>
-              </div>
+          <div class="maj-ev-main-wrap">
+            <div class="mj-ev-icon">
+              <img
+                src="{{ block.settings.feature_icon | image_url: width: 200 }}"
+                loading="lazy"
+                alt="{{ block.settings.feature_heading }}"
+                title="{{ block.settings.feature_heading }}"
+                width="42"
+                height="42"
+              >
             </div>
-          {% endfor %}
+            <!-- aria-hidden since alt text on icon already covers this label -->
+            <div class="mj-feature-content">
+              <div class="mj-feature-heading" aria-hidden="true">{{ block.settings.feature_heading }}</div>
+            </div>
+          </div>
+        {% endfor %}
       </div>
+
       <div class="herp-desc">{{ section.settings.desc }}</div>
 
-
+      <!-- FIX 4: aria-label gives full context to screen readers -->
       {% if section.settings.cta_text != blank and section.settings.cta_url != blank %}
-        <a href="{{ section.settings.cta_url }}" class="cta-button">
+        
+          href="{{ section.settings.cta_url }}"
+          class="cta-button"
+          aria-label="{{ section.settings.cta_text }} — {{ section.settings.heading | strip_html }}"
+        >
           {{ section.settings.cta_text }}
         </a>
       {% endif %}
+
     </div>
   </div>
 </section>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const section = document.querySelector('[data-section-id="{{ section.id }}"]');
+  if (!section) return;
+
+  const video = section.querySelector('.video-hero-video');
+  const btn = section.querySelector('#video-pause-btn-{{ section.id }}');
+  if (!video || !btn) return;
+
+  // FIX 2: Add ARIA attributes to video via JS (video_tag filter does not support aria-* attributes)
+  video.setAttribute('aria-label', '{{ section.settings.heading | strip_html | escape }}');
+  video.setAttribute('aria-describedby', 'video-hero-desc-{{ section.id }}');
+  video.setAttribute('role', 'img');
+
+  const iconPause = btn.querySelector('.icon-pause');
+  const iconPlay = btn.querySelector('.icon-play');
+
+  // FIX 1: Toggle pause/play with full ARIA state updates
+  btn.addEventListener('click', function () {
+    if (video.paused) {
+      video.play();
+      btn.setAttribute('aria-pressed', 'false');
+      btn.setAttribute('aria-label', 'Pause background video');
+      iconPause.style.display = '';
+      iconPlay.style.display = 'none';
+    } else {
+      video.pause();
+      btn.setAttribute('aria-pressed', 'true');
+      btn.setAttribute('aria-label', 'Play background video');
+      iconPause.style.display = 'none';
+      iconPlay.style.display = '';
+    }
+  });
+});
+</script>
 
 {% schema %}
 {
@@ -431,12 +527,12 @@ margin-bottom: 10px;
     {
       "type": "richtext",
       "id": "heading",
-      "label": "Heading",
+      "label": "Heading"
     },
     {
       "type": "richtext",
       "id": "desc",
-      "label": "Description",
+      "label": "Description"
     },
     {
       "type": "text",
@@ -468,24 +564,24 @@ margin-bottom: 10px;
       "default": "Best Product for your Mind and Brain"
     }
   ],
-    "blocks": [
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Feature",
+      "settings": [
         {
-          "type": "block",
-          "name": "Feature",
-          "settings": [
-            {
-              "type": "image_picker",
-              "id": "feature_icon",
-              "label": "Feature Icon"
-            },
-            {
-              "type": "text",
-              "id": "feature_heading",
-              "label": "Feature Heading"
-            }
-          ]
+          "type": "image_picker",
+          "id": "feature_icon",
+          "label": "Feature Icon"
+        },
+        {
+          "type": "text",
+          "id": "feature_heading",
+          "label": "Feature Heading"
         }
-      ],
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "Video Hero Section",
