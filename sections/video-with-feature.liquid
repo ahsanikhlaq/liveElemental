@@ -5,174 +5,220 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 <style>
-   /* @keyframes rotateInfinite {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  } */
   .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-      padding-left: {{ section.settings.padding_left }}px;
-      padding-right: {{ section.settings.padding_right }}px;
-      background-color: {{ section.settings.back-color}};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+    background-color: {{ section.settings.back-color }};
   }
 
-  .prod-main-feature-section{
-  display: flex;
-  justify-content: center;
-  {% comment %} align-items: start; {% endcomment %}
-  gap: 40px;
+  .prod-main-feature-section {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
   }
+
   .rating-icon img {
-      display: flex;
+    display: flex;
   }
+
   .feature-produt-left {
-      width: 50%;
-      min-height: 100%;
+    width: 50%;
+    min-height: 100%;
   }
+
   .feature-product-right {
-      width: 50%;
+    width: 50%;
   }
-  .produt-feature-section-main-desc p{
-      color: var(--Black, #171717);
-font-family: Quicksand;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-padding-bottom:20px;
-line-height: normal;
+
+  .produt-feature-section-main-desc p {
+    color: var(--Black, #171717);
+    font-family: Quicksand;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    padding-bottom: 20px;
+    line-height: normal;
     max-width: 620px;
   }
-  .product-feature-section-main-heading p{
-      color: var(--Black, #171717);
-font-family: "League Spartan";
-font-size: 36px;
-font-style: normal;
-font-weight: 600;
-line-height: 36px; /* 100% */
-text-transform: uppercase;
-padding-bottom:8px;
+
+  .product-feature-section-main-heading p {
+    color: var(--Black, #171717);
+    font-family: "League Spartan";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px;
+    text-transform: uppercase;
+    padding-bottom: 8px;
   }
-  .pro-feature-img-main{
-    display:block;
+
+  .pro-feature-img-main {
+    display: block;
     border-radius: 20px;
   }
-    .home-feature-product {
-      display: flex;
-      background: #f0f3ff; /* Light background */
-      border-radius: 12px;
-      padding: 25px;
-      /* max-width: 420px; */
-      align-items: center;
-    }
-    .bottle-images {
-      background: #c3c6cc;
-      border-radius: 12px;
-      margin-right: 20px;
-      width: 200px;
-      /* height: 200px; */
-    }
-    .main-product-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 12px;
-    }
-    .product-details h3 {
-      margin: 0 0 12px 0;
-      color: var(--DARK-GREY, #333232);
-      font-family: Satoshi;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      text-transform: capitalize;
-    }
-    .wrinkle-price-container{
-      margin-bottom: 28px;
-    }
-    .wrinkle-compare-price {
-      text-decoration: line-through;
-      margin-right: 8px;
-      color: #A9A9A9;
-      text-align: right;
-      font-family: Satoshi;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 18px;
-    }
-    .wrinkle-product-price {
-      color: #3B3B3B;
-      text-align: right;
-      font-family: Satoshi;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 18px;
-    }
-    .discount-price {
-      margin-left: 12px;
-      font-weight: 700;
-      color: #5e47ff;
-    }
-   .wrinkle-cart-btn  {
-      background: #3f4fff;
-      border: none;
-      padding: 16px 0;
-      border-radius: 25px;
-      width: 100%;
-      cursor: pointer;
-      color: #FFF;
-      text-align: center;
-      font-family: Satoshi;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 22px;
-      text-transform: uppercase;
-    }
-    .star-rating {
-      margin-bottom: 12px;
-      display: flex;
-      gap: 6px;
-      align-items: center;
-      color: #3B3B3B;
-      text-align: right;
-      font-family: Satoshi;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 18px;
-    }
+
+  .home-feature-product {
+    display: flex;
+    background: #f0f3ff;
+    border-radius: 12px;
+    padding: 25px;
+    align-items: center;
+  }
+
+  .bottle-images {
+    background: #c3c6cc;
+    border-radius: 12px;
+    margin-right: 20px;
+    width: 200px;
+  }
+
+  .main-product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  .product-details h3 {
+    margin: 0 0 12px 0;
+    color: var(--DARK-GREY, #333232);
+    font-family: Satoshi;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+
+  .wrinkle-price-container {
+    margin-bottom: 28px;
+  }
+
+  .wrinkle-compare-price {
+    text-decoration: line-through;
+    margin-right: 8px;
+    color: #A9A9A9;
+    text-align: right;
+    font-family: Satoshi;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+  }
+
+  .wrinkle-product-price {
+    color: #3B3B3B;
+    text-align: right;
+    font-family: Satoshi;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+  }
+
+  .discount-price {
+    margin-left: 12px;
+    font-weight: 700;
+    color: #5e47ff;
+  }
+
+  .wrinkle-cart-btn {
+    background: #3f4fff;
+    border: none;
+    padding: 16px 0;
+    border-radius: 25px;
+    width: 100%;
+    cursor: pointer;
+    color: #FFF;
+    text-align: center;
+    font-family: Satoshi;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    text-transform: uppercase;
+  }
+
+  .star-rating {
+    margin-bottom: 12px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    color: #3B3B3B;
+    text-align: right;
+    font-family: Satoshi;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
   .image-play-icon-vid {
-      position: absolute;
-      top: 50%;
-      max-width: 50px;
-      max-height: 50px;
-      left: 50%;
-      transform: translate(-50%, -50%) !important;
+    position: absolute;
+    top: 50%;
+    max-width: 50px;
+    max-height: 50px;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
   }
+
   .video-wrapper-feature {
-      position: relative;
-      height: 100%;
+    position: relative;
+    height: 100%;
   }
-  .feature-vid{
-    width:100%;
+
+  .feature-vid {
+    width: 100%;
   }
+
   .video-wrapper-feature video {
-      {% comment %} border-radius: 20px; {% endcomment %}
-       display:block;
-       height: 100%;
+    display: block;
+    height: 100%;
     object-fit: fill;
   }
+
+  /* WCAG 2.2.2: pause button for autoplay video */
+  .vid-pause-btn-{{ section.id }} {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .vid-pause-btn-{{ section.id }}:hover {
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .vid-pause-btn-{{ section.id }}:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  .vid-pause-btn-{{ section.id }} svg {
+    width: 14px;
+    height: 14px;
+    fill: #fff;
+  }
+
   .home-list-icon-main {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     gap: 16px;
-}
-.home-feature-lists {
+  }
+
+  .home-feature-lists {
     border: 0.6px solid var(--teal, #00727F);
     background: rgba(140, 156, 110, 0.15);
     display: flex;
@@ -181,122 +227,150 @@ padding-bottom:8px;
     align-items: flex-start;
     gap: 36px;
     align-self: stretch;
-    {% comment %} max-width: 620px; {% endcomment %}
-}
-.home-list-heading p {
+    list-style: none;
+    margin: 0;
+  }
+
+  .home-list-heading p {
     color: var(--Black, #171717);
-    /* text-align: center; */
     font-family: "League Spartan";
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-transform: capitalize;
-}
-.home-list-desc {
+  }
+
+  .home-list-desc {
     color: var(--Black, #171717);
     font-family: Quicksand;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
-}
-.home-features-content {
+  }
+
+  .home-features-content {
     display: flex;
     flex-direction: column;
     gap: 8px;
-}
-.home-list-icon img {
+  }
+
+  .home-list-icon img {
     width: 40px;
     height: 40px;
     display: block;
-}
-  @media screen and (max-width: 768px){
-  .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.mbl_padding_top }}px;
-      padding-bottom: {{ section.settings.mbl_padding_bottom}}px;
-      padding-left: {{ section.settings.mbl_padding_left }}px;
-      padding-right: {{ section.settings.mbl_padding_right}}px;
   }
-    .bottle-images{
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.mbl_padding_top }}px;
+      padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+      padding-left: {{ section.settings.mbl_padding_left }}px;
+      padding-right: {{ section.settings.mbl_padding_right }}px;
+    }
+
+    .bottle-images {
       margin-right: 12px;
     }
-    .feature-produt-left{
-    display:none;
+
+    .feature-produt-left {
+      display: none;
     }
-    .home-feature-lists{
-    padding: 41px 15px;
-    margin: 0 10px;
-    gap:24px;
-}
-  .feature-produt-left {
-      width: 100%;
-  }
-  .feature-product-right {
-      width: 100%;
-  }
-   .prod-main-feature-section{
-    flex-direction: column;
-     gap:24px;
-   }
-  .product-feature-section-main-heading p{
-    font-size: 28px;
-    text-align: center;
-        padding-bottom: 12px;
-  }
-  .produt-feature-section-main-desc p{
-    text-align:center;
-        padding-bottom: 24px;
-  }
-  .rating-icon img{
-    width:56px;
-  }
-  .home-feature-product{
-    padding:15px;
-  }
-  .rating-num{
-    font-size: 12px;
-    line-height: 11.207px;
-  }
-  .product-details h3{
-    font-size: 14px;
-    margin-bottom: 7px;
-  }
-  .wrinkle-product-price{
-    font-size: 12px;
-    line-height: 11.207px;
-  }
-  .wrinkle-compare-price{
-    font-size: 12px;
-    line-height: 11.207px;
-  }
-  .star-rating{
-    margin-bottom:7px;
-    gap:3px;
-  }
-  .wrinkle-price-container{
-        margin-bottom: 17px;
-  }
-  .wrinkle-cart-btn {
-    font-size: 12px;
-    line-height: 13.697px;
-    /* padding: 9px 37px; */
-  }
 
-
-
+    .home-feature-lists {
+      padding: 41px 15px;
+      margin: 0 10px;
+      gap: 24px;
     }
+
+    .feature-produt-left {
+      width: 100%;
+    }
+
+    .feature-product-right {
+      width: 100%;
+    }
+
+    .prod-main-feature-section {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .product-feature-section-main-heading p {
+      font-size: 28px;
+      text-align: center;
+      padding-bottom: 12px;
+    }
+
+    .produt-feature-section-main-desc p {
+      text-align: center;
+      padding-bottom: 24px;
+    }
+
+    .rating-icon img {
+      width: 56px;
+    }
+
+    .home-feature-product {
+      padding: 15px;
+    }
+
+    .rating-num {
+      font-size: 12px;
+      line-height: 11.207px;
+    }
+
+    .product-details h3 {
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .wrinkle-product-price {
+      font-size: 12px;
+      line-height: 11.207px;
+    }
+
+    .wrinkle-compare-price {
+      font-size: 12px;
+      line-height: 11.207px;
+    }
+
+    .star-rating {
+      margin-bottom: 7px;
+      gap: 3px;
+    }
+
+    .wrinkle-price-container {
+      margin-bottom: 17px;
+    }
+
+    .wrinkle-cart-btn {
+      font-size: 12px;
+      line-height: 13.697px;
+    }
+  }
 </style>
 
-<section class="section-{{ section.id }}-padding bounce-up fade-up">
+{% assign section_heading = section.settings['feature-main-heading'] | strip_html %}
+{% assign video_id = 'video-feat-' | append: section.id %}
+{% assign btn_id = 'vid-pause-btn-' | append: section.id %}
+{% assign btn_class = 'vid-pause-btn-' | append: section.id %}
+
+<!-- WCAG 1.3.1: section landmark labelled -->
+<section
+  class="section-{{ section.id }}-padding bounce-up fade-up"
+  aria-label="{{ section_heading | truncate: 80 }}"
+>
   <div class="page-width">
     <div class="prod-main-feature-section">
+
       <div class="feature-produt-left">
         {% if section.settings.video != blank %}
+          <!-- WCAG 2.2.2: autoplay video must have pause control -->
           <div class="video-wrapper-feature">
-            {{
-              section.settings.video
-              | video_tag:
+            {% assign video_id = 'video-feat-' | append: section.id %}
+            {{ section.settings.video | video_tag:
                 class: 'feature-vid',
                 image_size: '1100x',
                 controls: false,
@@ -304,61 +378,107 @@ padding-bottom:8px;
                 autoplay: true,
                 loop: true,
                 playsinline: true,
-                id: 'video1'
+                id: video_id
             }}
+
+            <button
+              class="{{ btn_class }}"
+              id="{{ btn_id }}"
+              type="button"
+              aria-label="Pause video"
+              aria-pressed="false"
+            >
+              <svg class="icon-pause" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+                <rect x="6" y="4" width="4" height="16" rx="1"/>
+                <rect x="14" y="4" width="4" height="16" rx="1"/>
+              </svg>
+              <svg class="icon-play" aria-hidden="true" focusable="false" viewBox="0 0 24 24" style="display:none;">
+                <polygon points="5,3 19,12 5,21"/>
+              </svg>
+            </button>
           </div>
 
-          {% comment %}
-            <div class="video-play-icon-svg-vid" onclick="toggleVideo(this, 'video1')">
-              {{
-                section.settings['play-icon-vid']
-                | image_url: width: 500
-                | image_tag:
-                  widths: '50, 100, 150, 200, 250, 300, 400, 500,600',
-                  alt: 'play icon',
-                  class: 'image-play-icon-vid',
-                  loading: 'lazy'
-              }}
-            </div>
-          {% endcomment %}
         {% else %}
           {% if section.settings['feature-main-image1'] != blank %}
+            <!-- WCAG 1.1.1: meaningful alt text on image -->
             <div class="produc-feature-main-image">
               <img
                 class="pro-feature-img-main"
-                src="{{ section.settings.feature-main-image1 | image_url: width: 1200 }}"
+                src="{{ section.settings['feature-main-image1'] | image_url: width: 1200 }}"
                 loading="lazy"
-                width="100%"
+                alt="{{ section_heading }}"
+                title="{{ section_heading }}"
+                width="1200"
                 height="auto"
               >
             </div>
           {% endif %}
         {% endif %}
       </div>
+
       <div class="feature-product-right">
         <div class="product-feature-section-main-heading">{{ section.settings['feature-main-heading'] }}</div>
         <div class="produt-feature-section-main-desc">{{ section.settings['feature-main-desc'] }}</div>
-        <div class="home-feature-lists">
+
+        <!-- WCAG 1.3.1: semantic list markup -->
+        <ul class="home-feature-lists" role="list">
           {% for block in section.blocks %}
-            <div class="home-list-icon-main">
+            {% assign block_alt = block.settings['features-heading'] | strip_html %}
+            <li class="home-list-icon-main">
               <div class="home-list-icon">
-                <img src="{{ block.settings.image | image_url: width: 200 }}" loading="lazy" alt="">
+                <!-- WCAG 1.1.1: meaningful alt text on icon image -->
+                <img
+                  src="{{ block.settings.image | image_url: width: 200 }}"
+                  loading="lazy"
+                  alt="{{ block_alt }}"
+                  title="{{ block_alt }}"
+                  width="40"
+                  height="40"
+                >
               </div>
               <div class="home-features-content">
                 <div class="home-list-heading">{{ block.settings['features-heading'] }}</div>
                 <div class="home-list-desc">{{ block.settings['features-description'] }}</div>
               </div>
-            </div>
+            </li>
           {% endfor %}
-          {% comment %} <div class="shop-btn">
-            <a href="{{ section.settings.shop_btn }}" class="shop-btn-feature">SHOP NOW</a>
-          </div> {% endcomment %}
-        </div>
+        </ul>
       </div>
+
     </div>
   </div>
 </section>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var video = document.getElementById('{{ video_id }}');
+  var btn = document.getElementById('{{ btn_id }}');
+  if (!video || !btn) return;
+
+  // WCAG 1.1.1: give video a text alternative via aria
+  video.setAttribute('aria-label', '{{ section_heading | escape }}');
+  video.setAttribute('role', 'img');
+
+  var iconPause = btn.querySelector('.icon-pause');
+  var iconPlay = btn.querySelector('.icon-play');
+
+  btn.addEventListener('click', function () {
+    if (video.paused) {
+      video.play();
+      btn.setAttribute('aria-pressed', 'false');
+      btn.setAttribute('aria-label', 'Pause video');
+      iconPause.style.display = '';
+      iconPlay.style.display = 'none';
+    } else {
+      video.pause();
+      btn.setAttribute('aria-pressed', 'true');
+      btn.setAttribute('aria-label', 'Play video');
+      iconPause.style.display = 'none';
+      iconPlay.style.display = '';
+    }
+  });
+});
+</script>
 
 {% schema %}
 {
@@ -468,7 +588,7 @@ padding-bottom:8px;
       "type": "image_picker",
       "id": "play-icon-vid",
       "label": "Play Icon"
-    },
+    }
   ],
   "blocks": [
     {
