@@ -4,10 +4,7 @@
     width: 100%;
   }
 
-  .video-wrapper {
-    position: relative;
-    width: 100%;
-  }
+  .video-wrapper { position: relative; width: 100%; }
 
   .video-hero-video {
     width: 100%;
@@ -30,10 +27,9 @@
     gap: 16px;
   }
 
-  .hero-heading {
-    margin: 0;
-  }
+  .hero-heading { margin: 0; }
 
+  .hero-heading,
   .hero-heading p {
     color: var(--White, #FFF);
     font-family: "League Spartan";
@@ -83,17 +79,9 @@
     margin-top: 8px;
   }
 
-  .cta-button:hover {
-    background: #6B5B4C;
-    transform: translateY(-2px);
-  }
+  .cta-button:hover { background: #6B5B4C; transform: translateY(-2px); }
+  .cta-button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
-  .cta-button:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 2px;
-  }
-
-  /* FIX 1: Pause button for autoplay video */
   .video-pause-btn {
     position: absolute;
     bottom: 16px;
@@ -109,22 +97,11 @@
     justify-content: center;
     cursor: pointer;
     transition: background 0.3s ease;
+    padding: 0;
   }
-
-  .video-pause-btn:hover {
-    background: rgba(0,0,0,0.8);
-  }
-
-  .video-pause-btn:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 2px;
-  }
-
-  .video-pause-btn svg {
-    width: 16px;
-    height: 16px;
-    fill: #fff;
-  }
+  .video-pause-btn:hover { background: rgba(0,0,0,0.8); }
+  .video-pause-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .video-pause-btn svg { width: 16px; height: 16px; fill: #fff; }
 
   .expert-card {
     position: absolute;
@@ -149,7 +126,6 @@
     line-height: 130%;
     margin-bottom: 12px;
   }
-
   .expert-title {
     color: var(--White, #FFF);
     text-align: center;
@@ -161,7 +137,6 @@
     text-transform: capitalize;
     margin-bottom: 8px;
   }
-
   .expert-description {
     color: var(--White, #FFF);
     text-align: center;
@@ -174,24 +149,9 @@
     letter-spacing: 0px;
   }
 
-  .mj-ev-icon img {
-    width: 42px;
-    height: 42px;
-    display: block;
-  }
-
-  .vd-block-wrap {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .maj-ev-main-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-  }
+  .mj-ev-icon img { width: 42px; height: 42px; display: block; }
+  .vd-block-wrap { display: flex; align-items: center; gap: 16px; }
+  .maj-ev-main-wrap { display: flex; justify-content: center; align-items: center; gap: 8px; }
 
   .mj-feature-heading {
     color: var(--White, #FFF);
@@ -202,132 +162,75 @@
     font-family: "League Spartan";
   }
 
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    padding: 0;
+    margin: -1px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-button:hover { transform: none; }
+  }
+
   @media (max-width: 768px) {
-    .hero-heading {
-      font-size: 28px;
-    }
-
-    .expert-card {
-      right: 20px;
-      bottom: 20px;
-      padding: 16px;
-      min-width: 160px;
-    }
-
-    .expert-number {
-      font-size: 40px;
-      margin: 0px;
-    }
-
-    .desktop-video {
-      display: none;
-    }
-
-    .mobile-video {
-      display: block;
-    }
+    .hero-heading { font-size: 28px; }
+    .expert-card { right: 20px; bottom: 20px; padding: 16px; min-width: 160px; }
+    .expert-number { font-size: 40px; margin: 0px; }
+    .desktop-video { display: none; }
+    .mobile-video { display: block; }
   }
 
   @media (min-width: 769px) {
-    .mobile-video {
-      display: none;
-    }
-
-    .desktop-video {
-      display: block;
-    }
+    .mobile-video { display: none; }
+    .desktop-video { display: block; }
   }
 
   @media (max-width: 767px) {
-    .video-wrapper {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .vd-block-wrap {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
+    .video-wrapper { display: flex; flex-direction: column; position: relative; }
+    .vd-block-wrap { flex-wrap: wrap; justify-content: center; }
     .hero-content {
-      z-index: 5;
-      gap: 10px;
-      left: 0;
-      padding: 0 20px;
-      text-align: center;
+      z-index: 5; gap: 10px; left: 0; padding: 0 20px; text-align: center;
     }
-
     .expert-card {
       position: absolute;
-      right: 20px;
-      bottom: 20px;
+      right: 20px; bottom: 20px;
       border-radius: 12px;
       padding: 16px;
       min-width: 160px;
       z-index: 6;
     }
-
-    .hero-heading p {
-      font-size: 28px;
-      padding: 0;
-      margin-bottom: 4px;
-    }
-
-    .mj-ev-icon img {
-      width: 16px;
-      height: 16px;
-    }
-
-    .mj-feature-heading {
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 400;
-    }
-
-    .herp-desc p {
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    .cta-button {
-      max-width: fit-content;
-      margin: 0 auto;
-      font-size: 18px;
-    }
-
-    .desktop-video {
-      display: none;
-    }
-
-    .mobile-video {
-      display: block;
-    }
-
+    .hero-heading,
+    .hero-heading p { font-size: 28px; padding: 0; margin-bottom: 4px; }
+    .mj-ev-icon img { width: 16px; height: 16px; }
+    .mj-feature-heading { font-size: 12px; font-weight: 400; }
+    .herp-desc p { font-size: 14px; font-weight: 500; margin-bottom: 10px; }
+    .cta-button { max-width: fit-content; margin: 0 auto; font-size: 18px; }
+    .desktop-video { display: none; }
+    .mobile-video { display: block; }
     .expert-title {
       color: var(--White, #FFF);
       font-family: "Playfair Display";
       font-size: 18px;
-      font-style: normal;
       font-weight: 600;
       line-height: 120%;
       text-transform: capitalize;
       margin: 0 0 4px;
       text-align: left;
     }
-
     .expert-description {
       color: var(--White, #FFF);
       text-align: center;
       font-family: Outfit !important;
       font-size: 14px;
-      font-style: normal;
       font-weight: 400;
       line-height: 120%;
     }
-
     .video-hero-video {
       width: 100%;
       height: 100%;
@@ -336,11 +239,7 @@
       cursor: pointer;
       min-height: 449px;
     }
-
-    .ms-vedo-wrap {
-      position: relative;
-    }
-
+    .ms-vedo-wrap { position: relative; }
     .expert-card {
       position: absolute;
       left: 50%;
@@ -353,36 +252,33 @@
       gap: 12px;
       padding: 16px;
     }
-
-    .video-hero-section {
-      padding: 20px 0px 0;
-    }
-
-    /* Move pause button on mobile so it doesn't overlap expert card */
-    .video-pause-btn {
-      bottom: auto;
-      top: 12px;
-      right: 12px;
-    }
+    .video-hero-section { padding: 20px 0px 0; }
+    .video-pause-btn { bottom: auto; top: 12px; right: 12px; }
   }
 </style>
 
+{%- liquid
+  assign heading_plain = section.settings.heading | strip_html | strip
+  assign desc_plain = section.settings.desc | strip_html | strip
+  assign cta_text = section.settings.cta_text | strip
+-%}
 
-<!-- FIX 5: aria-label on section landmark -->
 <section
   class="video-hero-section fade-up"
   data-section-id="{{ section.id }}"
   data-section-type="video-hero"
-  aria-label="{{ section.settings.heading | strip_html | truncate: 80 }}"
+  {% if heading_plain != blank %}
+    aria-label="{{ heading_plain | truncate: 80 | escape }}"
+  {% endif %}
 >
   <div class="video-wrapper">
     <div class="ms-vedo-wrap">
 
       {% if section.settings.cs_video != blank %}
         {% assign video_poster = section.settings.cs_video.preview_image | image_url: width: 1600 %}
-
-        <!-- FIX 2: ARIA attributes added via JS below since video_tag filter does not support them -->
-        {{ section.settings.cs_video | video_tag:
+        {{
+          section.settings.cs_video
+          | video_tag:
             class: 'video-hero-video',
             autoplay: true,
             loop: true,
@@ -394,74 +290,85 @@
         }}
       {% endif %}
 
-      <!-- FIX 6: aria-hidden on empty decorative overlay -->
       <div class="video-overlay" aria-hidden="true"></div>
 
-      <!-- FIX 1: Pause/play button for autoplay video — SC 2.2.2 compliance -->
-      <button
-        class="video-pause-btn"
-        id="video-pause-btn-{{ section.id }}"
-        type="button"
-        aria-label="Pause background video"
-        aria-pressed="false"
-      >
-        <!-- Pause icon (shown when playing) -->
-        <svg class="icon-pause" aria-hidden="true" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="4" width="4" height="16" rx="1"/>
-          <rect x="14" y="4" width="4" height="16" rx="1"/>
-        </svg>
-        <!-- Play icon (shown when paused) -->
-        <svg class="icon-play" aria-hidden="true" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none;">
-          <polygon points="5,3 19,12 5,21"/>
-        </svg>
-      </button>
+      {% if section.settings.cs_video != blank %}
+        <button
+          class="video-pause-btn"
+          id="video-pause-btn-{{ section.id }}"
+          type="button"
+          aria-label="Pause background video"
+          aria-pressed="false"
+        >
+          <svg class="icon-pause" aria-hidden="true" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="4" width="4" height="16" rx="1"/>
+            <rect x="14" y="4" width="4" height="16" rx="1"/>
+          </svg>
+          <svg class="icon-play" aria-hidden="true" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+            <polygon points="5,3 19,12 5,21"/>
+          </svg>
+        </button>
+      {% endif %}
 
     </div>
 
     <div class="hero-content">
 
-      <!-- Visually hidden description for screen readers linked to video -->
-      <span
-        id="video-hero-desc-{{ section.id }}"
-        style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;"
-      >
-        {{ section.settings.desc | strip_html }}
-      </span>
+      {% if desc_plain != blank %}
+        <span id="video-hero-desc-{{ section.id }}" class="visually-hidden">
+          {{ desc_plain | escape }}
+        </span>
+      {% endif %}
 
-      <h2 class="hero-heading">{{ section.settings.heading }}</h2>
+      {% if heading_plain != blank %}
+        <h2 class="hero-heading">{{ heading_plain | escape }}</h2>
+      {% endif %}
 
-      <!-- FIX 3: alt and title pulled from feature_heading; label text hidden from AT to avoid double-read -->
-      <div class="vd-block-wrap">
-        {% for block in section.blocks %}
-          <div class="maj-ev-main-wrap">
-            <div class="mj-ev-icon">
-              <img
-                src="{{ block.settings.feature_icon | image_url: width: 200 }}"
-                loading="lazy"
-                alt="{{ block.settings.feature_heading }}"
-                title="{{ block.settings.feature_heading }}"
-                width="42"
-                height="42"
-              >
+      {% if section.blocks.size > 0 %}
+        <div class="vd-block-wrap" role="list">
+          {% for block in section.blocks %}
+            {%- liquid
+              assign feat_label = block.settings.feature_heading | strip
+              if feat_label == blank
+                assign feat_label = 'Feature ' | append: forloop.index
+              endif
+              assign feat_alt = block.settings.feature_icon.alt | default: feat_label
+            -%}
+            <div class="maj-ev-main-wrap" role="listitem" {{ block.shopify_attributes }}>
+              {% if block.settings.feature_icon != blank %}
+                <div class="mj-ev-icon">
+                  <img
+                    src="{{ block.settings.feature_icon | image_url: width: 200 }}"
+                    loading="lazy"
+                    width="42"
+                    height="42"
+                    alt="{{ feat_alt | escape }}"
+                  >
+                </div>
+              {% endif %}
+              {% if block.settings.feature_heading != blank %}
+                <div class="mj-feature-content">
+                  <div class="mj-feature-heading" aria-hidden="true">
+                    {{ block.settings.feature_heading | escape }}
+                  </div>
+                </div>
+              {% endif %}
             </div>
-            <!-- aria-hidden since alt text on icon already covers this label -->
-            <div class="mj-feature-content">
-              <div class="mj-feature-heading" aria-hidden="true">{{ block.settings.feature_heading }}</div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+          {% endfor %}
+        </div>
+      {% endif %}
 
-      <div class="herp-desc">{{ section.settings.desc }}</div>
+      {% if section.settings.desc != blank %}
+        <div class="herp-desc">{{ section.settings.desc }}</div>
+      {% endif %}
 
-      <!-- FIX 4: aria-label gives full context to screen readers -->
-      {% if section.settings.cta_text != blank and section.settings.cta_url != blank %}
-        
+      {% if cta_text != blank and section.settings.cta_url != blank %}
+        <a
           href="{{ section.settings.cta_url }}"
           class="cta-button"
-          aria-label="{{ section.settings.cta_text }} — {{ section.settings.heading | strip_html }}"
+          aria-label="{{ cta_text | append: ' — ' | append: heading_plain | strip | escape }}"
         >
-          {{ section.settings.cta_text }}
+          {{ cta_text | escape }}
         </a>
       {% endif %}
 
@@ -470,123 +377,87 @@
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const section = document.querySelector('[data-section-id="{{ section.id }}"]');
-  if (!section) return;
+  document.addEventListener('DOMContentLoaded', function () {
+    var section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
 
-  const video = section.querySelector('.video-hero-video');
-  const btn = section.querySelector('#video-pause-btn-{{ section.id }}');
-  if (!video || !btn) return;
+    var video = section.querySelector('.video-hero-video');
+    var btn = section.querySelector('#video-pause-btn-{{ section.id }}');
+    if (!video || !btn) return;
 
-  // FIX 2: Add ARIA attributes to video via JS (video_tag filter does not support aria-* attributes)
-  video.setAttribute('aria-label', '{{ section.settings.heading | strip_html | escape }}');
-  video.setAttribute('aria-describedby', 'video-hero-desc-{{ section.id }}');
-  video.setAttribute('role', 'img');
+    video.setAttribute('aria-label', {{ heading_plain | json }});
+    {% if desc_plain != blank %}
+      video.setAttribute('aria-describedby', 'video-hero-desc-{{ section.id }}');
+    {% endif %}
+    video.setAttribute('role', 'img');
 
-  const iconPause = btn.querySelector('.icon-pause');
-  const iconPlay = btn.querySelector('.icon-play');
+    var iconPause = btn.querySelector('.icon-pause');
+    var iconPlay = btn.querySelector('.icon-play');
 
-  // FIX 1: Toggle pause/play with full ARIA state updates
-  btn.addEventListener('click', function () {
-    if (video.paused) {
-      video.play();
-      btn.setAttribute('aria-pressed', 'false');
-      btn.setAttribute('aria-label', 'Pause background video');
-      iconPause.style.display = '';
-      iconPlay.style.display = 'none';
-    } else {
-      video.pause();
-      btn.setAttribute('aria-pressed', 'true');
-      btn.setAttribute('aria-label', 'Play background video');
-      iconPause.style.display = 'none';
-      iconPlay.style.display = '';
+    function setPaused(paused) {
+      if (paused) {
+        btn.setAttribute('aria-pressed', 'true');
+        btn.setAttribute('aria-label', 'Play background video');
+        iconPause.style.display = 'none';
+        iconPlay.style.display = '';
+      } else {
+        btn.setAttribute('aria-pressed', 'false');
+        btn.setAttribute('aria-label', 'Pause background video');
+        iconPause.style.display = '';
+        iconPlay.style.display = 'none';
+      }
+    }
+
+    btn.addEventListener('click', function () {
+      if (video.paused) { video.play(); setPaused(false); }
+      else              { video.pause(); setPaused(true); }
+    });
+
+    // Respect prefers-reduced-motion (WCAG 2.3.3)
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function applyMotionPref() {
+      if (reduceMotion.matches) {
+        video.pause();
+        video.removeAttribute('autoplay');
+        setPaused(true);
+      }
+    }
+    applyMotionPref();
+    if (reduceMotion.addEventListener) {
+      reduceMotion.addEventListener('change', applyMotionPref);
+    } else if (reduceMotion.addListener) {
+      reduceMotion.addListener(applyMotionPref);
     }
   });
-});
 </script>
 
 {% schema %}
 {
   "name": "Video Hero Section",
   "settings": [
-    {
-      "type": "video",
-      "id": "cs_video",
-      "label": "Upload Video File"
-    },
-    {
-      "type": "image_picker",
-      "id": "desktop_poster",
-      "label": "Desktop Poster Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "mobile_poster",
-      "label": "Mobile Poster Image"
-    },
-    {
-      "type": "richtext",
-      "id": "heading",
-      "label": "Heading"
-    },
-    {
-      "type": "richtext",
-      "id": "desc",
-      "label": "Description"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "Button Text",
-      "default": "SHOP NOW"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "Button Link"
-    },
-    {
-      "type": "text",
-      "id": "expert_number",
-      "label": "Expert Number",
-      "default": "#1"
-    },
-    {
-      "type": "text",
-      "id": "expert_title",
-      "label": "Expert Title",
-      "default": "Expert Recommended"
-    },
-    {
-      "type": "text",
-      "id": "expert_description",
-      "label": "Expert Description",
-      "default": "Best Product for your Mind and Brain"
-    }
+    { "type": "video", "id": "cs_video", "label": "Upload Video File" },
+    { "type": "image_picker", "id": "desktop_poster", "label": "Desktop Poster Image" },
+    { "type": "image_picker", "id": "mobile_poster", "label": "Mobile Poster Image" },
+    { "type": "richtext", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "desc", "label": "Description" },
+    { "type": "text", "id": "cta_text", "label": "Button Text", "default": "SHOP NOW" },
+    { "type": "url", "id": "cta_url", "label": "Button Link" },
+    { "type": "text", "id": "expert_number", "label": "Expert Number", "default": "#1" },
+    { "type": "text", "id": "expert_title", "label": "Expert Title", "default": "Expert Recommended" },
+    { "type": "text", "id": "expert_description", "label": "Expert Description", "default": "Best Product for your Mind and Brain" }
   ],
   "blocks": [
     {
       "type": "block",
       "name": "Feature",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "feature_icon",
-          "label": "Feature Icon"
-        },
-        {
-          "type": "text",
-          "id": "feature_heading",
-          "label": "Feature Heading"
-        }
+        { "type": "image_picker", "id": "feature_icon", "label": "Feature Icon" },
+        { "type": "text", "id": "feature_heading", "label": "Feature Heading" }
       ]
     }
   ],
   "presets": [
-    {
-      "name": "Video Hero Section",
-      "category": "Custom"
-    }
+    { "name": "Video Hero Section", "category": "Custom" }
   ]
 }
 {% endschema %}
