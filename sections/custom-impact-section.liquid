@@ -1,326 +1,314 @@
 <style>
   .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-      background-color: {{ section.settings.back_color }};
-      position: relative;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.back_color }};
+    position: relative;
   }
-  .imp-wrap{
-   {% comment %} padding: 157px 82.426px 157.936px 83px; {% endcomment %}
-  padding: 57px 82.426px 57.936px 83px;
-  }
-  .imp-defusr-wrap{
-   padding: 120px 82.426px 120px 83px;
-  }
+  .imp-wrap { padding: 57px 82.426px 57.936px 83px; }
+  .imp-defusr-wrap { padding: 120px 82.426px 120px 83px; }
+
   .im-es-content h4 {
-      text-align: left;
-      color: var(--White, #FFF);
-      font-family: "League Spartan";
-      font-size: 40px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      padding: 0 0 30px;
-      margin: 0;
+    text-align: left;
+    color: var(--White, #FFF);
+    font-family: "League Spartan";
+    font-size: 40px;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0 0 30px;
+    margin: 0;
   }
 
-  .imp-btm-text{
-  color: var(--White, #FFF);
-  font-family: Quicksand;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 22px;
-  max-width:400px;
+  .imp-btm-text {
+    color: var(--White, #FFF);
+    font-family: Quicksand;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    max-width: 400px;
   }
   .impact-tabs-wrapper {
-      display: flex;
-      gap: 40px;
-      position: relative;
-      z-index: 1;
-      justify-content: space-between;
+    display: flex;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+    justify-content: space-between;
   }
-  .im-es-content p{
-      color: var(--White, #FFF);
-      font-family: Quicksand;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 22px;
-      max-width: 550px;
+  .im-es-content p {
+    color: var(--White, #FFF);
+    font-family: Quicksand;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    max-width: 550px;
   }
-  .im-head-content{
-      color: #FFFFFF;
-      font-family: "League Spartan";
-      font-size: 36px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-      text-transform: uppercase;
-      text-align: left;
-      padding-bottom: 25px;
+  .im-head-content {
+    color: #FFFFFF;
+    font-family: "League Spartan";
+    font-size: 36px;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: left;
+    padding-bottom: 25px;
+    margin: 0;
   }
   .impact-tabs-left {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-  }
-
-  .impact-tabs-list {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .impact-tab-label {
-      color: {{ section.settings.tab_text_color }};
-      font-size: {{ section.settings.tab_font_size }}px;
-      font-weight: {{ section.settings.tab_font_weight }};
-      margin-bottom: 24px;
-      font-family: "League Spartan";
-      text-transform: uppercase;
-      letter-spacing: 0;
-      transition: all 0.3s ease;
+    color: {{ section.settings.tab_text_color }};
+    font-size: {{ section.settings.tab_font_size }}px;
+    font-weight: {{ section.settings.tab_font_weight }};
+    margin-bottom: 24px;
+    font-family: "League Spartan";
+    text-transform: uppercase;
+    letter-spacing: 0;
+    transition: all 0.3s ease;
   }
 
   .impact-tab-button {
-      display: block;
-      width: 100%;
-      text-align: left;
-      background: none;
-      border: none;
-      color: var(--White, #FFF);
-      font-family: "League Spartan";
-      font-size: 40px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      padding: 0 0 16px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      opacity: 0.5;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: var(--White, #FFF);
+    font-family: "League Spartan";
+    font-size: 40px;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0 0 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.5;
+  }
+  .impact-tab-button:hover { opacity: 0.8; }
+  .impact-tab-button[aria-selected="true"] {
+    opacity: 1;
+    color: {{ section.settings.active_tab_color }};
+  }
+  .impact-tab-button:focus-visible {
+    outline: 2px solid {{ section.settings.active_tab_color }};
+    outline-offset: 2px;
   }
 
-  .impact-tab-button:hover {
-      opacity: 0.8;
-  }
-
-  .impact-tab-button.active {
-      opacity: 1;
-      color: {{ section.settings.active_tab_color }};
-  }
-
-  .impact-tabs-right {
-      position: relative;
-  }
+  .impact-tabs-right { position: relative; }
 
   .impact-tab-content {
-      display: none;
-      animation: fadeIn 0.5s ease;
+    animation: fadeIn 0.5s ease;
   }
-
-  .impact-tab-content.active {
-      display: block;
+  .impact-tab-content[hidden] { display: none !important; }
+  .impact-tab-content:focus-visible {
+    outline: 2px solid {{ section.settings.active_tab_color }};
+    outline-offset: 2px;
   }
-
   .impact-tab-content img {
-      height: auto;
-      width:100%;
-      max-width: 568px;
-      min-height: 404px;
+    height: auto;
+    width: 100%;
+    max-width: 568px;
+    min-height: 404px;
   }
 
   @keyframes fadeIn {
-      from {
-          opacity: 0;
-          transform: translateY(10px);
-      }
-      to {
-          opacity: 1;
-          transform: translateY(0);
-      }
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
-  .content_image{
-  display:block;
+  @media (prefers-reduced-motion: reduce) {
+    .impact-tab-content { animation: none; }
+    .impact-tab-button { transition: none; }
   }
-  .content_image_mbl{
-  display:none;
-  }
-  .mbl-righ-txt{
-  display:none;
-  }
+
+  .content_image { display: block; }
+  .content_image_mbl { display: none; }
+  .mbl-righ-txt { display: none; }
+
   @media screen and (max-width: 768px) {
-      .section-{{ section.id }}-padding {
-          padding-top: {{ section.settings.mbl_padding_top }}px;
-          padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
-          {% if section.settings.show_background_on_mobile == false %}
-          background-image: none !important;
-          {% endif %}
-      }
-      .impact-tab-button.active{
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.mbl_padding_top }}px;
+      padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+      {% if section.settings.show_background_on_mobile == false %}
+        background-image: none !important;
+      {% endif %}
+    }
+    .impact-tab-button[aria-selected="true"] { color: var(--Black, #171717); }
+    .mbl-righ-txt {
+      display: block;
       color: var(--Black, #171717);
-      }
-      .mbl-righ-txt{
-  display:block;
-  color: var(--Black, #171717);
-  text-align: center;
+      text-align: center;
+      font-family: Quicksand;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+    .content_image { display: none; }
+    .content_image_mbl { display: block; }
+    .imp-wrap, .imp-defusr-wrap { padding: 0; }
+    .impact-tab-label { padding-left: 10px; }
+    .impact-tab-content { padding: 16px 10px; }
 
-  /* Body/Medium/14 */
-  font-family: Quicksand;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px; /* 142.857% */
-  }
-      .content_image{
-  display:none;
-  }
-  .content_image_mbl{
-  display:block;
-  }
-  .imp-wrap {
-  padding:0;
-  }
-  .imp-defusr-wrap{
-   padding: 0;
-  }
-  .impact-tab-label{
-  {% comment %} display:none; {% endcomment %}
-  padding-left: 10px;
-  }
-      .impact-tab-content{
-      padding: 16px 10px;
-      }
+    .impact-tabs-wrapper { flex-direction: column-reverse; gap: 0; }
+    .impact-tabs-left { order: 2; margin-top: 20px; padding: 0 10px; }
+    .impact-tabs-right { order: 1; width: 100%; }
 
-      .impact-tabs-wrapper {
-          flex-direction: column-reverse;
-          gap: 0;
-      }
+    .impact-tabs-list {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 14px;
+    }
+    .impact-tabs-list::-webkit-scrollbar { display: none; }
 
-      .impact-tabs-left {
-          order: 2;
-          margin-top: 20px;
-          padding: 0 10px;
-      }
-
-      .impact-tabs-right {
-          order: 1;
-          width: 100%;
-      }
-
-      .impact-tabs-list {
-          display: flex;
-          gap: 10px;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-          scrollbar-width: none;
-          padding-bottom: 14px;
-      }
-
-      .impact-tabs-list::-webkit-scrollbar {
-          display: none;
-      }
-
-      .impact-tab-button {
-          font-size: {{ section.settings.mbl_tab_button_size }}px;
-          padding: 0;
-          white-space: nowrap;
-          {% comment %} flex-shrink: 0; {% endcomment %}
-           color: var(--Grey, #797979);
-      }
-
-      .impact-tab-content img {
-          max-width: 100%;
-          min-height: unset;
-          {% comment %} border-radius: 8px; {% endcomment %}
-      }
-
-      .imp-btm-text {
-         color: var(--Black, #171717);
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 20px;
-          {% comment %} margin-top: 16px; {% endcomment %}
-      }
-      .im-es-content h4{
-      font-size: 33px;
-      }
+    .impact-tab-button {
+      font-size: {{ section.settings.mbl_tab_button_size }}px;
+      padding: 0;
+      white-space: nowrap;
+      color: var(--Grey, #797979);
+    }
+    .impact-tab-content img { max-width: 100%; min-height: unset; }
+    .imp-btm-text {
+      color: var(--Black, #171717);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+    .im-es-content h4 { font-size: 33px; }
   }
 </style>
 
+{%- liquid
+  assign label_plain = section.settings.tab_label | strip
+  assign main_head_plain = section.settings.imp_main_head | strip_html | strip
+  assign bg_image = section.settings.background_image
+-%}
+
 <section
   class="section-{{ section.id }}-padding"
-  {% if section.settings.background_image != blank %}
-    style="background-image: url('{{ section.settings.background_image | img_url: 'master' }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+  {% if main_head_plain != blank %}
+    aria-labelledby="impact-heading-{{ section.id }}"
+  {% else %}
+    aria-label="{{ label_plain | default: 'Product features' | escape }}"
+  {% endif %}
+  {% if bg_image != blank %}
+    style="background-image: url('{{ bg_image | image_url: width: 2400 }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
   {% endif %}
 >
   <div class="page-width">
     <div class="{% if template.suffix == 'car-deffuser' %}imp-defusr-wrap{% else %}imp-wrap{% endif %}">
-      <p class="impact-tab-label" id="dynamic-tab-label">{{ section.settings.tab_label }}</p>
+
+      <p class="impact-tab-label" id="dynamic-tab-label-{{ section.id }}" aria-live="polite">
+        {{ section.settings.tab_label | escape }}
+      </p>
+
       <div class="impact-tabs-wrapper">
-        <!-- Left Side: Tabs -->
+
         <div class="impact-tabs-left">
-            <div class="impact-tabs-list">
-              {% for block in section.blocks %}
-                <button
-                  class="impact-tab-button {% if forloop.first %}active{% endif %}"
-                  data-tab="tab-{{ block.id }}"
-                  data-label="{{ block.settings.tab_label_text }}"
-                  data-bottom-text="{{ block.settings.tab_bottom_text }}"
-                  type="button"
-                >
-                  {{ block.settings.tab_title }}
-                </button>
-              {% endfor %}
-            </div>
-          <div class="imp-btm-text" id="dynamic-bottom-text">
+          <div
+            class="impact-tabs-list"
+            role="tablist"
+            aria-label="{{ label_plain | default: 'Product features' | escape }}"
+          >
+            {% for block in section.blocks %}
+              {%- liquid
+                assign tab_title = block.settings.tab_title | strip
+                if tab_title == blank
+                  assign tab_title = 'Tab ' | append: forloop.index
+                endif
+              -%}
+              <button
+                type="button"
+                role="tab"
+                id="impact-tab-{{ section.id }}-{{ block.id }}"
+                aria-controls="impact-panel-{{ section.id }}-{{ block.id }}"
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+                class="impact-tab-button"
+                data-tab="impact-panel-{{ section.id }}-{{ block.id }}"
+                data-label="{{ block.settings.tab_label_text | escape }}"
+                data-bottom-text="{{ block.settings.tab_bottom_text | escape }}"
+                {{ block.shopify_attributes }}
+              >
+                {{ tab_title | escape }}
+              </button>
+            {% endfor %}
+          </div>
+
+          <div class="imp-btm-text" id="dynamic-bottom-text-{{ section.id }}" aria-live="polite">
             {% if section.blocks.first.settings.tab_bottom_text != blank %}
-              {{ section.blocks.first.settings.tab_bottom_text }}
+              {{ section.blocks.first.settings.tab_bottom_text | escape }}
             {% else %}
-              {{ section.settings['imp-bottom-txt'] }}
+              {{ section.settings['imp-bottom-txt'] | escape }}
             {% endif %}
           </div>
 
-          {% if section.settings.imp_main_desc != blank %}
+          {% if section.settings.imp_main_desc != blank or main_head_plain != blank %}
             <div class="imp-main-des">
               {% if section.settings.imp_main_head != blank %}
-                <div class="im-head-content">{{ section.settings.imp_main_head }}</div>
+                <h2 id="impact-heading-{{ section.id }}" class="im-head-content">
+                  {{ section.settings.imp_main_head }}
+                </h2>
               {% endif %}
-              <div class="im-es-content">{{ section.settings.imp_main_desc }}</div>
+              {% if section.settings.imp_main_desc != blank %}
+                <div class="im-es-content">{{ section.settings.imp_main_desc }}</div>
+              {% endif %}
             </div>
           {% endif %}
         </div>
 
-        <!-- Right Side: Tab Content -->
         <div class="impact-tabs-right">
           <div class="imp-rigt-wrap">
             {% for block in section.blocks %}
+              {%- liquid
+                assign tab_title = block.settings.tab_title | strip
+                if tab_title == blank
+                  assign tab_title = 'Tab ' | append: forloop.index
+                endif
+                assign desktop_img = block.settings.content_image
+                assign mobile_img = block.settings.content_image_mbl
+                assign desktop_alt = desktop_img.alt | default: tab_title
+              -%}
               <div
-                class="impact-tab-content {% if forloop.first %}active{% endif %}"
-                id="tab-{{ block.id }}"
+                class="impact-tab-content"
+                role="tabpanel"
+                id="impact-panel-{{ section.id }}-{{ block.id }}"
+                aria-labelledby="impact-tab-{{ section.id }}-{{ block.id }}"
+                tabindex="0"
+                {% unless forloop.first %}hidden{% endunless %}
               >
-                {% if block.settings.content_image != blank %}
+                {% if desktop_img != blank %}
                   <img
                     class="content_image"
-                    src="{{ block.settings.content_image | img_url: '' }}"
-                    alt="{{ block.settings.tab_title }}"
-                    width="100%"
-                    height="100%"
+                    src="{{ desktop_img | image_url: width: 1200 }}"
+                    width="{{ desktop_img.width }}"
+                    height="{{ desktop_img.height }}"
+                    alt="{{ desktop_alt | escape }}"
+                    loading="lazy"
                   >
                 {% endif %}
-                {% if block.settings.content_image_mbl != blank %}
+                {% if mobile_img != blank %}
                   <img
                     class="content_image_mbl"
-                    src="{{ block.settings.content_image_mbl | img_url: '' }}"
-                    alt="{{ block.settings.tab_title }}"
-                    width="100%"
-                    height="100%"
+                    src="{{ mobile_img | image_url: width: 800 }}"
+                    width="{{ mobile_img.width }}"
+                    height="{{ mobile_img.height }}"
+                    alt=""
+                    loading="lazy"
                   >
                 {% endif %}
               </div>
             {% endfor %}
           </div>
-          <div class="mbl-righ-txt">{{ section.settings['mbl-right-txt'] }}</div>
+
+          {% if section.settings['mbl-right-txt'] != blank %}
+            <div class="mbl-righ-txt">{{ section.settings['mbl-right-txt'] | escape }}</div>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -328,286 +316,118 @@
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const tabButtons = document.querySelectorAll('.impact-tab-button');
-    const dynamicLabel = document.getElementById('dynamic-tab-label');
-    const dynamicBottomText = document.getElementById('dynamic-bottom-text');
+  (function () {
+    var sectionEl = document.getElementById('dynamic-tab-label-{{ section.id }}');
+    if (!sectionEl) return;
+    var root = sectionEl.closest('.section-{{ section.id }}-padding');
+    if (!root) return;
 
-    tabButtons.forEach((button) => {
-      // Hover event for desktop
-      button.addEventListener('mouseenter', function () {
-        // Only trigger hover on desktop (screen width > 768px)
-        if (window.innerWidth > 768) {
-          const targetTab = this.getAttribute('data-tab');
-          const labelText = this.getAttribute('data-label');
-          const bottomText = this.getAttribute('data-bottom-text');
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+    var panels = Array.prototype.slice.call(root.querySelectorAll('[role="tabpanel"]'));
+    var dynamicLabel = document.getElementById('dynamic-tab-label-{{ section.id }}');
+    var dynamicBottomText = document.getElementById('dynamic-bottom-text-{{ section.id }}');
+    if (!tabs.length) return;
 
-          // Update the label text
-          if (labelText && dynamicLabel) {
-            dynamicLabel.textContent = labelText;
-          }
+    function activate(index, focus) {
+      tabs.forEach(function (t, i) {
+        var selected = i === index;
+        t.setAttribute('aria-selected', selected ? 'true' : 'false');
+        t.setAttribute('tabindex', selected ? '0' : '-1');
+      });
+      panels.forEach(function (p) { p.hidden = true; });
 
-          // Update the bottom text
-          if (bottomText && dynamicBottomText) {
-            dynamicBottomText.textContent = bottomText;
-          }
+      var target = tabs[index].getAttribute('aria-controls');
+      var panel = document.getElementById(target);
+      if (panel) panel.hidden = false;
 
-          // Remove active class from all buttons
-          tabButtons.forEach((btn) => btn.classList.remove('active'));
+      var labelText = tabs[index].getAttribute('data-label');
+      var bottomText = tabs[index].getAttribute('data-bottom-text');
+      if (labelText && dynamicLabel) dynamicLabel.textContent = labelText;
+      if (bottomText && dynamicBottomText) dynamicBottomText.textContent = bottomText;
 
-          // Add active class to hovered button
-          this.classList.add('active');
+      if (focus) tabs[index].focus();
+    }
 
-          // Hide all tab contents
-          document.querySelectorAll('.impact-tab-content').forEach((content) => {
-            content.classList.remove('active');
-          });
+    tabs.forEach(function (tab, i) {
+      // Click works on all devices (including keyboard Enter/Space)
+      tab.addEventListener('click', function () { activate(i, false); });
 
-          // Show target tab content
-          document.getElementById(targetTab).classList.add('active');
-        }
+      // Desktop hover enhancement (additive, not the only way to activate)
+      tab.addEventListener('mouseenter', function () {
+        if (window.innerWidth > 768) activate(i, false);
       });
 
-      // Click event for mobile
-      button.addEventListener('click', function () {
-        // Only trigger click on mobile (screen width <= 768px)
+      // Arrow / Home / End navigation
+      tab.addEventListener('keydown', function (e) {
+        var key = e.key;
+        var last = tabs.length - 1;
+        var nextIndex;
+        if (key === 'ArrowRight' || key === 'ArrowDown') nextIndex = i === last ? 0 : i + 1;
+        else if (key === 'ArrowLeft' || key === 'ArrowUp') nextIndex = i === 0 ? last : i - 1;
+        else if (key === 'Home') nextIndex = 0;
+        else if (key === 'End') nextIndex = last;
+        else return;
+        e.preventDefault();
+        activate(nextIndex, true);
+
+        // Mobile UX: keep active tab in view in scrollable list
         if (window.innerWidth <= 768) {
-          const targetTab = this.getAttribute('data-tab');
-          const labelText = this.getAttribute('data-label');
-          const bottomText = this.getAttribute('data-bottom-text');
-
-          // Update the label text
-          if (labelText && dynamicLabel) {
-            dynamicLabel.textContent = labelText;
-          }
-
-          // Update the bottom text
-          if (bottomText && dynamicBottomText) {
-            dynamicBottomText.textContent = bottomText;
-          }
-
-          // Remove active class from all buttons
-          tabButtons.forEach((btn) => btn.classList.remove('active'));
-
-          // Add active class to clicked button
-          this.classList.add('active');
-
-          // Hide all tab contents
-          document.querySelectorAll('.impact-tab-content').forEach((content) => {
-            content.classList.remove('active');
-          });
-
-          // Show target tab content
-          document.getElementById(targetTab).classList.add('active');
-
-          // Scroll active button into view on mobile
-          this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          tabs[nextIndex].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
       });
     });
-  });
+  })();
 </script>
 
 {% schema %}
 {
   "name": "Impact Tabs Section",
   "settings": [
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 60
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 60
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Top Padding",
-      "default": 30
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Bottom Padding",
-      "default": 30
-    },
-    {
-      "type": "color",
-      "id": "back_color",
-      "label": "Background Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "richtext",
-      "id": "imp_main_head",
-      "label": "Defuser Main Head"
-    },
-    {
-      "type": "richtext",
-      "id": "imp_main_desc",
-      "label": "Defuser Main Text"
-    },
-    {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Section Background Image"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_background_on_mobile",
-      "label": "Show Background Image on Mobile",
-      "default": false,
-      "info": "Enable to show background image on mobile devices"
-    },
-    {
-      "type": "text",
-      "id": "tab_label",
-      "label": "Tab Label (e.g., IMPACT)",
-      "default": "IMPACT"
-    },
-    {
-      "type": "textarea",
-      "id": "imp-bottom-txt",
-      "label": "Bottom Text"
-    },
-    {
-      "type": "text",
-      "id": "mbl-right-txt",
-      "label": "Img Bottom txt"
-    },
-    {
-      "type": "color",
-      "id": "tab_text_color",
-      "label": "Tab Text Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "active_tab_color",
-      "label": "Active Tab Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "tab_font_size",
-      "min": 10,
-      "max": 30,
-      "step": 1,
-      "unit": "px",
-      "label": "Tab Label Font Size",
-      "default": 12
-    },
-    {
-      "type": "range",
-      "id": "mbl_tab_label_size",
-      "min": 10,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Tab Label Font Size",
-      "default": 11
-    },
-    {
-      "type": "range",
-      "id": "tab_button_size",
-      "min": 16,
-      "max": 48,
-      "step": 1,
-      "unit": "px",
-      "label": "Tab Button Font Size",
-      "default": 32
-    },
-    {
-      "type": "range",
-      "id": "mbl_tab_button_size",
-      "min": 14,
-      "max": 32,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Tab Button Font Size",
-      "default": 18
-    },
-    {
-      "type": "select",
-      "id": "tab_font_weight",
-      "label": "Tab Label Font Weight",
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Top", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Bottom", "default": 60 },
+    { "type": "range", "id": "mbl_padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Top Padding", "default": 30 },
+    { "type": "range", "id": "mbl_padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Bottom Padding", "default": 30 },
+    { "type": "color", "id": "back_color", "label": "Background Color", "default": "#ffffff" },
+    { "type": "richtext", "id": "imp_main_head", "label": "Defuser Main Head" },
+    { "type": "richtext", "id": "imp_main_desc", "label": "Defuser Main Text" },
+    { "type": "image_picker", "id": "background_image", "label": "Section Background Image" },
+    { "type": "checkbox", "id": "show_background_on_mobile", "label": "Show Background Image on Mobile", "default": false, "info": "Enable to show background image on mobile devices" },
+    { "type": "text", "id": "tab_label", "label": "Tab Label (e.g., IMPACT)", "default": "IMPACT" },
+    { "type": "textarea", "id": "imp-bottom-txt", "label": "Bottom Text" },
+    { "type": "text", "id": "mbl-right-txt", "label": "Img Bottom txt" },
+    { "type": "color", "id": "tab_text_color", "label": "Tab Text Color", "default": "#ffffff" },
+    { "type": "color", "id": "active_tab_color", "label": "Active Tab Color", "default": "#ffffff" },
+    { "type": "range", "id": "tab_font_size", "min": 10, "max": 30, "step": 1, "unit": "px", "label": "Tab Label Font Size", "default": 12 },
+    { "type": "range", "id": "mbl_tab_label_size", "min": 10, "max": 24, "step": 1, "unit": "px", "label": "Mobile Tab Label Font Size", "default": 11 },
+    { "type": "range", "id": "tab_button_size", "min": 16, "max": 48, "step": 1, "unit": "px", "label": "Tab Button Font Size", "default": 32 },
+    { "type": "range", "id": "mbl_tab_button_size", "min": 14, "max": 32, "step": 1, "unit": "px", "label": "Mobile Tab Button Font Size", "default": 18 },
+    { "type": "select", "id": "tab_font_weight", "label": "Tab Label Font Weight",
       "options": [
         { "value": "300", "label": "Light" },
         { "value": "400", "label": "Normal" },
         { "value": "500", "label": "Medium" },
         { "value": "600", "label": "Semi Bold" },
         { "value": "700", "label": "Bold" }
-      ],
-      "default": "400"
-    },
-    {
-      "type": "select",
-      "id": "tab_button_weight",
-      "label": "Tab Button Font Weight",
+      ], "default": "400" },
+    { "type": "select", "id": "tab_button_weight", "label": "Tab Button Font Weight",
       "options": [
         { "value": "300", "label": "Light" },
         { "value": "400", "label": "Normal" },
         { "value": "500", "label": "Medium" },
         { "value": "600", "label": "Semi Bold" },
         { "value": "700", "label": "Bold" }
-      ],
-      "default": "700"
-    }
+      ], "default": "700" }
   ],
   "blocks": [
     {
       "type": "tab",
       "name": "Tab Item",
       "settings": [
-        {
-          "type": "text",
-          "id": "tab_title",
-          "label": "Tab Title",
-          "default": "Odor Control"
-        },
-        {
-          "type": "text",
-          "id": "tab_label_text",
-          "label": "Tab Label Text (e.g., IMPACT, FEATURE, etc.)",
-          "default": "IMPACT"
-        },
-        {
-          "type": "textarea",
-          "id": "tab_bottom_text",
-          "label": "Bottom Text (changes per tab)",
-          "default": "Fights bacteria buildup to keep you feeling and smelling fresh all day."
-        },
-        {
-          "type": "image_picker",
-          "id": "content_image",
-          "label": "Tab Content Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "content_image_mbl",
-          "label": "Tab Content Image Mbl"
-        }
+        { "type": "text", "id": "tab_title", "label": "Tab Title", "default": "Odor Control" },
+        { "type": "text", "id": "tab_label_text", "label": "Tab Label Text (e.g., IMPACT, FEATURE, etc.)", "default": "IMPACT" },
+        { "type": "textarea", "id": "tab_bottom_text", "label": "Bottom Text (changes per tab)", "default": "Fights bacteria buildup to keep you feeling and smelling fresh all day." },
+        { "type": "image_picker", "id": "content_image", "label": "Tab Content Image" },
+        { "type": "image_picker", "id": "content_image_mbl", "label": "Tab Content Image Mbl" }
       ]
     }
   ],
@@ -615,38 +435,10 @@
     {
       "name": "Impact Tabs Section",
       "blocks": [
-        {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Odor Control",
-            "tab_label_text": "IMPACT",
-            "tab_bottom_text": "Fights bacteria buildup to keep you feeling and smelling fresh all day."
-          }
-        },
-        {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Anti-UV",
-            "tab_label_text": "PROTECTION",
-            "tab_bottom_text": "Blocks harmful UV rays to protect your skin during outdoor activities."
-          }
-        },
-        {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Cooling",
-            "tab_label_text": "COMFORT",
-            "tab_bottom_text": "Advanced cooling technology keeps you comfortable in hot conditions."
-          }
-        },
-        {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Absorbency",
-            "tab_label_text": "PERFORMANCE",
-            "tab_bottom_text": "Superior moisture absorption keeps you dry and comfortable all day long."
-          }
-        }
+        { "type": "tab", "settings": { "tab_title": "Odor Control", "tab_label_text": "IMPACT", "tab_bottom_text": "Fights bacteria buildup to keep you feeling and smelling fresh all day." } },
+        { "type": "tab", "settings": { "tab_title": "Anti-UV", "tab_label_text": "PROTECTION", "tab_bottom_text": "Blocks harmful UV rays to protect your skin during outdoor activities." } },
+        { "type": "tab", "settings": { "tab_title": "Cooling", "tab_label_text": "COMFORT", "tab_bottom_text": "Advanced cooling technology keeps you comfortable in hot conditions." } },
+        { "type": "tab", "settings": { "tab_title": "Absorbency", "tab_label_text": "PERFORMANCE", "tab_bottom_text": "Superior moisture absorption keeps you dry and comfortable all day long." } }
       ]
     }
   ]
