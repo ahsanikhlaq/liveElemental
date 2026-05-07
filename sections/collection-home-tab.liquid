@@ -4,35 +4,48 @@
   Shop the Collections Section
 {% endcomment %}
 
+<!-- FIX 7: aria-label on the section landmark -->
 <section
   class="shop-collections fade-up"
   id="section-{{ section.id }}"
+  aria-label="Shop the Collections"
 >
   <div class="page-width">
     <!-- Heading with Navigation Arrows -->
     <div class="collection-header">
       <div class="collection-section-heading">{{ section.settings.heading }}</div>
-      <div class="swiper-navigation-arrows" id="navigation-arrows-{{ section.id }}">
-        <div class="slider-prev">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+
+      <!-- FIX 1: Changed divs to buttons with aria-label so keyboard users can activate them -->
+      <div class="swiper-navigation-arrows" id="navigation-arrows-{{ section.id }}" aria-label="Slider controls">
+        <button class="slider-prev" aria-label="Previous products" type="button">
+          <!-- FIX 2: aria-hidden on decorative SVGs -->
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
             <path d="M18.5754 8.01261H2.88757L9.11797 1.5075C9.44827 1.16264 9.44827 0.603621 9.11797 0.258759C8.95303 0.0861073 8.7365 0 8.51997 0C8.30343 0 8.0869 0.0861073 7.92196 0.258759L0.247723 8.27137C-0.0825748 8.61623 -0.0825748 9.17525 0.247723 9.52011L7.92154 17.5327C8.25141 17.8776 8.78767 17.8776 9.11755 17.5327C9.44784 17.1879 9.44784 16.6288 9.11755 16.284L2.88715 9.77887H18.5754C19.0423 9.77887 19.5705 9.38323 19.5705 8.89574C19.5705 8.40825 19.0428 8.01261 18.5754 8.01261Z" fill="black"/>
           </svg>
-        </div>
-        <div class="slider-next">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+        </button>
+        <button class="slider-next" aria-label="Next products" type="button">
+          <!-- FIX 2: aria-hidden on decorative SVGs -->
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
             <path d="M0.995068 9.77876H16.6829L10.4525 16.2839C10.1222 16.6287 10.1222 17.1877 10.4525 17.5326C10.6175 17.7053 10.834 17.7914 11.0505 17.7914C11.2671 17.7914 11.4836 17.7053 11.6485 17.5326L19.3228 9.52C19.6531 9.17514 19.6531 8.61612 19.3228 8.27126L11.649 0.258646C11.3191 -0.0862153 10.7828 -0.0862153 10.453 0.258646C10.1227 0.603507 10.1227 1.16253 10.453 1.50739L16.6834 8.0125H0.995068C0.528169 8.0125 0 8.40814 0 8.89563C0 9.38311 0.527746 9.77876 0.995068 9.77876Z" fill="black"/>
           </svg>
-        </div>
+        </button>
       </div>
     </div>
 
     <!-- Tabs -->
-    <div class="collection-tabs  {% if forloop.styling %}cs_kids{% endif %}">
-      <div class="cs_tabs">
+    <div class="collection-tabs {% if forloop.styling %}cs_kids{% endif %}">
+      <!-- FIX 3: role="tablist" with aria-label on the tab container -->
+      <div class="cs_tabs" role="tablist" aria-label="Product collections">
         {% for block in section.blocks %}
+          <!-- FIX 3: role="tab", aria-selected, aria-controls linking to panel -->
           <button
             class="tab-button {% if forloop.first %}active{% endif %} {% if forloop.styling %}cs_tabs{% endif %}"
             data-target="collection-{{ block.id }}"
+            role="tab"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-controls="collection-{{ block.id }}"
+            id="tab-{{ block.id }}"
+            type="button"
           >
             {{ block.settings.collection_name }}
           </button>
@@ -52,27 +65,39 @@
     <div class="collections-wrapper">
       {% for block in section.blocks %}
         {% assign collection = collections[block.settings.collection] %}
+        <!-- FIX 4: role="tabpanel", aria-labelledby linking back to tab, aria-hidden on inactive panels -->
         <div
           id="collection-{{ block.id }}"
           class="collection-slider {% if forloop.first %}active{% endif %}"
           data-swiper-id="{{ block.id }}"
+          role="tabpanel"
+          aria-labelledby="tab-{{ block.id }}"
+          {% unless forloop.first %}aria-hidden="true"{% endunless %}
         >
           <div class="swiper collection-swiper-{{ block.id }} mb-5">
             <div class="swiper-wrapper collection-grid-sc">
               {% for product in collection.products %}
                 <div class="swiper-slide product-card" data-product-id="{{ product.id }}">
                   <div class="product-image">
-                    <a href="{{ product.url }}">
+                    <a href="{{ product.url }}" aria-label="{{ product.title }}">
                       {% assign second_image = product.images[1] %}
+                      <!-- FIX 6: Primary image keeps product title as alt -->
                       <img
                         src="{{ product.featured_image | img_url: '480x480' }}"
                         alt="{{ product.title }}"
+                        title="{{ product.title }}"
                         class="primary-img"
+                        width="480"
+                        height="480"
                       >
+                      <!-- FIX 6: Hover image is decorative — alt="" and aria-hidden -->
                       <img
                         src="{{ second_image | default: product.featured_image | img_url: '480x480' }}"
-                        alt="{{ product.title }}"
+                        alt=""
+                        aria-hidden="true"
                         class="hover-img"
+                        width="480"
+                        height="480"
                       >
                     </a>
                     <span class="bt-wrap">
@@ -118,6 +143,7 @@
                             data-product-variant-media="{{ product_variant_media }}"
                             data-add-to-cart-animation="{{ settings.add_to_cart_animation }}"
                           >
+                            <!-- FIX 5: aria-label tells screen reader which product is being added -->
                             <button
                               id="{{ id }}"
                               type="submit"
@@ -125,8 +151,10 @@
                               ref="addToCartButton"
                               on:click="/handleClick"
                               class="button plus-btn"
+                              aria-label="Add {{ product.title }} to cart"
                             >
-                              +
+                              <!-- FIX 5: Hide the "+" visually from screen readers since aria-label covers it -->
+                              <span aria-hidden="true">+</span>
                             </button>
                           </add-to-cart-component>
                         </div>
@@ -140,7 +168,6 @@
                     <div class="pd-price">{{ product.price | money }}</div>
                   </div>
 
-                  
                 </div>
               {% endfor %}
             </div>
@@ -168,27 +195,32 @@
         align-items: center;
     }
 
-    /* Style for the "+" button */
     .plus-btn {
       font-size: 30px;
-    background: transparent;
-    border: none;
-    color: black;
-    font-weight: 300;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    font-family: "League Spartan";
-    padding: 0 !important;
+      background: transparent;
+      border: none;
+      color: black;
+      font-weight: 300;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      font-family: "League Spartan";
+      padding: 0 !important;
     }
     
     .plus-btn:hover {
-      {% comment %} background: rgb(50, 50, 50); {% endcomment %}
       transform: scale(1.1);
+    }
+
+    /* FIX 1: button reset styles to match original div appearance */
+    .slider-prev,
+    .slider-next {
+      appearance: none;
+      -webkit-appearance: none;
     }
 
     .collection-tabs {
@@ -208,12 +240,8 @@
           font-style: normal;
           font-weight: 500;
           text-align:left;
-          {% comment %} line-height: normal; {% endcomment %}
           text-transform: capitalize;
           min-height: 30px;
-        }
-        .primary-img {
-          {% comment %} height: 432px !important; {% endcomment %}
         }
         .pd-price {
           color: var(--Black, #171717);
@@ -228,7 +256,6 @@
           padding-bottom: {{  section.settings.padding_bottom_desktop  }}px;
         }
 
-        /* Header with Navigation Arrows */
         .collection-header {
           display: flex;
           align-items: center;
@@ -261,7 +288,6 @@
           text-transform: capitalize;
         }
 
-        /* Navigation Arrows */
         .swiper-navigation-arrows {
           display: flex;
           gap: 12px;
@@ -293,8 +319,22 @@
           fill: white;
         }
 
+        /* FIX 1: visible focus ring for keyboard navigation */
+        .slider-prev:focus-visible,
+        .slider-next:focus-visible {
+          outline: 2px solid #8C7A6E;
+          outline-offset: 2px;
+        }
+
         .slider-prev.swiper-button-disabled,
         .slider-next.swiper-button-disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+        }
+
+        /* FIX 1: aria-disabled state styling */
+        .slider-prev[aria-disabled="true"],
+        .slider-next[aria-disabled="true"] {
           opacity: 0.3;
           cursor: not-allowed;
         }
@@ -326,10 +366,17 @@
           gap: 4px;
         }
 
-        .collection-tabs .tab-button.active {
+        /* FIX 3: focus ring on tab buttons */
+        .collection-tabs .tab-button:focus-visible {
+          outline: 2px solid #8C7A6E;
+          outline-offset: 2px;
+        }
+
+        .collection-tabs .tab-button.active,
+        .collection-tabs .tab-button[aria-selected="true"] {
           background: var(--almond-forest, #8C7A6E);
           color: #FFF;
-              opacity: 1;
+          opacity: 1;
         }
 
         .collections-wrapper {
@@ -394,7 +441,6 @@
           gap: 8px;
         }
 
-        /* === Product Hover Image === */
         #section-{{ section.id }} .product-image {
           position: relative;
           overflow: hidden;
@@ -438,7 +484,6 @@
           opacity: 1;
         }
 
-        /* === MOBILE GRID LAYOUT === */
         @media (max-width: 786px) {
           .shop-collections {
             padding-top: {{ section.settings.padding_top_mobile }}px !important;
@@ -469,7 +514,6 @@
             min-height: 245px;
           }
 
-          /* Hide arrows on mobile */
           .swiper-navigation-arrows {
             display: none;
           }
@@ -534,7 +578,6 @@
           }
 
           {% unless section.settings.enable_mobile_swiper %}
-          /* Disable Swiper on Mobile - Use Grid Instead */
           #section-{{ section.id }} .swiper {
             overflow: visible !important;
           }
@@ -552,7 +595,6 @@
             margin: 0 !important;
           }
 
-          /* Hide Swiper Controls on Mobile */
           #section-{{ section.id }} .swiper-scrollbar {
             display: none !important;
           }
@@ -563,14 +605,11 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  // Check if we're on desktop OR if mobile swiper is enabled
   const isDesktop = window.innerWidth > 786;
   const enableMobileSwiper = {{ section.settings.enable_mobile_swiper | json }};
   
-  // Store swiper instances
   const swiperInstances = {};
   
-  // Select all sections with the .shop-collections class
   document.querySelectorAll(".shop-collections").forEach((section) => {
     const tabButtons = section.querySelectorAll(".collection-tabs .tab-button");
     const sliders = section.querySelectorAll(".collection-slider");
@@ -578,38 +617,46 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevArrow = navigationArrows?.querySelector('.slider-prev');
     const nextArrow = navigationArrows?.querySelector('.slider-next');
 
-    // Function to update arrow state
     const updateArrows = (swiperId) => {
       const swiper = swiperInstances[swiperId];
       if (!swiper || !prevArrow || !nextArrow) return;
 
-      if (swiper.isBeginning) {
-        prevArrow.classList.add('swiper-button-disabled');
-      } else {
-        prevArrow.classList.remove('swiper-button-disabled');
-      }
+      // FIX 1: Use aria-disabled on buttons instead of just a class
+      const atStart = swiper.isBeginning;
+      const atEnd = swiper.isEnd;
 
-      if (swiper.isEnd) {
-        nextArrow.classList.add('swiper-button-disabled');
-      } else {
-        nextArrow.classList.remove('swiper-button-disabled');
-      }
+      prevArrow.classList.toggle('swiper-button-disabled', atStart);
+      prevArrow.setAttribute('aria-disabled', atStart ? 'true' : 'false');
+
+      nextArrow.classList.toggle('swiper-button-disabled', atEnd);
+      nextArrow.setAttribute('aria-disabled', atEnd ? 'true' : 'false');
     };
 
     tabButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
-        tabButtons.forEach((b) => b.classList.remove("active"));
-        sliders.forEach((s) => s.classList.remove("active"));
+        // FIX 3: Update aria-selected on all tabs
+        tabButtons.forEach((b) => {
+          b.classList.remove("active");
+          b.setAttribute('aria-selected', 'false');
+        });
+
+        // FIX 4: Update aria-hidden on all panels
+        sliders.forEach((s) => {
+          s.classList.remove("active");
+          s.setAttribute('aria-hidden', 'true');
+        });
 
         btn.classList.add("active");
+        btn.setAttribute('aria-selected', 'true');
+
         const target = btn.dataset.target;
         const targetSlider = section.querySelector(`#${target}`);
         
         if (targetSlider) {
           targetSlider.classList.add("active");
+          targetSlider.setAttribute('aria-hidden', 'false');
           const swiperId = targetSlider.dataset.swiperId;
           
-          // Update arrows for the active swiper
           setTimeout(() => {
             updateArrows(swiperId);
           }, 100);
@@ -617,9 +664,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Arrow click handlers
     if (prevArrow && nextArrow) {
       prevArrow.addEventListener('click', () => {
+        // FIX 1: Prevent click if aria-disabled
+        if (prevArrow.getAttribute('aria-disabled') === 'true') return;
         const activeSlider = section.querySelector('.collection-slider.active');
         if (activeSlider) {
           const swiperId = activeSlider.dataset.swiperId;
@@ -629,6 +677,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       nextArrow.addEventListener('click', () => {
+        // FIX 1: Prevent click if aria-disabled
+        if (nextArrow.getAttribute('aria-disabled') === 'true') return;
         const activeSlider = section.querySelector('.collection-slider.active');
         if (activeSlider) {
           const swiperId = activeSlider.dataset.swiperId;
@@ -639,7 +689,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Initialize Swipers on desktop OR when mobile swiper is enabled
   if (isDesktop || enableMobileSwiper) {
     {% for block in section.blocks %}
       const swiper{{ block.id }} = new Swiper(".collection-swiper-{{ block.id }}", {
@@ -658,21 +707,21 @@ document.addEventListener("DOMContentLoaded", () => {
         on: {
           init: function() {
             swiperInstances['{{ block.id }}'] = this;
-            // Update arrows on init
             const section = document.querySelector("#section-{{ section.id }}");
             const navigationArrows = section?.querySelector('.swiper-navigation-arrows');
             const prevArrow = navigationArrows?.querySelector('.slider-prev');
             const nextArrow = navigationArrows?.querySelector('.slider-next');
             
-            if (prevArrow && this.isBeginning) {
-              prevArrow.classList.add('swiper-button-disabled');
+            if (prevArrow) {
+              prevArrow.classList.toggle('swiper-button-disabled', this.isBeginning);
+              prevArrow.setAttribute('aria-disabled', this.isBeginning ? 'true' : 'false');
             }
-            if (nextArrow && this.isEnd) {
-              nextArrow.classList.add('swiper-button-disabled');
+            if (nextArrow) {
+              nextArrow.classList.toggle('swiper-button-disabled', this.isEnd);
+              nextArrow.setAttribute('aria-disabled', this.isEnd ? 'true' : 'false');
             }
           },
           slideChange: function() {
-            // Update arrows on slide change
             const section = document.querySelector("#section-{{ section.id }}");
             const activeSlider = section?.querySelector('.collection-slider.active');
             if (activeSlider && activeSlider.dataset.swiperId === '{{ block.id }}') {
@@ -681,17 +730,10 @@ document.addEventListener("DOMContentLoaded", () => {
               const nextArrow = navigationArrows?.querySelector('.slider-next');
               
               if (prevArrow && nextArrow) {
-                if (this.isBeginning) {
-                  prevArrow.classList.add('swiper-button-disabled');
-                } else {
-                  prevArrow.classList.remove('swiper-button-disabled');
-                }
-
-                if (this.isEnd) {
-                  nextArrow.classList.add('swiper-button-disabled');
-                } else {
-                  nextArrow.classList.remove('swiper-button-disabled');
-                }
+                prevArrow.classList.toggle('swiper-button-disabled', this.isBeginning);
+                prevArrow.setAttribute('aria-disabled', this.isBeginning ? 'true' : 'false');
+                nextArrow.classList.toggle('swiper-button-disabled', this.isEnd);
+                nextArrow.setAttribute('aria-disabled', this.isEnd ? 'true' : 'false');
               }
             }
           }
