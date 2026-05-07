@@ -1,640 +1,122 @@
-<style>
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-      background-color: {{ section.settings.back-color }};
-    }
-    .section-{{ section.id }}-padding .page-width {
-      padding: 0;
+{% stylesheet %}
+  .csym-container-mf {
+    overflow: hidden;
+    background-color: {{ section.settings.background_color }};
+    padding: 10px 65px;
   }
-   .csym-Jood-top-info {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      gap: 20px;
-      max-width: 596px;
-      margin: 0 auto;
+  .csym-track-mf {
+    display: flex;
+    animation: scroll-left 40s linear infinite;
+    width: max-content;
+    will-change: transform;
   }
-  .Main-haeding-csym p {
-      font-family: "League Spartan";
-      font-weight: 600;
-      text-transform: uppercase;
-      font-style: normal;
-      font-size: 40px;
-      line-height: normal;
-      letter-spacing: 0px;
-      text-align: center;
-      color: #0C2421;
-  }
-
-    .csym-Jood-stars {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-    }
-
-   .csym-Jood-main-heading {
-      max-width: 856px;
-      color: #0C2421;
-      margin: 0 auto;
-      font-family: Outfit;
-      font-weight: 400;
-      font-style: normal;
-      font-size: 18px;
-      leading-trim: NONE;
-      line-height: 24px;
-      letter-spacing: 0px;
-      text-align: center;
-      vertical-align: middle;
-      padding: 16px 0 30px;
-
-  }
-
-    .csym-Jood-reviews-wrapper {
-      display: flex;
-      gap: 29px;
-      justify-content: center;
-    }
-  .csym-Jood-top-info em {
-      font-family: ITC Clearface Std;
-      font-weight: 400;
-      font-style: Italic;
-      font-size: 40px;
-      leading-trim: NONE;
-      line-height: 110.00000000000001%;
-      letter-spacing: 0px;
-      text-align: center;
-  }
-  .csym-Jood-review-block {
-      max-width: 420px;
-      box-sizing: border-box;
-      display: flex !important;
-    flex-direction: column;
-    gap: 16px;
-      {% comment %} color: #555;
-      display: flex;
-      width: 100%;
-      padding: 32px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px; {% endcomment %}
-  }
-
-  .review-stars {
-     display: flex;
-    max-width: 85PX;
-    gap: 2px;
-    margin: 0 auto;
-    /* MAX-HEIGHT: 18.89PX; */
-    justify-content: center;
+  .feature-icon-item-mf {
+    display: flex;
     align-items: center;
+    margin-right: 58px;
+    white-space: nowrap;
   }
-    .review-title {
-      color: var(--Secondary-Black, #000);
-text-align: center;
-font-family: "League Spartan";
-font-size: 32px;
-font-style: normal;
-font-weight: 400;
-line-height: 40px; /* 125% */
-max-width:300px;
-margin:0 auto;
-letter-spacing: -0.32px;
-    }
-.review-title p {
-    margin: 0;
-}
-   .review-text {
-      color: var(--Secondary-Black, #000);
-text-align: center;
-/* Body/Medium/14 */
-font-family: Quicksand;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: 20px; /* 142.857% */
+  .feature-icon-item-mf img {
+    max-width: 20px;
+    max-height: 20px;
+    flex-shrink: 0;
+    margin-right: 10px;
+    width: 100%;
+    height: 100%;
   }
-.verify_cs{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:4px;
-}
-.verify-badge svg{
-width: 16px;
-height: 16px;
-aspect-ratio: 1/1;
-display:block;
-}
-.vrfy_txt{
-color: var(--almond-forest, #8C7A6E);
-text-align: center;
-font-family: "League Spartan";
-font-size: 12px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-}
-  .review-author {
-      color: var(--Secondary-Black, #000);
-text-align: center;
-
-/* Body/Semobold/14 */
-font-family: Quicksand;
-font-size: 14px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-    .verified-badge {
-     border-radius: 12px;
-      /* padding: 2px 8px; */
-      display: inline-flex;
-      align-items: center;
-      color: #000;
-      font-family: Satoshi;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 18.2px;
-      letter-spacing: 1.4px;
-    }
-
-    .verified-badge svg {
-      margin: 0px 9px;
-    }
-   .swipe{
-    position: relative;
-     overflow:hidden;
-   }
-  .cs_rating_wrap{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:6px;
-  }
-  .cs_rat_icon{
-  width: 108.001px;
-  {% comment %} height: 21.601px; {% endcomment %}
-  display:block;
-  }
-  .cs_rating p{
-  color: #000;
-
-  /* Body/Regular/16 */
-  font-family: Quicksand;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  }
-  .cs_rating p strong{
-  color: #000;
-  text-align: center;
-
-  /* Accent/Medium/16 */
-  font-family: "League Spartan";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  }
-.fd_main_btn {
-    color: #444141;
+  .feature-icon-item-mf span {
+    color: var(--White, #FFF);
     font-family: Quicksand;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: normal;
-    border: 1px solid #444141;
-    display: flex;
-    width: 234px;
-    padding: 12px 10px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease; /* Smooth transition */
-}
-
-.fd_main_btn:hover {
-    color: #fff; /* Change text color on hover */
-    background-color: #8C7A6E; /* Background color on hover */
-    border-color: #8C7A6E; /* Border color on hover */
-}
-
-.cs_cts_btn{
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-
-  
-  @media screen and (max-width: 768px) {
-      .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.mbl_padding_top }}px;
-        padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+    line-height: 22px;
   }
-    .swipe .swiper-pagination-bullet-active{
-      background: #DDDDFB !important;
-      border: 1px solid !important;
+  @media (prefers-reduced-motion: reduce) {
+    .csym-track-mf { animation: none; }
   }
-  .review-title{
-  font-size: 28px;
-  min-height: 80px;
-  }
-  .Main-haeding-csym p{
-  font-size: 28px;
-  }
-  .swipe .swiper-pagination-bullet{
-      background: transparent ;
-      border: 1px solid #484444;
-  }
-  .csym-Jood-top-info {
-      font-size: 32px;
-  }
-  .csym-Jood-top-info em {
-      font-size: 32px;
-  }
-  .csym-Jood-main-heading {
-      padding: 16px 0 24px;
-      font-family: Outfit;
-      font-weight: 400;
-      font-style: normal;
-      font-size: 16px;
-      leading-trim: NONE;
-      line-height: 22px;
-      letter-spacing: 0%;
-      text-align: center;
-      vertical-align: middle;
-      max-width: 346px;
-  }
-  .csym-Jood-review-block
-  .csym-Jood-reviews-wrapper {
-        flex-direction: column;
-        gap: 16px;
-        align-items: center;
-  }
-.cs_rating p{
-font-size: 14px;
-}
-.cs_rating p strong{
-font-size: 14px;
-}
-  .review-text {
-    font-size: 14px;
-    max-width: 292px;
-    margin: 0 auto;
-  }
-  .review-stars {
-     display: flex;
-    max-width: 85PX;
-    gap: 2px;
-    margin: 0 auto;
-    /* MAX-HEIGHT: 18.89PX; */
-    justify-content: center;
-    align-items: center;
-  }
-  .review-author {
-  
-  }
-  .swipe .swiper-pagination-horizontal {
-      bottom: 0px;
-  }
-
-
-    }
-    /* Scoped pagination bullets */
-  .reviews-cards-slider .swiper-pagination-bullet {
-    background: transparent;
-    opacity: 1;
-    border: 1px solid #0C2421;
-    transition: all 0.3s ease;
-     width:8px;
-    height:8px;
-  }
-
-  .reviews-cards-slider .swiper-pagination-bullet-active {
-    background: #0C2421;
-    border: none;
-    opacity: 1;
-  }
-  /* Full-width container with overflow hidden */
-  /* Full-width container with overflow hidden */
-  .reviews-cards-slider {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    padding: 34px 0;
-  }
-
-  /* Swiper wrapper that scrolls continuously */
-  .reviews-cards-slider .swiper-wrapper {
-    display: flex;
-    width: max-content;
-    animation: scroll-reviews 30s linear infinite;
-  }
-
-  /* Individual review slides */
-  .csym-Jood-review-block {
-    flex: 0 0 auto;
-    margin-right: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.30);
-    background: #F0E9D3;
-    padding: 24px;
-  }
-  .reviews-cards-slider .swiper-pagination {
-      position: absolute;
-      bottom: 0;
-      z-index: 1;
-  }
-  /* Pagination dots */
-  .reviews-cards-slider .swiper-pagination-bullet {
-    width: 8px;
-    height: 8px;
-    background: transparent;
-    border: 1px solid #0C2421;
-    transition: all 0.3s ease;
-  }
-
-  .reviews-cards-slider .swiper-pagination-bullet-active {
-    background: #0C2421;
-    border: none;
-  }
-
-  /* Continuous scroll keyframes */
-  @keyframes scroll-reviews {
+  @keyframes scroll-left {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* scroll full duplicated track */
+    100% { transform: translateX(-50%); }
   }
-</style>
-<section id="review_mm" class="section-{{ section.id }}-padding swipe bounce-up fade-up">
-  <div class="page-width">
-    <div class="csym-Jood-top-info">
-      <div class="cs_rating_wrap">
-        <img
-          class="cs_rat_icon"
-          src="{{ section.settings.rate_icon | img_url: '' }}"
-          loading="lazy"
-          width="100%"
-          height="auto"
-          alt="star"
-        >
-        <div class="cs_rating">{{ section.settings.rs_rating }}</div>
+{% endstylesheet %}
+
+{% if section.settings.hide %}
+  <style>
+    @media (min-width: 768px) {
+      .sec-{{ section.id }} { display: none; }
+    }
+  </style>
+{% endif %}
+
+<div
+  class="csym-container-mf fade-up sec-{{ section.id }}"
+  style="background-color: {{ section.settings.background_color }};"
+  role="marquee"
+  aria-label="Site features"
+>
+  <div class="csym-track-mf">
+
+    {%- comment -%} Real (announced) set {%- endcomment -%}
+    {% for block in section.blocks %}
+      {%- liquid
+        assign mf_label = block.settings.title | strip | default: 'Feature'
+        assign mf_icon_alt = block.settings.icon.alt | default: mf_label
+      -%}
+      <div class="feature-icon-item-mf" {{ block.shopify_attributes }}>
+        {% if block.settings.icon != blank %}
+          <img
+            src="{{ block.settings.icon | image_url: width: 200 }}"
+            width="20"
+            height="20"
+            alt=""
+            loading="lazy"
+          >
+        {% endif %}
+        <span>{{ mf_label | escape }}</span>
       </div>
-      <span class="Main-haeding-csym">{{ section.settings.heading_1 }}</span>
-    </div>
+    {% endfor %}
 
-    {% if section.settings.heading !=blank %}
-    <h2 class="csym-Jood-main-heading">{{ section.settings.heading }}</h2>
-    {% endif %}
+    {%- comment -%} 3 decorative duplicates for seamless loop {%- endcomment -%}
+    {% for i in (1..3) %}
+      {% for block in section.blocks %}
+        <div class="feature-icon-item-mf" aria-hidden="true">
+          {% if block.settings.icon != blank %}
+            <img
+              src="{{ block.settings.icon | image_url: width: 200 }}"
+              width="20"
+              height="20"
+              alt=""
+              loading="lazy"
+            >
+          {% endif %}
+          <span>{{ block.settings.title | escape }}</span>
+        </div>
+      {% endfor %}
+    {% endfor %}
 
-    <div class="reviews-cards-slider swiper-container">
-      <div class="swiper-wrapper">
-        {% comment %} Original blocks {% endcomment %}
-        {% for block in section.blocks %}
-          <div class="csym-Jood-review-block swiper-slide">
-            <div class="review-stars">
-              {% assign stars_count = block.settings.block_rating | default: 5 %}
-              {% for i in (1..stars_count) %}
-                <img
-                  src="{{ block.settings.block_star_img | img_url: '' }}"
-                  loading="lazy"
-                  width="100%"
-                  height="auto"
-                  alt="star"
-                >
-              {% endfor %}
-            </div>
-            <div class="review-title">{{ block.settings.review_title }}</div>
-            <div class="review-text">{{ block.settings.review_text }}</div>
-            <div class="review-author">
-                {{ block.settings.reviewer_name }}
-            {% if block.settings.reviewer_name != blank %}
-              <div class="verify_cs">
-                <span class="verify-badge">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <mask id="mask0_579_9710" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
-                      <path d="M16 0H0V16H16V0Z" fill="white"/>
-                    </mask>
-                    <g mask="url(#mask0_579_9710)">
-                      <path d="M14.7815 6.57824C14.8891 6.32727 14.9019 6.04575 14.8177 5.78602C14.7333 5.52628 14.5574 5.30604 14.3229 5.16624L13.0388 4.40091C13.0241 4.39214 13.0113 4.38047 13.0012 4.3666C12.9911 4.35274 12.984 4.33696 12.9801 4.32024L12.6468 2.86158C12.5871 2.59511 12.4323 2.35955 12.2114 2.19892C11.9905 2.03831 11.7187 1.96366 11.4468 1.98891L9.95881 2.12224C9.92455 2.12339 9.89092 2.1128 9.86348 2.09224L8.73748 1.10558C8.5322 0.926681 8.26911 0.828125 7.99681 0.828125C7.72452 0.828125 7.46143 0.926681 7.25615 1.10558L6.13415 2.09824C6.12193 2.11027 6.10705 2.11924 6.09072 2.12446C6.0744 2.12967 6.05707 2.13096 6.04015 2.12824L4.55015 1.99491C4.27843 1.96984 4.00687 2.04462 3.78625 2.20522C3.56565 2.36583 3.41109 2.6013 3.35148 2.86758L3.01815 4.32624C3.01435 4.34288 3.00725 4.35859 2.99729 4.37244C2.98733 4.3863 2.97471 4.39802 2.96015 4.40691L1.67881 5.16624C1.44423 5.30604 1.26839 5.52628 1.18402 5.78602C1.09965 6.04575 1.11249 6.32727 1.22015 6.57824L1.81148 7.95224C1.81807 7.96775 1.82145 7.9844 1.82145 8.00124C1.82145 8.01808 1.81807 8.03475 1.81148 8.05024L1.22015 9.42358C1.11249 9.67455 1.09965 9.95608 1.18402 10.2158C1.26839 10.4755 1.44423 10.6958 1.67881 10.8356L2.96281 11.6009C2.97755 11.6097 2.99033 11.6214 3.00043 11.6352C3.01051 11.6491 3.01767 11.6649 3.02148 11.6816L3.35481 13.1402C3.41419 13.407 3.56888 13.6427 3.78984 13.8034C4.0108 13.9642 4.28281 14.0386 4.55481 14.013L6.04281 13.8796C6.07721 13.8774 6.1112 13.888 6.13815 13.9096L7.26415 14.8963C7.46949 15.075 7.73256 15.1735 8.00482 15.1735C8.27707 15.1735 8.54013 15.075 8.74548 14.8963L9.87082 13.9096C9.88364 13.8984 9.89859 13.89 9.91473 13.885C9.93089 13.8798 9.94794 13.8779 9.96482 13.8796L11.4548 14.013C11.7268 14.0384 11.9987 13.9639 12.2197 13.8032C12.4406 13.6426 12.5953 13.4068 12.6548 13.1402L12.9881 11.6816C12.9919 11.6649 12.999 11.6492 13.009 11.6354C13.019 11.6215 13.0316 11.6098 13.0461 11.6009L14.3309 10.8382C14.5654 10.6984 14.7413 10.4782 14.8257 10.2185C14.9099 9.95875 14.8971 9.67722 14.7895 9.42624L14.1982 8.05224C14.1915 8.03687 14.1882 8.02031 14.1882 8.00358C14.1882 7.98684 14.1915 7.97028 14.1982 7.95491L14.7815 6.57824ZM13.2721 8.44491L13.8635 9.81824C13.8753 9.8461 13.8766 9.87724 13.8673 9.906C13.8579 9.93476 13.8386 9.95922 13.8129 9.97491L12.5268 10.7376C12.3956 10.816 12.2816 10.9202 12.1919 11.044C12.1022 11.1678 12.0385 11.3085 12.0048 11.4576L11.6715 12.9162C11.6652 12.946 11.6481 12.9724 11.6235 12.9903C11.5988 13.0081 11.5684 13.0162 11.5381 13.0129L10.0481 12.8756C9.89625 12.8611 9.74302 12.878 9.59793 12.9253C9.45286 12.9725 9.31904 13.0491 9.20481 13.1502L8.07881 14.1363C8.05629 14.1564 8.02709 14.1676 7.99681 14.1676C7.96654 14.1676 7.93734 14.1564 7.91481 14.1363L6.78881 13.1502C6.58229 12.9707 6.31779 12.872 6.04415 12.8722C6.01082 12.8722 5.97748 12.8722 5.94548 12.8722L4.45548 13.0096C4.42525 13.0127 4.39492 13.0046 4.37032 12.9868C4.34571 12.9689 4.32856 12.9426 4.32215 12.9129L3.98881 11.4542C3.95509 11.3051 3.89137 11.1643 3.80152 11.0405C3.71165 10.9167 3.59756 10.8125 3.46615 10.7342L2.18881 9.97624C2.16299 9.96055 2.14365 9.9361 2.13435 9.90734C2.12505 9.87858 2.1264 9.84743 2.13815 9.81958L2.72948 8.44691C2.78972 8.30606 2.82079 8.15444 2.82079 8.00124C2.82079 7.84804 2.78972 7.69644 2.72948 7.55558L2.13815 6.18224C2.1264 6.1544 2.12505 6.12326 2.13435 6.0945C2.14365 6.06574 2.16299 6.04127 2.18881 6.02558L3.47481 5.26291C3.60605 5.18451 3.71999 5.08026 3.80972 4.9565C3.89945 4.83272 3.96309 4.69202 3.99681 4.54291L4.33015 3.08424C4.33599 3.05424 4.35301 3.02758 4.37776 3.00963C4.40251 2.99168 4.43315 2.9838 4.46348 2.98758L5.95348 3.12491C6.10532 3.1385 6.25833 3.12115 6.40328 3.07395C6.54823 3.02674 6.68209 2.95064 6.79681 2.85024L7.91881 1.86758C7.94133 1.84734 7.97053 1.83615 8.00081 1.83615C8.03109 1.83615 8.06029 1.84734 8.08281 1.86758L9.20948 2.85358C9.44295 3.05307 9.74597 3.15184 10.0521 3.12824L11.5421 2.99091C11.5725 2.98698 11.6032 2.99479 11.628 3.01276C11.6528 3.03074 11.6698 3.0575 11.6755 3.08758L12.0088 4.54624C12.0425 4.69544 12.1063 4.8362 12.1961 4.95999C12.286 5.08376 12.4001 5.18796 12.5315 5.26624L13.8169 6.02891C13.8426 6.0446 13.8619 6.06907 13.8713 6.09783C13.8806 6.12659 13.8793 6.15774 13.8675 6.18558L13.2761 7.55891C13.2156 7.69888 13.184 7.84967 13.1833 8.00218C13.1827 8.15467 13.2129 8.3044 13.2721 8.44491Z" fill="#8C7A6E"/>
-                      <path d="M10.2785 5.96215L7.26852 9.04082L5.65852 7.88615C5.55058 7.80898 5.41639 7.77784 5.2855 7.79959C5.15459 7.82135 5.0377 7.89422 4.96052 8.00215C4.88334 8.1101 4.8522 8.24428 4.87396 8.37518C4.89571 8.50608 4.96858 8.62298 5.07652 8.70015L7.03786 10.1002C7.13472 10.17 7.25344 10.2026 7.37238 10.1922C7.49132 10.1818 7.60258 10.129 7.68586 10.0435L10.9932 6.65815C11.0416 6.61179 11.0803 6.55615 11.1068 6.49455C11.1333 6.43295 11.1472 6.36663 11.1475 6.29957C11.1479 6.23251 11.1347 6.16606 11.1089 6.10416C11.0831 6.04228 11.045 5.98623 10.9971 5.93934C10.9491 5.89246 10.8922 5.8557 10.8297 5.83126C10.7673 5.80682 10.7006 5.79519 10.6335 5.79707C10.5665 5.79895 10.5005 5.8143 10.4395 5.84221C10.3785 5.87011 10.3238 5.90999 10.2785 5.95948V5.96215Z" fill="#8C7A6E"/>
-                    </g>
-                  </svg>
-                </span>
-                <span class="vrfy_txt">VERIFIED CUSTOMER</span>
-              </div>
-            {% endif %}
-            </div>
-          </div>
-        {% endfor %}
-
-        {% comment %} Duplicate blocks for seamless scroll {% endcomment %}
-        {% for block in section.blocks %}
-          <div class="csym-Jood-review-block swiper-slide">
-            <div class="review-stars">
-              {% assign stars_count = block.settings.block_rating | default: 5 %}
-              {% for i in (1..stars_count) %}
-                <img
-                  src="{{ block.settings.block_star_img | img_url: '' }}"
-                  loading="lazy"
-                  width="100%"
-                  height="auto"
-                  alt="star"
-                >
-              {% endfor %}
-            </div>
-            <div class="review-title">{{ block.settings.review_title }}</div>
-            <div class="review-text">{{ block.settings.review_text }}</div>
-            <div class="review-author">
-                {{ block.settings.reviewer_name }}
-            {% if block.settings.reviewer_name != blank %}
-              <div class="verify_cs">
-                <span class="verify-badge">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <mask id="mask0_579_9710" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
-                      <path d="M16 0H0V16H16V0Z" fill="white"/>
-                    </mask>
-                    <g mask="url(#mask0_579_9710)">
-                      <path d="M14.7815 6.57824C14.8891 6.32727 14.9019 6.04575 14.8177 5.78602C14.7333 5.52628 14.5574 5.30604 14.3229 5.16624L13.0388 4.40091C13.0241 4.39214 13.0113 4.38047 13.0012 4.3666C12.9911 4.35274 12.984 4.33696 12.9801 4.32024L12.6468 2.86158C12.5871 2.59511 12.4323 2.35955 12.2114 2.19892C11.9905 2.03831 11.7187 1.96366 11.4468 1.98891L9.95881 2.12224C9.92455 2.12339 9.89092 2.1128 9.86348 2.09224L8.73748 1.10558C8.5322 0.926681 8.26911 0.828125 7.99681 0.828125C7.72452 0.828125 7.46143 0.926681 7.25615 1.10558L6.13415 2.09824C6.12193 2.11027 6.10705 2.11924 6.09072 2.12446C6.0744 2.12967 6.05707 2.13096 6.04015 2.12824L4.55015 1.99491C4.27843 1.96984 4.00687 2.04462 3.78625 2.20522C3.56565 2.36583 3.41109 2.6013 3.35148 2.86758L3.01815 4.32624C3.01435 4.34288 3.00725 4.35859 2.99729 4.37244C2.98733 4.3863 2.97471 4.39802 2.96015 4.40691L1.67881 5.16624C1.44423 5.30604 1.26839 5.52628 1.18402 5.78602C1.09965 6.04575 1.11249 6.32727 1.22015 6.57824L1.81148 7.95224C1.81807 7.96775 1.82145 7.9844 1.82145 8.00124C1.82145 8.01808 1.81807 8.03475 1.81148 8.05024L1.22015 9.42358C1.11249 9.67455 1.09965 9.95608 1.18402 10.2158C1.26839 10.4755 1.44423 10.6958 1.67881 10.8356L2.96281 11.6009C2.97755 11.6097 2.99033 11.6214 3.00043 11.6352C3.01051 11.6491 3.01767 11.6649 3.02148 11.6816L3.35481 13.1402C3.41419 13.407 3.56888 13.6427 3.78984 13.8034C4.0108 13.9642 4.28281 14.0386 4.55481 14.013L6.04281 13.8796C6.07721 13.8774 6.1112 13.888 6.13815 13.9096L7.26415 14.8963C7.46949 15.075 7.73256 15.1735 8.00482 15.1735C8.27707 15.1735 8.54013 15.075 8.74548 14.8963L9.87082 13.9096C9.88364 13.8984 9.89859 13.89 9.91473 13.885C9.93089 13.8798 9.94794 13.8779 9.96482 13.8796L11.4548 14.013C11.7268 14.0384 11.9987 13.9639 12.2197 13.8032C12.4406 13.6426 12.5953 13.4068 12.6548 13.1402L12.9881 11.6816C12.9919 11.6649 12.999 11.6492 13.009 11.6354C13.019 11.6215 13.0316 11.6098 13.0461 11.6009L14.3309 10.8382C14.5654 10.6984 14.7413 10.4782 14.8257 10.2185C14.9099 9.95875 14.8971 9.67722 14.7895 9.42624L14.1982 8.05224C14.1915 8.03687 14.1882 8.02031 14.1882 8.00358C14.1882 7.98684 14.1915 7.97028 14.1982 7.95491L14.7815 6.57824ZM13.2721 8.44491L13.8635 9.81824C13.8753 9.8461 13.8766 9.87724 13.8673 9.906C13.8579 9.93476 13.8386 9.95922 13.8129 9.97491L12.5268 10.7376C12.3956 10.816 12.2816 10.9202 12.1919 11.044C12.1022 11.1678 12.0385 11.3085 12.0048 11.4576L11.6715 12.9162C11.6652 12.946 11.6481 12.9724 11.6235 12.9903C11.5988 13.0081 11.5684 13.0162 11.5381 13.0129L10.0481 12.8756C9.89625 12.8611 9.74302 12.878 9.59793 12.9253C9.45286 12.9725 9.31904 13.0491 9.20481 13.1502L8.07881 14.1363C8.05629 14.1564 8.02709 14.1676 7.99681 14.1676C7.96654 14.1676 7.93734 14.1564 7.91481 14.1363L6.78881 13.1502C6.58229 12.9707 6.31779 12.872 6.04415 12.8722C6.01082 12.8722 5.97748 12.8722 5.94548 12.8722L4.45548 13.0096C4.42525 13.0127 4.39492 13.0046 4.37032 12.9868C4.34571 12.9689 4.32856 12.9426 4.32215 12.9129L3.98881 11.4542C3.95509 11.3051 3.89137 11.1643 3.80152 11.0405C3.71165 10.9167 3.59756 10.8125 3.46615 10.7342L2.18881 9.97624C2.16299 9.96055 2.14365 9.9361 2.13435 9.90734C2.12505 9.87858 2.1264 9.84743 2.13815 9.81958L2.72948 8.44691C2.78972 8.30606 2.82079 8.15444 2.82079 8.00124C2.82079 7.84804 2.78972 7.69644 2.72948 7.55558L2.13815 6.18224C2.1264 6.1544 2.12505 6.12326 2.13435 6.0945C2.14365 6.06574 2.16299 6.04127 2.18881 6.02558L3.47481 5.26291C3.60605 5.18451 3.71999 5.08026 3.80972 4.9565C3.89945 4.83272 3.96309 4.69202 3.99681 4.54291L4.33015 3.08424C4.33599 3.05424 4.35301 3.02758 4.37776 3.00963C4.40251 2.99168 4.43315 2.9838 4.46348 2.98758L5.95348 3.12491C6.10532 3.1385 6.25833 3.12115 6.40328 3.07395C6.54823 3.02674 6.68209 2.95064 6.79681 2.85024L7.91881 1.86758C7.94133 1.84734 7.97053 1.83615 8.00081 1.83615C8.03109 1.83615 8.06029 1.84734 8.08281 1.86758L9.20948 2.85358C9.44295 3.05307 9.74597 3.15184 10.0521 3.12824L11.5421 2.99091C11.5725 2.98698 11.6032 2.99479 11.628 3.01276C11.6528 3.03074 11.6698 3.0575 11.6755 3.08758L12.0088 4.54624C12.0425 4.69544 12.1063 4.8362 12.1961 4.95999C12.286 5.08376 12.4001 5.18796 12.5315 5.26624L13.8169 6.02891C13.8426 6.0446 13.8619 6.06907 13.8713 6.09783C13.8806 6.12659 13.8793 6.15774 13.8675 6.18558L13.2761 7.55891C13.2156 7.69888 13.184 7.84967 13.1833 8.00218C13.1827 8.15467 13.2129 8.3044 13.2721 8.44491Z" fill="#8C7A6E"/>
-                      <path d="M10.2785 5.96215L7.26852 9.04082L5.65852 7.88615C5.55058 7.80898 5.41639 7.77784 5.2855 7.79959C5.15459 7.82135 5.0377 7.89422 4.96052 8.00215C4.88334 8.1101 4.8522 8.24428 4.87396 8.37518C4.89571 8.50608 4.96858 8.62298 5.07652 8.70015L7.03786 10.1002C7.13472 10.17 7.25344 10.2026 7.37238 10.1922C7.49132 10.1818 7.60258 10.129 7.68586 10.0435L10.9932 6.65815C11.0416 6.61179 11.0803 6.55615 11.1068 6.49455C11.1333 6.43295 11.1472 6.36663 11.1475 6.29957C11.1479 6.23251 11.1347 6.16606 11.1089 6.10416C11.0831 6.04228 11.045 5.98623 10.9971 5.93934C10.9491 5.89246 10.8922 5.8557 10.8297 5.83126C10.7673 5.80682 10.7006 5.79519 10.6335 5.79707C10.5665 5.79895 10.5005 5.8143 10.4395 5.84221C10.3785 5.87011 10.3238 5.90999 10.2785 5.95948V5.96215Z" fill="#8C7A6E"/>
-                    </g>
-                  </svg>
-                </span>
-                <span class="vrfy_txt">VERIFIED CUSTOMER</span>
-              </div>
-            {% endif %}
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-
-      <!-- Swiper Pagination -->
-      {% comment %} <div class="swiper-pagination"></div> {% endcomment %}
-    </div>
-    {% comment %} <div class="cs_cts_btn">
- <a class="fd_main_btn" href="{{ section.settings.fd_btn_link }}">{{ section.settings.fd_label_btn }} </a>
-    </div> {% endcomment %}
   </div>
-</section>
-
-{% comment %}
-  <script>
-    var swiper = new Swiper('.reviews-cards-slider', {
-      slidesPerView: 3.5,
-      spaceBetween: 30,
-      loop: true,
-      freeMode: true,
-      speed: 3000, // smooth auto scroll
-      autoplay: {
-        delay: 0,
-        disableOnInteraction: false
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      breakpoints: {
-        320: { slidesPerView: 1, spaceBetween: 10 },
-        640: { slidesPerView: 2, spaceBetween: 15 },
-        1024: { slidesPerView: 3.5, spaceBetween: 30 }
-      }
-    });
-  </script>
-{% endcomment %}
+</div>
 
 {% schema %}
 {
-  "name": "Reviews Section",
+  "name": "CSTM Marquee",
+  "tag": "section",
+  "class": "scrolling-feature-icons",
   "settings": [
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Top Padding",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Bottom Padding",
-      "default": 10
-    },
-    {
-      "type": "color",
-      "id": "back-color",
-      "label": "Background Color"
-    },
-    {
-      "type": "image_picker",
-      "id": "rate_icon",
-      "label": "Reviews Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "rs_rating",
-      "label": "Rating Txt"
-    },
-    {
-      "type": "richtext",
-      "id": "heading_1",
-      "label": "Main Heading"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "sub Heading"
-    },
-    {
-      "type": "text",
-      "id": "fd_label_btn",
-      "label": "Button Label"
-    },
-    {
-      "type": "url",
-      "id": "qt_btn_link",
-      "label": "Button Link"
-    }
+    { "type": "checkbox", "id": "hide", "label": "Hide Desktop" },
+    { "type": "color", "id": "background_color", "label": "Background Color", "default": "#E2F1C4", "info": "Choose a background color for the section" }
   ],
   "blocks": [
     {
-      "type": "review",
-      "name": "Review",
+      "type": "feature",
+      "name": "Feature",
       "settings": [
-        {
-          "type": "range",
-          "id": "block_rating",
-          "min": 1,
-          "max": 5,
-          "step": 1,
-          "label": "Review Stars (1-5)",
-          "default": 5
-        },
-        {
-          "type": "image_picker",
-          "id": "block_star_img",
-          "label": "Star Image for Review"
-        },
-        {
-          "type": "richtext",
-          "id": "review_title",
-          "label": "Review Title"
-        },
-        {
-          "type": "textarea",
-          "id": "review_text",
-          "label": "Review Text"
-        },
-        {
-          "type": "text",
-          "id": "reviewer_name",
-          "label": "Reviewer Name"
-        }
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "title", "label": "Feature Title", "default": "Feature" }
       ]
     }
   ],
-  "max_blocks": 6,
-  "presets": [
-    {
-      "name": "Reviews Section",
-      "category": "Testimonials"
-    }
-  ]
+  "presets": [{ "name": "CSTM Marquee", "category": "Custom" }]
 }
 {% endschema %}
