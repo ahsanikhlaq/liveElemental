@@ -2,20 +2,14 @@
   .top-{{ section.id }} {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: {{ section.settings.back-color}};
+    background-color: {{ section.settings['back-color'] }};
     overflow: hidden;
   }
-  
-  .smoche-ingridient-content * {
-    letter-spacing: 0;
-  }
-  
-  .co-feature-bt {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+
+  .smoche-ingridient-content * { letter-spacing: 0; }
+
+  .co-feature-bt { display: flex; justify-content: center; align-items: center; }
+
   .co-feature-btn {
     display: inline-flex;
     padding: 16px 34px;
@@ -30,31 +24,22 @@
     line-height: normal;
     text-transform: capitalize;
     background: var(--almond-forest, #8C7A6E);
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
   }
-  
-  .co-feature-btn:hover {
+  .co-feature-btn:hover,
+  .co-feature-btn:focus-visible {
     background: var(--almond-forest-hover, #6B5B4C);
     transform: scale(1.05);
   }
-  
-  .smoche-ingridient-content {
-    max-width: 100%;
-    margin: 0 auto;
+  .co-feature-btn:focus-visible {
+    outline: 2px solid #FFF6E8;
+    outline-offset: 2px;
   }
-  
-  .custom-ingridient-smoche {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .m-img-desk {
-    max-width: 540px;
-    width: 100%;
-    display: block;
-  }
-  
+
+  .smoche-ingridient-content { max-width: 100%; margin: 0 auto; }
+  .custom-ingridient-smoche { display: flex; align-items: center; justify-content: center; }
+  .m-img-desk { max-width: 540px; width: 100%; display: block; }
+
   .smoche-heading {
     margin: 0;
     color: #000;
@@ -66,7 +51,7 @@
     line-height: normal;
     text-transform: uppercase;
   }
-  
+
   .smoche-desc {
     color: var(--Black, #171717);
     text-align: center;
@@ -76,23 +61,17 @@
     font-weight: 500;
     line-height: 22px;
   }
-  
+
   .i-left {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
   }
-  .i-left.r-s.new-i-right-5 {
-    margin-left: 45px;
-}
-  .i-left.new-i-left-2 {
-    margin-right: 30px;
-}
-  .i-heading {
-    margin: 0;
-  }
-  
+  .i-left.r-s.new-i-right-5 { margin-left: 45px; }
+  .i-left.new-i-left-2 { margin-right: 30px; }
+
+  .i-heading { margin: 0; }
   .i-heading p {
     margin: 0;
     color: var(--Black, #152728);
@@ -103,7 +82,7 @@
     font-weight: 500;
     line-height: normal;
   }
-  
+
   .s-text {
     max-width: 300px;
     display: flex;
@@ -112,7 +91,7 @@
     align-items: center;
     gap: 9px;
   }
-  
+
   .i-des p {
     margin: 0;
     color: var(--Black, #152728);
@@ -124,59 +103,24 @@
     line-height: 20px;
     max-width: 300px;
   }
-  
-  .pd-img {
-    width: 60px;
-    height: 60px;
-    display: block;
-  }
-  
+
+  .pd-img { width: 60px; height: 60px; display: block; }
+
   .left-side, .right-side {
     display: flex;
     flex-direction: column;
     gap: 45px;
     position: relative;
   }
-  
-  .r-s {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 30px;
-  }
-  
-  .i-svg svg {
-    max-width: 136px;
-  }
-  
-  .i-svg.new-i-1 {
-    position: absolute;
-    bottom: 60%;
-    left: -25px;
-  }
-  
-  .i-svg.new-i-2 {
-    position: absolute;
-    bottom: 15%;
-    left: -17%;
-  }
-  
-  .i-svg.new-i-4 {
-    position: absolute;
-    bottom: 57%;
-    right: -25px;
-  }
-  
-  .i-svg.new-i-5 {
-    position: absolute;
-    bottom: 18%;
-    right: 0;
-  }
-  
-  .mbl-content {
-    display: none;
-  }
-  
+  .r-s { display: flex; align-items: center; flex-direction: row; gap: 30px; }
+  .i-svg svg { max-width: 136px; }
+  .i-svg.new-i-1 { position: absolute; bottom: 60%; left: -25px; }
+  .i-svg.new-i-2 { position: absolute; bottom: 15%; left: -17%; }
+  .i-svg.new-i-4 { position: absolute; bottom: 57%; right: -25px; }
+  .i-svg.new-i-5 { position: absolute; bottom: 18%; right: 0; }
+
+  .mbl-content { display: none; }
+
   .ingri-content-wrap {
     display: flex;
     flex-direction: column;
@@ -185,8 +129,7 @@
     gap: 8px;
     padding-bottom: 50px;
   }
-  
-  /* PDP Design style */
+
   .pdp_parent .smoche-heading {
     color: #1E482F;
     text-align: center;
@@ -196,7 +139,6 @@
     font-weight: 600;
     line-height: 48px;
   }
-  
   .pdp_parent .smoche-desc {
     color: #000;
     text-align: center;
@@ -206,30 +148,31 @@
     font-weight: 500;
     line-height: 24px;
   }
-  
-  .pdp_parent .i-heading p {
-    color: #333;
+  .pdp_parent .i-heading p { color: #333; }
+  .pdp_parent .i-des p { color: #000; }
+
+  .nav-arr-btn {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
-  
-  .pdp_parent .i-des p {
-    color: #000;
+  .nav-arr-btn:focus-visible {
+    outline: 2px solid #8C7A6E;
+    outline-offset: 2px;
   }
-  
+
   @media (max-width: 768px) {
     .top-{{ section.id }} {
       padding-top: {{ section.settings.mbl_padding_top }}px;
       padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
     }
-    
-    .co-feature-btn {
-      font-size: 18px;
-    }
-    
-    .m-img-desk {
-      max-width: 353px;
-      width: 353px;
-    }
-    
+    .co-feature-btn { font-size: 18px; }
+    .m-img-desk { max-width: 353px; width: 353px; }
+
     .pdp_parent .smoche-heading {
       color: var(--green, #1E482F);
       text-align: center;
@@ -239,38 +182,19 @@
       font-weight: 600;
       line-height: 48px;
     }
-    
     .pdp_parent .smoche-desc {
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
-      line-height: 21px; 
+      line-height: 21px;
     }
-    
-    .ingri-content-wrap {
-      padding-bottom: 20px;
-      gap: 4px;
-    }
-    
-    .left-side, .right-side {
-      display: none;
-    }
-    
-    .smoche-heading {
-      font-size: 28px;
-      font-style: normal;
-      font-weight: 600;
-    }
-    
-    .smoche-desc {
-      max-width: 330px;
-    }
-    
-    .custom-ingridient-smoche {
-      flex-direction: column;
-      gap: 0px;
-    }
-    
+
+    .ingri-content-wrap { padding-bottom: 20px; gap: 4px; }
+    .left-side, .right-side { display: none; }
+    .smoche-heading { font-size: 28px; font-weight: 600; }
+    .smoche-desc { max-width: 330px; }
+    .custom-ingridient-smoche { flex-direction: column; gap: 0px; }
+
     span.s-m-h {
       margin: 0;
       color: #FFF;
@@ -281,7 +205,6 @@
       font-weight: 600;
       line-height: 26px;
     }
-    
     .s-m-d p {
       color: #FFF;
       text-align: center;
@@ -292,19 +215,10 @@
       line-height: 21px;
       margin: 0;
     }
-    
-    .mbl-content {
-      padding-top: 20px;
-      padding-left: 10px;
-      display: block;
-    }
-    
-    img.cb-icon-mbl {
-      width: 46px;
-      height: 46px;
-      display: block;
-    }
-    
+
+    .mbl-content { padding-top: 20px; padding-left: 10px; display: block; }
+    img.cb-icon-mbl { width: 46px; height: 46px; display: block; }
+
     .cb-block-container {
       background: #F7F7F7;
       display: flex;
@@ -315,7 +229,7 @@
       gap: 16px;
       align-self: stretch;
     }
-    
+
     .cb-head p {
       color: var(--Black, #152728);
       font-family: "League Spartan";
@@ -324,7 +238,6 @@
       font-weight: 500;
       line-height: normal;
     }
-    
     .cb-desc p {
       color: var(--Black, #152728);
       font-family: Quicksand;
@@ -333,7 +246,7 @@
       font-weight: 500;
       line-height: 20px;
     }
-    
+
     .count-icon {
       display: flex;
       width: 24px;
@@ -349,21 +262,11 @@
       color: white;
       margin-bottom: 10px;
     }
-    
-    .cb-content-wrp {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    
-    .co-block-wrap {
-      padding-bottom: 30px;
-    }
-    
-    .co-feature-bt {
-      margin-top: 20px;
-    }
-    
+
+    .cb-content-wrp { display: flex; flex-direction: column; gap: 8px; }
+    .co-block-wrap { padding-bottom: 30px; }
+    .co-feature-bt { margin-top: 20px; }
+
     .nav-arr-wrap {
       display: flex;
       justify-content: center;
@@ -371,7 +274,6 @@
       gap: 40px;
       position: relative;
     }
-    
     .pagin-sc {
       color: var(--Black, #152728);
       font-family: "League Spartan";
@@ -380,18 +282,13 @@
       font-weight: 700;
       line-height: normal;
     }
-    
-    .pdp_parent span.s-m-h {
-      color: #333;
-    }
-    
-    .pdp_parent .s-m-d p {
-      color: #000;
-    }
-    
-    .mbl-swiper .swiper-horizontal>.swiper-pagination-bullets, 
-    .swiper-pagination-bullets.swiper-pagination-horizontal, 
-    .swiper-pagination-custom, 
+
+    .pdp_parent span.s-m-h { color: #333; }
+    .pdp_parent .s-m-d p { color: #000; }
+
+    .mbl-swiper .swiper-horizontal>.swiper-pagination-bullets,
+    .swiper-pagination-bullets.swiper-pagination-horizontal,
+    .swiper-pagination-custom,
     .swiper-pagination-fraction {
       bottom: 0 !important;
       z-index: 0 !important;
@@ -399,63 +296,173 @@
   }
 {% endstyle %}
 
-<section class="top-{{ section.id }} smoche-ingridient fade-up" id="note">
+{%- liquid
+  assign section_heading_plain = section.settings['smoche-heading'] | strip_html | strip
+  assign main_image = section.settings['m-img-desk']
+  assign main_alt = main_image.alt | default: section_heading_plain | default: 'Coffee features'
+-%}
+
+<section
+  class="top-{{ section.id }} smoche-ingridient fade-up"
+  id="note"
+  {% if section_heading_plain != blank %}
+    aria-labelledby="smoche-heading-{{ section.id }}"
+  {% endif %}
+>
   <div class="page-width">
     <div class="smoche-ingridient-content">
       <div class="ingri-content-wrap">
-        <h4 class="smoche-heading">{{ section.settings.smoche-heading }}</h4>
-        <div class="smoche-desc">{{ section.settings.smoche-desc }}</div>
+        {% if section.settings['smoche-heading'] != blank %}
+          <h2 id="smoche-heading-{{ section.id }}" class="smoche-heading">
+            {{ section.settings['smoche-heading'] | escape }}
+          </h2>
+        {% endif %}
+        {% if section.settings['smoche-desc'] != blank %}
+          <div class="smoche-desc">{{ section.settings['smoche-desc'] | escape }}</div>
+        {% endif %}
       </div>
-      
+
       <div class="custom-ingridient-smoche">
         <div class="left-side">
           {% for block in section.blocks %}
-            {% if block.type == "left-block" %}
-              <div class="i-left new-i-left-{{ forloop.index }}">
-                <span class="i-svg new-i-{{ forloop.index }}">{{ block.settings.i-svg }}</span>
+            {% if block.type == 'left-block' %}
+              {%- liquid
+                assign l_heading_plain = block.settings['i-heading'] | strip_html | strip
+                if l_heading_plain == blank
+                  assign l_heading_plain = 'Ingredient ' | append: forloop.index
+                endif
+                assign l_image = block.settings['ingri-img']
+                assign l_alt = l_image.alt | default: l_heading_plain
+              -%}
+              <div class="i-left new-i-left-{{ forloop.index }}" {{ block.shopify_attributes }}>
+                {% if block.settings['i-svg'] != blank %}
+                  <span class="i-svg new-i-{{ forloop.index }}" aria-hidden="true">
+                    {{ block.settings['i-svg'] }}
+                  </span>
+                {% endif %}
                 <div class="s-text">
-                  <img class="pd-img" src="{{ block.settings.ingri-img | image_url: width: 200 }}" loading="lazy" alt="icon" />
-                  <h3 class="i-heading">{{ block.settings.i-heading }}</h3>
-                  <span class="i-des">{{ block.settings.i-des }}</span>
+                  {% if l_image != blank %}
+                    <img
+                      class="pd-img"
+                      src="{{ l_image | image_url: width: 200 }}"
+                      width="60"
+                      height="60"
+                      loading="lazy"
+                      alt="{{ l_alt | escape }}"
+                    >
+                  {% endif %}
+                  {% if block.settings['i-heading'] != blank %}
+                    <h3 class="i-heading">{{ block.settings['i-heading'] }}</h3>
+                  {% endif %}
+                  {% if block.settings['i-des'] != blank %}
+                    <span class="i-des">{{ block.settings['i-des'] }}</span>
+                  {% endif %}
                 </div>
               </div>
             {% endif %}
           {% endfor %}
         </div>
-        
+
         <div class="m-img">
-          <img class="m-img-desk" src="{{ section.settings.m-img-desk | image_url: width: 1600 }}" alt="Coffee features" loading="lazy">
+          {% if main_image != blank %}
+            <img
+              class="m-img-desk"
+              src="{{ main_image | image_url: width: 1600 }}"
+              width="{{ main_image.width }}"
+              height="{{ main_image.height }}"
+              alt="{{ main_alt | escape }}"
+              loading="lazy"
+            >
+          {% endif %}
         </div>
-        
+
         <div class="right-side">
           {% for block in section.blocks %}
-            {% if block.type == "right-block" %}
-              <div class="i-left r-s new-i-right-{{ forloop.index }}">
-                <span class="i-svg new-i-{{ forloop.index }}">{{ block.settings.i-svgr }}</span>
+            {% if block.type == 'right-block' %}
+              {%- liquid
+                assign r_heading_plain = block.settings['i-headingr'] | strip_html | strip
+                if r_heading_plain == blank
+                  assign r_heading_plain = 'Ingredient ' | append: forloop.index
+                endif
+                assign r_image = block.settings['ingri-img-r']
+                assign r_alt = r_image.alt | default: r_heading_plain
+              -%}
+              <div class="i-left r-s new-i-right-{{ forloop.index }}" {{ block.shopify_attributes }}>
+                {% if block.settings['i-svgr'] != blank %}
+                  <span class="i-svg new-i-{{ forloop.index }}" aria-hidden="true">
+                    {{ block.settings['i-svgr'] }}
+                  </span>
+                {% endif %}
                 <div class="s-text">
-                  <img class="pd-img" src="{{ block.settings.ingri-img-r | image_url: width: 200 }}" loading="lazy" alt="icon" />
-                  <h3 class="i-heading">{{ block.settings.i-headingr }}</h3>
-                  <span class="i-des">{{ block.settings.i-desr }}</span>
+                  {% if r_image != blank %}
+                    <img
+                      class="pd-img"
+                      src="{{ r_image | image_url: width: 200 }}"
+                      width="60"
+                      height="60"
+                      loading="lazy"
+                      alt="{{ r_alt | escape }}"
+                    >
+                  {% endif %}
+                  {% if block.settings['i-headingr'] != blank %}
+                    <h3 class="i-heading">{{ block.settings['i-headingr'] }}</h3>
+                  {% endif %}
+                  {% if block.settings['i-desr'] != blank %}
+                    <span class="i-des">{{ block.settings['i-desr'] }}</span>
+                  {% endif %}
                 </div>
               </div>
             {% endif %}
           {% endfor %}
         </div>
       </div>
-      
+
       <div class="mbl-content">
-        <div class="swiper mbl-swiper">
-          <div class="swiper-wrapper">
+        <div
+          class="swiper mbl-swiper"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="{{ section_heading_plain | default: 'Coffee features' | escape }}"
+        >
+          <div class="swiper-wrapper" role="list">
             {% for block in section.blocks %}
-              {% if block.type == "mobile-block" %}
-                <div class="swiper-slide">
+              {% if block.type == 'mobile-block' %}
+                {%- liquid
+                  assign m_heading_plain = block.settings.cb_head | strip_html | strip
+                  if m_heading_plain == blank
+                    assign m_heading_plain = 'Feature ' | append: forloop.index
+                  endif
+                  assign m_image = block.settings['cb-b-icon']
+                  assign m_alt = m_image.alt | default: m_heading_plain
+                -%}
+                <div
+                  class="swiper-slide"
+                  role="listitem"
+                  aria-label="{{ m_heading_plain | escape }}"
+                  {{ block.shopify_attributes }}
+                >
                   <div class="co-block-wrap">
-                    <div class="count-icon">{{ block.settings.b-count }}</div>
+                    {% if block.settings.b-count != blank %}
+                      <div class="count-icon" aria-hidden="true">{{ block.settings.b-count | escape }}</div>
+                    {% endif %}
                     <div class="cb-block-container">
-                      <img class="cb-icon-mbl" src="{{ block.settings.cb-b-icon | image_url: width: 200 }}" loading="lazy" alt="icon" />
+                      {% if m_image != blank %}
+                        <img
+                          class="cb-icon-mbl"
+                          src="{{ m_image | image_url: width: 200 }}"
+                          width="46"
+                          height="46"
+                          loading="lazy"
+                          alt="{{ m_alt | escape }}"
+                        >
+                      {% endif %}
                       <div class="cb-content-wrp">
-                        <div class="cb-head">{{ block.settings.cb_head }}</div>
-                        <div class="cb-desc">{{ block.settings.cb_desc }}</div>
+                        {% if block.settings.cb_head != blank %}
+                          <h3 class="cb-head">{{ block.settings.cb_head }}</h3>
+                        {% endif %}
+                        {% if block.settings.cb_desc != blank %}
+                          <div class="cb-desc">{{ block.settings.cb_desc }}</div>
+                        {% endif %}
                       </div>
                     </div>
                   </div>
@@ -463,46 +470,60 @@
               {% endif %}
             {% endfor %}
           </div>
-          
-          <div class="swiper-pagination pagin-sc"></div>
-          
+
+          <div class="swiper-pagination pagin-sc" aria-hidden="true"></div>
+
           <div class="nav-arr-wrap">
-            <div class="cs-arrow-prv">
+            <button type="button" class="nav-arr-btn cs-arrow-prv" aria-label="Previous slide">
               {% render 'arrow-prev' %}
-            </div>
-            <div class="cs-arrow-nxt">
+            </button>
+            <button type="button" class="nav-arr-btn cs-arrow-nxt" aria-label="Next slide">
               {% render 'arrow-next' %}
-            </div>
+            </button>
           </div>
         </div>
       </div>
 
-      <div class="co-feature-bt">
-        <a class="co-feature-btn" href="{{ section.settings.fd_btn_link }}">{{ section.settings.fd_label_btn }}</a>
-      </div>
+      {% if section.settings.fd_label_btn != blank and section.settings.fd_btn_link != blank %}
+        <div class="co-feature-bt">
+          <a
+            class="co-feature-btn"
+            href="{{ section.settings.fd_btn_link }}"
+            aria-label="{{ section.settings.fd_label_btn | escape }}"
+          >
+            {{ section.settings.fd_label_btn | escape }}
+          </a>
+        </div>
+      {% endif %}
     </div>
   </div>
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var mblSwiper = new Swiper(".mbl-swiper", {
+  document.addEventListener('DOMContentLoaded', function () {
+    var mblSwiper = new Swiper('.mbl-swiper', {
       slidesPerView: 1.1,
       spaceBetween: 8,
+      a11y: {
+        enabled: true,
+        prevSlideMessage: 'Previous slide',
+        nextSlideMessage: 'Next slide',
+        paginationBulletMessage: 'Go to slide {{index}}',
+      },
       pagination: {
-        el: ".swiper-pagination",
-        type: "fraction",
+        el: '.swiper-pagination',
+        type: 'fraction',
       },
       navigation: {
-        nextEl: ".cs-arrow-nxt",
-        prevEl: ".cs-arrow-prv",
+        nextEl: '.cs-arrow-nxt',
+        prevEl: '.cs-arrow-prv',
       },
       breakpoints: {
         768: {
           slidesPerView: 4,
           spaceBetween: 30,
-        }
-      }
+        },
+      },
     });
   });
 </script>
@@ -511,168 +532,50 @@
 {
   "name": "Coffee Features Section",
   "settings": [
-    {
-      "type": "checkbox",
-      "id": "custom-class",
-      "label": "PDP Design",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Top Padding",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Bottom Padding",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Top Padding",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Bottom Padding",
-      "default": 10
-    },
-    {
-      "type": "color",
-      "id": "back-color",
-      "label": "Background Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "text",
-      "id": "smoche-heading",
-      "label": "Heading"
-    },
-    {
-      "type": "text",
-      "id": "smoche-desc",
-      "label": "Sub Heading"
-    },
-    {
-      "type": "image_picker",
-      "id": "m-img-desk",
-      "label": "Main Image Desktop"
-    },
-    {
-      "type": "text",
-      "id": "fd_label_btn",
-      "label": "Button Label"
-    },
-    {
-      "type": "url",
-      "id": "fd_btn_link",
-      "label": "Button Link"
-    }
+    { "type": "checkbox", "id": "custom-class", "label": "PDP Design", "default": false },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Top Padding", "default": 10 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Bottom Padding", "default": 10 },
+    { "type": "range", "id": "mbl_padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Top Padding", "default": 10 },
+    { "type": "range", "id": "mbl_padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Bottom Padding", "default": 10 },
+    { "type": "color", "id": "back-color", "label": "Background Color", "default": "#ffffff" },
+    { "type": "text", "id": "smoche-heading", "label": "Heading" },
+    { "type": "text", "id": "smoche-desc", "label": "Sub Heading" },
+    { "type": "image_picker", "id": "m-img-desk", "label": "Main Image Desktop" },
+    { "type": "text", "id": "fd_label_btn", "label": "Button Label" },
+    { "type": "url", "id": "fd_btn_link", "label": "Button Link" }
   ],
   "blocks": [
     {
       "type": "left-block",
       "name": "Left Block",
       "settings": [
-        {
-          "type": "html",
-          "id": "i-svg",
-          "label": "SVG Icon"
-        },
-        {
-          "type": "image_picker",
-          "id": "ingri-img",
-          "label": "Image"
-        },
-        {
-          "type": "richtext",
-          "id": "i-heading",
-          "label": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "i-des",
-          "label": "Description"
-        }
+        { "type": "html", "id": "i-svg", "label": "SVG Icon" },
+        { "type": "image_picker", "id": "ingri-img", "label": "Image" },
+        { "type": "richtext", "id": "i-heading", "label": "Heading" },
+        { "type": "richtext", "id": "i-des", "label": "Description" }
       ]
     },
     {
       "type": "right-block",
       "name": "Right Block",
       "settings": [
-        {
-          "type": "html",
-          "id": "i-svgr",
-          "label": "SVG Icon"
-        },
-        {
-          "type": "image_picker",
-          "id": "ingri-img-r",
-          "label": "Image"
-        },
-        {
-          "type": "richtext",
-          "id": "i-headingr",
-          "label": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "i-desr",
-          "label": "Description"
-        }
+        { "type": "html", "id": "i-svgr", "label": "SVG Icon" },
+        { "type": "image_picker", "id": "ingri-img-r", "label": "Image" },
+        { "type": "richtext", "id": "i-headingr", "label": "Heading" },
+        { "type": "richtext", "id": "i-desr", "label": "Description" }
       ]
     },
     {
       "type": "mobile-block",
       "name": "Mobile Block",
       "settings": [
-        {
-          "type": "text",
-          "id": "b-count",
-          "label": "Count"
-        },
-        {
-          "type": "image_picker",
-          "id": "cb-b-icon",
-          "label": "Icon"
-        },
-        {
-          "type": "richtext",
-          "id": "cb_head",
-          "label": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "cb_desc",
-          "label": "Description"
-        }
+        { "type": "text", "id": "b-count", "label": "Count" },
+        { "type": "image_picker", "id": "cb-b-icon", "label": "Icon" },
+        { "type": "richtext", "id": "cb_head", "label": "Heading" },
+        { "type": "richtext", "id": "cb_desc", "label": "Description" }
       ]
     }
   ],
-  "presets": [
-    {
-      "name": "Coffee Features Section"
-    }
-  ]
+  "presets": [{ "name": "Coffee Features Section" }]
 }
 {% endschema %}
