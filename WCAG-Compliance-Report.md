@@ -6,7 +6,7 @@
 | **Report ID** | LIVE-WCAG-2026-0506-A |
 | **Issue Date** | 2026-05-06 |
 | **Issued By** | Convertt |
-| **Theme** | liveElemental (Shopify, Dawn-derived) |
+| **Theme** | liveElemental (Shopify, Horizon-derived) |
 | **Standard Tested** | WCAG 2.1 Level AA (W3C Recommendation) + WCAG 2.2 additions |
 | **Audit Method** | Manual code-level review |
 | **Branch** | `main` |
@@ -28,7 +28,7 @@
 | Advisory Items (design decisions) | 1 (brand-colour contrast) |
 | Critical / Blocking Defects | 0 |
 
-**Bottom line:** The theme is built on the accessible Dawn foundation and meets WCAG 2.1 Level AA in code. Four code defects were identified and corrected during this audit. One advisory remains for the client about brand-colour contrast on small text — this is a design choice, not a code defect.
+**Bottom line:** The theme is built on the accessible Horizon foundation and meets WCAG 2.1 Level AA in code. Four code defects were identified and corrected during this audit. One advisory remains for the client about brand-colour contrast on small text — this is a design choice, not a code defect.
 
 ---
 
