@@ -9,7 +9,13 @@
     display: flex;
     animation: scroll-left 40s linear infinite;
     width: max-content;
-    will-change: transform; /* Helps with smooth rendering */
+    will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .csym-track-mf {
+        animation: none;
+    }
 }
 
 .feature-icon-item-mf {
@@ -20,8 +26,8 @@
 }
 
 .feature-icon-item-mf img {
-   max-width: 20px;
-max-height: 20px;
+    max-width: 20px;
+    max-height: 20px;
     flex-shrink: 0;
     margin-right: 10px;
     width: 100%;
@@ -30,15 +36,13 @@ max-height: 20px;
 
 .feature-icon-item-mf span {
     color: var(--White, #FFF);
-/* Body/Medium/16 */
-font-family: Quicksand;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 22px; /* 137.5% */
+    font-family: Quicksand;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
 }
 
-/* Keyframes for continuous scroll */
 @keyframes scroll-left {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -55,46 +59,74 @@ line-height: 22px; /* 137.5% */
 </style>
 {% endif %}
 
-<div class="csym-container-mf fade-up sec-{{ section.id }}" style="background-color: {{section.settings.background_color}};">
+<div class="csym-container-mf fade-up sec-{{ section.id }}"
+     style="background-color: {{section.settings.background_color}};"
+     role="region"
+     aria-label="Feature highlights">
+
     <div class="csym-track-mf">
+
+        <!-- Real content: visible to screen readers -->
         {% for block in section.blocks %}
             <div class="feature-icon-item-mf">
                 {% if block.settings.icon %}
-                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
+                    <img
+                        src="{{ block.settings.icon | image_url: width: 200 }}"
+                        alt="{{ block.settings.title }}"
+                        title="{{ block.settings.title }}"
+                        loading="lazy"
+                        width="20"
+                        height="20">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>
         {% endfor %}
 
-        <!-- Duplicate the content once for seamless looping -->
+        <!-- Duplicate 1: hidden from screen readers -->
         {% for block in section.blocks %}
-            <div class="feature-icon-item-mf">
+            <div class="feature-icon-item-mf" aria-hidden="true">
                 {% if block.settings.icon %}
-                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
+                    <img
+                        src="{{ block.settings.icon | image_url: width: 200 }}"
+                        alt=""
+                        loading="lazy"
+                        width="20"
+                        height="20">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>
         {% endfor %}
 
-        <!-- Duplicate the content once for seamless looping -->
+        <!-- Duplicate 2: hidden from screen readers -->
         {% for block in section.blocks %}
-            <div class="feature-icon-item-mf">
+            <div class="feature-icon-item-mf" aria-hidden="true">
                 {% if block.settings.icon %}
-                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
+                    <img
+                        src="{{ block.settings.icon | image_url: width: 200 }}"
+                        alt=""
+                        loading="lazy"
+                        width="20"
+                        height="20">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>
         {% endfor %}
 
-        <!-- Duplicate the content once for seamless looping -->
+        <!-- Duplicate 3: hidden from screen readers -->
         {% for block in section.blocks %}
-            <div class="feature-icon-item-mf">
+            <div class="feature-icon-item-mf" aria-hidden="true">
                 {% if block.settings.icon %}
-                    <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.icon.alt }}" loading="lazy">
+                    <img
+                        src="{{ block.settings.icon | image_url: width: 200 }}"
+                        alt=""
+                        loading="lazy"
+                        width="20"
+                        height="20">
                 {% endif %}
                 <span>{{ block.settings.title }}</span>
             </div>
         {% endfor %}
+
     </div>
 </div>
 
