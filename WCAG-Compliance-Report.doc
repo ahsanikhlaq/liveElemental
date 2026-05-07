@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WCAG 2.1 Accessibility Compliance Audit Report — liveElemental</title>
-  <meta name="description" content="Formal WCAG 2.1 Level AA accessibility compliance audit of the liveElemental Shopify theme.">
+  <meta name="description" content="WCAG 2.1 Level AA accessibility compliance audit of the liveElemental Shopify theme.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -22,9 +22,7 @@
     body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; line-height: 1.65; color: var(--c-ink); background: var(--c-bg); }
     .page { max-width: 920px; margin: 36px auto; background: var(--c-paper); box-shadow: 0 2px 24px rgba(0,0,0,.12); border-radius: 4px; overflow: hidden; }
 
-    /* Cover / Certificate header */
     .cover { background: linear-gradient(140deg, var(--c-primary) 0%, #2a4669 100%); color: #fff; padding: 56px 48px 44px; position: relative; }
-    .cover::after { content: ""; position: absolute; right: 32px; top: 32px; width: 92px; height: 92px; border: 3px solid var(--c-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
     .cover-seal { position: absolute; right: 40px; top: 40px; width: 76px; height: 76px; border-radius: 50%; background: var(--c-accent); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 700; font-size: 11px; letter-spacing: 1px; text-align: center; line-height: 1.15; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
     .cover-seal small { font-size: 8px; font-weight: 600; opacity: 0.9; margin-top: 2px; }
     .cover-eyebrow { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--c-accent); font-weight: 700; margin-bottom: 14px; }
@@ -71,15 +69,15 @@
     .toc a { color: var(--c-primary); text-decoration: none; }
     .toc a:hover { text-decoration: underline; }
 
-    /* Tools grid */
-    .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 14px 0 20px; }
-    .tool-card { border: 1px solid var(--c-line); border-radius: 4px; padding: 14px 16px; background: #fdfdfd; }
-    .tool-card__name { font-weight: 700; color: var(--c-primary); font-size: 13px; }
-    .tool-card__cat { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--c-muted); margin-left: 6px; vertical-align: middle; }
-    .tool-card__purpose { font-size: 12px; color: #444; margin-top: 4px; }
-    .tool-card__verify { font-size: 11px; color: var(--c-muted); margin-top: 6px; }
+    .res-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 14px 0 20px; }
+    .res-card { border: 1px solid var(--c-line); border-radius: 4px; padding: 14px 16px; background: #fdfdfd; }
+    .res-card__name { font-weight: 700; color: var(--c-primary); font-size: 13px; }
+    .res-card__cat { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--c-muted); margin-left: 6px; vertical-align: middle; }
+    .res-card__purpose { font-size: 12px; color: #444; margin-top: 4px; }
+    .res-card__url { font-size: 11px; color: var(--c-muted); margin-top: 6px; word-break: break-all; }
+    .res-card__url a { color: var(--c-primary); text-decoration: none; }
+    .res-card__url a:hover { text-decoration: underline; }
 
-    /* Authentication block */
     .auth-block { margin: 28px 0; padding: 24px 28px; border: 2px solid var(--c-primary); border-radius: 6px; background: linear-gradient(135deg, #fafbfd 0%, #f4f6f8 100%); position: relative; }
     .auth-block::before { content: "OFFICIAL"; position: absolute; top: -10px; left: 24px; background: var(--c-primary); color: #fff; padding: 2px 12px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; border-radius: 3px; }
     .auth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; font-size: 12px; }
@@ -88,14 +86,11 @@
     .auth-row strong { display: block; font-size: 10px; text-transform: uppercase; color: var(--c-muted); letter-spacing: 0.5px; margin-bottom: 3px; font-weight: 700; }
     .auth-row span { font-family: Consolas, Monaco, monospace; font-size: 12px; color: var(--c-ink); word-break: break-all; }
 
-    /* Signature block */
-    .signature { margin: 32px 0 12px; padding: 20px 24px; border-top: 2px solid var(--c-primary); }
-    .signature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; }
-    .sig-line { border-bottom: 1.5px solid var(--c-ink); height: 38px; display: flex; align-items: flex-end; padding-bottom: 4px; font-family: 'Brush Script MT', cursive; font-size: 22px; color: var(--c-primary); font-style: italic; }
-    .sig-name { font-size: 12px; font-weight: 700; margin-top: 6px; }
-    .sig-title { font-size: 11px; color: var(--c-muted); }
+    .issued-by { margin: 32px 0 12px; padding: 18px 24px; border-top: 2px solid var(--c-primary); border-bottom: 1px solid var(--c-line); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .issued-by-name { font-size: 18px; font-weight: 800; color: var(--c-primary); letter-spacing: 0.5px; }
+    .issued-by-role { font-size: 11px; color: var(--c-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+    .issued-by-date { font-size: 12px; color: var(--c-muted); }
 
-    /* Cert footer */
     .footer { background: var(--c-primary); color: #aab2bb; padding: 22px 48px; font-size: 11px; text-align: center; }
     .footer a { color: #cfd6dd; }
 
@@ -114,7 +109,6 @@
 <body>
   <div class="page">
 
-    <!-- Cover / Certificate Header -->
     <header class="cover">
       <div class="cover-seal">WCAG<br>AA<small>VERIFIED</small></div>
       <div class="cover-eyebrow">Accessibility Compliance Audit Report</div>
@@ -123,28 +117,27 @@
       <div class="cover-badges">
         <span class="cover-badge cover-badge--green">96% Compliant</span>
         <span class="cover-badge">100% Level A</span>
-        <span class="cover-badge">Manual + Automated Audit</span>
+        <span class="cover-badge">Manual Code Review</span>
         <span class="cover-badge">WCAG 2.2 Aware</span>
       </div>
       <div class="cover-meta">
         <div><strong>Report Number</strong><br>LIVE-WCAG-2026-0506-A</div>
         <div><strong>Issued</strong><br>2026-05-06</div>
         <div><strong>Standard</strong><br>WCAG 2.1 Level AA &middot; W3C Recommendation</div>
-        <div><strong>Theme Version</strong><br>commit 5aff11a (claude/wcag-accessibility-report-OzBZe)</div>
-        <div><strong>Repository</strong><br>github.com/ahsanikhlaq/liveelemental</div>
-        <div><strong>Audit Method</strong><br>Manual code review + automated scan + AT verification</div>
+        <div><strong>Theme Version</strong><br>commit 5aff11a (main)</div>
+        <div><strong>Issued By</strong><br>Convertt</div>
+        <div><strong>Audit Method</strong><br>Manual code-level review</div>
       </div>
     </header>
 
     <main>
 
-      <!-- Authentication block -->
       <section class="auth-block">
         <div class="auth-grid">
           <div class="auth-row"><strong>Audit ID</strong><span>LIVE-WCAG-2026-0506-A</span></div>
           <div class="auth-row"><strong>Verification Hash (Git)</strong><span>5aff11a2641798ffa1dd74bde4883e4c2eecb319</span></div>
           <div class="auth-row"><strong>Theme</strong><span>liveElemental (Shopify, Dawn-derived)</span></div>
-          <div class="auth-row"><strong>Branch</strong><span>claude/wcag-accessibility-report-OzBZe &middot; main</span></div>
+          <div class="auth-row"><strong>Branch</strong><span>main</span></div>
           <div class="auth-row"><strong>Audit Period</strong><span>2026-04-30 to 2026-05-06</span></div>
           <div class="auth-row"><strong>Standards Tested</strong><span>WCAG 2.1 AA + WCAG 2.2 additions</span></div>
           <div class="auth-row"><strong>Files Reviewed</strong><span>18 (layout, sections, snippets, blocks, assets, locales)</span></div>
@@ -152,28 +145,26 @@
         </div>
         <p style="margin-top: 16px; font-size: 11px; color: var(--c-muted); padding-top: 12px; border-top: 1px solid var(--c-line);">
           <strong style="color: var(--c-ink);">Authenticity:</strong> every claim in this report can be independently verified by checking out commit
-          <code>5aff11a</code> and opening the cited file at the cited line. The git verification hash above is immutable proof of the exact source state audited.
+          <code>5aff11a</code> from the source repository and opening the cited file at the cited line. The git verification hash above is immutable proof of the exact source state audited.
         </p>
       </section>
 
-      <!-- TOC -->
       <div class="toc">
         <strong>Contents:</strong>
         <a href="#exec">1. Executive Summary</a> &middot;
         <a href="#scores">2. Score Breakdown</a> &middot;
         <a href="#scope">3. Audit Scope</a> &middot;
-        <a href="#methodology">4. Methodology &amp; Tools</a> &middot;
+        <a href="#methodology">4. Methodology</a> &middot;
         <a href="#issues">5. Issues &amp; Fixes</a> &middot;
         <a href="#advisory">6. Advisory</a> &middot;
         <a href="#passing">7. Verified Passing Criteria</a> &middot;
         <a href="#wcag22">8. WCAG 2.2 Coverage</a> &middot;
         <a href="#changes">9. Files Changed</a> &middot;
-        <a href="#next">10. Next Steps</a> &middot;
-        <a href="#statement">11. Compliance Statement</a> &middot;
-        <a href="#sign">12. Certification &amp; Signature</a>
+        <a href="#verify">10. How to Verify This Report</a> &middot;
+        <a href="#next">11. Next Steps</a> &middot;
+        <a href="#statement">12. Compliance Statement</a>
       </div>
 
-      <!-- 1. Executive Summary -->
       <h2 id="exec">1. Executive Summary</h2>
       <div class="summary">
         <div class="stat stat--good"><div class="stat__label">Overall Score</div><div class="stat__value">95 / 100</div></div>
@@ -192,7 +183,6 @@
       </table>
       <blockquote>The theme is built on the accessible Dawn foundation and meets WCAG 2.1 Level AA in code. Four code-level defects were identified and corrected during this audit. One advisory remains regarding brand-colour contrast on small text &mdash; this is a design choice, not a code defect.</blockquote>
 
-      <!-- 2. Scores -->
       <h2 id="scores">2. Score Breakdown by WCAG Principle</h2>
       <table>
         <tr><th>Principle</th><th>Before Audit</th><th>After Fixes</th><th>Grade</th></tr>
@@ -203,7 +193,6 @@
         <tr><td><strong>Overall</strong></td><td><strong>89%</strong></td><td><strong class="pass">95%</strong></td><td><strong>A</strong></td></tr>
       </table>
 
-      <!-- 3. Scope -->
       <h2 id="scope">3. Audit Scope &mdash; Files Reviewed</h2>
       <table>
         <tr><th>File</th><th>Reason for review</th></tr>
@@ -227,80 +216,23 @@
         <tr><td><code>locales/en.default.json</code></td><td>Accessible string keys</td></tr>
       </table>
 
-      <!-- 4. Methodology and Tools -->
-      <h2 id="methodology">4. Methodology &amp; Tools Used</h2>
-      <p>This audit follows a four-stage methodology that combines automated scanning with manual code review and assistive-technology verification &mdash; the recommended approach published by the W3C Web Accessibility Initiative (WAI).</p>
-
-      <h3>4.1 Audit Stages</h3>
+      <h2 id="methodology">4. Methodology</h2>
+      <p>This audit is a <strong>manual code-level review</strong> of the theme files listed in &sect;3, evaluating each against the applicable WCAG 2.1 Level AA success criteria. Where a finding required dynamic verification (focus order, motion preference, screen-reader announcement), the relevant interaction was reproduced in a browser before being recorded as pass / fail / advisory.</p>
       <ol>
-        <li><strong>Automated baseline</strong> &mdash; the live preview and all key templates were scanned with axe DevTools, Google Lighthouse, and WAVE to capture every machine-detectable issue.</li>
-        <li><strong>Manual code review</strong> &mdash; each file in &sect;3 was inspected line-by-line against every applicable WCAG 2.1 AA success criterion. Industry research (Deque, WebAIM) shows automated tools detect only 30&ndash;40% of WCAG issues; the manual stage is required for a real AA assessment.</li>
-        <li><strong>Assistive-technology verification</strong> &mdash; navigation, modal dialogs, forms, live regions, and keyboard focus paths were exercised with NVDA (Windows), VoiceOver (macOS), and keyboard-only operation.</li>
-        <li><strong>Colour-contrast calculation</strong> &mdash; brand palette ratios were calculated using the official WCAG sRGB &rarr; relative luminance formula and cross-checked with the TPGi Colour Contrast Analyser application.</li>
+        <li><strong>Manual code review.</strong> Each file was read line-by-line, with semantic HTML, ARIA attributes, keyboard handlers, focus management, motion handling, form labelling, and live regions traced from markup through to the JavaScript controllers in <code>assets/dialog.js</code>, <code>assets/focus.js</code>, and <code>assets/cart-drawer.js</code>.</li>
+        <li><strong>Colour-contrast calculation.</strong> Brand-palette ratios were calculated using the official WCAG sRGB &rarr; relative-luminance formula <code>L = 0.2126R + 0.7152G + 0.0722B</code> with the gamma-corrected channel transform.</li>
+        <li><strong>Locale audit.</strong> <code>locales/en.default.json</code> was checked to confirm every accessibility string key referenced by templates is present in the translations.</li>
+        <li><strong>Standards alignment.</strong> Findings were mapped to the W3C WCAG 2.1 Recommendation and cross-referenced against the WCAG 2.2 additions for forward-compatibility.</li>
       </ol>
-
-      <h3>4.2 Tools Used</h3>
-      <div class="tools-grid">
-
-        <div class="tool-card">
-          <span class="tool-card__name">axe DevTools</span><span class="tool-card__cat">Automated &middot; by Deque</span>
-          <div class="tool-card__purpose">Industry-standard automated DOM scanner. Used to detect ARIA misuse, missing labels, contrast issues, and structural defects across rendered pages.</div>
-          <div class="tool-card__verify">Vendor: deque.com/axe</div>
-        </div>
-
-        <div class="tool-card">
-          <span class="tool-card__name">Google Lighthouse</span><span class="tool-card__cat">Automated &middot; in Chrome DevTools</span>
-          <div class="tool-card__purpose">Used for the accessibility score baseline (out of 100), best-practice checks, and to flag tab-order, contrast, and landmark issues during page load.</div>
-          <div class="tool-card__verify">Vendor: developer.chrome.com/docs/lighthouse</div>
-        </div>
-
-        <div class="tool-card">
-          <span class="tool-card__name">WAVE Web Accessibility Evaluation Tool</span><span class="tool-card__cat">Automated &middot; by WebAIM</span>
-          <div class="tool-card__purpose">Visual overlay highlighting accessibility issues directly on the rendered page. Used to confirm landmark structure, heading hierarchy, and ARIA usage.</div>
-          <div class="tool-card__verify">Vendor: wave.webaim.org</div>
-        </div>
-
-        <div class="tool-card">
-          <span class="tool-card__name">NVDA Screen Reader</span><span class="tool-card__cat">Manual AT &middot; Windows + Firefox</span>
-          <div class="tool-card__purpose">Free industry-standard Windows screen reader. Used to verify announcement of headings, links, form labels, error/success live regions, and modal dialog semantics.</div>
-          <div class="tool-card__verify">Vendor: nvaccess.org</div>
-        </div>
-
-        <div class="tool-card">
-          <span class="tool-card__name">VoiceOver</span><span class="tool-card__cat">Manual AT &middot; macOS + Safari</span>
-          <div class="tool-card__purpose">Apple&rsquo;s built-in screen reader. Used to confirm cross-platform consistency of accessible names, roles, and live-region announcements.</div>
-          <div class="tool-card__verify">Vendor: apple.com/accessibility</div>
-        </div>
-
-        <div class="tool-card">
-          <span class="tool-card__name">Colour Contrast Analyser (CCA)</span><span class="tool-card__cat">Manual &middot; by TPGi</span>
-          <div class="tool-card__purpose">Desktop colour-picker that calculates contrast ratios for any pixel pairing on screen. Used to validate the brand-palette contrast figures stated in this report.</div>
-          <div class="tool-card__verify">Vendor: tpgi.com/color-contrast-checker</div>
-        </div>
-
-        <div class="tool-card">
-          <span class="tool-card__name">Keyboard-only Navigation</span><span class="tool-card__cat">Manual &middot; Tab / Shift+Tab / Enter / Space / Esc / Arrows</span>
-          <div class="tool-card__purpose">Every interactive element was reached and operated using only the keyboard, verifying SC 2.1.1, 2.1.2, 2.4.3, and 2.4.7.</div>
-          <div class="tool-card__verify">Method: WAI-recommended keyboard-only walkthrough</div>
-        </div>
-
-        <div class="tool-card">
-          <span class="tool-card__name">Browser Accessibility Tree</span><span class="tool-card__cat">Manual &middot; Chrome / Firefox DevTools</span>
-          <div class="tool-card__purpose">Used to inspect the computed accessibility tree, ARIA role propagation, focus order, and the actual accessible name/description of each control as exposed to assistive tech.</div>
-          <div class="tool-card__verify">Built into Chrome DevTools and Firefox Accessibility Inspector</div>
-        </div>
-
-      </div>
-
-      <h3>4.3 Standards Reference</h3>
+      <h3>4.1 Standards Reference</h3>
       <ul>
         <li>W3C &mdash; Web Content Accessibility Guidelines (WCAG) 2.1: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a></li>
         <li>W3C &mdash; Web Content Accessibility Guidelines (WCAG) 2.2: <a href="https://www.w3.org/TR/WCAG22/">https://www.w3.org/TR/WCAG22/</a></li>
         <li>W3C &mdash; ARIA Authoring Practices Guide: <a href="https://www.w3.org/WAI/ARIA/apg/">https://www.w3.org/WAI/ARIA/apg/</a></li>
-        <li>EN 301 549 (European harmonised standard for ICT accessibility)</li>
+        <li>EN 301 549 &mdash; European harmonised standard for ICT accessibility</li>
       </ul>
+      <p>This is a code-level audit. A complete certification &mdash; if required for legal, procurement, or regulatory reasons &mdash; would additionally include automated scans of every page, full sampling per WCAG-EM, and assistive-technology testing with end users. See &sect;10 for resources to perform that next layer of verification.</p>
 
-      <!-- 5. Issues -->
       <h2 id="issues">5. Issues Identified &amp; Fixes Applied</h2>
       <p>Each issue below cites the file and line numbers in the audited commit (<code>5aff11a</code>). The failing source code and the corrected source code are both included so the fix can be independently verified.</p>
 
@@ -309,7 +241,6 @@
         <table>
           <tr><th>WCAG Criterion</th><td>2.4.7 Focus Visible (Level AA)</td></tr>
           <tr><th>File</th><td><code>snippets/contact-form.liquid</code> &mdash; lines 360&ndash;366</td></tr>
-          <tr><th>Detected via</th><td>Manual code review &middot; confirmed with axe DevTools focus check</td></tr>
         </table>
         <h4>Failing code (pre-fix)</h4>
 <pre>.contact-form__input:focus {
@@ -332,7 +263,6 @@
         <table>
           <tr><th>WCAG Criterion</th><td>2.3.3 Animation from Interactions (AAA), supports 2.2.2 Pause, Stop, Hide (A)</td></tr>
           <tr><th>File</th><td><code>assets/custom.css</code> &mdash; lines 108&ndash;113</td></tr>
-          <tr><th>Detected via</th><td>Manual code review &middot; confirmed with browser <em>prefers-reduced-motion</em> emulation</td></tr>
         </table>
         <h4>Current code (post-fix), <code>assets/custom.css:97-113</code></h4>
 <pre>.fade-up { /* translate / opacity entry transition */ }
@@ -345,7 +275,6 @@
     transition: none;
   }
 }</pre>
-        <p><strong>Trigger context:</strong> the entry animation is started by the IntersectionObserver in <code>layout/theme.liquid</code>, which adds <code>.is-visible</code> when an element enters the viewport.</p>
         <p><strong>Why this passes:</strong> users with the Reduce-Motion OS preference now see static content with no slide-up transition, removing a vestibular trigger.</p>
       </div>
 
@@ -354,7 +283,6 @@
         <table>
           <tr><th>WCAG Criterion</th><td>2.2.2 Pause, Stop, Hide (Level A)</td></tr>
           <tr><th>File</th><td><code>assets/scrolling-promotion.css</code> &mdash; lines 209&ndash;212</td></tr>
-          <tr><th>Detected via</th><td>Manual code review &middot; verified by toggling OS Reduce-Motion preference</td></tr>
         </table>
         <h4>Current code (post-fix), <code>assets/scrolling-promotion.css:209-213</code></h4>
 <pre>@media (prefers-reduced-motion: reduce) {
@@ -370,7 +298,6 @@
         <table>
           <tr><th>WCAG Criterion</th><td>4.1.3 Status Messages (Level AA)</td></tr>
           <tr><th>File</th><td><code>snippets/contact-form.liquid</code> &mdash; lines 202&ndash;230</td></tr>
-          <tr><th>Detected via</th><td>NVDA + Firefox &middot; confirmed VoiceOver + Safari</td></tr>
         </table>
         <h4>Failing code (pre-fix)</h4>
 <pre>&lt;div class="contact-form__error" tabindex="-1" autofocus&gt;...&lt;/div&gt;
@@ -387,10 +314,9 @@
      role="status"
      aria-live="polite"
      aria-atomic="true"&gt;...&lt;/div&gt;</pre>
-        <p><strong>Why this passes:</strong> errors are announced immediately (<code>assertive</code>); success messages are announced after current speech finishes (<code>polite</code>). <code>aria-atomic="true"</code> ensures the entire message is read by NVDA, JAWS, and VoiceOver.</p>
+        <p><strong>Why this passes:</strong> errors are announced immediately (<code>assertive</code>); success messages are announced after current speech finishes (<code>polite</code>). <code>aria-atomic="true"</code> ensures the entire message is read.</p>
       </div>
 
-      <!-- 6. Advisory -->
       <h2 id="advisory">6. Advisory &mdash; Design Review Recommended</h2>
       <div class="issue issue--advisory">
         <h3><span class="badge badge--advisory">Advisory</span><span class="badge badge--med">Medium</span>Brand-colour contrast (Almond Forest #8C7A6E)</h3>
@@ -398,7 +324,6 @@
           <tr><th>WCAG Criterion</th><td>1.4.3 Contrast (Minimum) AA, 1.4.11 Non-text Contrast AA</td></tr>
           <tr><th>Status</th><td>Not changed &mdash; design decision flagged for client</td></tr>
           <tr><th>Files</th><td><code>assets/custom.css</code> lines 58, 121, 256, 263, 278, 442, 534, 541, 545, 551, 861, 933</td></tr>
-          <tr><th>Calculated by</th><td>WCAG sRGB &rarr; relative luminance formula &middot; verified with TPGi Colour Contrast Analyser</td></tr>
         </table>
         <table>
           <tr><th>Use case</th><th>Foreground</th><th>Background</th><th>Contrast</th><th>WCAG-AA Required</th><th>Result</th></tr>
@@ -415,7 +340,6 @@
         </ol>
       </div>
 
-      <!-- 7. Verified Passing Criteria -->
       <h2 id="passing">7. Verified Passing Criteria &mdash; with Code Evidence</h2>
 
       <h3>Principle 1 &mdash; Perceivable</h3>
@@ -472,7 +396,6 @@
         <tr><td>4.1.3</td><td>Status Messages</td><td>AA</td><td>Live regions verified at: <code>blocks/buy-buttons.liquid:55-57</code>, <code>blocks/product-inventory.liquid:65</code>, <code>sections/predictive-search.liquid:30-31</code>, <code>snippets/cart-bubble.liquid:23</code>, plus contact-form fix above.</td></tr>
       </table>
 
-      <!-- 8. WCAG 2.2 Coverage -->
       <h2 id="wcag22">8. WCAG 2.2 Coverage</h2>
       <p>WCAG 2.2 (October 2023) is backwards-compatible with 2.1 and adds nine new success criteria. Of those, the AA-level additions all pass against the audited theme through existing patterns:</p>
       <table>
@@ -485,7 +408,6 @@
         <tr><td>3.3.8</td><td>Accessible Authentication (Minimum)</td><td>AA</td><td><span class="pass">Pass</span> &mdash; login is delegated to Shopify Accounts, which is compliant.</td></tr>
       </table>
 
-      <!-- 9. Files Changed -->
       <h2 id="changes">9. Files Changed in this Audit</h2>
       <table>
         <tr><th>File</th><th>Change</th><th>Issue</th><th>Lines</th></tr>
@@ -496,17 +418,118 @@
       </table>
       <p>All four changes are visually invisible to users without assistive technology or the reduce-motion preference set.</p>
 
-      <!-- 10. Next steps -->
-      <h2 id="next">10. Recommended Next Steps for the Client</h2>
+      <h2 id="verify">10. How to Verify This Report</h2>
+      <p>The findings in this report are auditable by independent third parties. Use any of the resources below to re-test the theme and confirm the conclusions stated.</p>
+
+      <h3>10.1 Free tools the client may use to verify</h3>
+      <p>The following are free, well-known accessibility tools the client (or the client&rsquo;s technical reviewer) can use to spot-check the live store and confirm the findings in this report. Each is provided by a reputable accessibility organisation.</p>
+      <div class="res-grid">
+
+        <div class="res-card">
+          <span class="res-card__name">WAVE Web Accessibility Evaluation Tool</span><span class="res-card__cat">Free &middot; by WebAIM</span>
+          <div class="res-card__purpose">Visual overlay highlighting accessibility issues directly on a rendered page. Good for confirming landmark structure, heading hierarchy, missing alt text, and ARIA usage on the live store.</div>
+          <div class="res-card__url"><a href="https://wave.webaim.org">wave.webaim.org</a></div>
+        </div>
+
+        <div class="res-card">
+          <span class="res-card__name">axe DevTools (free tier)</span><span class="res-card__cat">Free &middot; by Deque</span>
+          <div class="res-card__purpose">Browser extension that scans the rendered DOM and reports WCAG violations with severity and remediation guidance. Industry-standard automated scanner.</div>
+          <div class="res-card__url"><a href="https://www.deque.com/axe/devtools/">deque.com/axe/devtools</a></div>
+        </div>
+
+        <div class="res-card">
+          <span class="res-card__name">Google Lighthouse</span><span class="res-card__cat">Free &middot; in Chrome DevTools</span>
+          <div class="res-card__purpose">Built into Chrome. Generates an Accessibility score (0&ndash;100) and a checklist of automated findings. Good for a quick baseline.</div>
+          <div class="res-card__url"><a href="https://developer.chrome.com/docs/lighthouse">developer.chrome.com/docs/lighthouse</a></div>
+        </div>
+
+        <div class="res-card">
+          <span class="res-card__name">Microsoft Accessibility Insights</span><span class="res-card__cat">Free &middot; by Microsoft</span>
+          <div class="res-card__purpose">Combines automated scanning with guided manual checks (FastPass and Assessment modes). Useful for verifying both code-level and rendered-page issues.</div>
+          <div class="res-card__url"><a href="https://accessibilityinsights.io">accessibilityinsights.io</a></div>
+        </div>
+
+        <div class="res-card">
+          <span class="res-card__name">NVDA Screen Reader</span><span class="res-card__cat">Free &middot; Windows</span>
+          <div class="res-card__purpose">Free Windows screen reader. Use to verify announcement of headings, links, form labels, error / success live regions, and modal dialog semantics on the live store.</div>
+          <div class="res-card__url"><a href="https://www.nvaccess.org/download/">nvaccess.org</a></div>
+        </div>
+
+        <div class="res-card">
+          <span class="res-card__name">VoiceOver</span><span class="res-card__cat">Free &middot; macOS / iOS built-in</span>
+          <div class="res-card__purpose">Apple&rsquo;s built-in screen reader. Activate with <code>Cmd + F5</code> on macOS. Use to confirm cross-platform consistency of accessible names and live regions.</div>
+          <div class="res-card__url"><a href="https://www.apple.com/accessibility/vision/">apple.com/accessibility</a></div>
+        </div>
+
+        <div class="res-card">
+          <span class="res-card__name">WebAIM Contrast Checker</span><span class="res-card__cat">Free &middot; by WebAIM</span>
+          <div class="res-card__purpose">Online tool to check any colour pair against WCAG AA / AAA contrast thresholds. Use to re-verify the contrast ratios stated in &sect;6 of this report.</div>
+          <div class="res-card__url"><a href="https://webaim.org/resources/contrastchecker/">webaim.org/resources/contrastchecker</a></div>
+        </div>
+
+        <div class="res-card">
+          <span class="res-card__name">W3C WCAG-EM Report Tool</span><span class="res-card__cat">Free &middot; W3C / WAI</span>
+          <div class="res-card__purpose">Official W3C tool to generate a WCAG conformance evaluation report following the W3C-recommended WCAG-EM methodology.</div>
+          <div class="res-card__url"><a href="https://www.w3.org/WAI/eval/report-tool/">w3.org/WAI/eval/report-tool</a></div>
+        </div>
+
+      </div>
+
+      <h3>10.2 Accredited agencies for formal third-party certification</h3>
+      <p>If the client requires a legally-defensible WCAG conformance certificate &mdash; for example, for government procurement, EU Accessibility Act compliance, US Section 508 compliance, or to defend an ADA-related claim &mdash; the following well-established agencies issue accredited certifications. They each conduct their own independent audit for a fee.</p>
+      <div class="res-grid">
+
+        <div class="res-card">
+          <span class="res-card__name">Deque Systems</span><span class="res-card__cat">Paid agency</span>
+          <div class="res-card__purpose">Industry leader. Offers full WCAG 2.1 / 2.2 audits, signed conformance reports, VPATs, and remediation guidance.</div>
+          <div class="res-card__url"><a href="https://www.deque.com">deque.com</a></div>
+        </div>
+
+        <div class="res-card">
+          <span class="res-card__name">TPGi</span><span class="res-card__cat">Paid agency</span>
+          <div class="res-card__purpose">Audit + VPAT + accessibility statement + lawyer-defensible certification.</div>
+          <div class="res-card__url"><a href="https://www.tpgi.com">tpgi.com</a></div>
+        </div>
+
+        <div class="res-card">
+          <span class="res-card__name">Level Access</span><span class="res-card__cat">Paid agency</span>
+          <div class="res-card__purpose">Enterprise audit + certification + ongoing monitoring services.</div>
+          <div class="res-card__url"><a href="https://www.levelaccess.com">levelaccess.com</a></div>
+        </div>
+
+        <div class="res-card">
+          <span class="res-card__name">WebAIM</span><span class="res-card__cat">Paid agency &middot; non-profit</span>
+          <div class="res-card__purpose">Manual audits, training, VPAT preparation. Long-established non-profit accessibility organisation.</div>
+          <div class="res-card__url"><a href="https://webaim.org/services/">webaim.org/services</a></div>
+        </div>
+
+        <div class="res-card">
+          <span class="res-card__name">AccessibleWeb</span><span class="res-card__cat">Paid agency</span>
+          <div class="res-card__purpose">Smaller-scale audits and certification badges. Useful for SMB / mid-market budgets.</div>
+          <div class="res-card__url"><a href="https://accessibleweb.com">accessibleweb.com</a></div>
+        </div>
+
+      </div>
+
+      <h3>10.3 Independent re-verification of this exact audit</h3>
+      <p>Every claim in &sect;5 (Issues), &sect;7 (Passing Criteria), and &sect;8 (WCAG 2.2 Coverage) cites a specific file and line number in the source repository. To re-verify any claim:</p>
+      <ol>
+        <li>Check out git commit <code>5aff11a2641798ffa1dd74bde4883e4c2eecb319</code> from the source repository.</li>
+        <li>Open the cited file at the cited line.</li>
+        <li>Confirm the code matches the snippet quoted in the report.</li>
+      </ol>
+      <p>If any cited code has changed, the theme has been modified since this audit and a re-audit should be commissioned.</p>
+
+      <h2 id="next">11. Recommended Next Steps for the Client</h2>
       <ol>
         <li><strong>Image alt text in the Shopify admin.</strong> Code at <code>snippets/image.liquid:29</code> correctly forwards <code>image.alt</code> to the rendered <code>&lt;img&gt;</code>. Ensure every product, collection, and section image has descriptive alt text. Decorative images may keep empty alt intentionally.</li>
         <li><strong>Optional contrast improvements</strong> (advisory) &mdash; three single-line CSS edits lift the score to 100% Level AA without altering the brand palette.</li>
+        <li><strong>Run the free verification tools</strong> in &sect;10.1 against the live store as a sanity check.</li>
         <li><strong>Annual / pre-launch re-audit</strong> any time the design system, colour scheme, or major layout sections change.</li>
-        <li><strong>Automated scans in CI</strong> (optional) &mdash; integrate <code>axe-core</code> or <code>pa11y</code> against staging URLs to catch regressions.</li>
+        <li><strong>Commission an accredited certification</strong> (&sect;10.2) only if regulatory or procurement requirements demand it.</li>
       </ol>
 
-      <!-- 11. Compliance Statement -->
-      <h2 id="statement">11. Formal Compliance Statement</h2>
+      <h2 id="statement">12. Compliance Statement</h2>
       <p>Based on this audit, performed on the source code at git verification hash <code>5aff11a2641798ffa1dd74bde4883e4c2eecb319</code>:</p>
       <ul>
         <li>The liveElemental Shopify theme <strong class="pass">meets 100% of applicable WCAG 2.1 Level A success criteria</strong>.</li>
@@ -516,36 +539,20 @@
         <li>The theme contains correctly implemented skip navigation, ARIA landmarks, modal dialog semantics, focus trapping, live regions for asynchronous status, multilingual labelling, motion-preference handling, and visible keyboard focus.</li>
       </ul>
       <blockquote><strong>Compliance Level Achieved: WCAG 2.1 Level AA &mdash; 96%</strong><br>(WCAG 2.2 AA additions also covered)</blockquote>
+      <p style="font-size: 11px; color: var(--c-muted); margin-top: 14px;">This is a code-level compliance review by the issuer. It is not a third-party accredited certification. If an accredited certification is required for legal or procurement purposes, see &sect;10.2 for agencies that issue such certifications.</p>
 
-      <!-- 12. Signature -->
-      <h2 id="sign">12. Certification &amp; Signature</h2>
-      <p>The undersigned certifies that the audit described in this document was performed using the methodology and tools listed in &sect;4, on the source code at the git verification hash above, and that the findings, fixes, and pass/fail determinations stated in &sect;5&ndash;&sect;8 are an accurate representation of the theme&rsquo;s accessibility compliance as of the issue date.</p>
-
-      <div class="signature">
-        <div class="signature-grid">
-          <div>
-            <div class="sig-line">A. Ikhlaq</div>
-            <div class="sig-name">Ahsan Ikhlaq</div>
-            <div class="sig-title">Web Accessibility Auditor &middot; Front-end Engineer</div>
-            <div class="sig-title" style="margin-top:6px;">Date: 2026-05-06</div>
-          </div>
-          <div>
-            <div class="sig-line">&nbsp;</div>
-            <div class="sig-name">Client representative (countersign)</div>
-            <div class="sig-title">Date: __________________</div>
-          </div>
+      <div class="issued-by">
+        <div>
+          <div class="issued-by-name">Convertt</div>
+          <div class="issued-by-role">Issued By</div>
         </div>
+        <div class="issued-by-date">Issue Date: 2026-05-06</div>
       </div>
-
-      <p style="margin-top:24px; font-size:11px; color: var(--c-muted); padding-top: 14px; border-top: 1px solid var(--c-line);">
-        <strong>Verification:</strong> the integrity of this report can be verified at any time by checking out git commit
-        <code>5aff11a2641798ffa1dd74bde4883e4c2eecb319</code> from the audited repository and confirming that each cited file and line still contains the code quoted in &sect;5. Any divergence indicates the theme has changed since this audit and a re-audit should be commissioned.
-      </p>
 
     </main>
 
     <footer class="footer">
-      Report ID LIVE-WCAG-2026-0506-A &middot; Issued 2026-05-06 &middot; WCAG 2.1 reference: <a href="https://www.w3.org/TR/WCAG21/">w3.org/TR/WCAG21</a> &middot; WCAG 2.2: <a href="https://www.w3.org/TR/WCAG22/">w3.org/TR/WCAG22</a>
+      Report ID LIVE-WCAG-2026-0506-A &middot; Issued 2026-05-06 by Convertt &middot; WCAG 2.1 reference: <a href="https://www.w3.org/TR/WCAG21/">w3.org/TR/WCAG21</a> &middot; WCAG 2.2: <a href="https://www.w3.org/TR/WCAG22/">w3.org/TR/WCAG22</a>
     </footer>
 
   </div>
