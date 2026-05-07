@@ -1,5 +1,3 @@
-{% comment %} 
-
 {% if section.blocks.size > 1 %}
   <script
     src="{{ 'announcement-bar.js' | asset_url }}"
@@ -8,9 +6,11 @@
   ></script>
 {% endif %}
 
-<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div class="section-background color-{{ section.settings.color_scheme }}" aria-hidden="true"></div>
+
 <aside
   class="cs_anno_pt announcement-bar spacing-style section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  aria-label="{{ 'sections.header.announcement' | t | default: 'Announcements' }}"
   style="{% render 'spacing-padding', settings: section.settings %}; --border-bottom-width: {{ section.settings.divider_width }}px;"
 >
   {% liquid
@@ -24,249 +24,13 @@
 
   <announcement-bar-component
     class="announcement-bar__slider"
-    {% if autoplay == true %}
-      autoplay="{{ section.settings.speed }}" aria-live="polite"
-    {% endif %}
-  >
-    {% if show_arrows %}
-      {% render 'slideshow-arrows', icon_style: 'chevron' %}
-    {% endif %}
-
-    <div class="announcement-bar__slides">
-      {% content_for 'blocks' %}
-    </div>
-  </announcement-bar-component>
-</aside>
-
-{% stylesheet %}
-  .announcement-bar {
-    border-block-end: var(--border-bottom-width) solid var(--color-border);
-  }
-
-  .announcement-bar__slider {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-
-    @media screen and (max-width: 749px) {
-      grid-column: 1 / -1;
-    }
-  }
-
-  .announcement-bar__slides {
-    display: grid;
-    grid: [stack] auto / [stack] auto;
-    width: calc(100% - var(--button-size) * 2);
-    max-width: 680px;
-    margin-inline: auto;
-  }
-
-  .announcement-bar__slides > * {
-    grid-area: stack;
-  }
-
-  .announcement-bar__slide {
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-
-    &[aria-hidden='true'] {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-
-  .announcement-bar__slider slideshow-arrows {
-    padding: 0;
-    mix-blend-mode: normal;
-  }
-
-  .announcement-bar__slider slideshow-arrows .slideshow-control {
-    color: var(--color-foreground);
-  }
-
-  .announcement-bar__slider .slideshow-control {
-    display: flex;
-    padding: 0;
-    width: var(--button-size);
-    height: var(--button-size);
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
-    animation: none;
-
-    @media screen and (min-width: 750px) {
-      --slideshow-control-offset: calc((var(--button-size) - var(--icon-size-xs)) / 2);
-
-      .section--page-width &.slideshow-control--previous {
-        transform: translateX(var(--slideshow-control-offset));
-      }
-    }
-  }
-
-  .announcement-bar__slider .slideshow-control .svg-wrapper {
-    width: var(--icon-size-xs);
-    height: var(--icon-size-xs);
-  }
-
-  .announcement-bar__slide {
-    place-content: center;
-  }
-
-  .announcement-bar__text:first-child {
-    margin: 0;
-  }
-
-  .announcement-bar__link {
-    position: absolute;
-    inset: 0;
-  }
-{% endstylesheet %}
-
-{% schema %}
-{
-  "name": "t:names.announcement_bar",
-  "blocks": [
-    {
-      "type": "_announcement"
-    }
-  ],
-  "enabled_on": {
-    "groups": ["header"]
-  },
-  "settings": [
-    {
-      "type": "range",
-      "id": "speed",
-      "label": "t:settings.scroll_speed",
-      "min": 2,
-      "max": 10,
-      "default": 5,
-      "unit": "sec"
-    },
-    {
-      "type": "header",
-      "content": "t:content.appearance"
-    },
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "t:settings.section_width",
-      "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "default": "page-width"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "default": "scheme-4",
-      "label": "t:settings.color_scheme"
-    },
-    {
-      "type": "range",
-      "id": "divider_width",
-      "label": "t:settings.divider_thickness",
-      "min": 0,
-      "max": 5,
-      "step": 0.5,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:content.padding"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "t:settings.top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 15
-    },
-    {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "t:settings.bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 15
-    }
-  ],
-  "presets": [
-    {
-      "name": "t:names.announcement_bar",
-      "blocks": {
-        "announcement_1": {
-          "type": "_announcement"
-        }
-      },
-      "block_order": ["announcement_1"]
-    }
-  ]
-}
-{% endschema %} {% endcomment %}
-
-{% if section.blocks.size > 1 %}
-  <script
-    src="{{ 'announcement-bar.js' | asset_url }}"
-    type="module"
-    fetchpriority="low"
-  ></script>
-{% endif %}
-
-{% comment %} <script>
-  // Make announcement bar sticky
-  document.addEventListener('DOMContentLoaded', function() {
-    const annoBar = document.querySelector('.announcement-bar');
-    if (annoBar) {
-      let lastScroll = 0;
-      const threshold = 10;
-      
-      window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > threshold) {
-          annoBar.classList.add('sticky');
-        } else {
-          annoBar.classList.remove('sticky');
-        }
-        
-        lastScroll = currentScroll;
-      });
-    }
-  });
-</script> {% endcomment %}
-
-<div class="section-background color-{{ section.settings.color_scheme }}"></div>
-<aside
-  class="cs_anno_pt announcement-bar spacing-style section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
-  style="{% render 'spacing-padding', settings: section.settings %}; --border-bottom-width: {{ section.settings.divider_width }}px;"
->
-  {% liquid
-    assign autoplay = false
-    assign show_arrows = false
-    if section.blocks.size > 1
-      assign autoplay = true
-      assign show_arrows = true
-    endif
-  %}
-
-  <announcement-bar-component
-    class="announcement-bar__slider"
-    {% if autoplay == true %}
-      autoplay="{{ section.settings.speed }}" aria-live="polite"
+    role="region"
+    aria-roledescription="{{ 'accessibility.carousel' | t | default: 'carousel' }}"
+    aria-label="{{ 'sections.header.announcement' | t | default: 'Announcements' }}"
+    {% if autoplay %}
+      autoplay="{{ section.settings.speed }}"
+      aria-live="polite"
+      aria-atomic="false"
     {% endif %}
   >
     {% if show_arrows %}
@@ -291,23 +55,17 @@
     left: 0;
     right: 0;
     z-index: 999;
-    background:black !important;
+    background: var(--color-background);
+    color: var(--color-foreground);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     animation: slideDown 0.3s ease;
   }
 
   @keyframes slideDown {
-    from {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0);     opacity: 1; }
   }
 
-  /* Add padding to body when announcement bar is sticky to prevent content jump */
   body:has(.announcement-bar.sticky) {
     padding-top: var(--announcement-bar-height, 50px);
   }
@@ -372,6 +130,11 @@
     }
   }
 
+  .announcement-bar__slider .slideshow-control:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
   .announcement-bar__slider .slideshow-control .svg-wrapper {
     width: var(--icon-size-xs);
     height: var(--icon-size-xs);
@@ -389,97 +152,46 @@
     position: absolute;
     inset: 0;
   }
+
+  /* Respect prefers-reduced-motion (WCAG 2.3.3 / 2.2.2) */
+  @media (prefers-reduced-motion: reduce) {
+    .announcement-bar,
+    .announcement-bar.sticky,
+    .announcement-bar__slide {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
 {
   "name": "t:names.announcement_bar",
   "blocks": [
-    {
-      "type": "_announcement"
-    }
+    { "type": "_announcement" }
   ],
   "enabled_on": {
     "groups": ["header"]
   },
   "settings": [
-    {
-      "type": "range",
-      "id": "speed",
-      "label": "t:settings.scroll_speed",
-      "min": 2,
-      "max": 10,
-      "default": 5,
-      "unit": "sec"
-    },
-    {
-      "type": "header",
-      "content": "t:content.appearance"
-    },
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "t:settings.section_width",
+    { "type": "range", "id": "speed", "label": "t:settings.scroll_speed", "min": 2, "max": 10, "default": 5, "unit": "sec" },
+    { "type": "header", "content": "t:content.appearance" },
+    { "type": "select", "id": "section_width", "label": "t:settings.section_width",
       "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "default": "page-width"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "default": "scheme-4",
-      "label": "t:settings.color_scheme"
-    },
-    {
-      "type": "range",
-      "id": "divider_width",
-      "label": "t:settings.divider_thickness",
-      "min": 0,
-      "max": 5,
-      "step": 0.5,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:content.padding"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "t:settings.top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 15
-    },
-    {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "t:settings.bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 15
-    }
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ], "default": "page-width" },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-4", "label": "t:settings.color_scheme" },
+    { "type": "range", "id": "divider_width", "label": "t:settings.divider_thickness", "min": 0, "max": 5, "step": 0.5, "unit": "px", "default": 0 },
+    { "type": "header", "content": "t:content.padding" },
+    { "type": "range", "id": "padding-block-start", "label": "t:settings.top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "padding-block-end", "label": "t:settings.bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 15 }
   ],
   "presets": [
     {
       "name": "t:names.announcement_bar",
       "blocks": {
-        "announcement_1": {
-          "type": "_announcement"
-        }
+        "announcement_1": { "type": "_announcement" }
       },
       "block_order": ["announcement_1"]
     }
