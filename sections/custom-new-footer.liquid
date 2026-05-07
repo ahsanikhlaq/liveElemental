@@ -7,7 +7,6 @@
     margin: 0;
     flex-wrap: wrap;
   }
-
   .privacy-menu-link {
     color: rgba(255, 255, 255, 0.70);
     font-family: Quicksand;
@@ -16,46 +15,37 @@
     text-decoration: none;
     transition: color 0.3s ease;
   }
-
-  .privacy-menu-link:hover {
-    color: #FFFFFF;
+  .privacy-menu-link:hover,
+  .privacy-menu-link:focus-visible { color: #FFFFFF; }
+  .privacy-menu-link:focus-visible,
+  .cs_footer_menu_list:focus-visible,
+  .cs_socal_icons:focus-visible,
+  .footer-link-toggle:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 2px;
   }
 
   @media screen and (max-width: 768px) {
-    .privacy-menu-list {
-      gap: 10px;
-      justify-content:center;
-    }
-    .privacy-menu-link {
-      font-size: 12px;
-    }
+    .privacy-menu-list { gap: 10px; justify-content: center; }
+    .privacy-menu-link { font-size: 12px; }
   }
-    .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}px;
-        padding-bottom: {{ section.settings.padding_bottom }}px;
-        background:{{section.settings.bg_color}};
-    }
-    .sc_log{
-        width: 497.333px;
-    /* height: 53.333px; */
-    display:block;
-    }
-    .cs_footer_content-wrap{
-        display:flex;
-        flex-direction:column;
-        gap:30px;
-    }
-    /* Make link relative and remove default underline */
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.bg_color | default: '#000' }};
+  }
+  .sc_log { width: 497.333px; display: block; max-width: 100%; height: auto; }
+  .cs_footer_content-wrap { display: flex; flex-direction: column; gap: 30px; }
+
   .footer-link-menu .cs_footer_menu_list {
     position: relative;
     text-decoration: none;
   }
-
-  /* Underline using ::after */
   .footer-link-menu .cs_footer_menu_list::after {
     content: '';
     position: absolute;
-    bottom: -5px; /* space below text */
+    bottom: -5px;
     left: 0;
     width: 100%;
     height: 2px;
@@ -64,467 +54,369 @@
     transform-origin: bottom right;
     transition: transform 0.3s ease-in-out;
   }
-
-  /* Hover animation */
-  .footer-link-menu .cs_footer_menu_list:hover::after {
+  .footer-link-menu .cs_footer_menu_list:hover::after,
+  .footer-link-menu .cs_footer_menu_list:focus-visible::after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
 
-
-    .cs_text_foter p{
-        color: #EAE9E9;
-        max-width: 440px;
-    margin:0;
-    /* Body/Medium/18 */
+  .cs_text_foter p {
+    color: #EAE9E9;
+    max-width: 440px;
+    margin: 0;
     font-family: Quicksand;
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    }
-      .cs_footer_newslatter{
-        margin: 0;
-        color: #FFF;
-        font-family: var(--cs_font-richtext-family);
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        letter-spacing: 0.6px;
-        text-transform: capitalize;
-      }
-      .footer-link-menu li {
-        text-decoration: none;
-        list-style: none;
-    }
-      .links-heading{
-        margin: 0;
-        color: #FFF;
-        font-family: var(--cs_font-richtext-family);
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        text-transform: capitalize;
-      }
-      .cs_footer_menu_list{
-        color: rgba(255, 255, 255, 0.70);
-        font-family: var(--cs_font-richtext-family);
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 300;
-        line-height: normal;
-        text-decoration: none;
-      }
-
-      .cs_footer_main_top {
-        display: grid;
-        grid-template-columns: 40% auto;
-        gap: 90px;
-        /* padding: 0 40px; */
-    }
-  .cs_footer_main{
-    padding:0 40px;
   }
-      .footer-links-field {
-        display: grid;
-        /* gap:120px; */
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-      .social-media-icons{
-        display: flex;
-        gap: 16px;
-        align-items: center;
-        /* margin-top: 15px; */
-      }
-      .cs-footer-follow-us{
-        margin-top: 38px;
-      }
-      .footer-link-expand{
-      display: none;
-    }
-      .footer-links ul{
-        padding: 0;
-        margin: 0;
-        /* padding-top: 18px; */
-      }
-      .cs_footer_content-left{
-        color: #FFF;
-  text-align: center;
+  .cs_footer_newslatter {
+    margin: 0;
+    color: #FFF;
+    font-family: var(--cs_font-richtext-family);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.6px;
+    text-transform: capitalize;
+  }
+  .footer-link-menu li { text-decoration: none; list-style: none; }
 
-  /* Body/Semobold/18 */
-  font-family: Quicksand;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-      }
-      .cs_footer_bottom_contet{
-        display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 40px;
-      padding-top: 30px;
-      border-top: 1px solid #FFFFFF;
-      }
-      .cs-footer-email-feld .newsletter-form__button{
-        margin:0px !important;
-        color: #000;
-        font-family: "DM Sans";
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 22.4px;
-        text-transform: uppercase;
-        display: flex;
-        padding: 10px 40px;
-        justify-content: center;
-        align-items: center;
-        gap: 12px;
-        border-radius: 100px;
-        border:none;
-        background: #FFF;
-      }
-      .cs-footer-email-feld .acsb-keynav :focus {
-        outline-style: none !important;
-      }
-      .cs-footer-email-feld .newsletter-form{
-        padding:0;
-      }
-      .cs-footer-email-feld input::placeholder {
+  .links-heading {
+    margin: 0;
+    color: #FFF;
+    font-family: var(--cs_font-richtext-family);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+
+  .cs_footer_menu_list {
+    color: rgba(255, 255, 255, 0.70);
+    font-family: var(--cs_font-richtext-family);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-decoration: none;
+  }
+
+  .cs_footer_main_top {
+    display: grid;
+    grid-template-columns: 40% auto;
+    gap: 90px;
+  }
+  .cs_footer_main { padding: 0 40px; }
+  .footer-links-field { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+
+  .social-media-icons { display: flex; gap: 16px; align-items: center; }
+  .cs-footer-follow-us { margin-top: 38px; }
+  .footer-link-expand { display: none; }
+  .footer-links ul { padding: 0; margin: 0; }
+
+  .cs_footer_content-left {
+    color: #FFF;
+    text-align: center;
+    font-family: Quicksand;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .cs_footer_bottom_contet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #FFFFFF;
+  }
+
+  .cs-footer-email-feld .newsletter-form__button {
+    margin: 0px !important;
+    color: #000;
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22.4px;
+    text-transform: uppercase;
+    display: flex;
+    padding: 10px 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: 100px;
+    border: none;
+    background: #FFF;
+  }
+  .cs-footer-email-feld .newsletter-form { padding: 0; }
+  .cs-footer-email-feld input::placeholder {
     font-family: "DM Sans";
     font-size: 14px;
     text-transform: uppercase;
-    font-style: normal;
     font-weight: 400;
-    line-height: 18.2px; /* 130% */
-      color: #FFFFFF; /* Replace with your desired color */
-      opacity: 1; /* Optional: to make the placeholder color fully opaque */
-    }
-    .cs-footer-email-feld input {
-         background: transparent;
-        color: white;
-       width: 298px;
-        border: none;
-        box-shadow: none;
-        /* padding-left: 15px; */
-    }
-    .new-content-wrap {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: baseline;
-        gap: 30px;
-        padding-bottom: 29px;
-    }
-      .cs-footer-made p{
-        color: #7F7E7E;
-        font-family: var(--cs_font-richtext-family);
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        /* text-decoration: none; */
-        margin: 0;
-      }
-    .cs-footer-made a{
-      color: #7F7E7E;
-    }
-    .cs-footer-made strong{
-      color: #ba2322;
-    }
-      .cs_footer_newlatter img{
-          display: none;
-        object-fit: cover;
-      }
-      .cs-footer-follow-us_mbl{
-          display: none;
-        }
-      .fotr-icon-wrap{
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        gap:30px;
-      }
-      .cs-footer-email-feld .newsletter-form__fields {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    h2.links-heading {
-       color: #FDFDFD;
-    /* Body/Semobold/24 */
+    line-height: 18.2px;
+    color: #FFFFFF;
+    opacity: 1;
+  }
+  .cs-footer-email-feld input {
+    background: transparent;
+    color: white;
+    width: 298px;
+    border: none;
+    box-shadow: none;
+  }
+
+  .new-content-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    gap: 30px;
+    padding-bottom: 29px;
+  }
+  .cs-footer-made p {
+    color: #7F7E7E;
+    font-family: var(--cs_font-richtext-family);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+  }
+  .cs-footer-made a { color: #7F7E7E; }
+  .cs-footer-made strong { color: #ba2322; }
+  .cs_footer_newlatter img { display: none; object-fit: cover; }
+  .cs-footer-follow-us_mbl { display: none; }
+  .fotr-icon-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+  }
+  .cs-footer-email-feld .newsletter-form__fields {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h2.links-heading {
+    color: #FDFDFD;
     font-family: Quicksand;
     font-size: 24px;
-    font-style: normal;
     font-weight: 600;
     line-height: normal;
-    }
-    .footer-links-cata {
-        display: flex;
-        flex-direction: column;
-        /* justify-content: center; */
-        /* align-items: center; */
-        gap: 28px;
-    }
-    ul.footer-link-menu {
-        display: flex;
-        flex-direction: column;
-        gap: 11px;
-    }
-    a.cs_footer_menu_list.link.link--text.list-menu_item.list-menuitem--link {
-        color: #EAE9E9;
-    /* Body/Medium/18 */
+  }
+
+  .footer-links-cata { display: flex; flex-direction: column; gap: 28px; }
+  ul.footer-link-menu { display: flex; flex-direction: column; gap: 11px; }
+
+  a.cs_footer_menu_list.link.link--text.list-menu_item.list-menuitem--link {
+    color: #EAE9E9;
     font-family: Quicksand;
     font-size: 18px;
-    font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-align: left;
-    }
-    .cs_footer_menus{
-      /* border-right: 1px solid white; */
-      /* height: 163px; */
-    }
-    a.cs_socal_icons svg {
+  }
+
+  a.cs_socal_icons svg { display: block; }
+
+  .sc_payment_icon {
+    max-width: 332px;
+    width: 100%;
+    height: auto;
     display: block;
-    }
-    .sc_payment_icon{
-      max-width:332px;
-      width:100%;
-      height:auto;
-      display: block;
-    }
-    .news-cs-head{
-      color: #FFF;
+  }
+
+  .news-cs-head {
+    color: #FFF;
     font-family: "DM Sans";
     font-size: 20px;
-    font-style: normal;
     font-weight: 600;
-    line-height: 18.2px; /* 91% */
-    }
-    .news-cs-desc{
+    line-height: 18.2px;
+  }
+  .news-cs-desc {
     color: #FFF;
     font-family: "DM Sans";
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: 18.2px; /* 130% */
-    }
-    .cs-footer-email-feld{
-          display: flex;
-        padding: 12px 0;
-        justify-content: space-between;
-        align-items: center;
-        align-self: stretch;
-        border-bottom: 1.059px solid #FFF;
-    }
-      @media screen and (max-width:768px){
-      .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.mbl_padding_top }}px;
-        padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
-    }
-    .cs-footer-email-feld input{
-          width: 187px;
-    }
-    a.cs_footer_menu_list.link.link--text.list-menu_item.list-menuitem--link{
-      font-size:16px;
-    }
-    .footer-links {
-      border-bottom: 1px solid #FFF;
+    line-height: 18.2px;
   }
-    .cs_text_foter p{
-      font-size: 14px;
-    }
-    .cs_footer_content-wrap{
-      gap:23px;
-    }
-    .newsletter-form__field{
-      /* width: 210px; */
-    }
-    h2.links-heading{
-  font-size: 20px;
-    }
-    .news-cs-head{
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 44.8px; /* 140% */
-    }
-    .cs-footer-email-feld .newsletter-form__button{
-      font-size: 14px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 22.4px;
-        padding: 8px 30px;
-    }
-    .cs-footer-email-feld{
-      padding:16px 0;
-    }
-    .new-content-wrap{
-      gap:20px;
-      padding-bottom:20px;
-    }
-    .news-cs-desc{
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22.4px; /* 140% */
-    }
-    .cs_footer_menus{
-      border:none;
-      height:unset;
-    }
-    .cs_footer_main{
-      border:none;
-      padding:0px 10px;
-    }
-        .cs-footer-follow-us_desktop{
-          display: none;
-        }
-        .cs-footer-follow-us_mbl{
-          display: block;
-        }
-    .cs_footer_main_top {
-        gap: 24px;
-        display: flex;
-        flex-direction: column;
-    }
-        .footer-links-field {
-        grid-template-columns: 1fr;
-    }
-     .footer-link-menu {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
-        padding-top: 0;
-      }
+  .cs-footer-email-feld {
+    display: flex;
+    padding: 12px 0;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-bottom: 1.059px solid #FFF;
+  }
 
-      .footer-link-menu.Linlexpanded {
-        opacity: 1;
-        padding: 10px 0px !important;
-      }
-        .footer-link-expand{
+  .footer-link-toggle {
+    all: unset;
+    width: 100%;
+    cursor: default;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-link-menu { transition: none !important; }
+    .footer-link-menu .cs_footer_menu_list::after { transition: none !important; }
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.mbl_padding_top }}px;
+      padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+    }
+    .cs-footer-email-feld input { width: 187px; }
+    a.cs_footer_menu_list.link.link--text.list-menu_item.list-menuitem--link { font-size: 16px; }
+    .footer-links { border-bottom: 1px solid #FFF; }
+    .cs_text_foter p { font-size: 14px; }
+    .cs_footer_content-wrap { gap: 23px; }
+    h2.links-heading { font-size: 20px; }
+    .news-cs-head { font-size: 32px; font-weight: 600; line-height: 44.8px; }
+    .cs-footer-email-feld .newsletter-form__button {
+      font-size: 14px; font-weight: 700; line-height: 22.4px; padding: 8px 30px;
+    }
+    .cs-footer-email-feld { padding: 16px 0; }
+    .new-content-wrap { gap: 20px; padding-bottom: 20px; }
+    .news-cs-desc { font-size: 16px; font-weight: 400; line-height: 22.4px; }
+    .cs_footer_menus { border: none; height: unset; }
+    .cs_footer_main { border: none; padding: 0px 10px; }
+    .cs-footer-follow-us_desktop { display: none; }
+    .cs-footer-follow-us_mbl { display: block; }
+
+    .cs_footer_main_top { gap: 24px; display: flex; flex-direction: column; }
+    .footer-links-field { grid-template-columns: 1fr; }
+
+    .footer-link-menu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+      padding-top: 0;
+    }
+    .footer-link-menu.Linlexpanded {
+      opacity: 1;
+      padding: 10px 0px !important;
+    }
+    .footer-link-expand { display: flex; width: 12px; }
+    .footer-links-cata { gap: 0; }
+
+    .cs_footer_newlatter img {
+      display: block; width: 140px; height: 92.381px;
+    }
+    .footer-links-top {
       display: flex;
-      width: 12px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0 8px 0;
     }
-    .footer-links-cata{
-      gap:0;
-    }
-        .cs_footer_newlatter img{
-          display: block;
-          width: 140px;
-          height: 92.381px;
-        }
-        .footer-links-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        /* border-bottom: 1px solid #FFF; */
-        padding: 20px 0 8px 0;
-    }
-        .cs_footer_newslatter{
-          font-size: 14px;
-          line-height: normal;
-          padding-top: 20px;
-        }
-        .links-heading{
-          font-size: 16px;
-          line-height: normal;
-        }
-        .cs_footer_menu_list{
-          font-size: 14px;
-          line-height: 15px;
-        }
-        .social-media-icons{
-          gap: 20px;
-        }
-        .cs_socal_icons svg{
-          width: 26px;
-          height: 26px;
-        }
-        .cs_footer_bottom_contet{
-         margin-top: 0;
-          gap: 10px;
-          border: none;
-          padding-top: 20px;
-          flex-direction: column;
-        }
-        .cs_footer_content-left{
-          font-size: 14px;
-        }
-        .cs-footer-made{
-          font-size: 12px;
-          line-height: normal;
-        }
-        .footer-links ul {
-        /* padding-top: 13px; */
-        }
+    .footer-link-toggle { cursor: pointer; }
 
-      }
-      .cs-banner-parent .page-width{
-        max-width:100%;
-      }
+    .cs_footer_newslatter { font-size: 14px; line-height: normal; padding-top: 20px; }
+    .links-heading { font-size: 16px; line-height: normal; }
+    .cs_footer_menu_list { font-size: 14px; line-height: 15px; }
+    .social-media-icons { gap: 20px; }
+    .cs_socal_icons svg { width: 26px; height: 26px; }
+    .cs_footer_bottom_contet {
+      margin-top: 0;
+      gap: 10px;
+      border: none;
+      padding-top: 20px;
+      flex-direction: column;
+    }
+    .cs_footer_content-left { font-size: 14px; }
+    .cs-footer-made { font-size: 12px; line-height: normal; }
+  }
+
+  .cs-banner-parent .page-width { max-width: 100%; }
 {% endstyle %}
-<section class="section-{{ section.id }}-padding cs-banner-parent fade-up">
+
+{%- liquid
+  assign logo = section.settings.sc_logo
+  assign logo_alt = logo.alt | default: shop.name | append: ' logo'
+-%}
+
+<footer
+  class="section-{{ section.id }}-padding cs-banner-parent fade-up"
+  role="contentinfo"
+  aria-label="Site footer"
+>
   <div class="page-width">
     <div class="cs_footer_main">
-      <!-- TOP CONTENT -->
+
       <div class="cs_footer_main_top">
-        <!-- LOGO + TEXT (FADE DESKTOP / SLIDE MOBILE) -->
-        <div
-          class="cs_footer_content-wrap scroll-trigger animate--fade-in"
-          data-animate
-        >
-          <div class="cs-foter-logo">
-            <img
-              class="sc_log"
-              src="{{ section.settings.sc_logo | image_url }}"
-              width="100%"
-              height="auto"
-              loading="lazy"
-            >
-          </div>
+
+        <div class="cs_footer_content-wrap scroll-trigger animate--fade-in" data-animate>
+          {% if logo != blank %}
+            <a class="cs-foter-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} — home">
+              <img
+                class="sc_log"
+                src="{{ logo | image_url: width: 1000 }}"
+                width="{{ logo.width }}"
+                height="{{ logo.height }}"
+                loading="lazy"
+                alt="{{ logo_alt | escape }}"
+              >
+            </a>
+          {% endif %}
+
           <div class="singg">
             {% render 'email-signup' %}
           </div>
-          <div class="cs_text_foter">
-            {{ section.settings.sc_foter_txt }}
-          </div>
+
+          {% if section.settings.sc_foter_txt != blank %}
+            <div class="cs_text_foter">
+              {{ section.settings.sc_foter_txt }}
+            </div>
+          {% endif %}
         </div>
 
-        <!-- MENUS -->
         <div class="cs_footer_menus">
           <div class="footer-links-field">
             {% for block in section.blocks %}
-              <!-- EACH COLUMN = AUTO STAGGER -->
+              {%- liquid
+                assign menu_heading = block.settings['footer-menu-heading'] | strip
+                if menu_heading == blank
+                  assign menu_heading = 'Menu ' | append: forloop.index
+                endif
+                assign menu_id = 'footer-menu-' | append: section.id | append: '-' | append: forloop.index
+              -%}
               <div
                 class="footer-links-cata scroll-trigger animate--slide-up"
                 data-animate
                 {{ block.shopify_attributes }}
               >
-                <div class="footer-links-top">
-                  <h2 class="links-heading">
-                    {{ block.settings['footer-menu-heading'] }}
-                  </h2>
-                  <span class="footer-link-expand">
-                    <!-- icon unchanged -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M17.5 10C17.5 10.1658 17.4342 10.3247 17.3169 10.4419C17.1997 10.5592 17.0408 10.625 16.875 10.625H10.625V16.875C10.625 17.0408 10.5592 17.1997 10.4419 17.3169C10.3247 17.4342 10.1658 17.5 10 17.5C9.83424 17.5 9.67527 17.4342 9.55806 17.3169C9.44085 17.1997 9.375 17.0408 9.375 16.875V10.625H3.125C2.95924 10.625 2.80027 10.5592 2.68306 10.4419C2.56585 10.3247 2.5 10.1658 2.5 10C2.5 9.83424 2.56585 9.67527 2.68306 9.55806C2.80027 9.44085 2.95924 9.375 3.125 9.375H9.375V3.125C9.375 2.95924 9.44085 2.80027 9.55806 2.68306C9.67527 2.56585 9.83424 2.5 10 2.5C10.1658 2.5 10.3247 2.56585 10.4419 2.68306C10.5592 2.80027 10.625 2.95924 10.625 3.125V9.375H16.875C17.0408 9.375 17.1997 9.44085 17.3169 9.55806C17.4342 9.67527 17.5 9.83424 17.5 10Z" fill="white"></path>
+                <button
+                  type="button"
+                  class="footer-links-top footer-link-toggle"
+                  aria-expanded="false"
+                  aria-controls="{{ menu_id }}"
+                >
+                  <h2 class="links-heading">{{ menu_heading | escape }}</h2>
+                  <span class="footer-link-expand" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" focusable="false">
+                      <path d="M17.5 10C17.5 10.1658 17.4342 10.3247 17.3169 10.4419C17.1997 10.5592 17.0408 10.625 16.875 10.625H10.625V16.875C10.625 17.0408 10.5592 17.1997 10.4419 17.3169C10.3247 17.4342 10.1658 17.5 10 17.5C9.83424 17.5 9.67527 17.4342 9.55806 17.3169C9.44085 17.1997 9.375 17.0408 9.375 16.875V10.625H3.125C2.95924 10.625 2.80027 10.5592 2.68306 10.4419C2.56585 10.3247 2.5 10.1658 2.5 10C2.5 9.83424 2.56585 9.67527 2.68306 9.55806C2.80027 9.44085 2.95924 9.375 3.125 9.375H9.375V3.125C9.375 2.95924 9.44085 2.80027 9.55806 2.68306C9.67527 2.56585 9.83424 2.5 10 2.5C10.1658 2.5 10.3247 2.56585 10.4419 2.68306C10.5592 2.80027 10.625 2.95924 10.625 3.125V9.375H16.875C17.0408 9.375 17.1997 9.44085 17.3169 9.55806C17.4342 9.67527 17.5 9.83424 17.5 10Z" fill="white"/>
                     </svg>
                   </span>
-                </div>
+                </button>
 
-                <div class="footer-links">
-                  <ul class="footer-link-menu">
+                <nav class="footer-links" aria-label="{{ menu_heading | escape }}">
+                  <ul class="footer-link-menu" id="{{ menu_id }}">
                     {% if block.settings.menu != blank %}
                       {% for link in block.settings.menu.links %}
                         <li>
                           <a
                             href="{{ link.url }}"
                             class="cs_footer_menu_list link link--text list-menu_item list-menuitem--link{% if link.active %} list-menu_item--active{% endif %}"
+                            {% if link.active %}aria-current="page"{% endif %}
                           >
                             {{ link.title | escape }}
                           </a>
@@ -532,211 +424,151 @@
                       {% endfor %}
                     {% endif %}
                   </ul>
-                </div>
+                </nav>
               </div>
             {% endfor %}
           </div>
         </div>
       </div>
 
-      <!-- BOTTOM BAR -->
       <div
         class="cs_footer_bottom_contet scroll-trigger animate--fade-in"
         data-animate
       >
-        <div class="cs_footer_content-left">{{ 'now' | date: '%Y' }} Copyright - All Rights Reserved</div>
+        <div class="cs_footer_content-left">
+          &copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }} — All Rights Reserved
+        </div>
 
-        <div class="foter-privacy-menu">
-          {% if section.settings.privacy_menu != blank %}
+        {% if section.settings.privacy_menu != blank and section.settings.privacy_menu.links.size > 0 %}
+          <nav class="foter-privacy-menu" aria-label="Legal and privacy">
             <ul class="privacy-menu-list">
               {% for link in section.settings.privacy_menu.links %}
                 <li>
-                  <a href="{{ link.url }}" class="privacy-menu-link">
+                  <a
+                    href="{{ link.url }}"
+                    class="privacy-menu-link"
+                    {% if link.active %}aria-current="page"{% endif %}
+                  >
                     {{ link.title | escape }}
                   </a>
                 </li>
               {% endfor %}
             </ul>
-          {% endif %}
-        </div>
+          </nav>
+        {% endif %}
+
         <div class="fotr-icon-wrap">
-          <div class="social-media-icons social-media-icons_desktop">
-            <a class="cs_socal_icons" href="{{ section.settings.fb_url }}">
-              {% render 'cs_socal_icon_fb' %}
-            </a>
-            <a class="cs_socal_icons" href="{{ section.settings.insta_url }}">
-              {% render 'cs_socal_icon_inst' %}
-            </a>
+          <div class="social-media-icons social-media-icons_desktop" aria-label="Social media">
+            {% if section.settings.fb_url != blank %}
+              <a
+                class="cs_socal_icons"
+                href="{{ section.settings.fb_url }}"
+                aria-label="Follow {{ shop.name | escape }} on Facebook (opens in a new tab)"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {% render 'cs_socal_icon_fb' %}
+              </a>
+            {% endif %}
+            {% if section.settings.insta_url != blank %}
+              <a
+                class="cs_socal_icons"
+                href="{{ section.settings.insta_url }}"
+                aria-label="Follow {{ shop.name | escape }} on Instagram (opens in a new tab)"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {% render 'cs_socal_icon_inst' %}
+              </a>
+            {% endif %}
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</footer>
 
 {% schema %}
 {
   "name": "Custom Footer Section",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "sc_logo",
-      "label": "Footer Logo"
-    },
-    {
-      "type": "richtext",
-      "id": "sc_foter_txt",
-      "label": "Footer Content"
-    },
-    {
-      "type": "text",
-      "id": "follow-heading",
-      "label": "Socal Icon Heading"
-    },
-    {
-      "type": "url",
-      "id": "fb_url",
-      "label": "FB Url"
-    },
-    {
-      "type": "url",
-      "id": "insta_url",
-      "label": "Insta Url"
-    },
-    {
-      "type": "url",
-      "id": "pint_url",
-      "label": "Pintrst Url"
-    },
-    {
-      "type": "url",
-      "id": "tiktok_url",
-      "label": "Tiktok Url"
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
-      "default": "#fff"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 160,
-      "step": 2,
-      "unit": "px",
-      "label": "padding_top",
-      "default": 30
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 160,
-      "step": 2,
-      "unit": "px",
-      "label": "padding_bottom",
-      "default": 30
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_top",
-      "min": 0,
-      "max": 150,
-      "step": 2,
-      "unit": "px",
-      "label": "Mobile Top Padding",
-      "default": 30
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_bottom",
-      "min": 0,
-      "max": 160,
-      "step": 2,
-      "unit": "px",
-      "label": "Mobile Bottom Padding",
-      "default": 30
-    },
-    {
-      "type": "image_picker",
-      "id": "payment_icon",
-      "label": "Payment Icon"
-    },
-    {
-      "type": "link_list",
-      "id": "privacy_menu",
-      "label": "Privacy Menu"
-    }
+    { "type": "image_picker", "id": "sc_logo", "label": "Footer Logo" },
+    { "type": "richtext", "id": "sc_foter_txt", "label": "Footer Content" },
+    { "type": "text", "id": "follow-heading", "label": "Socal Icon Heading" },
+    { "type": "url", "id": "fb_url", "label": "FB Url" },
+    { "type": "url", "id": "insta_url", "label": "Insta Url" },
+    { "type": "url", "id": "pint_url", "label": "Pintrst Url" },
+    { "type": "url", "id": "tiktok_url", "label": "Tiktok Url" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#fff" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 160, "step": 2, "unit": "px", "label": "padding_top", "default": 30 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "label": "padding_bottom", "default": 30 },
+    { "type": "range", "id": "mbl_padding_top", "min": 0, "max": 150, "step": 2, "unit": "px", "label": "Mobile Top Padding", "default": 30 },
+    { "type": "range", "id": "mbl_padding_bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "label": "Mobile Bottom Padding", "default": 30 },
+    { "type": "image_picker", "id": "payment_icon", "label": "Payment Icon" },
+    { "type": "link_list", "id": "privacy_menu", "label": "Privacy Menu" }
   ],
   "blocks": [
     {
       "type": "add",
       "name": "Add Tab",
       "settings": [
-        {
-          "type": "text",
-          "id": "footer-menu-heading",
-          "label": "Menu Heading"
-        },
-        {
-          "type": "link_list",
-          "id": "menu",
-          "default": "footer",
-          "label": "Menu"
-        }
+        { "type": "text", "id": "footer-menu-heading", "label": "Menu Heading" },
+        { "type": "link_list", "id": "menu", "default": "footer", "label": "Menu" }
       ]
     }
   ],
   "presets": [
-    {
-      "name": "Custom Footer Section"
-    }
+    { "name": "Custom Footer Section" }
   ]
 }
 {% endschema %}
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const footerLinks = document.querySelectorAll('.footer-link-menu');
-    const footerToggles = document.querySelectorAll('.footer-links-top');
+    var footerLinks = document.querySelectorAll('.footer-link-menu');
+    var footerToggles = document.querySelectorAll('.footer-link-toggle');
 
     function setMinusIcon(icon) {
-      icon.innerHTML = `<svg width="19" height="2" viewBox="0 0 19 2" fill="none" xmlns="http://www.w3.org/2000/svg" data-acsb-clickable="true" data-acsb-navigable="true" data-acsb-now-navigable="false" data-acsb-hidden="true" aria-hidden="true">
-                        <path d="M1 1H17.8" stroke="#ffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>`;
+      icon.innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" width="19" height="2" viewBox="0 0 19 2" fill="none" focusable="false" aria-hidden="true">' +
+          '<path d="M1 1H17.8" stroke="#ffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>' +
+        '</svg>';
     }
-
     function setPlusIcon(icon) {
-      icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-  <path d="M17.5 10C17.5 10.1658 17.4342 10.3247 17.3169 10.4419C17.1997 10.5592 17.0408 10.625 16.875 10.625H10.625V16.875C10.625 17.0408 10.5592 17.1997 10.4419 17.3169C10.3247 17.4342 10.1658 17.5 10 17.5C9.83424 17.5 9.67527 17.4342 9.55806 17.3169C9.44085 17.1997 9.375 17.0408 9.375 16.875V10.625H3.125C2.95924 10.625 2.80027 10.5592 2.68306 10.4419C2.56585 10.3247 2.5 10.1658 2.5 10C2.5 9.83424 2.56585 9.67527 2.68306 9.55806C2.80027 9.44085 2.95924 9.375 3.125 9.375H9.375V3.125C9.375 2.95924 9.44085 2.80027 9.55806 2.68306C9.67527 2.56585 9.83424 2.5 10 2.5C10.1658 2.5 10.3247 2.56585 10.4419 2.68306C10.5592 2.80027 10.625 2.95924 10.625 3.125V9.375H16.875C17.0408 9.375 17.1997 9.44085 17.3169 9.55806C17.4342 9.67527 17.5 9.83424 17.5 10Z" fill="white"/>
-</svg>`;
+      icon.innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" focusable="false" aria-hidden="true">' +
+          '<path d="M17.5 10C17.5 10.1658 17.4342 10.3247 17.3169 10.4419C17.1997 10.5592 17.0408 10.625 16.875 10.625H10.625V16.875C10.625 17.0408 10.5592 17.1997 10.4419 17.3169C10.3247 17.4342 10.1658 17.5 10 17.5C9.83424 17.5 9.67527 17.4342 9.55806 17.3169C9.44085 17.1997 9.375 17.0408 9.375 16.875V10.625H3.125C2.95924 10.625 2.80027 10.5592 2.68306 10.4419C2.56585 10.3247 2.5 10.1658 2.5 10C2.5 9.83424 2.56585 9.67527 2.68306 9.55806C2.80027 9.44085 2.95924 9.375 3.125 9.375H9.375V3.125C9.375 2.95924 9.44085 2.80027 9.55806 2.68306C9.67527 2.56585 9.83424 2.5 10 2.5C10.1658 2.5 10.3247 2.56585 10.4419 2.68306C10.5592 2.80027 10.625 2.95924 10.625 3.125V9.375H16.875C17.0408 9.375 17.1997 9.44085 17.3169 9.55806C17.4342 9.67527 17.5 9.83424 17.5 10Z" fill="white"/>' +
+        '</svg>';
     }
 
-    footerToggles.forEach((toggle, index) => {
+    footerToggles.forEach(function (toggle, index) {
       toggle.addEventListener('click', function () {
-        // Mobile only: max-width 768px
         if (window.innerWidth > 768) return;
 
-        footerLinks.forEach((sub, subIndex) => {
+        footerLinks.forEach(function (sub, subIndex) {
           if (subIndex !== index) {
             sub.classList.remove('Linlexpanded');
             sub.style.maxHeight = '0px';
-            const otherIcon = footerToggles[subIndex].querySelector('.footer-link-expand');
+            var otherToggle = footerToggles[subIndex];
+            if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
+            var otherIcon = otherToggle && otherToggle.querySelector('.footer-link-expand');
             if (otherIcon) setPlusIcon(otherIcon);
           }
         });
 
-        const icon = toggle.querySelector('.footer-link-expand');
-        const currentMenu = footerLinks[index];
+        var icon = toggle.querySelector('.footer-link-expand');
+        var currentMenu = footerLinks[index];
+        var isOpen = currentMenu.classList.contains('Linlexpanded');
 
-        if (currentMenu.classList.contains('Linlexpanded')) {
+        if (isOpen) {
           currentMenu.classList.remove('Linlexpanded');
           currentMenu.style.maxHeight = '0px';
+          toggle.setAttribute('aria-expanded', 'false');
           if (icon) setPlusIcon(icon);
         } else {
           currentMenu.classList.add('Linlexpanded');
           currentMenu.style.maxHeight = 'fit-content';
+          toggle.setAttribute('aria-expanded', 'true');
           if (icon) setMinusIcon(icon);
         }
       });
