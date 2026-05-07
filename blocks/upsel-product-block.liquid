@@ -38,7 +38,15 @@
     text-transform: capitalize;
   }
 
-  .upsel-wrap { padding: 14px 0; }
+  /* FIX: contain the slider so its negative-margin bleed doesn't push the page horizontally
+     or float above other sections. overflow:clip keeps stacking context behaving normally. */
+  .upsel-wrap {
+    padding: 14px 0;
+    overflow: hidden;
+  }
+  @supports (overflow: clip) {
+    .upsel-wrap { overflow: clip; }
+  }
 
   .upsel-main-head {
     display: flex;
@@ -170,6 +178,7 @@
     display: none !important;
   }
 
+  /* unchanged: keeps the bleed-out look but the parent now clips it */
   .main-wrapper-new-block-up {
     overflow: visible;
     padding-right: 30px;
@@ -199,33 +208,9 @@
     height: 12px;
   }
 
-  .upsel-nav-wrap {
-    display: flex;
-    gap: 8px;
-  }
-  .upsel-nav-btn {
-    background: transparent;
-    border: 1px solid var(--black);
-    width: 32px;
-    height: 32px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 50%;
-  }
-  .upsel-nav-btn:focus-visible {
-    outline: 2px solid var(--almond-forest);
-    outline-offset: 2px;
-  }
-  .upsel-nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
   @media (prefers-reduced-motion: reduce) {
     .product-image-rr img,
-    .plus-btn,
-    .upsel-section-heading {
-      transition: none !important;
-    }
+    .plus-btn { transition: none !important; }
     .plus-btn:hover { transform: none; }
   }
 
@@ -288,35 +273,9 @@
         </h2>
       {% endif %}
     </div>
-
-    <div class="upsel-nav-wrap">
-      <button
-        type="button"
-        class="upsel-nav-btn upsel-nav-prev-{{ block.id }}"
-        aria-label="Previous products"
-      >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" focusable="false" aria-hidden="true">
-          <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <button
-        type="button"
-        class="upsel-nav-btn upsel-nav-next-{{ block.id }}"
-        aria-label="Next products"
-      >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" focusable="false" aria-hidden="true">
-          <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </div>
   </div>
 
-  <div
-    class="swiper main-wrapper-new-block-up upsel-swiper-{{ block.id }}"
-    role="region"
-    aria-roledescription="carousel"
-    aria-label="{{ heading_plain | default: 'Recommended products' | escape }}"
-  >
+  <div class="swiper main-wrapper-new-block-up upsel-swiper-{{ block.id }}">
     <div class="swiper-wrapper" role="list">
       {% if block.settings.upsell_products != blank %}
         {% for upsel_product in block.settings.upsell_products %}
@@ -335,7 +294,7 @@
           >
             <div class="product-image-rr">
 
-              {%- comment -%} Anchor wraps ONLY the images now (was wrapping buttons & forms — invalid HTML) {%- endcomment -%}
+              {%- comment -%} Anchor wraps ONLY the images (was wrapping form/buttons — invalid HTML, broke link + submit) {%- endcomment -%}
               <a
                 href="{{ upsel_product.url }}"
                 aria-label="View {{ upsel_product.title | escape }}"
@@ -363,7 +322,7 @@
                 {% endif %}
               </a>
 
-              {%- comment -%} Add-to-cart UI is OUTSIDE the anchor now {%- endcomment -%}
+              {%- comment -%} Add-to-cart UI now sits OUTSIDE the anchor {%- endcomment -%}
               <span class="bt-wrap-upsel">
                 {% if is_available %}
                   <button
@@ -430,8 +389,6 @@
         {% endfor %}
       {% endif %}
     </div>
-
-    <div class="up-sel-swiper-pagination upsel-pag-{{ block.id }}"></div>
   </div>
 </section>
 
@@ -450,15 +407,6 @@
         enabled: true,
         prevSlideMessage: 'Previous products',
         nextSlideMessage: 'Next products',
-        paginationBulletMessage: 'Go to slide {{index}}',
-      },
-      pagination: {
-        el: '.upsel-pag-{{ block.id }}',
-        clickable: true,
-      },
-      navigation: {
-        prevEl: '.upsel-nav-prev-{{ block.id }}',
-        nextEl: '.upsel-nav-next-{{ block.id }}',
       },
       breakpoints: {
         0:    { slidesPerView: 2.2, spaceBetween: 10 },
