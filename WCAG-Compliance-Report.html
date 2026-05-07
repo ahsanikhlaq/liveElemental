@@ -421,54 +421,54 @@
       <h2 id="verify">10. How to Verify This Report</h2>
       <p>The findings in this report are auditable by independent third parties. Use any of the resources below to re-test the theme and confirm the conclusions stated.</p>
 
-      <h3>10.1 Free tools the client may use to verify</h3>
-      <p>The following are free, well-known accessibility tools the client (or the client&rsquo;s technical reviewer) can use to spot-check the live store and confirm the findings in this report. Each is provided by a reputable accessibility organisation.</p>
+      <h3>10.1 Tools the client may use to verify</h3>
+      <p>The following well-known accessibility tools may be used to spot-check the live store and confirm the findings in this report. Each is provided by a reputable accessibility organisation.</p>
       <div class="res-grid">
 
         <div class="res-card">
-          <span class="res-card__name">WAVE Web Accessibility Evaluation Tool</span><span class="res-card__cat">Free &middot; by WebAIM</span>
+          <span class="res-card__name">WAVE Web Accessibility Evaluation Tool</span><span class="res-card__cat">By WebAIM</span>
           <div class="res-card__purpose">Visual overlay highlighting accessibility issues directly on a rendered page. Good for confirming landmark structure, heading hierarchy, missing alt text, and ARIA usage on the live store.</div>
           <div class="res-card__url"><a href="https://wave.webaim.org">wave.webaim.org</a></div>
         </div>
 
         <div class="res-card">
-          <span class="res-card__name">axe DevTools (free tier)</span><span class="res-card__cat">Free &middot; by Deque</span>
+          <span class="res-card__name">axe DevTools</span><span class="res-card__cat">By Deque</span>
           <div class="res-card__purpose">Browser extension that scans the rendered DOM and reports WCAG violations with severity and remediation guidance. Industry-standard automated scanner.</div>
           <div class="res-card__url"><a href="https://www.deque.com/axe/devtools/">deque.com/axe/devtools</a></div>
         </div>
 
         <div class="res-card">
-          <span class="res-card__name">Google Lighthouse</span><span class="res-card__cat">Free &middot; in Chrome DevTools</span>
+          <span class="res-card__name">Google Lighthouse</span><span class="res-card__cat">In Chrome DevTools</span>
           <div class="res-card__purpose">Built into Chrome. Generates an Accessibility score (0&ndash;100) and a checklist of automated findings. Good for a quick baseline.</div>
           <div class="res-card__url"><a href="https://developer.chrome.com/docs/lighthouse">developer.chrome.com/docs/lighthouse</a></div>
         </div>
 
         <div class="res-card">
-          <span class="res-card__name">Microsoft Accessibility Insights</span><span class="res-card__cat">Free &middot; by Microsoft</span>
+          <span class="res-card__name">Microsoft Accessibility Insights</span><span class="res-card__cat">By Microsoft</span>
           <div class="res-card__purpose">Combines automated scanning with guided manual checks (FastPass and Assessment modes). Useful for verifying both code-level and rendered-page issues.</div>
           <div class="res-card__url"><a href="https://accessibilityinsights.io">accessibilityinsights.io</a></div>
         </div>
 
         <div class="res-card">
-          <span class="res-card__name">NVDA Screen Reader</span><span class="res-card__cat">Free &middot; Windows</span>
-          <div class="res-card__purpose">Free Windows screen reader. Use to verify announcement of headings, links, form labels, error / success live regions, and modal dialog semantics on the live store.</div>
+          <span class="res-card__name">NVDA Screen Reader</span><span class="res-card__cat">For Windows</span>
+          <div class="res-card__purpose">Windows screen reader. Use to verify announcement of headings, links, form labels, error / success live regions, and modal dialog semantics on the live store.</div>
           <div class="res-card__url"><a href="https://www.nvaccess.org/download/">nvaccess.org</a></div>
         </div>
 
         <div class="res-card">
-          <span class="res-card__name">VoiceOver</span><span class="res-card__cat">Free &middot; macOS / iOS built-in</span>
+          <span class="res-card__name">VoiceOver</span><span class="res-card__cat">Built-in macOS / iOS</span>
           <div class="res-card__purpose">Apple&rsquo;s built-in screen reader. Activate with <code>Cmd + F5</code> on macOS. Use to confirm cross-platform consistency of accessible names and live regions.</div>
           <div class="res-card__url"><a href="https://www.apple.com/accessibility/vision/">apple.com/accessibility</a></div>
         </div>
 
         <div class="res-card">
-          <span class="res-card__name">WebAIM Contrast Checker</span><span class="res-card__cat">Free &middot; by WebAIM</span>
+          <span class="res-card__name">WebAIM Contrast Checker</span><span class="res-card__cat">By WebAIM</span>
           <div class="res-card__purpose">Online tool to check any colour pair against WCAG AA / AAA contrast thresholds. Use to re-verify the contrast ratios stated in &sect;6 of this report.</div>
           <div class="res-card__url"><a href="https://webaim.org/resources/contrastchecker/">webaim.org/resources/contrastchecker</a></div>
         </div>
 
         <div class="res-card">
-          <span class="res-card__name">W3C WCAG-EM Report Tool</span><span class="res-card__cat">Free &middot; W3C / WAI</span>
+          <span class="res-card__name">W3C WCAG-EM Report Tool</span><span class="res-card__cat">By W3C / WAI</span>
           <div class="res-card__purpose">Official W3C tool to generate a WCAG conformance evaluation report following the W3C-recommended WCAG-EM methodology.</div>
           <div class="res-card__url"><a href="https://www.w3.org/WAI/eval/report-tool/">w3.org/WAI/eval/report-tool</a></div>
         </div>
@@ -524,7 +524,7 @@
       <ol>
         <li><strong>Image alt text in the Shopify admin.</strong> Code at <code>snippets/image.liquid:29</code> correctly forwards <code>image.alt</code> to the rendered <code>&lt;img&gt;</code>. Ensure every product, collection, and section image has descriptive alt text. Decorative images may keep empty alt intentionally.</li>
         <li><strong>Optional contrast improvements</strong> (advisory) &mdash; three single-line CSS edits lift the score to 100% Level AA without altering the brand palette.</li>
-        <li><strong>Run the free verification tools</strong> in &sect;10.1 against the live store as a sanity check.</li>
+        <li><strong>Run the verification tools</strong> in &sect;10.1 against the live store as a sanity check.</li>
         <li><strong>Annual / pre-launch re-audit</strong> any time the design system, colour scheme, or major layout sections change.</li>
         <li><strong>Commission an accredited certification</strong> (&sect;10.2) only if regulatory or procurement requirements demand it.</li>
       </ol>

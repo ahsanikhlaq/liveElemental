@@ -301,15 +301,15 @@ All four changes are visually invisible to users without assistive technology or
 
 The findings here are auditable by independent third parties. Use any of the resources below to re-test the theme.
 
-### 10.1 Free tools the client may use to verify
+### 10.1 Tools the client may use to verify
 
 | Tool | Provider | Purpose | Link |
 |---|---|---|---|
 | **WAVE** | WebAIM | Visual overlay highlighting accessibility issues on rendered pages | https://wave.webaim.org |
-| **axe DevTools (free tier)** | Deque | Browser extension that scans the DOM and reports WCAG violations | https://www.deque.com/axe/devtools/ |
+| **axe DevTools** | Deque | Browser extension that scans the DOM and reports WCAG violations | https://www.deque.com/axe/devtools/ |
 | **Google Lighthouse** | Google / Chrome | Automated Accessibility score (0–100) and checklist | https://developer.chrome.com/docs/lighthouse |
 | **Microsoft Accessibility Insights** | Microsoft | Automated + guided manual checks (FastPass + Assessment) | https://accessibilityinsights.io |
-| **NVDA Screen Reader** | NV Access | Free Windows screen reader | https://www.nvaccess.org/download/ |
+| **NVDA Screen Reader** | NV Access | Windows screen reader | https://www.nvaccess.org/download/ |
 | **VoiceOver** | Apple | Built-in macOS / iOS screen reader (`Cmd+F5`) | https://www.apple.com/accessibility/ |
 | **WebAIM Contrast Checker** | WebAIM | Online colour-contrast verification | https://webaim.org/resources/contrastchecker/ |
 | **W3C WCAG-EM Report Tool** | W3C / WAI | Generate a formal WCAG conformance report | https://www.w3.org/WAI/eval/report-tool/ |
@@ -340,7 +340,7 @@ Every claim in §5, §7, §8 cites a specific file and line number. To re-verify
 
 1. **Image alt text in the Shopify admin.** Code at `snippets/image.liquid:29` correctly forwards `image.alt`. Ensure every product, collection, and section image has descriptive alt text in the admin.
 2. **Optional contrast improvements** (advisory) — three single-line CSS edits lift the score to 100% Level AA.
-3. **Run the free verification tools** in §10.1 against the live store as a sanity check.
+3. **Run the verification tools** in §10.1 against the live store as a sanity check.
 4. **Annual / pre-launch re-audit** any time the design system, colour scheme, or major layout sections change.
 5. **Commission an accredited certification** (§10.2) only if regulatory or procurement requirements demand it.
 
