@@ -13,16 +13,24 @@
     <div class="collection-header">
       <div class="collection-section-heading">{{ section.settings.head }}</div>
       <div class="swiper-navigation-arrows" id="navigation-arrows-{{ section.id }}">
-        <div class="slider-prev slider-prev-{{ section.id }}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+        <button
+          type="button"
+          class="slider-prev slider-prev-{{ section.id }}"
+          aria-label="{{ 'accessibility.previous_slide' | t | default: 'Previous slide' }}"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none" aria-hidden="true" focusable="false">
             <path d="M18.5754 8.01261H2.88757L9.11797 1.5075C9.44827 1.16264 9.44827 0.603621 9.11797 0.258759C8.95303 0.0861073 8.7365 0 8.51997 0C8.30343 0 8.0869 0.0861073 7.92196 0.258759L0.247723 8.27137C-0.0825748 8.61623 -0.0825748 9.17525 0.247723 9.52011L7.92154 17.5327C8.25141 17.8776 8.78767 17.8776 9.11755 17.5327C9.44784 17.1879 9.44784 16.6288 9.11755 16.284L2.88715 9.77887H18.5754C19.0423 9.77887 19.5705 9.38323 19.5705 8.89574C19.5705 8.40825 19.0428 8.01261 18.5754 8.01261Z" fill="black"/>
           </svg>
-        </div>
-        <div class="slider-next slider-next-{{ section.id }}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+        </button>
+        <button
+          type="button"
+          class="slider-next slider-next-{{ section.id }}"
+          aria-label="{{ 'accessibility.next_slide' | t | default: 'Next slide' }}"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none" aria-hidden="true" focusable="false">
             <path d="M0.995068 9.77876H16.6829L10.4525 16.2839C10.1222 16.6287 10.1222 17.1877 10.4525 17.5326C10.6175 17.7053 10.834 17.7914 11.0505 17.7914C11.2671 17.7914 11.4836 17.7053 11.6485 17.5326L19.3228 9.52C19.6531 9.17514 19.6531 8.61612 19.3228 8.27126L11.649 0.258646C11.3191 -0.0862153 10.7828 -0.0862153 10.453 0.258646C10.1227 0.603507 10.1227 1.16253 10.453 1.50739L16.6834 8.0125H0.995068C0.528169 8.0125 0 8.40814 0 8.89563C0 9.38311 0.527746 9.77876 0.995068 9.77876Z" fill="black"/>
           </svg>
-        </div>
+        </button>
       </div>
     </div>
 

@@ -26,6 +26,9 @@ export class AnnouncementBar extends Component {
 
     this.addEventListener('mouseenter', this.suspend);
     this.addEventListener('mouseleave', this.resume);
+    // WCAG 2.1.1 / 2.2.2 — keyboard parity: pause when focus enters, resume on blur.
+    this.addEventListener('focusin', this.suspend);
+    this.addEventListener('focusout', this.resume);
     document.addEventListener('visibilitychange', this.#handleVisibilityChange);
 
     this.play();

@@ -101,13 +101,20 @@
           </div>
         </div>
       {% endif %}
-      <div class="country-selector-form__wrapper">
+      <div
+        class="country-selector-form__wrapper"
+        aria-describedby="{{ localization_style }}-CountryHelp"
+      >
         <h2
           class="visually-hidden"
           id="{{ localization_style }}-CountryLabel"
         >
           Country/Region
         </h2>
+        {%- comment -%} WCAG 3.2.2 — disclose that selecting a country reloads the page. {%- endcomment -%}
+        <span id="{{ localization_style }}-CountryHelp" class="visually-hidden">
+          {{ 'accessibility.country_change_warning' | t | default: 'Selecting a country/region will reload the page.' }}
+        </span>
         {% if show_country_filter %}
           <div
             id="sr-country-search-results-{{ block_id }}"
@@ -247,11 +254,16 @@
         {% if show_country == true %}
           <span class="language-selector__label">{{ 'content.language' | t }}</span>
         {% endif %}
+        {%- comment -%} WCAG 3.2.2 — disclose that selecting a language reloads the page. {%- endcomment -%}
+        <span id="{{ localization_style }}LanguageHelp" class="visually-hidden">
+          {{ 'accessibility.language_change_warning' | t | default: 'Selecting a language will reload the page.' }}
+        </span>
         <select
           id="{{ localization_style }}Select"
           class="localization-form__select"
           name="language_code"
           aria-label="{{ 'content.language' | t }}"
+          aria-describedby="{{ localization_style }}LanguageHelp"
           ref="languageInput"
           on:change="/changeLanguage"
         >

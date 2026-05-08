@@ -226,10 +226,8 @@
                 {% if link == request.path %}aria-current="page"{% endif %}
               >
             {%- else -%}
-              <div
+              <span
                 class="{{ item_inner_classes }}"
-                role="link"
-                aria-disabled="true"
                 aria-label="{{ block_heading | escape }}"
               >
             {%- endif -%}
@@ -263,7 +261,7 @@
             {%- if link != blank -%}
               </a>
             {%- else -%}
-              </div>
+              </span>
             {%- endif -%}
           </li>
         {%- endfor -%}

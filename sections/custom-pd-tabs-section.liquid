@@ -468,7 +468,7 @@
               role="tabpanel"
               id="cpanel-{{ section.id }}-{{ tab_id }}"
               aria-labelledby="ctab-{{ section.id }}-{{ tab_id }}"
-              tabindex="0"
+              tabindex="-1"
               class="{% if is_process_tab %}process-cards-grid{% else %}product-cards-grid{% endif %}"
               data-content="tab-{{ tab_id }}"
               {% unless firstTab %}hidden{% endunless %}
