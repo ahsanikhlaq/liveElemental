@@ -13,6 +13,9 @@
   assign columns_tablet = 3
   assign columns_small = 2
 
+  assign heading_plain = heading | strip_html | strip
+  assign heading_id = 'highlights-heading-' | append: unique
+
   capture items_classes
     echo 'highlights__items'
     if section.settings.layout_mobile == 'carousel'
@@ -42,77 +45,82 @@
     --columns-mobile: {{ columns_mobile }};
   }
 
-.highlights__items{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 20px;
-  padding: 20px 91px;
-}
-h2.highlights__title {
+  .highlights__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px 91px;
+  }
+  h2.highlights__title {
     color: #000;
     text-align: center;
     font-family: "League Spartan";
     font-size: 36px;
-    font-style: normal;
     font-weight: 600;
     line-height: normal;
     text-transform: uppercase;
-}
+  }
 
+  .highlights__item-link:focus-visible,
+  .highlights__item-inner:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
 
+  .highlights__item-inner.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+  }
 
+  @media (prefers-reduced-motion: reduce) {
+    [data-aos] {
+      transition: none !important;
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
 
-
-
-@media (max-width:786px) {
-.highlights__items{
+  @media (max-width: 786px) {
+    .highlights__items {
       grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    padding: 10px 10px;
-}
-h2.highlights__title {
-    font-size: 28px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-
-  
+      gap: 10px;
+      padding: 10px 10px;
+    }
+    h2.highlights__title { font-size: 28px; }
+  }
 {%- endstyle -%}
 
-<div
+<section
   class="highlights section-padding"
   id="highlights--{{ unique }}"
   data-section-id="{{ unique }}"
-  data-section-type="highlights">
+  data-section-type="highlights"
+  {% if heading_plain != blank %}
+    aria-labelledby="{{ heading_id }}"
+  {% else %}
+    aria-label="Highlights"
+  {% endif %}
+>
   <div class="{{ section.settings.width }} highlights__container">
 
     {%- if heading != blank -%}
       <div class="grid__heading-holder {{ section.settings.heading_position }}">
         <h2
+          id="{{ heading_id }}"
           class="highlights__title grid__heading {{ heading_size_class }}"
           data-aos="hero"
           data-aos-anchor="{{ animation_anchor }}"
-          data-aos-order="1">
-          {{- heading -}}
+          data-aos-order="1"
+        >
+          {{- heading | escape -}}
         </h2>
       </div>
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="{{ items_classes }}">
+      <ul class="{{ items_classes }}" role="list">
         {%- for block in section.blocks -%}
           {%- liquid
             assign image = block.settings.image
@@ -135,6 +143,10 @@ h2.highlights__title {
             endif
 
             assign link = block.settings.url
+            assign block_heading = block.settings.heading | strip
+            if block_heading == blank
+              assign block_heading = 'Highlight ' | append: forloop.index
+            endif
             assign animation_delay = forloop.index0 | times: 150
             assign has_bg_color = false
             if bg_color != 'rgba(0,0,0,0)' and bg_color != blank
@@ -182,7 +194,6 @@ h2.highlights__title {
 
             capture item_attributes
               echo 'class="highlights__item highlights__item--' | append: blocks_style
-
               echo '"'
               echo aos | append: ' ' | append: style | append: ' ' | append: block.shopify_attributes
             endcapture
@@ -200,27 +211,39 @@ h2.highlights__title {
             endcapture
           -%}
 
-          <div {{ item_attributes }}>
+          <li {{ item_attributes }}>
             {%- if link != blank -%}
-              <a href="{{ link }}" class="{{ item_inner_classes }}">
+              <a
+                href="{{ link }}"
+                class="{{ item_inner_classes }}"
+                aria-label="{{ block_heading | escape }}"
+                {% if link == request.path %}aria-current="page"{% endif %}
+              >
             {%- else -%}
-              <div class="{{ item_inner_classes }}">
+              {%- comment -%} Button-style with no link → expose disabled state to AT {%- endcomment -%}
+              <div
+                class="{{ item_inner_classes }}"
+                role="link"
+                aria-disabled="true"
+                aria-label="{{ block_heading | escape }}"
+              >
             {%- endif -%}
 
               {%- if image or blocks_style != 'button' -%}
-                <div class="highlights__item__background">
+                <div class="highlights__item__background" {% if image %}aria-hidden="true"{% endif %}>
                   {%- if image -%}
                     {%- capture sizes -%}
                       (min-width: 990px) calc((100vw - 100px) / {{ columns_desktop }}), (min-width: 750px) calc((100vw - 60px) / {{ columns_tablet }}), calc(100vw - 32px)
                     {%- endcapture -%}
 
-                    {%- render 'image' image: image, sizes: sizes, cover: true -%}
+                    {%- comment -%} Decorative — visible heading provides the accessible name {%- endcomment -%}
+                    {%- render 'image', image: image, sizes: sizes, cover: true, alt: '' -%}
                   {%- endif -%}
                 </div>
               {%- endif -%}
 
               <div class="highlights__item__content {{ font_size_class }}">
-                <span>{{ block.settings.heading }}</span>
+                <span>{{ block_heading | escape }}</span>
               </div>
 
             {%- if link != blank -%}
@@ -228,252 +251,99 @@ h2.highlights__title {
             {%- else -%}
               </div>
             {%- endif -%}
-          </div>
+          </li>
         {%- endfor -%}
-      </div>
+      </ul>
     {%- endif -%}
   </div>
-</div>
+</section>
 
 {% schema %}
-  {
-    "name": "Highlights",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Layout"
-      },
-      {
-        "type": "select",
-        "id": "style",
-        "label": "Style",
-        "options": [
-          { "value": "square", "label": "Square" },
-          { "value": "rectangle", "label": "Rectangle" },
-          { "value": "circle", "label": "Circle" },
-          { "value": "button", "label": "Button" }
-        ],
-        "default": "rectangle"
-      },
-      {
-        "type":    "range",
-        "id":      "grid",
-        "min":     3,
-        "max":     8,
-        "step":    1,
-        "label":   "Highlights per row",
-        "default": 6
-      },
-      {
-        "type": "header",
-        "content": "Style"
-      },
-      {
-        "type": "select",
-        "id": "width",
-        "label": "Width",
-        "default": "wrapper--full-padded",
-        "options": [
-          {"value": "wrapper--full-padded", "label": "Full width padded"},
-          {"value": "wrapper", "label": "Normal"},
-          {"value": "wrapper--narrow", "label": "Narrow"}
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Text"
-      },
-      {
-        "type": "text",
-        "id": "heading",
-        "label": "Heading",
-        "default": "Highlights"
-      },
-      {
-        "type": "select",
-        "id": "heading_position",
-        "label": "Heading position",
-        "options": [
-          { "value": "text-left", "label": "Left" },
-          { "value": "text-center", "label": "Center" }
-        ],
-        "default": "text-center"
-      },
-      {
-        "type": "range",
-        "id": "heading_size",
-        "label": "Heading size",
-        "min": 1,
-        "max": 15,
-        "step": 1,
-        "default": 8
-      },
-      {
-        "type":  "range",
-        "id":    "text_size",
-        "label": "Text size",
-        "min":    1,
-        "max":    15,
-        "step":   1,
-        "default": 3
-      },
-      {
-        "type": "header",
-        "content": "Colors"
-      },
-      {
-        "type": "color",
-        "id": "color",
-        "label": "Text"
-      },
-      {
-        "type": "color",
-        "id": "bg_color",
-        "label": "Background"
-      },
-      {
-        "type": "header",
-        "content": "Mobile"
-      },
-      {
-        "type": "select",
-        "id": "layout_mobile",
-        "label": "Layout",
-        "options": [
-          {
-            "value": "1",
-            "label": "1 highlight per row"
-          },
-          {
-            "value": "2",
-            "label": "2 highlights per row"
-          },
-          {
-            "value": "carousel",
-            "label": "Carousel"
-          }
-        ],
-        "default": "2"
-      },
-      {
-        "type": "header",
-        "content": "Section padding"
-      },
-      {
-        "type": "range",
-        "id": "padding_top",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "unit": "px",
-        "label": "Padding top",
-        "default": 50
-      },
-      {
-        "type": "range",
-        "id": "padding_bottom",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "unit": "px",
-        "label": "Padding bottom",
-        "default": 50
-      }
-    ],
-    "blocks": [
-      {
-        "type": "highlight",
-        "name": "Highlight",
-        "settings": [
-          {
-            "type": "text",
-            "id": "heading",
-            "label": "Heading",
-            "default": "Highlight"
-          },
-          {
-            "type": "url",
-            "id": "url",
-            "label": "Link"
-          },
-          {
-            "type": "header",
-            "content": "Background"
-          },
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image"
-          },
-          {
-            "type": "header",
-            "content": "Colors"
-          },
-          {
-            "type": "color",
-            "id": "color",
-            "label": "Text"
-          },
-          {
-            "type": "color",
-            "id": "bg_color",
-            "label": "Background",
-            "default": "#F0F0F0"
-          },
-          {
-            "type": "color",
-            "id": "border_color",
-            "label": "Border"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "category": "Text",
-        "name": "Highlights",
-        "blocks": [
-          {
-            "type": "highlight",
-            "settings": {
-              "heading": "Tops"
-            }
-          },
-          {
-            "type": "highlight",
-            "settings": {
-              "heading": "Bottoms"
-            }
-          },
-          {
-            "type": "highlight",
-            "settings": {
-              "heading": "Dresses"
-            }
-          },
-          {
-            "type": "highlight",
-            "settings": {
-              "heading": "Socks"
-            }
-          },
-          {
-            "type": "highlight",
-            "settings": {
-              "heading": "Sales"
-            }
-          },
-          {
-            "type": "highlight",
-            "settings": {
-              "heading": "New Arrivals"
-            }
-          }
-        ]
-      }
-    ],
-    "disabled_on": {
-      "groups": ["header", "footer", "custom.pre_footer"]
+{
+  "name": "Highlights",
+  "settings": [
+    { "type": "header", "content": "Layout" },
+    {
+      "type": "select", "id": "style", "label": "Style",
+      "options": [
+        { "value": "square", "label": "Square" },
+        { "value": "rectangle", "label": "Rectangle" },
+        { "value": "circle", "label": "Circle" },
+        { "value": "button", "label": "Button" }
+      ],
+      "default": "rectangle"
+    },
+    { "type": "range", "id": "grid", "min": 3, "max": 8, "step": 1, "label": "Highlights per row", "default": 6 },
+    { "type": "header", "content": "Style" },
+    {
+      "type": "select", "id": "width", "label": "Width", "default": "wrapper--full-padded",
+      "options": [
+        { "value": "wrapper--full-padded", "label": "Full width padded" },
+        { "value": "wrapper", "label": "Normal" },
+        { "value": "wrapper--narrow", "label": "Narrow" }
+      ]
+    },
+    { "type": "header", "content": "Text" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Highlights" },
+    {
+      "type": "select", "id": "heading_position", "label": "Heading position",
+      "options": [
+        { "value": "text-left", "label": "Left" },
+        { "value": "text-center", "label": "Center" }
+      ],
+      "default": "text-center"
+    },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 1, "max": 15, "step": 1, "default": 8 },
+    { "type": "range", "id": "text_size", "label": "Text size", "min": 1, "max": 15, "step": 1, "default": 3 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "color", "label": "Text" },
+    { "type": "color", "id": "bg_color", "label": "Background" },
+    { "type": "header", "content": "Mobile" },
+    {
+      "type": "select", "id": "layout_mobile", "label": "Layout",
+      "options": [
+        { "value": "1", "label": "1 highlight per row" },
+        { "value": "2", "label": "2 highlights per row" },
+        { "value": "carousel", "label": "Carousel" }
+      ],
+      "default": "2"
+    },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding top", "default": 50 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding bottom", "default": 50 }
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Highlight" },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "header", "content": "Background" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "header", "content": "Colors" },
+        { "type": "color", "id": "color", "label": "Text" },
+        { "type": "color", "id": "bg_color", "label": "Background", "default": "#F0F0F0" },
+        { "type": "color", "id": "border_color", "label": "Border" }
+      ]
     }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Highlights",
+      "blocks": [
+        { "type": "highlight", "settings": { "heading": "Tops" } },
+        { "type": "highlight", "settings": { "heading": "Bottoms" } },
+        { "type": "highlight", "settings": { "heading": "Dresses" } },
+        { "type": "highlight", "settings": { "heading": "Socks" } },
+        { "type": "highlight", "settings": { "heading": "Sales" } },
+        { "type": "highlight", "settings": { "heading": "New Arrivals" } }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.pre_footer"]
   }
+}
 {% endschema %}
