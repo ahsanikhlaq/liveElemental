@@ -4,7 +4,9 @@
     padding-bottom: {{ section.settings.padding_bottom }}px;
     padding-left: {{ section.settings.padding_left }}px;
     padding-right: {{ section.settings.padding_right }}px;
-    background-color: {{ section.settings.back-color }};
+    {% if section.settings['back-color'] != blank %}
+      background-color: {{ section.settings['back-color'] }};
+    {% endif %}
   }
 
   .mod-main-feature-section {
@@ -15,25 +17,27 @@
     position: relative;
   }
 
+  .mod-main-head,
   .mod-main-head p {
     color: #000;
     font-family: "League Spartan";
     font-size: 36px;
-    font-style: normal;
     font-weight: 600;
     line-height: 36px;
     text-transform: uppercase;
     max-width: 500px;
+    margin: 0;
   }
 
+  .mod-main-desc,
   .mod-main-desc p {
     color: var(--Black, #171717);
     font-family: Quicksand;
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
     line-height: normal;
     max-width: 500px;
+    margin: 0;
   }
 
   img.cs_mod_img {
@@ -43,9 +47,7 @@
     display: block;
   }
 
-  .rating-icon img {
-    display: flex;
-  }
+  .rating-icon img { display: flex; }
 
   .mod-content-left {
     width: 50%;
@@ -53,37 +55,31 @@
     flex-direction: column;
     gap: 8px;
   }
-
-  .mod-b-right {
-    width: 50%;
-  }
+  .mod-b-right { width: 50%; }
 
   .produt-feature-section-main-desc p {
     color: var(--Black, #171717);
     font-family: Quicksand;
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
     padding-bottom: 20px;
     line-height: normal;
     max-width: 620px;
   }
 
+  .product-feature-section-main-heading,
   .product-feature-section-main-heading p {
     color: var(--Black, #171717);
     font-family: "League Spartan";
     font-size: 36px;
-    font-style: normal;
     font-weight: 600;
     line-height: 36px;
     text-transform: uppercase;
     padding-bottom: 8px;
+    margin: 0;
   }
 
-  .pro-feature-img-main {
-    display: block;
-    border-radius: 20px;
-  }
+  .pro-feature-img-main { display: block; border-radius: 20px; }
 
   .home-feature-product {
     display: flex;
@@ -112,16 +108,12 @@
     color: var(--DARK-GREY, #333232);
     font-family: Satoshi;
     font-size: 20px;
-    font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-transform: capitalize;
   }
 
-  .wrinkle-price-container {
-    margin-bottom: 28px;
-  }
-
+  .wrinkle-price-container { margin-bottom: 28px; }
   .wrinkle-compare-price {
     text-decoration: line-through;
     margin-right: 8px;
@@ -129,21 +121,17 @@
     text-align: right;
     font-family: Satoshi;
     font-size: 16px;
-    font-style: normal;
     font-weight: 500;
     line-height: 18px;
   }
-
   .wrinkle-product-price {
     color: #3B3B3B;
     text-align: right;
     font-family: Satoshi;
     font-size: 16px;
-    font-style: normal;
     font-weight: 500;
     line-height: 18px;
   }
-
   .discount-price {
     margin-left: 12px;
     font-weight: 700;
@@ -161,7 +149,6 @@
     text-align: center;
     font-family: Satoshi;
     font-size: 16px;
-    font-style: normal;
     font-weight: 700;
     line-height: 22px;
     text-transform: uppercase;
@@ -176,7 +163,6 @@
     text-align: right;
     font-family: Satoshi;
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
     line-height: 18px;
   }
@@ -190,22 +176,15 @@
     transform: translate(-50%, -50%) !important;
   }
 
-  .video-wrapper-feature {
-    position: relative;
-  }
-
-  .feature-vid {
-    width: 100%;
-  }
-
-  .video-wrapper-feature video {
-    display: block;
-  }
+  .video-wrapper-feature { position: relative; }
+  .feature-vid { width: 100%; }
+  .video-wrapper-feature video { display: block; }
 
   .mod-list-icon-main {
     display: flex;
     align-items: center;
     gap: 16px;
+    list-style: none;
   }
 
   .mod-img {
@@ -224,23 +203,25 @@
     align-items: center;
     gap: 24px;
     align-self: stretch;
+    list-style: none;
+    margin: 0;
   }
 
+  .mod-list-heading,
   .mod-list-heading p {
     color: var(--Black, #171717);
     font-family: "League Spartan";
     font-size: 20px;
-    font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-transform: capitalize;
+    margin: 0;
   }
 
   .mod-list-desc {
     color: var(--Black, #171717);
     font-family: Quicksand;
     font-size: 14px;
-    font-style: normal;
     font-weight: 500;
     line-height: 20px;
     max-width: 324px;
@@ -258,6 +239,16 @@
     display: block;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .section-{{ section.id }}-padding.fade-up,
+    .section-{{ section.id }}-padding.bounce-up {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
   @media screen and (max-width: 768px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.mbl_padding_top }}px;
@@ -265,162 +256,132 @@
       padding-left: {{ section.settings.mbl_padding_left }}px;
       padding-right: {{ section.settings.mbl_padding_right }}px;
     }
-
-    .bottle-images {
-      margin-right: 12px;
-    }
-
-    .mods-feature-lists {
-      padding: 80px 15px 41px;
-      margin: 0 10px;
-      gap: 24px;
-    }
-
-    .mod-main-head p {
-      font-size: 27px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-    }
-
-    .mod-content-left {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .mod-b-right {
-      width: 100%;
-    }
-
-    .mod-main-feature-section {
-      flex-direction: column;
-      gap: 220px;
-    }
-
-    .product-feature-section-main-heading p {
-      font-size: 28px;
-      text-align: center;
-      padding-bottom: 12px;
-    }
-
-    .mod-img {
-      width: 100%;
-      top: 47%;
-    }
-
-    img.cs_mod_img {
-      height: inherit;
-    }
-
-    .produt-feature-section-main-desc p {
-      text-align: center;
-      padding-bottom: 24px;
-    }
-
-    .rating-icon img {
-      width: 56px;
-    }
-
-    .home-feature-product {
-      padding: 15px;
-    }
-
-    .rating-num {
-      font-size: 12px;
-      line-height: 11.207px;
-    }
-
-    .product-details h3 {
-      font-size: 14px;
-      margin-bottom: 7px;
-    }
-
-    .wrinkle-product-price {
-      font-size: 12px;
-      line-height: 11.207px;
-    }
-
-    .wrinkle-compare-price {
-      font-size: 12px;
-      line-height: 11.207px;
-    }
-
-    .star-rating {
-      margin-bottom: 7px;
-      gap: 3px;
-    }
-
-    .wrinkle-price-container {
-      margin-bottom: 17px;
-    }
-
-    .wrinkle-cart-btn {
-      font-size: 12px;
-      line-height: 13.697px;
-    }
+    .bottle-images { margin-right: 12px; }
+    .mods-feature-lists { padding: 80px 15px 41px; margin: 0 10px; gap: 24px; }
+    .mod-main-head,
+    .mod-main-head p { font-size: 27px; font-weight: 600; line-height: normal; }
+    .mod-content-left { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+    .mod-b-right { width: 100%; }
+    .mod-main-feature-section { flex-direction: column; gap: 220px; }
+    .product-feature-section-main-heading,
+    .product-feature-section-main-heading p { font-size: 28px; text-align: center; padding-bottom: 12px; }
+    .mod-img { width: 100%; top: 47%; }
+    img.cs_mod_img { height: inherit; }
+    .produt-feature-section-main-desc p { text-align: center; padding-bottom: 24px; }
+    .rating-icon img { width: 56px; }
+    .home-feature-product { padding: 15px; }
+    .rating-num { font-size: 12px; line-height: 11.207px; }
+    .product-details h3 { font-size: 14px; margin-bottom: 7px; }
+    .wrinkle-product-price { font-size: 12px; line-height: 11.207px; }
+    .wrinkle-compare-price { font-size: 12px; line-height: 11.207px; }
+    .star-rating { margin-bottom: 7px; gap: 3px; }
+    .wrinkle-price-container { margin-bottom: 17px; }
+    .wrinkle-cart-btn { font-size: 12px; line-height: 13.697px; }
   }
 </style>
 
-<!-- FIX: aria-label on section landmark -->
+{%- liquid
+  assign main_heading_plain = section.settings.mod_main_heading | strip_html | strip
+  assign heading_id = 'mod-heading-' | append: section.id
+
+  # Banner alt: customizer → image library → heading → fallback
+  assign banner_alt_custom = section.settings.banner_image_alt | strip
+  if banner_alt_custom != blank
+    assign banner_alt = banner_alt_custom
+  elsif section.settings.banner_iamge.alt != blank
+    assign banner_alt = section.settings.banner_iamge.alt
+  elsif main_heading_plain != blank
+    assign banner_alt = main_heading_plain
+  else
+    assign banner_alt = 'Modern design'
+  endif
+-%}
+
 <section
   class="section-{{ section.id }}-padding bounce-up fade-up"
-  aria-label="{{ section.settings.mod_main_heading | strip_html | truncate: 80 }}"
+  {% if main_heading_plain != blank %}
+    aria-labelledby="{{ heading_id }}"
+  {% else %}
+    aria-label="Modern design"
+  {% endif %}
 >
   <div class="page-width">
     <div class="mod-main-feature-section">
+
       <div class="mod-content-left">
+        {% if section.settings.mod_main_heading != blank %}
+          <h2 id="{{ heading_id }}" class="mod-main-head">
+            {{ section.settings.mod_main_heading }}
+          </h2>
+        {% endif %}
+        {% if section.settings.mod_main_desc != blank %}
+          <div class="mod-main-desc">{{ section.settings.mod_main_desc }}</div>
+        {% endif %}
 
-        <!-- FIX: heading rendered as semantic h2 wrapper -->
-        <div class="mod-main-head">{{ section.settings.mod_main_heading }}</div>
-        <div class="mod-main-desc">{{ section.settings.mod_main_desc }}</div>
-
-        <div class="mod-img">
-          {% assign mod_alt = section.settings.mod_main_heading | strip_html %}
-{{
-  section.settings.banner_iamge
-  | image_url: width: 1440
-  | image_tag:
-    widths: '50, 100, 150, 200, 250, 300, 400, 500, 600, 1440',
-    class: 'cs_mod_img',
-    alt: mod_alt,
-    title: mod_alt,
-    loading: 'eager',
-    width: '565',
-    height: '535'
-}}
-        </div>
+        {% if section.settings.banner_iamge != blank %}
+          <div class="mod-img">
+            {{
+              section.settings.banner_iamge
+              | image_url: width: 1440
+              | image_tag:
+                widths: '200, 300, 400, 500, 600, 800, 1000, 1440',
+                sizes: '(max-width: 768px) 90vw, 565px',
+                class: 'cs_mod_img',
+                alt: banner_alt,
+                loading: 'eager',
+                width: 565,
+                height: 535
+            }}
+          </div>
+        {% endif %}
       </div>
 
       <div class="mod-b-right">
-        <!-- FIX: list role for screen readers -->
-        <ul class="mods-feature-lists" role="list" style="list-style:none; margin:0; padding:54px 44px;">
-          {% for block in section.blocks %}
-            <li class="mod-list-icon-main" role="listitem">
-              <div class="mod-list-icon">
-               {% assign block_alt = block.settings['features-heading'] | strip_html %}
-{{
-  block.settings.image
-  | image_url: width: 200
-  | image_tag:
-    widths: '50, 100, 150, 200',
-    class: 'cs_mod_icon',
-    alt: block_alt,
-    title: block_alt,
-    loading: 'lazy',
-    width: '40',
-    height: '40'
-}}
-              </div>
-              <div class="mod-features-content">
-                <!-- FIX: aria-hidden on text since alt already covers icon label -->
-                <div class="mod-list-heading">{{ block.settings['features-heading'] }}</div>
-                <div class="mod-list-desc">{{ block.settings['features-description'] }}</div>
-              </div>
-            </li>
-          {% endfor %}
-        </ul>
+        {% if section.blocks.size > 0 %}
+          <ul class="mods-feature-lists" role="list">
+            {% for block in section.blocks %}
+              {%- liquid
+                assign block_heading_plain = block.settings['features-heading'] | strip_html | strip
+
+                assign icon_alt_custom = block.settings.image_alt | strip
+                if icon_alt_custom != blank
+                  assign icon_alt = icon_alt_custom
+                elsif block.settings.image.alt != blank
+                  assign icon_alt = block.settings.image.alt
+                elsif block_heading_plain != blank
+                  assign icon_alt = block_heading_plain
+                else
+                  assign icon_alt = 'Feature ' | append: forloop.index
+                endif
+              -%}
+              <li class="mod-list-icon-main" {{ block.shopify_attributes }}>
+                {% if block.settings.image != blank %}
+                  <div class="mod-list-icon">
+                    {{
+                      block.settings.image
+                      | image_url: width: 200
+                      | image_tag:
+                        widths: '40, 80, 120, 200',
+                        class: 'cs_mod_icon',
+                        alt: icon_alt,
+                        loading: 'lazy',
+                        width: 40,
+                        height: 40
+                    }}
+                  </div>
+                {% endif %}
+                <div class="mod-features-content">
+                  {% if block.settings['features-heading'] != blank %}
+                    <h3 class="mod-list-heading">{{ block.settings['features-heading'] }}</h3>
+                  {% endif %}
+                  {% if block.settings['features-description'] != blank %}
+                    <p class="mod-list-desc">{{ block.settings['features-description'] | escape | newline_to_br }}</p>
+                  {% endif %}
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -430,105 +391,23 @@
 {
   "name": "Modren Design",
   "settings": [
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Top", "default": 10 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Bottom", "default": 10 },
+    { "type": "range", "id": "padding_left", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding left", "default": 10 },
+    { "type": "range", "id": "padding_right", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Right", "default": 10 },
+    { "type": "range", "id": "mbl_padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Top Padding", "default": 10 },
+    { "type": "range", "id": "mbl_padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Bottom Padding", "default": 10 },
+    { "type": "range", "id": "mbl_padding_left", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Left Padding", "default": 10 },
+    { "type": "range", "id": "mbl_padding_right", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Right Padding", "default": 10 },
+    { "type": "color", "id": "back-color", "label": "Background Color" },
+    { "type": "richtext", "id": "mod_main_heading", "label": "Heading" },
+    { "type": "richtext", "id": "mod_main_desc", "label": "Description" },
+    { "type": "image_picker", "id": "banner_iamge", "label": "Image" },
     {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "padding_left",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding left",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "padding_right",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Right",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Top Padding",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Bottom Padding",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_left",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Left Padding",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_right",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Right Padding",
-      "default": 10
-    },
-    {
-      "type": "color",
-      "id": "back-color",
-      "label": "Background Color"
-    },
-    {
-      "type": "richtext",
-      "id": "mod_main_heading",
-      "label": "Heading"
-    },
-    {
-      "type": "richtext",
-      "id": "mod_main_desc",
-      "label": "Description"
-    },
-    {
-      "type": "image_picker",
-      "id": "banner_iamge",
-      "label": "Image"
+      "type": "text",
+      "id": "banner_image_alt",
+      "label": "Banner image alt text",
+      "info": "Describe the banner image for screen readers. Leave blank to fall back to the heading."
     }
   ],
   "blocks": [
@@ -536,28 +415,20 @@
       "type": "blocks",
       "name": "Add Block",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Icon"
-        },
-        {
-          "type": "richtext",
-          "id": "features-heading",
-          "label": "Heading"
-        },
+        { "type": "image_picker", "id": "image", "label": "Icon" },
         {
           "type": "text",
-          "id": "features-description",
-          "label": "Features Description"
-        }
+          "id": "image_alt",
+          "label": "Icon alt text",
+          "info": "Describe the icon for screen readers. Leave blank to fall back to the heading."
+        },
+        { "type": "richtext", "id": "features-heading", "label": "Heading" },
+        { "type": "text", "id": "features-description", "label": "Features Description" }
       ]
     }
   ],
   "presets": [
-    {
-      "name": "Modren Design"
-    }
+    { "name": "Modren Design" }
   ]
 }
 {% endschema %}
