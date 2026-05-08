@@ -1,61 +1,73 @@
 <style>
-.section-{{ section.id }}-padding {
+  .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: {{ section.settings.back_color }};
-}
-.sc-txt{
-color: #FFF;
-text-align: center;
-font-family: "League Spartan";
-font-size: 48px;
-font-style: italic;
-font-weight: 500;
-line-height: 58px; /* 120.833% */
-text-transform: uppercase;
-max-width:1020px;
-margin:0 auto;
-}
-@media screen and (max-width:768px){
-.section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.mbl_padding_top }}px;
-    padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+    {% if section.settings.back_color != blank %}
+      background-color: {{ section.settings.back_color }};
+    {% endif %}
   }
-.sc-txt{
-font-size: 28px;
-font-style: italic;
-font-weight: 500;
-line-height: 32px; /* 114.286% */
-max-width:300px;
-}
 
-  
-}  
+  .sc-txt {
+    color: #FFF;
+    text-align: center;
+    font-family: "League Spartan";
+    font-size: 48px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 58px;
+    text-transform: uppercase;
+    max-width: 1020px;
+    margin: 0 auto;
+  }
 
+  @media (prefers-reduced-motion: reduce) {
+    .section-{{ section.id }}-padding.fade-up {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
 
-
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.mbl_padding_top }}px;
+      padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+    }
+    .sc-txt {
+      font-size: 28px;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 32px;
+      max-width: 300px;
+    }
+  }
 </style>
 
+{%- liquid
+  assign sc_txt_plain = section.settings.sc_txt | strip
+  assign heading_id = 'sc-txt-' | append: section.id
+-%}
 
-
-<section class="section-{{ section.id }}-padding fade-up">
+<section
+  class="section-{{ section.id }}-padding fade-up"
+  {% if sc_txt_plain != blank %}aria-labelledby="{{ heading_id }}"{% endif %}
+>
   <div class="page-width">
-   <div class="sc_txt_wrap">
-    <div class="sc-txt">{{ section.settings.sc_txt }}</div>
-   </div>
+    {% if sc_txt_plain != blank %}
+      <div class="sc_txt_wrap">
+        <h2 id="{{ heading_id }}" class="sc-txt">
+          {{ section.settings.sc_txt | escape }}
+        </h2>
+      </div>
+    {% endif %}
   </div>
 </section>
 
-
-
-
-
-
-
 {% schema %}
-  {
-    "name": "SC Text Section",
-    "settings": [
+{
+  "name": "SC Text Section",
+  "settings": [
     {
       "type": "range",
       "id": "padding_top",
@@ -105,12 +117,10 @@ max-width:300px;
       "type": "text",
       "id": "sc_txt",
       "label": "Main Heading"
-     }
-    ],
-    "presets": [
-      {
-        "name": "SC Text Section"
-      }
-    ]
-  }
+    }
+  ],
+  "presets": [
+    { "name": "SC Text Section" }
+  ]
+}
 {% endschema %}
