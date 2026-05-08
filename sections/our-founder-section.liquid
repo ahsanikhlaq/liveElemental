@@ -1,251 +1,271 @@
 <style>
   .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    {% if section.settings.back_color != blank %}
       background-color: {{ section.settings.back_color }};
+    {% endif %}
   }
+
   .fd_main_container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 50px;
-      padding: 0 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 0 80px;
   }
   .fd_img img {
-      width: 223px;
-      height: 236px;
-      display: block;
+    width: 223px;
+    height: 236px;
+    display: block;
   }
-  .fd_left_wrap {
-      width: 50%;
-  }
-  .fd_right_wrap {
-      width: 50%;
-  }
+  .fd_left_wrap { width: 50%; }
+  .fd_right_wrap { width: 50%; }
+
   .fd_tag {
-      border-radius: 8px;
-      background: var(--Accent-2, #8C9C6E);
-      display: flex;
-      font-family: "League Spartan";
-      padding: 6px 16px;
-      justify-content: center;
-      color: var(--White, #FFF);
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      text-transform: uppercase;
-      align-items: center;
-      max-width: 150px;
+    border-radius: 8px;
+    background: var(--Accent-2, #8C9C6E);
+    display: flex;
+    font-family: "League Spartan";
+    padding: 6px 16px;
+    justify-content: center;
+    color: var(--White, #FFF);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    align-items: center;
+    max-width: 150px;
   }
+
   .fd_left_content {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 50px;
   }
   .fd_col_container {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
   .fd_right_content {
-      display: flex;
-      flex-direction: column;
-      gap: 31px;
+    display: flex;
+    flex-direction: column;
+    gap: 31px;
   }
+
   .fd_head {
-      color: #000;
-      font-family: "League Spartan";
-      font-size: 36px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 120%;
-      text-transform: uppercase;
+    color: #000;
+    font-family: "League Spartan";
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: uppercase;
+    margin: 0;
   }
-  .cs_banner_image_desk{
-      border-radius: 400px;
-      width: 400px;
-      height: 400px;
-      border-radius: 220px;
-      border: 2px solid var(--teal, #00727F);
-      padding: 10px;
-      background: #F0E9D3;
-      display: flex;
-      width: 420px;
-      height: 420px;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      aspect-ratio: 1 / 1;
+
+  .cs_banner_image_desk {
+    border-radius: 220px;
+    border: 2px solid var(--teal, #00727F);
+    padding: 10px;
+    background: #F0E9D3;
+    display: flex;
+    width: 420px;
+    height: 420px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    aspect-ratio: 1 / 1;
   }
+
   .fd_msg p {
-      color: #000;
-      font-family: Quicksand;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      max-width: 602px;
+    color: #000;
+    font-family: Quicksand;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    max-width: 602px;
   }
+
   .fd_collection_block_wrap {
-      border-radius: 12px;
-      background: var(--Warm-Tone, #FFFEF1);
-      {% comment %} display: flex; {% endcomment %}
-      padding: 24px;
-      justify-content: space-between;
-      align-items: center;
-      align-self: stretch;
-      max-width: 602px;
+    border-radius: 12px;
+    background: var(--Warm-Tone, #FFFEF1);
+    padding: 24px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    max-width: 602px;
   }
+
   .fd_col_content {
-      color: #0C0C0D;
-      font-family: Quicksand;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-      {% comment %} max-width: 270px; {% endcomment %}
-      padding-bottom: 15px;
+    color: #0C0C0D;
+    font-family: Quicksand;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+    padding-bottom: 15px;
   }
+
   .fd-main-btn {
-      color: #FFF6E8;
-      font-family: Quicksand;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      background: var(--almond-forest, #8C7A6E);
-      display: flex;
-      padding: 16px 34px;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      transition: all 0.3s
-  ease;
+    color: #FFF6E8;
+    font-family: Quicksand;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    background: var(--almond-forest, #8C7A6E);
+    display: flex;
+    padding: 16px 34px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none;
   }
-  .fd-main-btn:hover{
-      background: var(--almond-forest-hover, #6B5B4C);
-      transform: scale(1.05);
+  .fd-main-btn:hover,
+  .fd-main-btn:focus-visible {
+    background: var(--almond-forest-hover, #6B5B4C);
+    transform: scale(1.05);
   }
-  h4.fd-heading {
+  .fd-main-btn:focus-visible {
+    outline: 2px solid var(--almond-forest, #8C7A6E);
+    outline-offset: 2px;
+  }
+
+  h3.fd-heading {
     color: #000;
     font-family: "League Spartan";
     font-size: 25px;
-    font-style: normal;
     font-weight: 700;
     line-height: 120%;
     text-transform: capitalize;
     margin: 0;
     letter-spacing: -1px;
-        padding-bottom: 10px;
-}
-.fd-name {
+    padding-bottom: 10px;
+  }
+
+  .fd-name {
     text-align: end;
     font-family: 'League Spartan';
     font-weight: 700;
     font-size: 16px;
     line-height: normal;
-}
-.fd-sub{
-      font-family: 'Quicksand';
+  }
+  .fd-sub {
+    font-family: 'Quicksand';
     text-align: end;
     letter-spacing: 0px;
     font-size: 12px;
     margin: 0;
     line-height: normal;
-}
+  }
 
+  @media (prefers-reduced-motion: reduce) {
+    .section-{{ section.id }}-padding.fade-up {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .fd-main-btn { transition: none !important; }
+    .fd-main-btn:hover,
+    .fd-main-btn:focus-visible { transform: none; }
+  }
 
-  @media screen and (max-width:768px){
-  .section-{{ section.id }}-padding {
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.mbl_padding_top }}px;
       padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
     }
-    .fd-heading{
-      text-align: start;
-    }
-    .fd_col_content{
+    h3.fd-heading { text-align: start; }
+    .fd_col_content {
       text-align: start;
       font-size: 18px;
-        font-weight: 500;
+      font-weight: 500;
     }
-  .fd_main_container{
-  flex-direction:column;
-  padding: 0 20px;
-  }
-  .fd_left_wrap {
-      width: 100%;
-  }
-  .fd_right_wrap {
-      width: 100%;
-  }
-  .cs_banner_image_desk{
-  border-radius: 340px;
+    .fd_main_container { flex-direction: column; padding: 0 20px; }
+    .fd_left_wrap { width: 100%; }
+    .fd_right_wrap { width: 100%; }
+    .cs_banner_image_desk {
+      border-radius: 340px;
       width: 340px;
       height: 340px;
       aspect-ratio: 1 / 1;
       padding: 5px;
-  }
-  .fd_head{
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 120%;
-  text-align:center;
-  }
-  .fd_left_content{
-    align-items: center;
-    gap:12px;
-    padding-bottom: 30px;
-  }
-  .fd_msg p{
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 22px;
-  }
-  .fd_msg p strong{
-  color: var(--Dark-Color, #000);
-  font-family: Quicksand;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 22px;
-  }
-  .fd_right_content{
-  gap:24px;
-  }
-  .fd_collection_block_wrap{
-    flex-direction: column;
-    text-align: center;
-    padding: 24px 12px;
-        gap: 29px;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
+    .fd_head {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 120%;
+      text-align: center;
+    }
+    .fd_left_content {
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 30px;
+    }
+    .fd_msg p { font-size: 16px; font-weight: 500; line-height: 22px; }
+    .fd_msg p strong {
+      color: var(--Dark-Color, #000);
+      font-family: Quicksand;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 22px;
+    }
+    .fd_right_content { gap: 24px; }
+    .fd_collection_block_wrap {
+      flex-direction: column;
+      text-align: center;
+      padding: 24px 12px;
+      gap: 29px;
+    }
   }
 </style>
 
-<section class="section-{{ section.id }}-padding fade-up">
+{%- liquid
+  assign head_plain = section.settings.fd_head | strip
+  assign heading_id = 'fd-heading-' | append: section.id
+
+  assign founder_alt_custom = section.settings.fd_img_alt | strip
+  if founder_alt_custom != blank
+    assign founder_alt = founder_alt_custom
+  elsif section.settings.fd_img.alt != blank
+    assign founder_alt = section.settings.fd_img.alt
+  elsif section.settings['fd-name'] != blank
+    assign founder_alt = section.settings['fd-name'] | strip | append: ', founder portrait'
+  else
+    assign founder_alt = 'Founder portrait'
+  endif
+
+  assign col_alt_custom = section.settings.fd_col_img_alt | strip
+  if col_alt_custom != blank
+    assign col_alt = col_alt_custom
+  elsif section.settings.fd_col_img.alt != blank
+    assign col_alt = section.settings.fd_col_img.alt
+  elsif section.settings['fd-heading'] != blank
+    assign col_alt = section.settings['fd-heading'] | strip
+  else
+    assign col_alt = 'Collection image'
+  endif
+
+  assign btn_label = section.settings.fd_label_btn | strip
+-%}
+
+<section
+  class="section-{{ section.id }}-padding fade-up"
+  {% if head_plain != blank %}aria-labelledby="{{ heading_id }}"{% else %}aria-label="Founder section"{% endif %}
+>
   <div class="page-width">
     <div class="fd_main_container">
+
       <div class="fd_left_wrap">
         <div class="fd_left_content">
-          <div class="fd_tag">{{ section.settings.fd_tag }}</div>
-          <div class="fd_head">{{ section.settings.fd_head }}</div>
+          {% if section.settings.fd_tag != blank %}
+            <div class="fd_tag">{{ section.settings.fd_tag | escape }}</div>
+          {% endif %}
+          {% if head_plain != blank %}
+            <h2 id="{{ heading_id }}" class="fd_head">{{ section.settings.fd_head | escape }}</h2>
+          {% endif %}
         </div>
 
         {% if section.settings.fd_img != blank %}
@@ -254,28 +274,49 @@
               section.settings.fd_img
               | image_url: width: 1440
               | image_tag:
-                widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                widths: '200, 300, 400, 500, 600, 800, 1000, 1440',
+                sizes: '(max-width: 768px) 80vw, 420px',
                 class: 'cs_banner_image_desk',
-                alt: 'image',
-                loading: 'eager'
+                alt: founder_alt,
+                loading: 'eager',
+                width: section.settings.fd_img.width,
+                height: section.settings.fd_img.height
             }}
           </div>
         {% endif %}
       </div>
+
       <div class="fd_right_wrap">
         <div class="fd_right_content">
-          <div class="fd_msg">{{ section.settings.fd_msg }}</div>
+          {% if section.settings.fd_msg != blank %}
+            <div class="fd_msg">{{ section.settings.fd_msg }}</div>
+          {% endif %}
 
           <div class="fd_collection_block_wrap">
             <div class="fd_col_container">
               <div class="fd-wrapper">
-              <h4 class="fd-heading">{{ section.settings.fd-heading }}</h4>
-              <div class="fd_col_content">{{ section.settings.fd_col_head }}</div>
-              <div class="fd-name">{{ section.settings.fd-name }}</div>
-              <div class="fd-sub">{{ section.settings.fd-sub }}</div>
+                {% if section.settings['fd-heading'] != blank %}
+                  <h3 class="fd-heading">{{ section.settings['fd-heading'] | escape }}</h3>
+                {% endif %}
+                {% if section.settings.fd_col_head != blank %}
+                  <div class="fd_col_content">{{ section.settings.fd_col_head | escape }}</div>
+                {% endif %}
+                {% if section.settings['fd-name'] != blank %}
+                  <div class="fd-name">{{ section.settings['fd-name'] | escape }}</div>
+                {% endif %}
+                {% if section.settings['fd-sub'] != blank %}
+                  <p class="fd-sub">{{ section.settings['fd-sub'] | escape }}</p>
+                {% endif %}
               </div>
-              {% if section.settings.fd_label_btn !=blank %}
-              <a class="fd-main-btn" href="{{ section.settings.fd_btn_link }}">{{ section.settings.fd_label_btn }} </a>
+
+              {% if btn_label != blank and section.settings.fd_btn_link != blank %}
+                <a
+                  class="fd-main-btn"
+                  href="{{ section.settings.fd_btn_link }}"
+                  aria-label="{{ btn_label | append: ' — ' | append: head_plain | strip | escape }}"
+                >
+                  {{ btn_label | escape }}
+                </a>
               {% endif %}
             </div>
 
@@ -283,18 +324,22 @@
               <div class="fd_img">
                 {{
                   section.settings.fd_col_img
-                  | image_url: width: 1440
+                  | image_url: width: 600
                   | image_tag:
-                    widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                    widths: '120, 200, 300, 400, 500, 600',
+                    sizes: '223px',
                     class: 'fd_col_img',
-                    alt: 'image',
-                    loading: 'eager'
+                    alt: col_alt,
+                    loading: 'lazy',
+                    width: 223,
+                    height: 236
                 }}
               </div>
             {% endif %}
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -303,115 +348,43 @@
 {
   "name": "Founder Section",
   "settings": [
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Top Padding",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Bottom Padding",
-      "default": 10
-    },
-    {
-      "type": "color",
-      "id": "back_color",
-      "label": "Background Color"
-    },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Top", "default": 10 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Bottom", "default": 10 },
+    { "type": "range", "id": "mbl_padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Top Padding", "default": 10 },
+    { "type": "range", "id": "mbl_padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Bottom Padding", "default": 10 },
+    { "type": "color", "id": "back_color", "label": "Background Color" },
+
+    { "type": "text", "id": "fd_tag", "label": "Tag Title" },
+    { "type": "text", "id": "fd_head", "label": "Title" },
+
+    { "type": "image_picker", "id": "fd_img", "label": "Founder Image" },
     {
       "type": "text",
-      "id": "fd_tag",
-      "label": "Tag Title"
-    },
-    {
-      "type": "text",
-      "id": "fd_head",
-      "label": "Title"
-    },
-    {
-      "type": "image_picker",
-      "id": "fd_img",
-      "label": "Founder Image"
-    },
-    {
-      "type": "richtext",
-      "id": "fd_msg",
-      "label": "Message"
-    },
-    {
-      "type": "text",
-      "id": "fd_col_head",
-      "label": "Block Title"
+      "id": "fd_img_alt",
+      "label": "Founder image alt text",
+      "info": "Describe the founder image for screen readers. Leave blank to fall back to the founder name."
     },
 
+    { "type": "richtext", "id": "fd_msg", "label": "Message" },
+    { "type": "text", "id": "fd_col_head", "label": "Block Title" },
+
+    { "type": "text", "id": "fd_label_btn", "label": "Button Label" },
+    { "type": "url", "id": "fd_btn_link", "label": "Button Link" },
+
+    { "type": "image_picker", "id": "fd_col_img", "label": "Col Image" },
     {
       "type": "text",
-      "id": "fd_label_btn",
-      "label": "Button Label"
+      "id": "fd_col_img_alt",
+      "label": "Collection image alt text",
+      "info": "Describe the collection image for screen readers. Leave blank to fall back to the block heading."
     },
-    {
-      "type": "url",
-      "id": "fd_btn_link",
-      "label": "Button Link"
-    },
-    {
-      "type": "image_picker",
-      "id": "fd_col_img",
-      "label": "Col Image"
-    },
-    {
-      "type": "text",
-      "id": "fd-heading",
-      "label": "Fd heading",
-      "default": "coffee that connects us"
-    },
-    {
-      "type": "text",
-      "id": "fd-name",
-      "label": "fd name",
-      "default": " - Seth Inyang"
-    },
-    {
-      "type": "text",
-      "id": "fd-sub",
-      "label": "co founder text",
-      "default": "Co-founder"
-    }
+
+    { "type": "text", "id": "fd-heading", "label": "Fd heading", "default": "coffee that connects us" },
+    { "type": "text", "id": "fd-name", "label": "fd name", "default": " - Seth Inyang" },
+    { "type": "text", "id": "fd-sub", "label": "co founder text", "default": "Co-founder" }
   ],
   "presets": [
-    {
-      "name": "Founder Section"
-    }
+    { "name": "Founder Section" }
   ]
 }
 {% endschema %}
