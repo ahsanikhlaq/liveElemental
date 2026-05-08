@@ -34,7 +34,6 @@
     {% if text_color != blank and text_color != 'rgba(0,0,0,0)' %}
       --text: {{ text_color }};
     {% endif %}
-
     {% if bg_color != blank and bg_color != 'rgba(0,0,0,0)' %}
       --bg: {{ bg_color }};
     {% endif %}
@@ -50,6 +49,8 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 20px;
     padding: 20px 91px;
+    list-style: none;
+    margin: 0;
   }
   h2.highlights__title {
     color: #000;
@@ -66,7 +67,6 @@
     outline: 2px solid currentColor;
     outline-offset: 2px;
   }
-
   .highlights__item-inner.is-disabled {
     cursor: not-allowed;
     opacity: 0.6;
@@ -147,17 +147,27 @@
             if block_heading == blank
               assign block_heading = 'Highlight ' | append: forloop.index
             endif
+
+            # alt text priority: customizer field → image library alt → block heading
+            assign custom_alt = block.settings.image_alt | strip
+            if custom_alt != blank
+              assign image_alt = custom_alt
+            elsif image.alt != blank
+              assign image_alt = image.alt
+            else
+              assign image_alt = block_heading
+            endif
+
             assign animation_delay = forloop.index0 | times: 150
+
             assign has_bg_color = false
             if bg_color != 'rgba(0,0,0,0)' and bg_color != blank
               assign has_bg_color = true
             endif
-
             assign has_text_color = false
             if text_color != 'rgba(0,0,0,0)' and text_color != blank
               assign has_text_color = true
             endif
-
             assign has_border_color = false
             if border_color != 'rgba(0,0,0,0)' and border_color != blank
               assign has_border_color = true
@@ -173,21 +183,17 @@
             capture style
               if has_text_color or has_bg_color or has_border_color
                 echo 'style="'
-
                 if has_bg_color
                   echo '--bg: ' | append: bg_color | append: ';'
                   echo '--bg-brighter: ' | append: bg_color_brighter | append: ';'
                 endif
-
                 if has_text_color
                   echo '--text: ' | append: text_color | append: ';'
                 endif
-
                 if has_border_color
                   echo '--border: ' | append: border_color | append: ';'
                   echo '--border-brighter: ' | append: border_color_brighter | append: ';'
                 endif
-
                 echo '"'
               endif
             endcapture
@@ -220,7 +226,6 @@
                 {% if link == request.path %}aria-current="page"{% endif %}
               >
             {%- else -%}
-              {%- comment -%} Button-style with no link → expose disabled state to AT {%- endcomment -%}
               <div
                 class="{{ item_inner_classes }}"
                 role="link"
@@ -230,14 +235,23 @@
             {%- endif -%}
 
               {%- if image or blocks_style != 'button' -%}
-                <div class="highlights__item__background" {% if image %}aria-hidden="true"{% endif %}>
+                <div class="highlights__item__background">
                   {%- if image -%}
-                    {%- capture sizes -%}
-                      (min-width: 990px) calc((100vw - 100px) / {{ columns_desktop }}), (min-width: 750px) calc((100vw - 60px) / {{ columns_tablet }}), calc(100vw - 32px)
-                    {%- endcapture -%}
-
-                    {%- comment -%} Decorative — visible heading provides the accessible name {%- endcomment -%}
-                    {%- render 'image', image: image, sizes: sizes, cover: true, alt: '' -%}
+                    <img
+                      src="{{ image | image_url: width: 800 }}"
+                      srcset="
+                        {{ image | image_url: width: 200 }} 200w,
+                        {{ image | image_url: width: 400 }} 400w,
+                        {{ image | image_url: width: 600 }} 600w,
+                        {{ image | image_url: width: 800 }} 800w,
+                        {{ image | image_url: width: 1000 }} 1000w
+                      "
+                      sizes="(min-width: 990px) calc((100vw - 100px) / {{ columns_desktop }}), (min-width: 750px) calc((100vw - 60px) / {{ columns_tablet }}), calc(100vw - 32px)"
+                      width="{{ image.width }}"
+                      height="{{ image.height }}"
+                      alt="{{ image_alt | escape }}"
+                      loading="lazy"
+                    >
                   {%- endif -%}
                 </div>
               {%- endif -%}
@@ -321,6 +335,12 @@
         { "type": "url", "id": "url", "label": "Link" },
         { "type": "header", "content": "Background" },
         { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text",
+          "info": "Describe what the image shows for screen readers and accessibility audits. Leave blank to fall back to the heading."
+        },
         { "type": "header", "content": "Colors" },
         { "type": "color", "id": "color", "label": "Text" },
         { "type": "color", "id": "bg_color", "label": "Background", "default": "#F0F0F0" },
