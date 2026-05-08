@@ -458,7 +458,7 @@
         {% endif %}
 
         <div class="fotr-icon-wrap">
-          <div class="social-media-icons social-media-icons_desktop" aria-label="Social media">
+          <nav class="social-media-icons social-media-icons_desktop" aria-label="{{ 'accessibility.social_media' | t | default: 'Social media' }}">
             {% if section.settings.fb_url != blank %}
               <a
                 class="cs_socal_icons"
@@ -481,7 +481,7 @@
                 {% render 'cs_socal_icon_inst' %}
               </a>
             {% endif %}
-          </div>
+          </nav>
         </div>
       </div>
     </div>

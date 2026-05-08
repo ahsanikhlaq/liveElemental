@@ -39,6 +39,7 @@ export class DialogComponent extends Component {
   }, 50);
 
   #previousScrollY = 0;
+  #previousActiveElement = null;
 
   /**
    * Shows the dialog.
@@ -47,6 +48,10 @@ export class DialogComponent extends Component {
     const { dialog } = this.refs;
 
     if (dialog.open) return;
+
+    const activeElement = document.activeElement;
+    this.#previousActiveElement =
+      activeElement instanceof HTMLElement && activeElement !== document.body ? activeElement : null;
 
     const scrollY = window.scrollY;
     this.#previousScrollY = scrollY;
@@ -89,6 +94,15 @@ export class DialogComponent extends Component {
 
     dialog.close();
     dialog.classList.remove('dialog-closing');
+
+    if (this.#previousActiveElement && typeof this.#previousActiveElement.focus === 'function') {
+      try {
+        this.#previousActiveElement.focus({ preventScroll: true });
+      } catch (e) {
+        this.#previousActiveElement.focus();
+      }
+    }
+    this.#previousActiveElement = null;
 
     this.dispatchEvent(new DialogCloseEvent());
   };

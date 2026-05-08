@@ -232,7 +232,15 @@ class LocalizationFormComponent extends Component {
     const normalizedSearch = normalizeString(searchValue);
     const startIndex = normalizedText.indexOf(normalizedSearch);
 
-    if (startIndex === -1) return text;
+    const escapeHtml = (str) =>
+      String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+
+    if (startIndex === -1) return escapeHtml(text);
 
     const endIndex = startIndex + normalizedSearch.length;
     const before = text.slice(0, startIndex);
@@ -241,11 +249,11 @@ class LocalizationFormComponent extends Component {
 
     let result = '';
     if (before) {
-      result += `<mark>${before}</mark>`;
+      result += `<mark>${escapeHtml(before)}</mark>`;
     }
-    result += match;
+    result += escapeHtml(match);
     if (after) {
-      result += `<mark>${after}</mark>`;
+      result += `<mark>${escapeHtml(after)}</mark>`;
     }
     return result;
   }

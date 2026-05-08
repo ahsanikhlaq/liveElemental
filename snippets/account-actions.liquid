@@ -50,7 +50,7 @@
       </div>
     {% endunless %}
 
-    <nav class="account-actions__nav">
+    <nav class="account-actions__nav" aria-label="{{ 'customer.account_fallback' | t | default: 'Account' }}">
       <ul class="account-actions__list">
         <li class="account-actions__list-item">
           <a

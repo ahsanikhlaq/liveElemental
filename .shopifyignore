@@ -1,0 +1,18 @@
+# Audit & compliance reports — keep in repo, do not upload to Shopify
+Accessibility_Audit_Report.md
+Client_WCAG_Audit_Report_Fixed.md
+Client_WCAG_Audit_Report_Fixed.docx
+Final_WCAG_Success_Report_v2.docx
+Final_WCAG_Success_Report_v3.docx
+WCAG-Compliance-Report.md
+WCAG-Compliance-Report.html
+WCAG-Compliance-Report.doc
+docs/
+
+# Dev / tooling artefacts
+assets/global.d.ts
+assets/jsconfig.json
+.git/
+.gitignore
+.shopifyignore
+README.md

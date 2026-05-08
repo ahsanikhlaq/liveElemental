@@ -17,9 +17,9 @@
             <a href="{{ product.url }}" class="upsell-product-link">
               <div class="upsell-product-image">
                 {% if product.featured_image %}
-                  <img 
-                    src="{{ product.featured_image | img_url: '400x' }}" 
-                    alt="{{ product.featured_image.alt | escape }}"
+                  <img
+                    src="{{ product.featured_image | image_url: width: 400 }}"
+                    alt="{{ product.featured_image.alt | default: product.title | escape }}"
                     loading="lazy"
                     width="400"
                     height="400"
@@ -30,10 +30,10 @@
                 
                 {% if product.available == false %}
                   <div class="upsell-badge-sold-out">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
                       <path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm0 12.5c-3.03 0-5.5-2.47-5.5-5.5S4.97 2.5 8 2.5s5.5 2.47 5.5 5.5-2.47 5.5-5.5 5.5z" fill="currentColor"/>
                     </svg>
-                    <span>Sold out</span>
+                    <span>{{ 'products.product.sold_out' | t }}</span>
                   </div>
                 {% endif %}
               </div>
@@ -86,18 +86,20 @@
                       type="submit"
                       name="add"
                       class="button add-to-cart-btn "
+                      aria-label="{% if is_available %}{{ 'actions.add_to_cart' | t }}: {{ product.title | escape }}{% else %}{{ 'products.product.sold_out' | t }}: {{ product.title | escape }}{% endif %}"
+                      {% unless is_available %}disabled aria-disabled="true"{% endunless %}
                     >
                       <span class="add-to-cart-text">
                         {% if is_available %}
-                          <span class="svg-wrapper add-to-cart-icon">
+                          <span class="svg-wrapper add-to-cart-icon" aria-hidden="true">
                             {{ 'icon-add-to-cart.svg' | inline_asset_content }}
                           </span>
-                          <span class="add-to-cart-text__content">
-                            {% comment %} {{ 'actions.add_to_cart' | t }} {% endcomment %}
+                          <span class="visually-hidden">
+                            {{ 'actions.add_to_cart' | t }}
                           </span>
                         {% else %}
                           <span class="add-to-cart-text__content">
-                            Sold Out
+                            {{ 'products.product.sold_out' | t }}
                           </span>
                         {% endif %}
                       </span>

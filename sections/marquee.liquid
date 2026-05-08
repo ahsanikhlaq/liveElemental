@@ -41,11 +41,29 @@
     class="marquee__pause-toggle"
     aria-pressed="false"
     aria-label="{{ 'accessibility.pause_marquee' | t | default: 'Pause scrolling animation' }}"
-    onclick="(function(btn){var c=btn.closest('marquee-component');var paused=c.toggleAttribute('data-disabled');btn.setAttribute('aria-pressed', String(paused));btn.setAttribute('aria-label', paused ? 'Resume scrolling animation' : 'Pause scrolling animation');})(this)"
+    data-pause-label="{{ 'accessibility.pause_marquee' | t | default: 'Pause scrolling animation' }}"
+    data-resume-label="{{ 'accessibility.resume_marquee' | t | default: 'Resume scrolling animation' }}"
   >
     <span aria-hidden="true">&#10073;&#10073;</span>
   </button>
 </marquee-component>
+
+{% javascript %}
+  document.querySelectorAll('.marquee__pause-toggle').forEach(function (btn) {
+    if (btn.dataset.marqueeBound === '1') return;
+    btn.dataset.marqueeBound = '1';
+    btn.addEventListener('click', function () {
+      var c = btn.closest('marquee-component');
+      if (!c) return;
+      var paused = c.toggleAttribute('data-disabled');
+      btn.setAttribute('aria-pressed', String(paused));
+      btn.setAttribute(
+        'aria-label',
+        paused ? (btn.dataset.resumeLabel || 'Resume') : (btn.dataset.pauseLabel || 'Pause')
+      );
+    });
+  });
+{% endjavascript %}
 
 {% stylesheet %}
   marquee-component {
