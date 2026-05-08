@@ -1,463 +1,444 @@
 <style>
-   /* @keyframes rotateInfinite {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  } */
-.insp-main-btn {
-      color: #FFF6E8;
-      font-family: Quicksand;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      background: var(--almond-forest, #8C7A6E);
-      display: flex;
-      padding: 16px 34px;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      transition: all 0.3s
-  ease;
-  max-width: 276px;
+  .insp-main-btn {
+    color: #FFF6E8;
+    font-family: Quicksand;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    background: var(--almond-forest, #8C7A6E);
+    display: flex;
+    padding: 16px 34px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    max-width: 276px;
     margin: 0 auto;
+    text-decoration: none;
   }
-  .insp-main-btn:hover{
-      background: var(--almond-forest-hover, #6B5B4C);
-      transform: scale(1.05);
+  .insp-main-btn:hover,
+  .insp-main-btn:focus-visible {
+    background: var(--almond-forest-hover, #6B5B4C);
+    transform: scale(1.05);
   }
+  .insp-main-btn:focus-visible {
+    outline: 2px solid var(--almond-forest, #8C7A6E);
+    outline-offset: 2px;
+  }
+
   @keyframes bounce-up {
-    0% {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    0% { transform: translateY(20px); opacity: 0; }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); opacity: 1; }
   }
-
-  .bounce-up {
-    opacity: 0;
-    transform: translateY(30px); /* Initial position */
-  }
-
-  .bounce-up.visible {
-    animation: bounce-up 1s ease-out forwards;
-  }
+  .bounce-up { opacity: 0; transform: translateY(30px); }
+  .bounce-up.visible { animation: bounce-up 1s ease-out forwards; }
 
   .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-      background-color: {{ section.settings.back-color}};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    {% if section.settings['back-color'] != blank %}
+      background-color: {{ section.settings['back-color'] }};
+    {% endif %}
   }
-    .insp__list_icon img {
-      width: 80px;
-      height: 80px;
+
+  .insp__list_icon img { width: 80px; height: 80px; }
+  .insp_icon_main { display: flex; gap: 16px; align-items: center; }
+
+  .inspired_main_head,
+  .inspired_main_head p {
+    margin: 0;
+    color: #000;
+    max-width: 491px;
+    text-align: center;
+    font-family: "League Spartan";
+    font-size: 36px;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
   }
-  .insp_icon_main{
-  	display: flex;
-  	gap: 16px;
-      align-items: center;
+
+  .inspired_feature_lists {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    gap: 24px;
   }
-  .inspired_main_head p{
-      margin:0;
-      color: #000;
-      max-width:491px;
-text-align: center;
-font-family: "League Spartan";
-font-size: 36px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-text-transform: uppercase;
-  }
-  .inspired_feature_lists{
-  	display: flex;
-  	flex-direction: column;
-  	padding-top: 30px;
-   	gap: 24px;
-  }
+
   .inspired_main_container {
-      display: flex;
-      align-items: center;
-      gap: 60px;
-      padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 0 20px;
   }
+
   .insp_main_img {
-      overflow:hidden;
-      position: relative;
-      /* z-index: 999; */
+    overflow: hidden;
+    position: relative;
   }
-  .home-feature-second-image {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-  }
-
-  .insp_features_content {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      /* max-width: 370px; */
-  }
-  .insp_features_content p{
-      /* margin: 0px; */
-      /* font-size:18px;
-      color: #394852;
-      line-height: 150%;
-      text-transform: unset;
-      transition: all 0.25s ease 0s;
-      word-break: break-word; */
-  }
-  .insp_features_content h1{
-  	margin: 0;
-      font-size:28px;
-      font-family:var (--font-family-sat);
-  }
-
-  /* .rotation-animation {
+  .insp_main_img video,
+  .insp_main_img .feature-vid {
     display: block;
     width: 100%;
-    height: 100%;
-    animation: rotateInfinite 40s linear infinite;
-    transform-origin: center center;
-  } */
-  .insp_list_heading p{
-     color: var(--Black, #171717);
-text-align: center;
-font-family: "League Spartan";
-font-size: 20px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-text-transform: capitalize;
-margin:0;
+    height: auto;
   }
-  .insp_list_desc{
-   color: var(--Black, #171717);
-text-align: center;
-max-width:520px;
-font-family: Quicksand;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+
+  /* Pause/play button for autoplay video — WCAG 2.2.2 */
+  .insp-video-pause-btn {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s ease;
   }
-  .reviews-icon img {
-    width: 16px;
-    height: 16px;
+  .insp-video-pause-btn:hover { background: rgba(0, 0, 0, 0.8); }
+  .insp-video-pause-btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
   }
-  .reviews-icon{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 3px;
+  .insp-video-pause-btn svg { width: 16px; height: 16px; fill: #fff; }
+
+  .home-feature-second-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
+
+  .insp_features_content { display: flex; flex-direction: column; gap: 10px; }
+  .insp_features_content h1 {
+    margin: 0;
+    font-size: 28px;
+    font-family: var(--font-family-sat);
+  }
+
+  .insp_list_heading,
+  .insp_list_heading p {
+    color: var(--Black, #171717);
+    text-align: center;
+    font-family: "League Spartan";
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    margin: 0;
+  }
+
+  .insp_list_desc {
+    color: var(--Black, #171717);
+    text-align: center;
+    max-width: 520px;
+    font-family: Quicksand;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .reviews-icon img { width: 16px; height: 16px; }
+  .reviews-icon { display: flex; justify-content: center; align-items: center; gap: 3px; }
+
   .home-feature-overlay-sect {
-      display: flex;
-      width: 472px;
-      padding: 26px 24px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px;
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      border-radius: 10px;
-      background: rgba(245, 247, 255, 0.76);
-      backdrop-filter: blur(8px);
+    display: flex;
+    width: 472px;
+    padding: 26px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 10px;
+    background: rgba(245, 247, 255, 0.76);
+    backdrop-filter: blur(8px);
   }
+
   .insp-overlay-desc {
-      color: #000;
-      font-family: Satoshi;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 22.1px;
+    color: #000;
+    font-family: Satoshi;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22.1px;
   }
-  .insp_img_main{
-    display:block;
-    border-radius: 20px;
-  }
-  .inspired_left_content_wrap{
-    width:50%;
+
+  .insp_img_main { display: block; border-radius: 20px; }
+
+  .inspired_left_content_wrap {
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .insp_right_feature_wrap{
-    width:50%;
-  }
+  .insp_right_feature_wrap { width: 50%; }
 
-   .insp_shop_btn-feature {
-      padding: 16px 60px;
-      transition: background-color 0.6s ease, color 0.6s ease, border 0.6s ease;
-      background-color: #3f4fff;
-      border-radius: 500px;
-      text-decoration: none;
-      display: inline-block;
-      width: fit-content;
-      color: #FFF;
-      text-align: center;
-      font-family: Satoshi;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 22px;
-      text-transform: uppercase;
+  .insp_shop_btn-feature {
+    padding: 16px 60px;
+    transition: background-color 0.6s ease, color 0.6s ease, border 0.6s ease;
+    background-color: #3f4fff;
+    border-radius: 500px;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+    color: #FFF;
+    text-align: center;
+    font-family: Satoshi;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    text-transform: uppercase;
   }
   .insp_shop_btn-feature:hover {
-      background-color: transparent;
-      color: #2227FD;
-      border: 1px solid;
+    background-color: transparent;
+    color: #2227FD;
+    border: 1px solid;
+  }
+  .insp_shop_btn { padding-top: 6px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .insp-main-btn,
+    .insp_shop_btn-feature {
+      transition: none !important;
     }
-  .insp_shop_btn{
-    padding-top:6px;
+    .insp-main-btn:hover,
+    .insp-main-btn:focus-visible { transform: none; }
+    .bounce-up { opacity: 1; transform: none; animation: none; }
+    .section-{{ section.id }}-padding.fade-up {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
 
-  @media screen and (max-width: 768px){
-  .section-{{ section.id }}-padding {
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.mbl_padding_top }}px;
-      padding-bottom: {{ section.settings.mbl_padding_bottom}}px;
-  }
-  .insp_shop_btn-feature{
-    display:none;
-  }
-  .inspired_main_container{
-    flex-direction: column-reverse;
-    gap:60px;
-    padding: 0;
-  }
-    .insp_features_content h3{
-      font-size:18px;
+      padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
     }
-    .inspired_feature_lists{
-      {% comment %} padding-top: 20px;
-      gap:14px; {% endcomment %}
+    .insp_shop_btn-feature { display: none; }
+    .inspired_main_container {
+      flex-direction: column-reverse;
+      gap: 60px;
+      padding: 0;
     }
-  /* .feature-second-image
-    {
-      position: absolute;
-      top: 118px;
-      right: 62px;
-  }
-  .feature-second-image img {
-      max-width: 278px;
-      max-height: 100px;
-  }   */
-  .insp_features_content p {
-     font-size: 20px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-  }
-  .insp_list_desc {
-    font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-max-width:350px;
-  }
-  .insp_icon_main{
-    align-items: flex-start;
-    gap: 11px;
-  }
-  .inspired_main_head p {
+    .insp_features_content h3 { font-size: 18px; }
+
+    .insp_features_content p {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: normal;
+    }
+    .insp_list_desc {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: normal;
+      max-width: 350px;
+    }
+    .insp_icon_main { align-items: flex-start; gap: 11px; }
+    .inspired_main_head,
+    .inspired_main_head p {
       font-size: 28px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-  }
-  .inspired_left_content_wrap{
-    width:100%;
-    padding: 40px 20px 0;
-  }
-  .insp_right_feature_wrap{
-    width:100%;
-  }
-    .insp_features_content{
-          gap: 10px;
+      font-weight: 600;
+      line-height: normal;
     }
-  .insp__list_icon img {
-      width: 50px;
-      height: 50px;
-  }
-  .home-feature-overlay-sect{
-    padding: 13px;
-    width: 264px;
-    bottom: 12px;
-    right: 12px;
-    gap: 13px;
-  }
-  .insp-overlay-desc{
-    font-size:14px;
-    line-height:18px;
-  }
-  .home-feature-overlay-sect img{
-      width: 12px;
-      height: 12px;
-  }
-
-
+    .inspired_left_content_wrap { width: 100%; padding: 40px 20px 0; }
+    .insp_right_feature_wrap { width: 100%; }
+    .insp_features_content { gap: 10px; }
+    .insp__list_icon img { width: 50px; height: 50px; }
+    .home-feature-overlay-sect {
+      padding: 13px;
+      width: 264px;
+      bottom: 12px;
+      right: 12px;
+      gap: 13px;
     }
+    .insp-overlay-desc { font-size: 14px; line-height: 18px; }
+    .home-feature-overlay-sect img { width: 12px; height: 12px; }
+  }
 </style>
 
-<section class="section-{{ section.id }}-padding fade-up">
+{%- liquid
+  assign main_heading_plain = section.settings['feature-main-heading'] | strip_html | strip
+  assign heading_id = 'inspired-heading-' | append: section.id
+  assign btn_label = section.settings.insp_label_btn | strip
+  assign video_label = section.settings.video_alt | strip
+  if video_label == blank
+    if main_heading_plain != blank
+      assign video_label = main_heading_plain
+    else
+      assign video_label = 'Background video'
+    endif
+  endif
+-%}
+
+<section
+  class="section-{{ section.id }}-padding fade-up"
+  {% if main_heading_plain != blank %}aria-labelledby="{{ heading_id }}"{% else %}aria-label="Inspired by"{% endif %}
+>
   <div class="page-width">
     <div class="inspired_main_container">
+
       <div class="inspired_left_content_wrap">
-        <div class="inspired_main_head">{{ section.settings['feature-main-heading'] }}</div>
-        <div class="inspired_feature_lists">
-          {% for block in section.blocks %}
-            <div class="insp_icon_main">
-              <div class="insp_features_content">
-                <div class="insp_list_heading">{{ block.settings['features-heading'] }}</div>
-                <div class="insp_list_desc">{{ block.settings['features-description'] }}</div>
-              </div>
-            </div>
-          {% endfor %}
+        {% if section.settings['feature-main-heading'] != blank %}
+          <h2 id="{{ heading_id }}" class="inspired_main_head">
+            {{ section.settings['feature-main-heading'] }}
+          </h2>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+          <ul class="inspired_feature_lists" role="list">
+            {% for block in section.blocks %}
+              <li class="insp_icon_main" {{ block.shopify_attributes }}>
+                <div class="insp_features_content">
+                  {% if block.settings['features-heading'] != blank %}
+                    <h3 class="insp_list_heading">{{ block.settings['features-heading'] }}</h3>
+                  {% endif %}
+                  {% if block.settings['features-description'] != blank %}
+                    <p class="insp_list_desc">{{ block.settings['features-description'] | escape }}</p>
+                  {% endif %}
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if btn_label != blank and section.settings.insp_btn_link != blank %}
           <div class="insp_shop_btn">
-            <a class="insp-main-btn" href="{{ section.settings.insp_btn_link }}">{{ section.settings.insp_label_btn }} </a>
+            <a
+              class="insp-main-btn"
+              href="{{ section.settings.insp_btn_link }}"
+              aria-label="{{ btn_label | append: ' — ' | append: main_heading_plain | strip | escape }}"
+            >
+              {{ btn_label | escape }}
+            </a>
           </div>
-        </div>
+        {% endif %}
       </div>
+
       <div class="insp_right_feature_wrap">
         <div class="insp_main_img">
           {% if section.settings['video-main'] != blank %}
-            <div class="video-wrapper-feature">
-              {{
-                section.settings['video-main']
-                | video_tag:
-                  class: 'feature-vid',
-                  image_size: '1100x',
-                  controls: false,
-                  muted: true,
-                  autoplay: true,
-                  loop: true,
-                  playsinline: true,
-                  id: 'video-main'
-              }}
-            </div>
-          {% endif %}
+  {%- assign video_dom_id = 'video-main-' | append: section.id -%}
+  <div
+    class="video-wrapper-feature"
+    role="img"
+    aria-label="{{ video_label | escape }}"
+  >
+    {{
+      section.settings['video-main']
+      | video_tag:
+        class: 'feature-vid',
+        image_size: '1100x',
+        controls: false,
+        muted: true,
+        autoplay: true,
+        loop: true,
+        playsinline: true,
+        id: video_dom_id
+    }}
+
+    <button
+      class="insp-video-pause-btn"
+      type="button"
+      aria-label="Pause background video"
+      aria-pressed="false"
+      data-video-target="{{ video_dom_id }}"
+    >
+      <svg class="insp-icon-pause" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+        <rect x="6" y="4" width="4" height="16" rx="1"/>
+        <rect x="14" y="4" width="4" height="16" rx="1"/>
+      </svg>
+      <svg class="insp-icon-play" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" style="display:none;">
+        <polygon points="5,3 19,12 5,21"/>
+      </svg>
+    </button>
+  </div>
+{% endif %}
         </div>
       </div>
     </div>
   </div>
 </section>
 
-{% comment %} <script>
-  window.addEventListener('scroll', function () {
-    const sections = document.querySelectorAll('.bounce-up');
-    const windowHeight = window.innerHeight;
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.querySelector('.section-{{ section.id }}-padding .insp-video-pause-btn');
+    if (!btn) return;
+    var video = document.getElementById(btn.getAttribute('data-video-target'));
+    if (!video) return;
 
-    sections.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top;
+    var iconPause = btn.querySelector('.insp-icon-pause');
+    var iconPlay = btn.querySelector('.insp-icon-play');
 
-      // Check if the section is in view
-      if (sectionTop < windowHeight - 100) {
-        section.classList.add('visible');
-      }
+    function setPaused(paused) {
+      btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      btn.setAttribute('aria-label', paused ? 'Play background video' : 'Pause background video');
+      iconPause.style.display = paused ? 'none' : '';
+      iconPlay.style.display  = paused ? '' : 'none';
+    }
+
+    btn.addEventListener('click', function () {
+      if (video.paused) { video.play();  setPaused(false); }
+      else              { video.pause(); setPaused(true);  }
     });
+
+    // Respect prefers-reduced-motion (WCAG 2.3.3)
+    var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function apply() {
+      if (rm.matches) {
+        video.pause();
+        video.removeAttribute('autoplay');
+        setPaused(true);
+      }
+    }
+    apply();
+    if (rm.addEventListener) rm.addEventListener('change', apply);
+    else if (rm.addListener) rm.addListener(apply);
   });
-</script> {% endcomment %}
+</script>
 
 {% schema %}
 {
   "name": "Inspired By Section",
   "settings": [
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Top Padding",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Bottom Padding",
-      "default": 10
-    },
-    {
-      "type": "color",
-      "id": "back-color",
-      "label": "Background Color"
-    },
-    {
-      "type": "richtext",
-      "id": "feature-main-heading",
-      "label": "Heading"
-    },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Top", "default": 10 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Bottom", "default": 10 },
+    { "type": "range", "id": "mbl_padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Top Padding", "default": 10 },
+    { "type": "range", "id": "mbl_padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Bottom Padding", "default": 10 },
+    { "type": "color", "id": "back-color", "label": "Background Color" },
+    { "type": "richtext", "id": "feature-main-heading", "label": "Heading" },
+    { "type": "text", "id": "insp_label_btn", "label": "Button Label" },
+    { "type": "url", "id": "insp_btn_link", "label": "Button Link" },
+    { "type": "video", "id": "video-main", "label": "Video" },
     {
       "type": "text",
-      "id": "insp_label_btn",
-      "label": "Button Label"
-    },
-    {
-      "type": "url",
-      "id": "insp_btn_link",
-      "label": "Button Link"
-    },
-    {
-      "type": "video",
-      "id": "video-main",
-      "label": "Video"
-    },
+      "id": "video_alt",
+      "label": "Video alt text",
+      "info": "Describe what the video shows for screen readers. Leave blank to fall back to the heading."
+    }
   ],
   "blocks": [
     {
       "type": "blocks",
       "name": "Add Block",
       "settings": [
-        {
-          "type": "richtext",
-          "id": "features-heading",
-          "label": "Heading"
-        },
-        {
-          "type": "text",
-          "id": "features-description",
-          "label": "Features Description"
-        }
+        { "type": "richtext", "id": "features-heading", "label": "Heading" },
+        { "type": "text", "id": "features-description", "label": "Features Description" }
       ]
     }
   ],
   "presets": [
-    {
-      "name": "Inspired By Section"
-    }
+    { "name": "Inspired By Section" }
   ]
 }
 {% endschema %}
