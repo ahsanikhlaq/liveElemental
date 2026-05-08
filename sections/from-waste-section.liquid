@@ -1,48 +1,49 @@
 <style>
   .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    {% if section.settings.back_color != blank %}
       background-color: {{ section.settings.back_color }};
+    {% endif %}
   }
-.fm_waste_container {
-    {% comment %} display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 16px; {% endcomment %}
-}
-.fm-head {
+
+  .fm_waste_container { /* container layout unchanged */ }
+
+  .fm-head {
     color: #000;
     font-family: "League Spartan";
     font-size: 36px;
-    font-style: normal;
     font-weight: 600;
     line-height: normal;
     text-transform: uppercase;
-}
-.fm-desc {
+    margin: 0;
+  }
+
+  .fm-desc {
     color: var(--Black, #171717);
     font-family: Quicksand;
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
     line-height: normal;
-}
-.fm-wst-content {
+  }
+
+  .fm-wst-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     gap: 10px;
-}
-.process-icon-ab img {
+  }
+
+  .process-icon-ab img {
     width: 60px;
     height: 60px;
     display: block;
     margin-bottom: 20px;
-}
-.process-step-ab {
+  }
+
+  .process-step-ab {
     border: 1px solid var(--almond-forest, #8C7A6E);
     background: rgba(140, 156, 110, 0.05);
     display: flex;
@@ -52,151 +53,181 @@
     color: var(--almond-forest, #8C7A6E);
     text-align: center;
     font-size: 14px;
-    font-style: normal;
     font-weight: 500;
     font-family: Quicksand;
     line-height: normal;
     max-width: 72px;
     margin: 0 auto 16px;
-}
-.process-title-ab {
+  }
+
+  .process-title-ab {
     color: var(--Black, #171717);
     text-align: center;
     font-family: "League Spartan";
     font-size: 20px;
-    font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-transform: capitalize;
     margin: 0;
-}
-.process-desc-ab {
+  }
+
+  .process-desc-ab {
     color: var(--Black, #171717);
     text-align: center;
     font-family: Quicksand;
     font-size: 14px;
-    font-style: normal;
     font-weight: 500;
     line-height: 20px;
     margin: 0;
     max-width: 208px;
     padding-top: 4px;
-}
-.process-card-ab {
+  }
+
+  .process-card-ab {
     border-radius: 1px;
-    transition: all 0.3s ease-in-out; /* Smooth transition for the hover effect */
+    transition: all 0.3s ease-in-out;
     background: #F7F7F7;
     display: flex;
     padding: 16px 12px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    {% comment %} gap: 20px; {% endcomment %}
-}
-.process-card-ab:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
-  transform: translateY(-5px); /* Moves the card up slightly */
-}
-.fm-wast-block {
+    list-style: none;
+  }
+  .process-card-ab:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+  }
+
+  .fm-wast-block {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 12px;
     padding: 16px 20px 0;
-}
-  @media screen and (max-width:768px){
-  .section-{{ section.id }}-padding {
+    margin: 0;
+    list-style: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .process-card-ab { transition: none !important; }
+    .process-card-ab:hover { transform: none; box-shadow: none; }
+    .section-{{ section.id }}-padding.fade-up {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.mbl_padding_top }}px;
       padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
     }
-.fm-wast-block {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 16px 10px 0;
-}
-.process-icon-ab img {
-    margin: 0;
-    width: 38px;
-height: 38px;
-}
-.fm-desc{
-max-width: 353px;
-}
-.process-step-ab{
-font-size: 12px;
-padding: 6px 12px 4px 12px;
-margin: 0 0 12px;
-max-width: 65px;
-}
-.process-card-ab{
-flex-direction: row;
-justify-content: normal;
-gap: 12px;
-}
-.process-title-ab {
-  text-align: unset;
-  font-size: 18px;
-}
-.process-desc-ab{
-  text-align: unset;
-  max-width: 276px;
-}
-.fm-head{
-font-size: 28px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-}
-
-
-
-
-
-
-
-
-
-
-}
+    .fm-wast-block {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 16px 10px 0;
+    }
+    .process-icon-ab img {
+      margin: 0;
+      width: 38px;
+      height: 38px;
+    }
+    .fm-desc { max-width: 353px; }
+    .process-step-ab {
+      font-size: 12px;
+      padding: 6px 12px 4px 12px;
+      margin: 0 0 12px;
+      max-width: 65px;
+    }
+    .process-card-ab {
+      flex-direction: row;
+      justify-content: normal;
+      gap: 12px;
+    }
+    .process-title-ab { text-align: unset; font-size: 18px; }
+    .process-desc-ab { text-align: unset; max-width: 276px; }
+    .fm-head {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
 </style>
 
-<section class="section-{{ section.id }}-padding fade-up">
+{%- liquid
+  assign head_plain = section.settings.fm_head | strip
+  assign heading_id = 'fm-heading-' | append: section.id
+-%}
+
+<section
+  class="section-{{ section.id }}-padding fade-up"
+  {% if head_plain != blank %}aria-labelledby="{{ heading_id }}"{% else %}aria-label="Process steps"{% endif %}
+>
   <div class="page-width">
     <div class="fm_waste_container">
       <div class="fm-wst-content">
-        <div class="fm-head">{{ section.settings.fm_head }}</div>
-        <div class="fm-desc">{{ section.settings.fm_desc }}</div>
+        {% if head_plain != blank %}
+          <h2 id="{{ heading_id }}" class="fm-head">{{ section.settings.fm_head | escape }}</h2>
+        {% endif %}
+        {% if section.settings.fm_desc != blank %}
+          <p class="fm-desc">{{ section.settings.fm_desc | escape }}</p>
+        {% endif %}
       </div>
 
-      <div class="fm-wast-block">
-        {% for block in section.blocks %}
-          <div class="process-card-ab">
-            {% if block.settings['process-icon'] != blank %}
-              <div class="process-icon-ab">
-                {{
-                  block.settings['process-icon']
-                  | image_url: width: 1440
-                  | image_tag:
-                    widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
-                    class: 'proces-ab',
-                    alt: 'image',
-                    loading: 'eager'
-                }}
+      {% if section.blocks.size > 0 %}
+        <ul class="fm-wast-block" role="list">
+          {% for block in section.blocks %}
+            {%- liquid
+              assign step_plain = block.settings['process-step'] | strip
+              assign title_plain = block.settings['process-title'] | strip
+
+              # Alt priority: customizer field → image library alt → step + title → "Step N"
+              assign custom_alt = block.settings['process-icon-alt'] | strip
+              if custom_alt != blank
+                assign icon_alt = custom_alt
+              elsif block.settings['process-icon'].alt != blank
+                assign icon_alt = block.settings['process-icon'].alt
+              elsif title_plain != blank
+                assign icon_alt = title_plain
+              elsif step_plain != blank
+                assign icon_alt = step_plain
+              else
+                assign icon_alt = 'Step ' | append: forloop.index
+              endif
+            -%}
+            <li class="process-card-ab" {{ block.shopify_attributes }}>
+              {% if block.settings['process-icon'] != blank %}
+                <div class="process-icon-ab">
+                  {{
+                    block.settings['process-icon']
+                    | image_url: width: 200
+                    | image_tag:
+                      widths: '50, 100, 150, 200',
+                      class: 'proces-ab',
+                      alt: icon_alt,
+                      loading: 'lazy',
+                      width: 60,
+                      height: 60
+                  }}
+                </div>
+              {% endif %}
+              <div class="proces-wrap-ab">
+                {% if step_plain != blank %}
+                  <span class="process-step-ab">{{ step_plain | escape }}</span>
+                {% endif %}
+                {% if title_plain != blank %}
+                  <h3 class="process-title-ab">{{ title_plain | escape }}</h3>
+                {% endif %}
+                {% if block.settings['process-desc'] != blank %}
+                  <p class="process-desc-ab">{{ block.settings['process-desc'] | escape | newline_to_br }}</p>
+                {% endif %}
               </div>
-            {% endif %}
-            <div class="proces-wrap-ab">
-            {% if block.settings['process-step'] != blank %}
-              <span class="process-step-ab">{{ block.settings['process-step'] }}</span>
-            {% endif %}
-            {% if block.settings['process-title'] != blank %}
-              <h3 class="process-title-ab">{{ block.settings['process-title'] }}</h3>
-            {% endif %}
-            {% if block.settings['process-desc'] != blank %}
-              <p class="process-desc-ab">{{ block.settings['process-desc'] }}</p>
-            {% endif %}
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -205,94 +236,34 @@ line-height: normal;
 {
   "name": "From Waste Section",
   "settings": [
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Top Padding",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Bottom Padding",
-      "default": 10
-    },
-    {
-      "type": "color",
-      "id": "back_color",
-      "label": "Background Color"
-    },
-    {
-      "type": "text",
-      "id": "fm_head",
-      "label": "Main Heading"
-    },
-    {
-      "type": "text",
-      "id": "fm_desc",
-      "label": "Sub Heading"
-    }
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Top", "default": 10 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Bottom", "default": 10 },
+    { "type": "range", "id": "mbl_padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Top Padding", "default": 10 },
+    { "type": "range", "id": "mbl_padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Bottom Padding", "default": 10 },
+    { "type": "color", "id": "back_color", "label": "Background Color" },
+    { "type": "text", "id": "fm_head", "label": "Main Heading" },
+    { "type": "text", "id": "fm_desc", "label": "Sub Heading" }
   ],
   "blocks": [
     {
       "type": "block",
       "name": "Add Block",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "process-icon",
-          "label": "Icon"
-        },
+        { "type": "image_picker", "id": "process-icon", "label": "Icon" },
         {
           "type": "text",
-          "id": "process-step",
-          "label": "Step Count"
+          "id": "process-icon-alt",
+          "label": "Icon alt text",
+          "info": "Describe the icon for screen readers. Leave blank to fall back to the heading."
         },
-        {
-          "type": "text",
-          "id": "process-title",
-          "label": "Heading"
-        },
-        {
-          "type": "text",
-          "id": "process-desc",
-          "label": "Sub Heading"
-        }
+        { "type": "text", "id": "process-step", "label": "Step Count" },
+        { "type": "text", "id": "process-title", "label": "Heading" },
+        { "type": "text", "id": "process-desc", "label": "Sub Heading" }
       ]
     }
   ],
   "presets": [
-    {
-      "name": "From Waste Section"
-    }
+    { "name": "From Waste Section" }
   ]
 }
 {% endschema %}
