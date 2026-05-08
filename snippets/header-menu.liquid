@@ -82,7 +82,7 @@
   </li> {% endcomment %}
 {% endcapture %}
 
-<nav header-menu>
+<nav header-menu aria-label="{{ 'accessibility.menu' | t | default: 'Main' }}">
   <div
     class="menu-list"
     style="{% render 'menu-font-styles', settings: block_settings %}"

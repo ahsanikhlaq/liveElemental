@@ -86,6 +86,7 @@
       </button>
       <nav
         class="menu-drawer__navigation"
+        aria-label="{{ 'accessibility.menu' | t | default: 'Main' }}"
         style="
           {%- render 'menu-font-styles', settings: block_settings, menu_type: 'drawer' %}
           {%- render 'submenu-font-styles', settings: block_settings %}

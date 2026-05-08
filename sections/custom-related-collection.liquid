@@ -59,26 +59,33 @@
                     <a href="{{ product.url }}">
                       {% assign second_image = product.images[1] %}
                       <img
-                        src="{{ product.featured_image | img_url: '' }}"
-                        alt="{{ product.title }}"
+                        src="{{ product.featured_image | image_url: width: 800 }}"
+                        alt="{{ product.title | escape }}"
                         class="primary-img-rr"
                         loading="lazy"
-                        width="100%"
-                        height="100%"
+                        width="{{ product.featured_image.width | default: 800 }}"
+                        height="{{ product.featured_image.height | default: 800 }}"
                       >
                       {% if second_image %}
                         <img
-                          src="{{ second_image | img_url: '' }}"
-                          alt="{{ product.title }}"
+                          src="{{ second_image | image_url: width: 800 }}"
+                          alt=""
+                          aria-hidden="true"
                           class="hover-img-rr"
                           loading="lazy"
-                          width="100%"
-                          height="100%"
+                          width="{{ second_image.width | default: 800 }}"
+                          height="{{ second_image.height | default: 800 }}"
                         >
                       {% endif %}
                       <span class="bt-wrap">
-                    <!-- "+" Icon Button -->
-                    <button class="plus-btn">+</button>
+                    <!-- Quick add button -->
+                    <button
+                      type="button"
+                      class="plus-btn"
+                      aria-label="{{ 'accessibility.quick_add' | t | default: 'Quick add' }}: {{ product.title | escape }}"
+                    >
+                      <span aria-hidden="true">+</span>
+                    </button>
                     {%- assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id -%}
                     <product-form-component
                       data-section-id="{{ section.id }}"
