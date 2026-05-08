@@ -1,53 +1,59 @@
 <style>
-.section-{{ section.id }}-padding {
+  .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: {{ section.settings.back_color }};
-}
-.cf-feel-heading {
+    {% if section.settings.back_color != blank %}
+      background-color: {{ section.settings.back_color }};
+    {% endif %}
+  }
+
+  .cf-feel-heading {
     color: #000;
     font-family: "League Spartan";
     font-size: 36px;
-    font-style: normal;
     font-weight: 600;
     line-height: normal;
     text-transform: uppercase;
-}
-.cf-feel-desc {
+    margin: 0;
+  }
+
+  .cf-feel-desc {
     color: var(--Black, #171717);
     font-family: Quicksand;
     font-size: 18px;
-    font-style: normal;
     font-weight: 400;
     line-height: normal;
-}
-.cf-fel-icon img {
+    margin: 0;
+  }
+
+  .cf-fel-icon img {
     width: 64px;
     height: 64px;
     display: block;
-}
+  }
 
-.cf-block-head {
+  .cf-block-head {
     color: var(--Black, #171717);
-    /* text-align: center; */
     font-family: "League Spartan";
     font-size: 20px;
-    font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-transform: capitalize;
-}
-.cf-block-desc {
+    margin: 0;
+  }
+
+  .cf-block-desc {
     color: var(--Black, #171717);
     font-family: Quicksand;
     font-size: 16px;
-    font-style: normal;
     font-weight: 500;
     line-height: 22px;
     max-width: 300px;
-}
-.cf-block {
-    transition: all 0.3s ease-in-out; /* Smooth transition for the hover effect */
+    margin: 0;
+  }
+
+  .cf-block {
+    transition: all 0.3s ease-in-out;
     border-radius: 1px;
     background: #F7F7F7;
     display: flex;
@@ -57,227 +63,194 @@
     align-items: flex-start;
     gap: 20px;
     flex: 1 0 0;
-}
-.cf-block:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
-  transform: translateY(-5px); /* Moves the card up slightly */
-}
-.cf-feel-block-wrap {
+    list-style: none;
+  }
+  .cf-block:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+  }
+
+  .cf-feel-block-wrap {
     display: flex;
     gap: 12px;
     justify-content: center;
     align-items: center;
-}
-.cf-feel-content-wrap {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cf-feel-content-wrap {
     display: flex;
     flex-direction: column;
     max-width: 842px;
     gap: 12px;
-}
+  }
 
-/* Center alignment option */
-{% if section.settings.center_content %}
-.cf-feel-content-wrap {
-    text-align: center;
-    margin: 0 auto;
-}
-{% endif %}
+  {% if section.settings.center_content %}
+    .cf-feel-content-wrap {
+      text-align: center;
+      margin: 0 auto;
+    }
+  {% endif %}
 
-.cf-feel-container {
+  .cf-feel-container {
     padding: 0 30px;
     display: flex;
     flex-direction: column;
     gap: 40px;
-}
-.cf-block-wrap {
+  }
+
+  .cf-block-wrap {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-
-
-@media screen and (max-width:768px){
-.section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.mbl_padding_top }}px;
-    padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
   }
-.cf-feel-block-wrap{
-flex-direction: column;
-}
-{% if section.settings.center_content %}
-.cf-feel-content-wrap {
-    text-align: inherit;
-    margin: 0 auto;
-}
-{% endif %}
-{% if section.settings.center_content %}
-.cf-feel-heading {
-  max-width: 100% !important;
-}
-{% endif %}
-.cf-block-wrap{
-    gap: 5px;
-}
-.cf-feel-container{
-padding:0 10px;
-}
-.cf-feel-heading{
-font-size: 28px;
-max-width: 325px;
-}
-.cf-feel-desc{
-font-size: 16px;
-}
-.cf-block-desc{
-font-size: 14px;
-max-width: 100%;
-}
-.cf-fel-icon img{
-width: 32px;
-height: 32px;
-}
-.cf-block{
-padding:10px;
-min-width: -webkit-fill-available;
-gap:12px;
-}
-}  
+
+  @media (prefers-reduced-motion: reduce) {
+    .cf-block { transition: none !important; }
+    .cf-block:hover { transform: none; box-shadow: none; }
+    .section-{{ section.id }}-padding.fade-up {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.mbl_padding_top }}px;
+      padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+    }
+    .cf-feel-block-wrap { flex-direction: column; }
+
+    {% if section.settings.center_content %}
+      .cf-feel-content-wrap {
+        text-align: inherit;
+        margin: 0 auto;
+      }
+      .cf-feel-heading { max-width: 100% !important; }
+    {% endif %}
+
+    .cf-block-wrap { gap: 5px; }
+    .cf-feel-container { padding: 0 10px; }
+    .cf-feel-heading { font-size: 28px; max-width: 325px; }
+    .cf-feel-desc { font-size: 16px; }
+    .cf-block-desc { font-size: 14px; max-width: 100%; }
+    .cf-fel-icon img { width: 32px; height: 32px; }
+    .cf-block {
+      padding: 10px;
+      min-width: -webkit-fill-available;
+      gap: 12px;
+    }
+  }
 </style>
 
+{%- liquid
+  assign head_plain = section.settings.cf_fel_head | strip
+  assign heading_id = 'cf-feel-heading-' | append: section.id
+-%}
 
-
-<section class="section-{{ section.id }}-padding fade-up">
+<section
+  class="section-{{ section.id }}-padding fade-up"
+  {% if head_plain != blank %}aria-labelledby="{{ heading_id }}"{% else %}aria-label="Features"{% endif %}
+>
   <div class="page-width">
-   <div class="cf-feel-container">
+    <div class="cf-feel-container">
 
-   <div class="cf-feel-content-wrap">
-    <div class="cf-feel-heading">{{ section.settings.cf_fel_head }}</div>
-    <div class="cf-feel-desc">{{ section.settings.cf_fel_desc }}</div>
-   </div>
-   <div class="cf-feel-block-wrap">
-    {% for block in section.blocks %}
-          <div class="cf-block">
-           <div class="cf-fel-icon">
-                {{ block.settings.cf_block_icon | image_url: width: 1440 | image_tag:
-          widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
-          class:'',
-          alt: "image",
-          loading: "eager"
-      }}
-           </div>
-           <div class="cf-block-wrap">
-            <div class="cf-block-head">{{ block.settings.cf_block_head }}</div>
-            <div class="cf-block-desc">{{ block.settings.cf_block_desc }}</div>
-        </div>
-          </div>
-        {% endfor %}
+      <div class="cf-feel-content-wrap">
+        {% if head_plain != blank %}
+          <h2 id="{{ heading_id }}" class="cf-feel-heading">{{ section.settings.cf_fel_head | escape }}</h2>
+        {% endif %}
+        {% if section.settings.cf_fel_desc != blank %}
+          <p class="cf-feel-desc">{{ section.settings.cf_fel_desc | escape }}</p>
+        {% endif %}
+      </div>
 
-   </div>
-   </div>
+      {% if section.blocks.size > 0 %}
+        <ul class="cf-feel-block-wrap" role="list">
+          {% for block in section.blocks %}
+            {%- liquid
+              assign block_head = block.settings.cf_block_head | strip
+
+              # Alt priority: customizer field → image library alt → block heading → "Feature N"
+              assign custom_alt = block.settings.cf_block_icon_alt | strip
+              if custom_alt != blank
+                assign icon_alt = custom_alt
+              elsif block.settings.cf_block_icon.alt != blank
+                assign icon_alt = block.settings.cf_block_icon.alt
+              elsif block_head != blank
+                assign icon_alt = block_head
+              else
+                assign icon_alt = 'Feature ' | append: forloop.index
+              endif
+            -%}
+            <li class="cf-block" {{ block.shopify_attributes }}>
+              {% if block.settings.cf_block_icon != blank %}
+                <div class="cf-fel-icon">
+                  {{
+                    block.settings.cf_block_icon
+                    | image_url: width: 200
+                    | image_tag:
+                      widths: '50, 100, 150, 200',
+                      class: '',
+                      alt: icon_alt,
+                      loading: 'lazy',
+                      width: 64,
+                      height: 64
+                  }}
+                </div>
+              {% endif %}
+              <div class="cf-block-wrap">
+                {% if block_head != blank %}
+                  <h3 class="cf-block-head">{{ block_head | escape }}</h3>
+                {% endif %}
+                {% if block.settings.cf_block_desc != blank %}
+                  <p class="cf-block-desc">{{ block.settings.cf_block_desc | escape | newline_to_br }}</p>
+                {% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+    </div>
   </div>
 </section>
 
-
-
-
-
-
-
 {% schema %}
-  {
-    "name": "Feel Section",
-    "settings": [
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Top Padding",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mbl_padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Bottom Padding",
-      "default": 10
-    },
-    {
-      "type": "color",
-      "id": "back_color",
-      "label": "Background Color"
-    },
-    {
-      "type": "text",
-      "id": "cf_fel_head",
-      "label": "Main Heading"
-     },
-     {
-      "type": "text",
-      "id": "cf_fel_desc",
-      "label": "Description"
-     },
-     {
-      "type": "checkbox",
-      "id": "center_content",
-      "label": "Center align content",
-      "default": false
-     }
-    ],
-    
-    "blocks": [
+{
+  "name": "Feel Section",
+  "settings": [
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Top", "default": 10 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Bottom", "default": 10 },
+    { "type": "range", "id": "mbl_padding_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Top Padding", "default": 10 },
+    { "type": "range", "id": "mbl_padding_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Mobile Bottom Padding", "default": 10 },
+    { "type": "color", "id": "back_color", "label": "Background Color" },
+    { "type": "text", "id": "cf_fel_head", "label": "Main Heading" },
+    { "type": "text", "id": "cf_fel_desc", "label": "Description" },
+    { "type": "checkbox", "id": "center_content", "label": "Center align content", "default": false }
+  ],
+  "blocks": [
     {
       "type": "block",
       "name": "Add Block",
       "settings": [
-        {
-            "type": "image_picker",
-            "id": "cf_block_icon",
-            "label": "Icon"
-        },
+        { "type": "image_picker", "id": "cf_block_icon", "label": "Icon" },
         {
           "type": "text",
-          "id": "cf_block_head",
-          "label": "Heading"
+          "id": "cf_block_icon_alt",
+          "label": "Icon alt text",
+          "info": "Describe the icon for screen readers. Leave blank to fall back to the heading."
         },
-        {
-          "type": "text",
-          "id": "cf_block_desc",
-          "label": "Sub Heading"
-        }
+        { "type": "text", "id": "cf_block_head", "label": "Heading" },
+        { "type": "text", "id": "cf_block_desc", "label": "Sub Heading" }
       ]
     }
   ],
-    "presets": [
-      {
-        "name": "Feel Section"
-      }
-    ]
-  }
+  "presets": [
+    { "name": "Feel Section" }
+  ]
+}
 {% endschema %}
