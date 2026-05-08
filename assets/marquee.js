@@ -31,6 +31,9 @@ class MarqueeComponent extends Component {
     window.addEventListener('resize', this.#handleResize);
     this.addEventListener('pointerenter', this.#slowDown);
     this.addEventListener('pointerleave', this.#speedUp);
+    // WCAG 2.1.1 / 2.2.2 — keyboard parity for hover-pause behaviour.
+    this.addEventListener('focusin', this.#slowDown);
+    this.addEventListener('focusout', this.#speedUp);
   }
 
   disconnectedCallback() {
@@ -38,6 +41,8 @@ class MarqueeComponent extends Component {
     window.removeEventListener('resize', this.#handleResize);
     this.removeEventListener('pointerenter', this.#slowDown);
     this.removeEventListener('pointerleave', this.#speedUp);
+    this.removeEventListener('focusin', this.#slowDown);
+    this.removeEventListener('focusout', this.#speedUp);
   }
 
   /**

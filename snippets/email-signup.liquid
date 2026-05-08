@@ -29,6 +29,7 @@
           autocorrect="off"
           autocapitalize="off"
           autocomplete="email"
+          aria-label="{{ 'blocks.email_signup.label' | t }}"
           placeholder="Your email here"
           required
           {% if form.errors %}
@@ -69,6 +70,9 @@
           id="Email-signup__message-error-{{ block.id }}"
           class="email-signup__message email-signup__message--error"
           tabindex="-1"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
         >
           <svg
             viewBox="0 0 20 20"
@@ -89,6 +93,9 @@
           id="Email-signup__message-success-{{ block.id }}"
           class="email-signup__message email-signup__message--success"
           tabindex="-1"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
         >
           <span class="svg-wrapper icon-success">
             {{ 'icon-checkmark.svg' | inline_asset_content }}

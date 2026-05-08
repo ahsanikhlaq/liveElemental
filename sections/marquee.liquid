@@ -35,6 +35,16 @@
       </div>
     </div>
   </div>
+  {%- comment -%} WCAG 2.2.2 — keyboard-accessible pause/play control for the auto-scrolling marquee. {%- endcomment -%}
+  <button
+    type="button"
+    class="marquee__pause-toggle"
+    aria-pressed="false"
+    aria-label="{{ 'accessibility.pause_marquee' | t | default: 'Pause scrolling animation' }}"
+    onclick="(function(btn){var c=btn.closest('marquee-component');var paused=c.toggleAttribute('data-disabled');btn.setAttribute('aria-pressed', String(paused));btn.setAttribute('aria-label', paused ? 'Resume scrolling animation' : 'Pause scrolling animation');})(this)"
+  >
+    <span aria-hidden="true">&#10073;&#10073;</span>
+  </button>
 </marquee-component>
 
 {% stylesheet %}
@@ -42,6 +52,37 @@
     display: block;
     width: 100%;
     overflow: hidden;
+    position: relative;
+  }
+
+  .marquee__pause-toggle {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid currentColor;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 1;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  marquee-component:hover .marquee__pause-toggle,
+  marquee-component:focus-within .marquee__pause-toggle,
+  .marquee__pause-toggle:focus-visible {
+    opacity: 1;
+  }
+
+  .marquee__pause-toggle:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 
   .marquee__wrapper {

@@ -32,26 +32,26 @@ body p{
 .cont .contact-form__label{
     color: #000 !important;
 font-family: "League Spartan" !important;
-font-size: 16px !important;
+font-size: 1rem !important; /* 16px - WCAG 1.4.4 Resize Text */
 font-style: normal !important;
 font-weight: 500 !important;
-line-height: 22px !important; /* 137.5% */
+line-height: 1.375; /* 22/16 - WCAG 1.4.12 Text Spacing (no !important) */
 }
 .cont .pd-main-head h2{
     color: #000 !important;
 font-family: "League Spartan" !important;
-font-size: 36px !important;
+font-size: 2.25rem !important; /* 36px - WCAG 1.4.4 Resize Text */
 font-style: normal !important;
 font-weight: 600 !important;
-line-height: 56px !important; /* 155.556% */
+line-height: 1.5556; /* 56/36 - WCAG 1.4.12 Text Spacing (no !important) */
 }
 .cont .pd-main-head p{
     color: var(--Black, #171717) !important;
 font-family: Quicksand !important;
-font-size: 18px !important;
+font-size: 1.125rem !important; /* 18px - WCAG 1.4.4 Resize Text */
 font-style: normal !important;
 font-weight: 400 !important;
-line-height: normal !important;
+line-height: normal; /* WCAG 1.4.12 Text Spacing (no !important) */
 }
 
 .cart-bubble__background{

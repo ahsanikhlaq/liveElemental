@@ -107,6 +107,11 @@ export class AnchoredPopoverComponent extends Component {
       trigger.addEventListener('pointerleave', this.#onTriggerLeave);
       popover.addEventListener('pointerenter', this.#onPopoverEnter);
       popover.addEventListener('pointerleave', this.#onPopoverLeave);
+      // WCAG 2.1.1 / 1.4.13 — keyboard parity for hover-triggered popovers.
+      trigger.addEventListener('focusin', this.#onTriggerEnter);
+      trigger.addEventListener('focusout', this.#onTriggerLeave);
+      popover.addEventListener('focusin', this.#onPopoverEnter);
+      popover.addEventListener('focusout', this.#onPopoverLeave);
     }
     if (!CSS.supports('position-anchor: --trigger')) {
       popover.addEventListener('beforetoggle', () => {

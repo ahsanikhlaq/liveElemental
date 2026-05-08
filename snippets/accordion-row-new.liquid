@@ -28,6 +28,19 @@
   .collapsable-tab-top {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+  }
+
+  .collapsable-tab-top:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   
   .collapsable-tab-main {
@@ -52,17 +65,23 @@
   }
 </style>
 
+{%- assign panel_id = 'collapsable-tab-' | append: block.id -%}
 <div class="collapsable-tab-main" {{ block.shopify_attributes }}>
-  <div class="collapsable-tab-top">
+  <button
+    type="button"
+    class="collapsable-tab-top"
+    aria-expanded="false"
+    aria-controls="{{ panel_id }}"
+  >
     <h4 class="collapsable-tab-heading">{{ block.settings.heading }}</h4>
-    <span>
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon-plus" width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <span aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon-plus" width="16" height="16" viewBox="0 0 16 16" fill="none" focusable="false">
         <path d="M12.9497 7.5H3.05029" stroke="black" stroke-width="2" stroke-linecap="square"/>
         <path d="M8 2.55029V12.4498" stroke="black" stroke-width="2" stroke-linecap="square"/>
       </svg>
     </span>
-  </div>
-  <div class="collapsable-tab-content">
+  </button>
+  <div class="collapsable-tab-content" id="{{ panel_id }}" role="region">
     {{ block.settings.content }}
   </div>
 </div>
@@ -89,11 +108,14 @@
       faqItems.forEach((item) => {
         // Mark as initialized to prevent duplicate listeners
         item.classList.add('accordion-initialized');
-        
+
         item.addEventListener('click', function(e) {
           const answer = this.querySelector('.collapsable-tab-content');
           const icon = this.querySelector('.icon-plus');
+          const trigger = this.querySelector('.collapsable-tab-top');
           const isOpen = answer.classList.contains('open');
+          // WCAG 4.1.2 — sync ARIA state with visual state.
+          if (trigger) trigger.setAttribute('aria-expanded', String(!isOpen));
 
           // Close all other open tabs
           document.querySelectorAll('.collapsable-tab-content.open').forEach((openAnswer) => {

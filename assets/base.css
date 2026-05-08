@@ -1712,7 +1712,9 @@ zoom-dialog dialog {
   **/
 
   .close-button:focus-visible {
-    outline: none;
+    /* Native outline kept as a fallback if ::after fails to render. */
+    outline: var(--focus-outline-width) solid currentColor;
+    outline-offset: var(--focus-outline-offset);
     overflow: visible;
   }
 
@@ -2389,12 +2391,17 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   background-color: var(--color-input-background);
   color: var(--color-input-text);
   border: none;
-  outline: none;
+  outline: 0 solid transparent;
   font-size: var(--font-paragraph--size);
 
   &:autofill {
     background-color: var(--color-input-background);
     color: var(--color-input-text);
+  }
+
+  &:focus-visible {
+    outline: var(--focus-outline-width) solid currentColor;
+    outline-offset: var(--focus-outline-offset);
   }
 }
 

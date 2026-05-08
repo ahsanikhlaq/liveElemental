@@ -459,6 +459,10 @@ export class Slideshow extends Component {
 
     this.addEventListener('mouseenter', this.suspend);
     this.addEventListener('mouseleave', this.resume);
+    // WCAG 2.1.1 / 2.2.2 — keyboard parity: pause autoplay when focus enters,
+    // resume when focus leaves the slideshow region.
+    this.addEventListener('focusin', this.suspend);
+    this.addEventListener('focusout', this.resume);
     this.addEventListener('pointerenter', this.#handlePointerEnter);
     document.addEventListener('visibilitychange', this.#handleVisibilityChange);
 
