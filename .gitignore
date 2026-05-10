@@ -17,3 +17,7 @@ node_modules/
 
 # Generator scratch
 generate_report.py
+_gen_*.py
+
+# Locally-generated team handbooks — not for the repo
+Web_Development_Standards_Guide.docx
